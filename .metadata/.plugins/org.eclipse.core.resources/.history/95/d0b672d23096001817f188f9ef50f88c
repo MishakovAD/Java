@@ -1,0 +1,43 @@
+<%@page import="UserProfile.UserProfile"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Дела/Поручения</title>
+</head>
+<body>
+			<%@ page import="java.util.HashMap" %>
+			<%@ page import="java.util.Map" %> 
+            <%@ page import="Users.*" %>
+            <%@ page import="UserProfile.*" %>
+            
+            <%
+            HashMap<Integer, UserProfile> list = (HashMap<Integer, UserProfile>) request.getAttribute("usersList");
+            
+            for (Map.Entry entry : list.entrySet()) {
+            	UserProfile user = (UserProfile) entry.getValue(); 
+            	//int id =user.getUserId();
+            	//out.println("<a href=\"/niikp/users/" + id + "\">");
+            	//out.println("<h1>" + user.getName() + " " + user.getSecondName() + "</h1>"); 
+            	//out.println("</a>");
+                System.out.println("Key: " + entry.getKey() + " Value: " + entry.getValue()); 
+             %>
+ 
+ <%@ taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core' %>
+ <c:set var="name" value=""/>           
+	<form method="post" action="userProfile?action=submit">
+        			<input type="text" name="name" value="<% user.getName();  } %>" placeholder="Имя и Фамилия" />
+        			<br><br><br>
+					<input type="text" name="secondName" value="${userProfileUpdate.secondName}" placeholder="Фамилия" />
+					<br><br><br>
+					<input type="date" name="birthday" value="${userProfileUpdate.birthday}" placeholder="Дата Рождения" />
+					<br><br><br>
+					<input type="text" name="email" value="${userProfileUpdate.email}" placeholder="email" />
+					<br><br><br>
+					<input type="password" name="password" value="${userProfileUpdate.password}" placeholder="Пароль" />
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>

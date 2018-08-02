@@ -1,0 +1,18 @@
+package Work;
+
+import java.util.HashMap;
+import java.util.Map;
+
+
+import UserProfile.UserProfile;
+
+public class Work {
+	private int workId;
+	private String assignment; //поручение poruchenie
+	
+	
+	public static Map<Integer, UserProfile> workList = new HashMap<>();
+	
+	
+	
+}
