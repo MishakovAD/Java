@@ -12,9 +12,13 @@ public class Work {
 	private String assignment; //поручение poruchenie
 	private Date startDate;
 	private Date endDate;
-	private int toUserId;	
+	private int toUserId;
+	private int mailId;
+	
 	
 	public static Map<Integer, Work> workList = new HashMap<>(); //userId -> Work
+	//не продумано, что если на одного человека несколько резолюций
+	//тогда старая просто перезапишется
 
 	public Work() {
 		super();
@@ -31,6 +35,17 @@ public class Work {
 		this.workId = workId;
 		this.assignment = assignment;
 		this.toUserId = toUserId;
+	}
+	
+	
+	public Work(int workId, String assignment, Date startDate, Date endDate, int toUserId, int mailId) {
+		super();
+		this.workId = workId;
+		this.assignment = assignment;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.toUserId = toUserId;
+		this.mailId = mailId;
 	}
 
 	public int getWorkId() {
@@ -71,6 +86,15 @@ public class Work {
 
 	public void setToUserId(int toUserId) {
 		this.toUserId = toUserId;
+	}
+	
+
+	public int getMailId() {
+		return mailId;
+	}
+
+	public void setMailId(int mailId) {
+		this.mailId = mailId;
 	}
 
 	public static Map<Integer, Work> getWorkList() {

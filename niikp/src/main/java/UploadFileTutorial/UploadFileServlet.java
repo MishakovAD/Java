@@ -71,7 +71,8 @@ public class UploadFileServlet extends HttpServlet {
                 }
             }
             // Upload successfully!.
-            response.sendRedirect(request.getContextPath() + "/uploadFileResults");
+            //response.sendRedirect(request.getContextPath() + "/uploadFileResults");
+            response.sendRedirect("/niikp");
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("errorMessage", "Error: " + e.getMessage());

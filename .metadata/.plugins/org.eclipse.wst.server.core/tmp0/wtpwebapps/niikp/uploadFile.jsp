@@ -7,10 +7,7 @@
 </head>
 <body>
  
-    <div style="padding:5px; color:red;font-style:italic;">
-       ${errorMessage}
-    </div>
-    
+
     <h2>Upload Files</h2>
  
     <form method="post" action="/niikp/uploadFile" enctype="multipart/form-data"/>
