@@ -17,4 +17,17 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  	<servlet> 
+     <servlet-name>DownloadServlet</servlet-name> 
+     <servlet-class>com.jsos.download.DownloadServlet</servlet-class> 
+     <init-param> 
+      <param-name>dir</param-name> 
+      <param-value>E:/JavaProjectDocs/uploadDir/</param-value> 
+     </init-param>
+    </servlet>
+  	<servlet-mapping> 
+     <servlet-name>DownloadServlet</servlet-name> 
+     <url-pattern>/DownloadServlet</url-pattern> 
+    </servlet-mapping>
 </web-app>

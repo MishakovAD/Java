@@ -1,6 +1,7 @@
 <%@page import="UserProfile.UserProfile"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,10 +9,20 @@
 <title>Входящая корреспонденция</title>
 </head>
 <body>
+	
+	<%@ page import="IncomingMail.*" %>
+	<%
+		//Эти все выражения для случая, когда мы возвращаем объект. Если объекта нет, то возвращается нулл и вылетает ошибка
+		//Нужно продумать вместе ифами, чтобы при обычном добавлении- одно, а при редактирование елсе.
+		IncomingMail incomingMail = (IncomingMail) request.getAttribute("incomingMail");
+		System.out.println(incomingMail.getRegDate());
+	%>
+
+	<c:set var="regDate" value="${incMail.getRegDate()}"/>
 	<form method="post" action="incomingMail?action=submit" enctype="multipart/form-data">
-		<input type="date" name="regDate" value="" placeholder="Дата регистрации" />
+		<input type="date" name="regDate" value="<%= incomingMail.getRegDate() %>" placeholder="Дата регистрации" />
 		<br><br><br>
-		<input type="number" name="regNum" value="" placeholder="Порядковый номер" /> <!-- Скрыть, будет обычный айди записи -->
+		<input type="number" name="regNum" value="<%= incomingMail.getIdMail() %>" placeholder="Порядковый номер" /> <!-- Скрыть, будет обычный айди записи -->
 		<br><br><br>
 		<p><select name="typeMail">
     		<option value="Письмо1">Письмо</option>

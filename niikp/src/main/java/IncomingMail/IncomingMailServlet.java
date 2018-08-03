@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -16,16 +17,31 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-@WebServlet("/incomingMail")
+@WebServlet("/incomingMail/*")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 20, // 2MB
 		maxFileSize = 1024 * 1024 * 10, // 20MB
 		maxRequestSize = 1024 * 1024 * 50) // 50MB
-public class IncomingMailServlet extends HttpServlet {
+public class IncomingMailServlet extends HttpServlet {	
 	public static final String SAVE_DIRECTORY = "uploadDir";
+	public static ArrayList<IncomingMail> incomingMailList = new ArrayList<>();
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String action = request.getParameter("action");
+		if (action != null && action.equals("delete")) {
+			String url_str = request.getPathInfo();
+			if (url_str != null) {
+				String id = url_str.substring(1);
+				incomingMailList.remove(id);
+			}
+		} else if (action != null && action.equals("update")) {
+			String url_str = request.getPathInfo();
+			if (url_str != null) {
+				String id = url_str.substring(1);
+				request.setAttribute("incomingMail", incomingMailList.get(Integer.parseInt(id)));
+			}
+		}
 		request.getRequestDispatcher("/incomingMail.jsp").forward(request, response);
 		// super.doGet(request, response); //из-за этой строчки была ошибка sendError()
 	}
@@ -102,14 +118,15 @@ public class IncomingMailServlet extends HttpServlet {
 					}
 				}
 				// Upload successfully!.
-				response.sendRedirect(request.getContextPath() + "/uploadFileResults");
+				response.sendRedirect(request.getContextPath() + "/incomingMailList");
 				// response.sendRedirect("/niikp");
 			} catch (Exception e) {
 				e.printStackTrace();
 				request.setAttribute("errorMessage", "Error: " + e.getMessage());
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/jsps/uploadFile.jsp");
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/incomingMail.jsp");
 				dispatcher.forward(request, response);
 			}
+			incomingMailList.add(incMail);
 			System.out.println(incMail);
 		} //end if
 	}

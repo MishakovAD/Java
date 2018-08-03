@@ -31,7 +31,7 @@ public class UsersList extends HttpServlet {
 		}
 
 		String str = request.getPathInfo();
-		System.out.println(str);
+
 		if (str != null) {
 			String id = str.substring(1); 
 			//Внимательнее с тем,что id типа String, а ключ типа Integer

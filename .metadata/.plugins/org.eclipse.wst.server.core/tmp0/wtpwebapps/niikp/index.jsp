@@ -104,9 +104,22 @@ pageEncoding="UTF-8"%>
 
 <body>
 
+<nav class="navbar navbar-inverse" role="navigation">
+  <ul class="nav nav-pills">
+  <div>
+  <li class="active"><a href="/niikp/">Главная страница</a></li>
+	<br></div>
+  <li><a href="/niikp/users">Пользователи</a></li>
+
+  <li><a href="/niikp/incomingMail">Входящая корреспонденция (добавить)</a></li>
+
+  <li><a href="/niikp/incomingMailList">Входящая корреспонденция (список)</a></li>
+
+</ul>
+</nav>
 
 
-  <section id="info--1">
+  <!--  <section id="info--1">
     <div class="container">
       <div class="row" >
         <div class="col-md-8">
@@ -119,7 +132,7 @@ pageEncoding="UTF-8"%>
         <div class="col-md-4"></div>
       </div>
     </div>
-  </section>
+  </section> -->
   <section id="info--2"></section>
   <section id="info--3"></section>
   <section id="featured-on"></section>
