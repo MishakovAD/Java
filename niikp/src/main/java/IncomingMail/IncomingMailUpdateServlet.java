@@ -17,30 +17,45 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-@WebServlet("/incomingMail")
+
+@WebServlet("/incomingMail/*")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 20, // 2MB
 		maxFileSize = 1024 * 1024 * 10, // 20MB
 		maxRequestSize = 1024 * 1024 * 50) // 50MB
-public class IncomingMailServlet extends HttpServlet {	
+public class IncomingMailUpdateServlet  extends HttpServlet {
 	public static final String SAVE_DIRECTORY = "uploadDir";
-	//для редактирования сделать мапу с ключом - айди письма, чтобы письмо, после изменения, заменяло старое на новое
-	//только нужнопродумать, что делать с датами и не измененными полями, как их заново получать. (в особенности даты и файл)
-	public static ArrayList<IncomingMail> incomingMailList = new ArrayList<>();
-
+	IncomingMail incMail;
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String action = request.getParameter("action");
+		if (action != null && action.equals("delete")) {
+			String url_str = request.getPathInfo();
+			if (url_str != null) {
+				String id = url_str.substring(1);
+				IncomingMailServlet.incomingMailList.remove(Integer.parseInt(id));
+				response.sendRedirect("/niikp/incomingMailList");
+				
+			}
+		} else if (action != null && action.equals("update")) {
+			String url_str = request.getPathInfo();
+			if (url_str != null) {
+				String id = url_str.substring(1);
+				request.setAttribute("incomingMail", IncomingMailServlet.incomingMailList.get(Integer.parseInt(id)));
+				incMail = IncomingMailServlet.incomingMailList.get(Integer.parseInt(id));
+				request.getRequestDispatcher("/incomingMailUpdate.jsp").forward(request, response);
+			}
+		} else if (action == null) {
+			request.getRequestDispatcher("/incomingMail.jsp").forward(request, response);
+		}
 		
-			request.getRequestDispatcher("/incomingMail.jsp").forward(request, response);		
 		// super.doGet(request, response); //из-за этой строчки была ошибка sendError()
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("doPost IncomingMailServlet");
-		
-		IncomingMail incMail = new IncomingMail();
 		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
 		if ("submit".equals(action)) {
@@ -52,6 +67,7 @@ public class IncomingMailServlet extends HttpServlet {
 			String mailNum = request.getParameter("mailNum");
 			String mailTheme = request.getParameter("mailTheme");
 			String secondFloorDateParameter = request.getParameter("secondFloorDate");
+			System.out.println(regDateParameter + "  " + sendDateParameter + "  " + secondFloorDateParameter);
 			
 			System.out.println(regDateParameter);
 			
@@ -61,7 +77,7 @@ public class IncomingMailServlet extends HttpServlet {
 			String regDate = null;
 			String sendDate = null;
 			String secondFloorDate = null;
-			SimpleDateFormat oldDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+			SimpleDateFormat oldDateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
 			SimpleDateFormat newDateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 			try {
 				resultRegDate = oldDateFormat.parse(regDateParameter);
@@ -78,13 +94,13 @@ public class IncomingMailServlet extends HttpServlet {
 			}
 			
 			//IncomingMail incMail = new IncomingMail(regDate, typeMail, sender, sendDate, mailNum, mailTheme, secondFloorDate);
-			incMail.setRegDate(regDate);
-			incMail.setTypeMail(typeMail);
-			incMail.setSender(sender);
-			incMail.setSendDate(sendDate);
-			incMail.setMailNum(mailNum);
-			incMail.setMailTheme(mailTheme);
-			incMail.setSecondFloorDate(secondFloorDate);
+			if (regDate != null) incMail.setRegDate(regDate);
+			if (typeMail != null) incMail.setTypeMail(typeMail);
+			if (sender != null) incMail.setSender(sender);
+			if (sendDate != null) incMail.setSendDate(sendDate);
+			if (mailNum != null) incMail.setMailNum(mailNum);
+			if (mailTheme != null) incMail.setMailTheme(mailTheme);
+			if (secondFloorDate != null) incMail.setSecondFloorDate(secondFloorDate);
 			try {
 				String appPath = request.getServletContext().getRealPath("");
 				appPath = appPath.replace('\\', '/');
@@ -120,7 +136,7 @@ public class IncomingMailServlet extends HttpServlet {
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/incomingMail.jsp");
 				dispatcher.forward(request, response);
 			}
-			incomingMailList.add(incMail);
+			IncomingMailServlet.incomingMailList.add(incMail);
 			System.out.println(incMail);
 		} //end if
 	}
