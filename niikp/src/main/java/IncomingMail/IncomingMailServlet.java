@@ -23,6 +23,8 @@ import javax.servlet.http.Part;
 		maxRequestSize = 1024 * 1024 * 50) // 50MB
 public class IncomingMailServlet extends HttpServlet {	
 	public static final String SAVE_DIRECTORY = "uploadDir";
+	//для редактирования сделать мапу с ключом - айди письма, чтобы письмо, после изменения, заменяло старое на новое
+	//только нужнопродумать, что делать с датами и не измененными полями, как их заново получать. (в особенности даты и файл)
 	public static ArrayList<IncomingMail> incomingMailList = new ArrayList<>();
 
 	@Override
@@ -33,16 +35,21 @@ public class IncomingMailServlet extends HttpServlet {
 			String url_str = request.getPathInfo();
 			if (url_str != null) {
 				String id = url_str.substring(1);
-				incomingMailList.remove(id);
+				incomingMailList.remove(Integer.parseInt(id));
+				response.sendRedirect("/niikp");
+				
 			}
 		} else if (action != null && action.equals("update")) {
 			String url_str = request.getPathInfo();
 			if (url_str != null) {
 				String id = url_str.substring(1);
 				request.setAttribute("incomingMail", incomingMailList.get(Integer.parseInt(id)));
+				request.getRequestDispatcher("/incomingMail.jsp").forward(request, response);
 			}
+		} else if (action == null) {
+			request.getRequestDispatcher("/incomingMail.jsp").forward(request, response);
 		}
-		request.getRequestDispatcher("/incomingMail.jsp").forward(request, response);
+		
 		// super.doGet(request, response); //из-за этой строчки была ошибка sendError()
 	}
 
@@ -111,10 +118,13 @@ public class IncomingMailServlet extends HttpServlet {
 					String fileName = extractFileName(part);
 					if (fileName != null && fileName.length() > 0) {
 						String filePath = fullSavePath + File.separator + fileName;
-						incMail.setFilePathAndName(filePath);
-						System.out.println("Write attachment to file: " + filePath);
-						// Write to file
-						part.write(filePath);
+						if (filePath != null) {
+							incMail.setFilePathAndName(filePath);
+							System.out.println("Write attachment to file: " + filePath);
+							// Write to file
+							part.write(filePath);
+						}
+						
 					}
 				}
 				// Upload successfully!.

@@ -27,21 +27,67 @@
 		<%
 			ArrayList<IncomingMail> list = (ArrayList<IncomingMail>) request.getAttribute("incomingMailList");
 			for (int i = 0; i < list.size(); i++) {
-		%>
-			<c:set var="id" value="${i}"/>
-		<%
 				out.println("<tr>");
-				out.println("<td>" + list.get(i).getRegDate() + "</td>");
+				if (list.get(i).getRegDate() != null) {
+					out.println("<td>" + list.get(i).getRegDate() + "</td>");
+				} else {
+					out.println("<td>Не заполнено</td>");
+				}
+				
 				out.println("<td>" + list.get(i).getIdMail() + "</td>");
-				out.println("<td>" + list.get(i).getTypeMail() + "</td>");
-				out.println("<td>" + list.get(i).getSender() + "</td>");
-				out.println("<td>" + list.get(i).getSendDate() + "</td>");
-				out.println("<td>" + list.get(i).getMailNum() + "</td>");
-				out.println("<td>" + list.get(i).getMailTheme() + "</td>");
-				out.println("<td>" + list.get(i).getSecondFloorDate() + "</td>");
+				
+				if (list.get(i).getTypeMail() != null) {
+					out.println("<td>" + list.get(i).getTypeMail() + "</td>");
+				} else {
+					out.println("<td>Не заполнено</td>");
+				}
+				
+				if (list.get(i).getSender() != null && !list.get(i).getSender().isEmpty()) {
+					out.println("<td>" + list.get(i).getSender() + "</td>");
+				} else {
+					out.println("<td>Не заполнено</td>");
+				}
+				
+				if (list.get(i).getSendDate() != null) {
+					out.println("<td>" + list.get(i).getSendDate() + "</td>");
+				} else {
+					out.println("<td>Не заполнено</td>");
+				}
+				
+				if (list.get(i).getMailNum() != null && !list.get(i).getMailNum().isEmpty()) {
+					out.println("<td>" + list.get(i).getMailNum() + "</td>");
+				} else {
+					out.println("<td>Не заполнено</td>");
+				}
+				
+				if (list.get(i).getMailTheme() != null && !list.get(i).getMailTheme().isEmpty()) {
+					out.println("<td>" + list.get(i).getMailTheme() + "</td>");
+				} else {
+					out.println("<td>Не заполнено</td>");
+				}
+				
+				if (list.get(i).getSecondFloorDate() != null) {
+					out.println("<td>" + list.get(i).getSecondFloorDate() + "</td>");
+				} else {
+					out.println("<td>Не заполнено</td>");
+				}
+				
+				if (list.get(i).getFilePathAndName() != null) {
+					out.println("<td><a href=\"/niikp/DownloadServlet?" + list.get(i).getFilePathAndName().substring(29) + "\">Документ</a></td>");
+				} else {
+					out.println("<td>Не заполнено</td>");
+				}
+				
+				
+				
+				
+				
+				
+				
+				
 				//out.println("<a href=\"" + list.get(i).getFilePathAndName() + "\"><td>" + "Документ" + "</td></a>");
 				//Продумать путь до файла, чтобы не было мусорки, и задать в web.xml
-				out.println("<td><a href=\"/niikp/DownloadServlet?" + list.get(i).getFilePathAndName().substring(29) + "\">Документ</a></td>");
+				
 				out.println("<td><button type=\"submit\"><a href=\"/niikp/incomingMail/" + i + "?action=update\">Редактировать</a></button></td>");
 				out.println("<td><button type=\"submit\"><a href=\"/niikp/incomingMail/" + i + "?action=delete\">Удалить</a></button></td>");
 				out.println("</tr>");				
