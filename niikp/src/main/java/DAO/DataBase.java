@@ -23,7 +23,6 @@ public class DataBase {
 	private static String username = "root";
 	private static String password = "hedghog";
 
-	static boolean checkUser = false;
 
 	// Для отдельного запуска работы с БД
 	public static void connect() throws SQLException, InstantiationException, IllegalAccessException {
@@ -40,7 +39,7 @@ public class DataBase {
 		Statement statement = null;
 		statement = con.createStatement();
 	// Создание таблицы в БД
-		//(dateRegistration, name, secondName, email, password, birthday)
+		//CREATE DATABASE `my_db` CHARACTER SET utf8 COLLATE utf8_general_ci;
 //		String SQL = "CREATE TABLE users " +
 //				 "(userId INTEGER not NULL AUTO_INCREMENT, " +
 //				 " dateRegistration DATETIME not NULL, " +
@@ -50,6 +49,23 @@ public class DataBase {
 //				 " password VARCHAR (100) not NULL, " +
 //				 " birthday DATE not NULL, " +				 
 //				 " PRIMARY KEY (userId))";
+//		
+//		 statement.executeUpdate(SQL);
+//		 System.out.println("Table successfully created...");
+		// Создание таблицы в БД
+		//(dateRegistration, name, secondName, email, password, birthday)
+//		String SQL = "CREATE TABLE incomingMail " +
+//				 "(regDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " +
+//				 " idMail INTEGER not NULL AUTO_INCREMENT, " +
+//				 " typeMail VARCHAR (50), " +
+//				 " sender VARCHAR (150), " +
+//				 " sendDate VARCHAR (100), " +
+//				 " mailNum VARCHAR (50), " +
+//				 " mailTheme VARCHAR (200), " +
+//				 " secondFloorDate VARCHAR (50), " +
+//				 " secondFloorNum VARCHAR (100), " +
+//				 " filePathAndName VARCHAR (100), " +
+//				 " PRIMARY KEY (idMail))";
 //		
 //		 statement.executeUpdate(SQL);
 //		 System.out.println("Table successfully created...");

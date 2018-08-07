@@ -10,29 +10,35 @@
 </head>
 <body>
 		<form method="post" action="incomingMail?action=submit" enctype="multipart/form-data">
-		<input type="date" name="regDate" required value="" placeholder="Дата регистрации" />
-		<br><br><br>
-		<input type="number" name="regNum" value="" placeholder="Порядковый номер" /> <!-- Скрыть, будет обычный айди записи -->
-		<br><br><br>
-		<p><select name="typeMail">
+		<p>Тип письма: </>
+		<select name="typeMail">
     		<option value="Письмо1">Письмо</option>
     		<option value="Письмо2">Письмо</option>
     		<option value="Письмо3">Письмо</option>
     		<option value="Письмо4">Письмо</option>
    		</select></p> 
    		<br><br><br>
+   		<p>Отправитель: </>
 		<input type="text" name="sender" value="" list="senderList" placeholder="Отправитель" />	
 		<br><br><br>
+		<p>Дата отправления письма: </>
 		<input type="date" required name="sendDate" value="" placeholder="Дата отправления письма" />
 		<br><br><br>
+		<p>Номер письма: </>
 		<input type="text" name="mailNum" value="" placeholder="Номер письма" />
 		<br><br><br>
+		<p>Тема письма: </>
 		<input type="text" name="mailTheme" value="" placeholder="Тема письма" />
 		<br><br><br>
-		<input type="date" required name="secondFloorDate" value="" placeholder="Дата и номер письма, присваевыемые при первичной рег. документа" />
+		<p>Дата, присваевыемая при первичной рег. документа: </>
+		<input type="date" required name="secondFloorDate" value="" placeholder="Дата, присваевыемая при первичной рег. документа" />
+		<p>Номер письма, присваевыемый при первичной рег. документа: </>
+		<input type="text" required name="secondFloorNum" value="" placeholder="Номер письма, присваевыемый при первичной рег. документа" />
 		<br><br><br>
+		<p>Резолюция: </>
 		<input type="text" name="resolution" value="" placeholder="Резолюция" /> <!-- Добавить отдельную таблицу -->
 		<br><br><br>
+		<p>Письмо: </>
 		<input name="file" type="file"><br>
 		<br><br><br>
        	<button type="submit">Save</button>

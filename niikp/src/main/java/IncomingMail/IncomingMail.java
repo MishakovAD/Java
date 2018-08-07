@@ -5,6 +5,8 @@ import java.util.Date;
 import Work.Work;
 
 public class IncomingMail {
+	/*
+	 * add user id, who add mail if it need */
 	private String regDate;
 	private int idMail; //regNum
 	private String typeMail;
@@ -13,6 +15,7 @@ public class IncomingMail {
 	private String mailNum;
 	private String mailTheme;
 	private String secondFloorDate;
+	private String secondFloorNum;
 	private String filePathAndName;
 	private Work resolution;
 	
@@ -89,6 +92,55 @@ public class IncomingMail {
 		this.secondFloorDate = secondFloorDate;
 		this.filePathAndName = filePathAndName;
 	}
+	
+	
+
+	public IncomingMail(String regDate, String typeMail, String sender, String sendDate, String mailNum,
+			String mailTheme, String secondFloorDate, String secondFloorNum, String filePathAndName) {
+		super();
+		this.regDate = regDate;
+		this.typeMail = typeMail;
+		this.sender = sender;
+		this.sendDate = sendDate;
+		this.mailNum = mailNum;
+		this.mailTheme = mailTheme;
+		this.secondFloorDate = secondFloorDate;
+		this.secondFloorNum = secondFloorNum;
+		this.filePathAndName = filePathAndName;
+	}
+
+	
+
+	public IncomingMail(String regDate, String typeMail, String sender, String sendDate, String mailNum,
+			String mailTheme, String secondFloorDate, String secondFloorNum, String filePathAndName, Work resolution) {
+		super();
+		this.regDate = regDate;
+		this.typeMail = typeMail;
+		this.sender = sender;
+		this.sendDate = sendDate;
+		this.mailNum = mailNum;
+		this.mailTheme = mailTheme;
+		this.secondFloorDate = secondFloorDate;
+		this.secondFloorNum = secondFloorNum;
+		this.filePathAndName = filePathAndName;
+		this.resolution = resolution;
+	}
+
+	public IncomingMail(String regDate, int idMail, String typeMail, String sender, String sendDate, String mailNum,
+			String mailTheme, String secondFloorDate, String secondFloorNum, String filePathAndName, Work resolution) {
+		super();
+		this.regDate = regDate;
+		this.idMail = idMail;
+		this.typeMail = typeMail;
+		this.sender = sender;
+		this.sendDate = sendDate;
+		this.mailNum = mailNum;
+		this.mailTheme = mailTheme;
+		this.secondFloorDate = secondFloorDate;
+		this.secondFloorNum = secondFloorNum;
+		this.filePathAndName = filePathAndName;
+		this.resolution = resolution;
+	}
 
 	public String getRegDate() {
 		return regDate;
@@ -154,6 +206,14 @@ public class IncomingMail {
 		this.secondFloorDate = secondFloorDate2;
 	}
 	
+	public String getSecondFloorNum() {
+		return secondFloorNum;
+	}
+
+	public void setSecondFloorNum(String secondFloorNum) {
+		this.secondFloorNum = secondFloorNum;
+	}
+
 	public String getFilePathAndName() {
 		return filePathAndName;
 	}

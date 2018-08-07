@@ -2,6 +2,7 @@ package IncomingMail;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -16,6 +17,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+
+import DAO.IncomingMailDB;
 
 
 @WebServlet("/incomingMail/*")
@@ -34,7 +37,12 @@ public class IncomingMailUpdateServlet  extends HttpServlet {
 			String url_str = request.getPathInfo();
 			if (url_str != null) {
 				String id = url_str.substring(1);
-				IncomingMailServlet.incomingMailList.remove(Integer.parseInt(id));
+				//IncomingMailServlet.incomingMailList.remove(Integer.parseInt(id));
+				try {
+					IncomingMailDB.deleteIncomingMail(Integer.parseInt(id));
+				} catch (NumberFormatException | InstantiationException | IllegalAccessException | SQLException e) {
+					e.printStackTrace();
+				}
 				response.sendRedirect("/niikp/incomingMailList");
 				
 			}
@@ -59,17 +67,16 @@ public class IncomingMailUpdateServlet  extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
 		if ("submit".equals(action)) {
+			IncomingMailServlet.incomingMailList.remove(incMail);
 			String regDateParameter = request.getParameter("regDate");			
-			int idMail; //regNum
+			int idMail = 0; //regNum
 			String typeMail = request.getParameter("typeMail");
 			String sender = request.getParameter("sender");
 			String sendDateParameter = request.getParameter("sendDate");			
 			String mailNum = request.getParameter("mailNum");
 			String mailTheme = request.getParameter("mailTheme");
 			String secondFloorDateParameter = request.getParameter("secondFloorDate");
-			System.out.println(regDateParameter + "  " + sendDateParameter + "  " + secondFloorDateParameter);
-			
-			System.out.println(regDateParameter);
+			String secondFloorNum = request.getParameter("secondFloorNum");
 			
 			Date resultRegDate = null;
 			Date resultSendDate = null;
@@ -101,6 +108,7 @@ public class IncomingMailUpdateServlet  extends HttpServlet {
 			if (mailNum != null) incMail.setMailNum(mailNum);
 			if (mailTheme != null) incMail.setMailTheme(mailTheme);
 			if (secondFloorDate != null) incMail.setSecondFloorDate(secondFloorDate);
+			if (secondFloorNum != null) incMail.setSecondFloorNum(secondFloorNum);
 			try {
 				String appPath = request.getServletContext().getRealPath("");
 				appPath = appPath.replace('\\', '/');
@@ -115,7 +123,7 @@ public class IncomingMailUpdateServlet  extends HttpServlet {
 
 				// Part list (multi files).
 				for (Part part : request.getParts()) {
-					String fileName = extractFileName(part);
+					String fileName = extractFileName(part, IncomingMailDB.getLastIndexIncomingMail());
 					if (fileName != null && fileName.length() > 0) {
 						String filePath = fullSavePath + File.separator + fileName;
 						if (filePath != null) {
@@ -141,7 +149,7 @@ public class IncomingMailUpdateServlet  extends HttpServlet {
 		} //end if
 	}
 
-	private String extractFileName(Part part) {
+	private String extractFileName(Part part, int prefix) {
 		// form-data; name="file"; filename="C:\file1.zip"
 		// form-data; name="file"; filename="C:\Note\file2.zip"
 		String contentDisp = part.getHeader("content-disposition");
@@ -150,7 +158,7 @@ public class IncomingMailUpdateServlet  extends HttpServlet {
 			if (s.trim().startsWith("filename")) {
 				// C:\file1.zip
 				// C:\Note\file2.zip
-				String clientFileName = s.substring(s.indexOf("=") + 2, s.length() - 1);
+				String clientFileName = "VhodKorr_NPK-1_" + prefix + "_" + s.substring(s.indexOf("=") + 2, s.length() - 1);
 				clientFileName = clientFileName.replace("\\", "/");
 				int i = clientFileName.lastIndexOf('/');
 				// file1.zip

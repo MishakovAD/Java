@@ -60,7 +60,8 @@
 		<br><br><br>
 		<input type="text" name="mailTheme" value="<%= incomingMail.getMailTheme() %>" placeholder="Тема письма" />
 		<br><br><br>
-		<input type="text" name="secondFloorDate" value="<%= secondFloorDate %>" placeholder="Дата и номер письма, присваевыемые при первичной рег. документа" />
+		<input type="text" name="secondFloorDate" value="<%= secondFloorDate %>" placeholder="Дата, присваевыемая при первичной рег. документа" />
+		<input type="text" required name="secondFloorNum" value="<%= incomingMail.getSecondFloorNum() %>" placeholder="Номер письма, присваевыемый при первичной рег. документа" />
 		<br><br><br>
 		<input type="text" name="resolution" value="<%= incomingMail.getResolution() %>" placeholder="Резолюция" /> <!-- Добавить отдельную таблицу -->
 		<br><br><br>

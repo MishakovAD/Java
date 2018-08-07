@@ -18,7 +18,8 @@
 			<th>Дата отправления письма</th>
 			<th>Номер письма</th>
 			<th>Тема письма</th>
-			<th>Дата и номер 2 этажа</th>
+			<th>Дата 2 этажа</th>
+			<th>Номер 2 этажа</th>
 			<th>Документ</th>
 		</tr>
 		<%@ page import="java.util.ArrayList"%>
@@ -72,8 +73,14 @@
 					out.println("<td>Не заполнено</td>");
 				}
 				
+				if (list.get(i).getSecondFloorNum() != null) {
+					out.println("<td>" + list.get(i).getSecondFloorNum() + "</td>");
+				} else {
+					out.println("<td>Не заполнено</td>");
+				}
+				
 				if (list.get(i).getFilePathAndName() != null) {
-					out.println("<td><a href=\"/niikp/DownloadServlet?" + list.get(i).getFilePathAndName().substring(29) + "\">Документ</a></td>");
+					out.println("<td><a href=\"/niikp/DownloadServlet?" + list.get(i).getFilePathAndName().substring(28) + "\">" + list.get(i).getFilePathAndName().substring(28) + "</a></td>");
 				} else {
 					out.println("<td>Не заполнено</td>");
 				}
@@ -94,6 +101,7 @@
 			}
 			out.println("</table>");
 		%>
+		Сделать так, чтобы id письма был соответсвующим в строке запроса, чтобы не возникало ошибок, при удалении
 	<button type="submit"><a href="/niikp/incomingMail">Добавить</a></button>
 	
 </body>

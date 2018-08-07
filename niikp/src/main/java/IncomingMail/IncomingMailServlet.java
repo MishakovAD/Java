@@ -2,6 +2,7 @@ package IncomingMail;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -17,6 +18,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import DAO.IncomingMailDB;
+import ExcelApachePOI.IncomingMailExcel;
+
+/*
+ * DONT FORGOT ABOUT MAILID!!!!
+ *  */
+
 @WebServlet("/incomingMail")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 20, // 2MB
 		maxFileSize = 1024 * 1024 * 10, // 20MB
@@ -30,7 +38,7 @@ public class IncomingMailServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+			request.setCharacterEncoding("UTF-8");
 			request.getRequestDispatcher("/incomingMail.jsp").forward(request, response);		
 		// super.doGet(request, response); //из-за этой строчки была ошибка sendError()
 	}
@@ -44,18 +52,14 @@ public class IncomingMailServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
 		if ("submit".equals(action)) {
-			String regDateParameter = request.getParameter("regDate");			
-			int idMail; //regNum
 			String typeMail = request.getParameter("typeMail");
 			String sender = request.getParameter("sender");
 			String sendDateParameter = request.getParameter("sendDate");			
 			String mailNum = request.getParameter("mailNum");
 			String mailTheme = request.getParameter("mailTheme");
 			String secondFloorDateParameter = request.getParameter("secondFloorDate");
+			String secondFloorNum = request.getParameter("secondFloorNum");
 			
-			System.out.println(regDateParameter);
-			
-			Date resultRegDate = null;
 			Date resultSendDate = null;
 			Date resultSecondFloorDate = null;
 			String regDate = null;
@@ -64,11 +68,9 @@ public class IncomingMailServlet extends HttpServlet {
 			SimpleDateFormat oldDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 			SimpleDateFormat newDateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 			try {
-				resultRegDate = oldDateFormat.parse(regDateParameter);
 				resultSendDate = oldDateFormat.parse(sendDateParameter);
 				resultSecondFloorDate = oldDateFormat.parse(secondFloorDateParameter);
 				
-				regDate = newDateFormat.format(resultRegDate);
 				sendDate = newDateFormat.format(resultSendDate);
 				secondFloorDate = newDateFormat.format(resultSecondFloorDate);
 				System.out.println();
@@ -85,6 +87,7 @@ public class IncomingMailServlet extends HttpServlet {
 			incMail.setMailNum(mailNum);
 			incMail.setMailTheme(mailTheme);
 			incMail.setSecondFloorDate(secondFloorDate);
+			incMail.setSecondFloorNum(secondFloorNum);
 			try {
 				String appPath = request.getServletContext().getRealPath("");
 				appPath = appPath.replace('\\', '/');
@@ -99,7 +102,7 @@ public class IncomingMailServlet extends HttpServlet {
 
 				// Part list (multi files).
 				for (Part part : request.getParts()) {
-					String fileName = extractFileName(part);
+					String fileName = extractFileName(part, IncomingMailDB.getLastIndexIncomingMail());
 					if (fileName != null && fileName.length() > 0) {
 						String filePath = fullSavePath + File.separator + fileName;
 						if (filePath != null) {
@@ -121,11 +124,27 @@ public class IncomingMailServlet extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 			incomingMailList.add(incMail);
+			try {
+				IncomingMailDB.addIncomingMail(incMail);
+			} catch (InstantiationException | IllegalAccessException | SQLException e) {
+				e.printStackTrace();
+			}
+			/* 
+			 * 
+			 * ВАЖНО!!!!!!!!!!
+			 * ПОСТАВИТЬ СЮДА АЙДИ ПИСЬМА ИЗ БД!!!!!!
+			 * И про дату регистрации. Это все делается автоматом и получается из БД
+			 * 
+			 * 
+			 * */
+			IncomingMailExcel.writeIntoExcel("0", 0, typeMail, sender, 
+					sendDate, mailNum, mailTheme, secondFloorDate, incMail.getFilePathAndName());
+			
 			System.out.println(incMail);
 		} //end if
 	}
 
-	private String extractFileName(Part part) {
+	private String extractFileName(Part part, int prefix) {
 		// form-data; name="file"; filename="C:\file1.zip"
 		// form-data; name="file"; filename="C:\Note\file2.zip"
 		String contentDisp = part.getHeader("content-disposition");
@@ -134,7 +153,7 @@ public class IncomingMailServlet extends HttpServlet {
 			if (s.trim().startsWith("filename")) {
 				// C:\file1.zip
 				// C:\Note\file2.zip
-				String clientFileName = s.substring(s.indexOf("=") + 2, s.length() - 1);
+				String clientFileName = "VhodKorr_NPK-1_" + prefix + "_" + s.substring(s.indexOf("=") + 2, s.length() - 1);
 				clientFileName = clientFileName.replace("\\", "/");
 				int i = clientFileName.lastIndexOf('/');
 				// file1.zip
