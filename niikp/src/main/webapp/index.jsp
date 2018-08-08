@@ -4,7 +4,7 @@ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
 
 <!-- Подключение js и css только таким образом! -->
 <!-- Если добавить новый css js, то сначала сделать рефреш проекта,иначе не будет видеть файл! -->
@@ -103,6 +103,29 @@ pageEncoding="UTF-8"%>
 </header>
 
 <body>
+<!-- ГИСТОГРАММА  -->
+<script src="https://www.google.com/jsapi"></script>
+  <script>
+   google.load("visualization", "1", {packages:["corechart"]});
+   google.setOnLoadCallback(drawChart);
+   function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+     ['Число', 'Выполнено', 'Не выполнено'],
+     ['1860', 1.3, 70],
+     ['1885', 2000, 3120],
+     ['1901', 12170, 9920]
+    ]);
+    var options = {
+     title: 'График выполнения работы',
+     hAxis: {title: 'Число'},
+     vAxis: {title: 'Стадия'}
+    };
+    var chart = new google.visualization.ColumnChart(document.getElementById('oil'));
+    chart.draw(data, options);
+   }
+  </script>
+<div id="oil" style="width: 500px; height: 400px;"></div>
+<!-- КОНЕЦ ГИСТОГРАММЫ  -->
 
 <nav class="navbar navbar-inverse" role="navigation">
   <ul class="nav nav-pills">
@@ -114,6 +137,10 @@ pageEncoding="UTF-8"%>
   <li><a href="/niikp/incomingMail">Входящая корреспонденция (добавить)</a></li>
 
   <li><a href="/niikp/incomingMailList">Входящая корреспонденция (список)</a></li>
+  <br><br><br>
+  <li><a href="/niikp/workAdd">Дела/Поручения (добавить)</a></li>
+  
+  <li><a href="/niikp/workList">Дела/Поручения (список)</a></li>
 
 </ul>
 </nav>

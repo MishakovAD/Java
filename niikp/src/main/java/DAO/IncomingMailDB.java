@@ -130,9 +130,6 @@ public class IncomingMailDB {
 	}
 	
 	
-	/*
-	 * Сделать так, чтобы id письма был соответсвующим в строке запроса, чтобы не возникало ошибок, при удалении
-	 *  */
 	public static void deleteIncomingMail(int id) throws SQLException, InstantiationException, IllegalAccessException {
 		Connection con = DriverManager.getConnection(url, username, password);	
 		Statement statement = null;

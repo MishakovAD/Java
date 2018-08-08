@@ -20,12 +20,14 @@
             	UserProfile user = (UserProfile) entry.getValue(); 
                 %>
 
-                   
-                
              
  
 	<form method="post" action="workAdd?action=submit" enctype="multipart/form-data">
 					<input type="text" name="user" value="" list="names" placeholder="Имя и Фамилия" />	
+					<br><br><br>
+					<input type="text" name="observer" value="" list="names" placeholder="Ответственный" />	
+					<br><br><br>
+					<input type="date" name="startDate" value="" placeholder="Дата начала" />
 					<br><br><br>
 					<input type="date" name="endDate" value="" placeholder="Срок исполнения" />
 					<br><br><br>

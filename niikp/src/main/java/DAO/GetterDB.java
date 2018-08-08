@@ -111,4 +111,34 @@ public class GetterDB {
 						}
 						return usersList;		
 					}
+					
+					public static UserProfile getUserFromId(int id) throws SQLException, InstantiationException, IllegalAccessException {
+						UserProfile user = new UserProfile();
+						int userId;
+						String name;
+						String secondName;
+						String email;
+						String birthday;
+						
+						String SQL_select_users_list = "SELECT * FROM users WHERE userId=" + id + ";";
+						
+						Connection con = DriverManager.getConnection(url, username, password);
+						Statement statement = null;
+						statement = con.createStatement();
+						ResultSet rs = statement.executeQuery(SQL_select_users_list);
+						while (rs.next()) {
+							user = new UserProfile();
+							userId = rs.getInt("userId");
+							name = rs.getString("name");
+							secondName = rs.getString("secondName");
+							email = rs.getString("email");
+							birthday = rs.getString("birthday");
+							user.setUserId(userId);
+							user.setName(name);
+							user.setSecondName(secondName);
+							user.setEmail(email);
+							user.setBirthday(birthday);				
+						}
+						return user;		
+					}
 }

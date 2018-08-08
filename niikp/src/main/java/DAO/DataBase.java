@@ -69,6 +69,23 @@ public class DataBase {
 //		
 //		 statement.executeUpdate(SQL);
 //		 System.out.println("Table successfully created...");
+//		
+//		String SQL = "CREATE TABLE work " +
+//		 "(workId INTEGER not NULL AUTO_INCREMENT, " +
+//		 " toUserId INTEGER, " +
+//		 " observerId INTEGER, " +
+//		 " fromUserId INTEGER, " +
+//		 " startDate TIMESTAMP, " +	
+//		 " endDate TIMESTAMP, " +
+//		 " assignment VARCHAR (500), " +
+//		 " mailId VARCHAR (50), " +
+//		 " filePathAndNameToWork VARCHAR (100), " +
+//		 " isComplete BOOLEAN DEFAULT NULL, " +
+//		 " report VARCHAR (500), " +
+//		 " PRIMARY KEY (workId))";
+//
+//statement.executeUpdate(SQL);
+//System.out.println("Table successfully created...");
 	}
 
 	public static void regNewUser(UserProfile userProfile) throws SQLException, InstantiationException, IllegalAccessException {

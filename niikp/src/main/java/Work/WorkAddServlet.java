@@ -20,13 +20,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import DAO.GetterDB;
+import DAO.WorkDB;
 import UserProfile.UserProfile;
 import Users.UsersList;
 
 @WebServlet(urlPatterns = { "/workAdd" })
 @MultipartConfig
 public class WorkAddServlet extends HttpServlet {
-
+	private String mailId = null;
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -37,43 +39,90 @@ public class WorkAddServlet extends HttpServlet {
 		} catch (InstantiationException | IllegalAccessException | SQLException e) {
 			e.printStackTrace();
 		}
-
-		String str = request.getPathInfo();
-		//System.out.println(str);
-		if (str != null) {
-			String id = str.substring(1);
-			UserProfile userProfileInfo = UsersList.usersList.get(Integer.parseInt(id));
-			request.setAttribute("userProfileInfo", userProfileInfo);
-			request.getRequestDispatcher("/userProfileInfo.jsp").forward(request, response);
-		} else {
-			request.setAttribute("usersList", (HashMap<Integer, UserProfile>) UsersList.usersList);
-			request.getRequestDispatcher("/work.jsp").forward(request, response);
+		
+		String action = request.getParameter("action");
+		if (action != null ) {
+			if (action.equals("submit")) {
+				response.sendRedirect("/workList");
+			}
 		}
+		
+		
+		String idMail = request.getParameter("id");
+		String typeMail = request.getParameter("type");
+		mailId = typeMail + "_" + idMail;
+		request.setAttribute("usersList", (HashMap<Integer, UserProfile>) UsersList.usersList);
+		request.getRequestDispatcher("/work.jsp").forward(request, response);
+
+//		String str = request.getPathInfo();
+//		if (str != null) {
+//			String id = str.substring(1);
+//			UserProfile userProfileInfo = UsersList.usersList.get(Integer.parseInt(id));
+//			request.setAttribute("userProfileInfo", userProfileInfo);
+//			request.getRequestDispatcher("/userProfileInfo.jsp").forward(request, response);
+//		} else {
+//			request.setAttribute("usersList", (HashMap<Integer, UserProfile>) UsersList.usersList);
+//			request.getRequestDispatcher("/work.jsp").forward(request, response);
+//		}
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String userNameSecondName = request.getParameter("user"); 
-		String date = request.getParameter("endDate");
+		Work work = new Work();
+		UserProfile userSignIn = (UserProfile) request.getSession().getAttribute("userSignIn");
+		int fromUserId = 0;
+		if (userSignIn != null) {
+			fromUserId = userSignIn.getUserId();
+		}
+				
+		int toUserId = 0;
+		int observerId = 0;
+		String filePathAndNameToWork = null;
+		
+		String userNameSecondName = request.getParameter("user");
+		int indexOfSpaseFromUser = userNameSecondName.indexOf(" ");
+		String userName = userNameSecondName.substring(0, indexOfSpaseFromUser);
+		String userSecondName = userNameSecondName.substring(indexOfSpaseFromUser+1);
+		
+		String observer = request.getParameter("observer");
+		int indexOfSpaseFromObserver = observer.indexOf(" ");
+		String observerName = observer.substring(0, indexOfSpaseFromObserver);
+		String observerSecondName = observer.substring(indexOfSpaseFromObserver+1);
+		
+		for (Map.Entry entry : UsersList.usersList.entrySet()) { 
+			UserProfile user = (UserProfile) entry.getValue();
+			if (user.getName().equalsIgnoreCase(userName) && user.getSecondName().equalsIgnoreCase(userSecondName)) {
+				toUserId = (int) entry.getKey();
+			}
+		}
+		for (Map.Entry entry : UsersList.usersList.entrySet()) { 
+			UserProfile user = (UserProfile) entry.getValue();
+			if (user.getName().equalsIgnoreCase(observerName) && user.getSecondName().equalsIgnoreCase(observerSecondName)) {
+				observerId = (int) entry.getKey();
+			}
+		}
+
+		
+		String startDate = request.getParameter("startDate");
+		String endDate = request.getParameter("endDate");
 		String assignment = request.getParameter("assignment");
 		
-		System.out.println(userNameSecondName + " date: " + date + "; assigment: " + assignment);
+		work.setToUserId(toUserId);
+		work.setObserverId(observerId);
+		work.setFromUserId(fromUserId);
+		work.setStartDate(startDate);
+		work.setEndDate(endDate);
+		work.setAssignment(assignment);
+		work.setMailId(mailId);
+		work.setFilePathAndNameToWork(filePathAndNameToWork);
 		
-//		Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
-//		String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
-//		InputStream fileContent = filePart.getInputStream();
-//		// ... (do your job here)
-//		//просто читаем содерживое и все
-//		//нужно сделать сохранение самого файла
-//		BufferedReader br = new BufferedReader(new InputStreamReader(fileContent));
-//	    String text;
-//	    while (br.ready()) {
-//	    	text = br.readLine();
-//		    System.out.println(text);
-//	    }
-	    
-
+		try {
+			WorkDB.addWork(work);
+		} catch (InstantiationException | IllegalAccessException | SQLException e) {
+			e.printStackTrace();
+		}
+		response.sendRedirect(request.getContextPath() + "/workList");
 	}
 }

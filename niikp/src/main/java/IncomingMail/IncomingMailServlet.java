@@ -46,7 +46,6 @@ public class IncomingMailServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("doPost IncomingMailServlet");
 		
 		IncomingMail incMail = new IncomingMail();
 		request.setCharacterEncoding("UTF-8");

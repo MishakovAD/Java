@@ -95,13 +95,14 @@
 				//out.println("<a href=\"" + list.get(i).getFilePathAndName() + "\"><td>" + "Документ" + "</td></a>");
 				//Продумать путь до файла, чтобы не было мусорки, и задать в web.xml
 				
-				out.println("<td><button type=\"submit\"><a href=\"/niikp/incomingMail/" + i + "?action=update\">Редактировать</a></button></td>");
-				out.println("<td><button type=\"submit\"><a href=\"/niikp/incomingMail/" + i + "?action=delete\">Удалить</a></button></td>");
-				out.println("</tr>");				
+				out.println("<td><button type=\"submit\"><a href=\"/niikp/incomingMail/" + list.get(i).getIdMail() + "?action=update\">Редактировать</a></button></td>");
+				out.println("<td><button type=\"submit\"><a href=\"/niikp/incomingMail/" + list.get(i).getIdMail() + "?action=delete\">Удалить</a></button></td>");
+				out.println("<td><button type=\"submit\"><a href=\"/niikp/workAdd?id=" + list.get(i).getIdMail() + "&type=incomingMail\">Добавить резолюцию</a></button></td>");
+				out.println("</tr>");	
+				//Для добавления резолюции к определенному письму можно создать кнопку с адресом и параметрами, которые будут передаваться, типа вход, айди. И красота
 			}
 			out.println("</table>");
 		%>
-		Сделать так, чтобы id письма был соответсвующим в строке запроса, чтобы не возникало ошибок, при удалении
 	<button type="submit"><a href="/niikp/incomingMail">Добавить</a></button>
 	
 </body>
