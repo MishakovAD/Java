@@ -153,6 +153,35 @@ public class WorkDB {
 
 	}
 	
+	//Получение Поручения по айди поручения для того, чтобы можно было реализовать маршруты (см. notes)
+	public static Work getWorkToWorkId(int workId) throws SQLException, InstantiationException, IllegalAccessException {
+		Work workToWorkID = new Work();
+		Connection con = DriverManager.getConnection(url, username, password);	
+		Statement statement = null;
+		statement = con.createStatement();
+
+		String SQL_get_work = "SELECT * FROM work WHERE workId=" + workId + ";";		
+		
+		ResultSet rs = statement.executeQuery(SQL_get_work); 
+		while (rs.next()) {
+			workToWorkID.setWorkId(rs.getInt("workId"));
+			workToWorkID.setToUserId(rs.getInt("toUserId"));
+			workToWorkID.setObserverId(rs.getInt("observerId"));
+			workToWorkID.setFromUserId(rs.getInt("fromUserId"));
+			workToWorkID.setStartDate(rs.getString("startDate"));
+			workToWorkID.setEndDate(rs.getString("endDate"));
+			workToWorkID.setAssignment(rs.getString("assignment"));
+			workToWorkID.setMailId(rs.getString("mailId"));			
+			workToWorkID.setComplete(rs.getBoolean("isComplete"));
+			workToWorkID.setReport(rs.getString("report"));
+			workToWorkID.setReportFilePathAndNameToWork(rs.getString("reportFilePathAndNameToWork"));
+		}
+		if(statement != null) statement.close(); 
+	    if(con != null)  con.close(); 
+	    return workToWorkID;
+
+	}
+	
 	
 	public static void deleteIncomingMail(int id) throws SQLException, InstantiationException, IllegalAccessException {
 		Connection con = DriverManager.getConnection(url, username, password);	

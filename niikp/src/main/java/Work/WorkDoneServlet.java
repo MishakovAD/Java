@@ -15,6 +15,7 @@ import javax.servlet.http.Part;
 
 import DAO.IncomingMailDB;
 import DAO.WorkDB;
+import DocumentPathTemplate.*;
 import ExcelApachePOI.IncomingMailExcel;
 import IncomingMail.IncomingMail;
 import Translit.Translit;
@@ -79,6 +80,29 @@ public class WorkDoneServlet extends HttpServlet {
 
 			try {
 				WorkDB.doneWorkToUser(report, Integer.parseInt(workId), reportFilePathAndNameToWork);
+			} catch (NumberFormatException | InstantiationException | IllegalAccessException | SQLException e) {
+				e.printStackTrace();
+			}
+			
+			//“ест маршрута
+			try {
+				//ѕровер€ем, при создании поручени€, добавл€лс€ ли шаблон прохождени€ документа, и если да, то назначаем следующего ответственного
+				if (DocumentPathTemplate.addTemplate().contains(WorkDB.getWorkToWorkId(Integer.parseInt(workId)).getToUserId())) {
+					int indexOfIdUserWhoDoneWork = DocumentPathTemplate.addTemplate().indexOf(WorkDB.getWorkToWorkId(Integer.parseInt(workId)).getToUserId());
+					int nextIndexOfNextUserId = indexOfIdUserWhoDoneWork+1;
+					if (nextIndexOfNextUserId > DocumentPathTemplate.addTemplate().size()) {
+						System.out.println("ћаршрут окончен!");
+					} else {
+						//получаем следующий id
+						int nextUserId = DocumentPathTemplate.addTemplate().get(nextIndexOfNextUserId);
+						Work workForNextUser = new Work();
+						workForNextUser = WorkDB.getWorkToWorkId(Integer.parseInt(workId));
+						workForNextUser.setReport(null);
+						workForNextUser.setComplete(false);
+						workForNextUser.setToUserId(nextUserId);
+						WorkDB.addWork(workForNextUser);
+					}
+				}
 			} catch (NumberFormatException | InstantiationException | IllegalAccessException | SQLException e) {
 				e.printStackTrace();
 			}

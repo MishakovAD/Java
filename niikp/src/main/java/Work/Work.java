@@ -1,5 +1,6 @@
 package Work;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +18,9 @@ public class Work {
 	private boolean isComplete = false; //данные два поля предназначены для отчетности, конструктора для них нет
 	private String report; //будут заноситься в бд путем апдейта по workId
 	private String reportFilePathAndNameToWork;
-	
+	//private String template; //пусть будет тип маршрута стринг - будем класть номер маршрута и по номеру маршрута смотреть. Хотя нужно ли это поле? Пока пробуем без
+	//Нужно, потому что мы должны смотреть, задан маршрут или нет, и если задан, то делаем проверку, если нет, то не делаем
+	//А так же нужно сделать, что если поддерживаются маршруты, то нужно сохранять всю предыдущую историю действий
 	
 	public static Map<Integer, Work> workList = new HashMap<>(); //userId -> Work
 	//не продумано, что если на одного человека несколько резолюций
