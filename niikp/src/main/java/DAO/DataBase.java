@@ -69,7 +69,7 @@ public class DataBase {
 //		
 //		 statement.executeUpdate(SQL);
 //		 System.out.println("Table successfully created...");
-//		
+////		
 //		String SQL = "CREATE TABLE work " +
 //		 "(workId INTEGER not NULL AUTO_INCREMENT, " +
 //		 " toUserId INTEGER, " +
