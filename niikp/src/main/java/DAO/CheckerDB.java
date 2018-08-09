@@ -38,6 +38,8 @@ public class CheckerDB {
 			}
 			
 		}
+		if(statement != null) statement.close(); 
+	    if(con != null)  con.close();
 		return false;
 	}
 	
@@ -52,10 +54,14 @@ public class CheckerDB {
 			//String SQL_select_last_id = "SELECT max(userId) FROM users;";
 			ResultSet rs = statement.executeQuery(SQL_select_email);
 			if (!rs.next()) {
+				if(statement != null) statement.close(); 
+			    if(con != null)  con.close();
 				return false;
 			} else {
 				String nameUser = rs.getString("name");
 				System.out.println(nameUser + ": Registred yzhe");
+				if(statement != null) statement.close(); 
+			    if(con != null)  con.close();
 				return true;				
 			}
 						

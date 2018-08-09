@@ -20,6 +20,7 @@ import javax.servlet.http.Part;
 
 import DAO.IncomingMailDB;
 import ExcelApachePOI.IncomingMailExcel;
+import Translit.Translit;
 
 /*
  * DONT FORGOT ABOUT MAILID!!!!
@@ -34,11 +35,15 @@ public class IncomingMailServlet extends HttpServlet {
 	//для редактирования сделать мапу с ключом - айди письма, чтобы письмо, после изменения, заменяло старое на новое
 	//только нужнопродумать, что делать с датами и не измененными полями, как их заново получать. (в особенности даты и файл)
 	public static ArrayList<IncomingMail> incomingMailList = new ArrayList<>();
-
+	public static ArrayList<String> typeMailList = IncomingMail.getTypeMailList();
+	public static ArrayList<String> senderMailList = IncomingMail.getSenderList();
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 			request.setCharacterEncoding("UTF-8");
+			
+			request.setAttribute("typeMailList", typeMailList);
+			request.setAttribute("senderMailList", senderMailList);
 			request.getRequestDispatcher("/incomingMail.jsp").forward(request, response);		
 		// super.doGet(request, response); //из-за этой строчки была ошибка sendError()
 	}
@@ -136,9 +141,14 @@ public class IncomingMailServlet extends HttpServlet {
 			 * 
 			 * 
 			 * */
-			IncomingMailExcel.writeIntoExcel("0", 0, typeMail, sender, 
-					sendDate, mailNum, mailTheme, secondFloorDate, incMail.getFilePathAndName());
-			
+			try {
+				IncomingMail incMailToExcel = IncomingMailDB.getIncomingMailToId(IncomingMailDB.getLastIndexIncomingMail()-1);
+				IncomingMailExcel.writeIntoExcel(incMailToExcel.getRegDate(), incMailToExcel.getIdMail(), typeMail, sender, 
+						sendDate, mailNum, mailTheme, secondFloorDate, incMail.getFilePathAndName());
+			} catch (InstantiationException | IllegalAccessException | SQLException e) {
+				e.printStackTrace();
+			}
+						
 			System.out.println(incMail);
 		} //end if
 	}
@@ -153,6 +163,7 @@ public class IncomingMailServlet extends HttpServlet {
 				// C:\file1.zip
 				// C:\Note\file2.zip
 				String clientFileName = "VhodKorr_NPK-1_" + prefix + "_" + s.substring(s.indexOf("=") + 2, s.length() - 1);
+				clientFileName = Translit.cyr2lat(clientFileName);
 				clientFileName = clientFileName.replace("\\", "/");
 				int i = clientFileName.lastIndexOf('/');
 				// file1.zip

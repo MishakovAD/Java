@@ -21,7 +21,7 @@ public class WorkListServlet extends HttpServlet {
 			workList = WorkDB.getWorkList();
 		} catch (InstantiationException | IllegalAccessException | SQLException e) {
 			e.printStackTrace();
-		}
+		} 
 		request.setAttribute("workList", workList);
 		request.getRequestDispatcher("/workList.jsp").forward(request, response);
 	}

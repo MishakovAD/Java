@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import ExcelApachePOI.IncomingMailExcel;
 import IncomingMail.IncomingMail;
 import IncomingMail.IncomingMailServlet;
 import UserProfile.UserProfile;
@@ -48,6 +49,9 @@ public class IncomingMailDB {
 		secondFloorDate = null;
 		secondFloorNum = null;
 		filePathAndName = null;
+		if(statement != null) statement.close(); 
+	    if(con != null)  con.close(); 
+		
 	}
 	
 	public static ArrayList<IncomingMail> getIncomingMail() throws SQLException, InstantiationException, IllegalAccessException {
@@ -76,6 +80,8 @@ public class IncomingMailDB {
 			listIncomingMailFromMethodGet.add(incMail);
 			incMail = new IncomingMail();
 		}
+		if(statement != null) statement.close(); 
+	    if(con != null)  con.close(); 
 		return listIncomingMailFromMethodGet;
 		//Нужно определить, что лучше:
 		/* 
@@ -107,8 +113,28 @@ public class IncomingMailDB {
 			incMail.setSecondFloorNum(rs.getString("secondFloorNum"));
 			incMail.setFilePathAndName(rs.getString("filePathAndName"));			
 		}
-		
+		if(statement != null) statement.close(); 
+	    if(con != null)  con.close(); 
 		return incMail;
+
+	}
+	
+	public static String getFileIncomingMailToId(int id) throws SQLException, InstantiationException, IllegalAccessException {
+		String file = null;
+		
+		Connection con = DriverManager.getConnection(url, username, password);	
+		Statement statement = null;
+		statement = con.createStatement();
+
+		String SQL_get_incomingMail_to_id = "SELECT filePathAndName FROM incomingMail WHERE idMail=" + id + ";";		
+		
+		ResultSet rs = statement.executeQuery(SQL_get_incomingMail_to_id);		
+		while (rs.next()) {
+			file = rs.getString("filePathAndName");			
+		}
+		if(statement != null) statement.close(); 
+	    if(con != null)  con.close(); 
+		return file;
 
 	}
 	
@@ -125,6 +151,8 @@ public class IncomingMailDB {
 		while (rs.next()) {
 			lastId = rs.getInt("idMail");
 		}
+		if(statement != null) statement.close(); 
+	    if(con != null)  con.close(); 
 		return lastId+1;
 
 	}
@@ -138,6 +166,8 @@ public class IncomingMailDB {
 		String SQL_delete_incomingMail_to_id = "DELETE FROM incomingMail WHERE idMail=" + id + ";";		
 		
 		statement.executeUpdate(SQL_delete_incomingMail_to_id);		
+		if(statement != null) statement.close(); 
+	    if(con != null)  con.close(); 
 	}
 	
 	public static void main(String[] args) {

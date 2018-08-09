@@ -82,6 +82,7 @@ public class DataBase {
 //		 " filePathAndNameToWork VARCHAR (100), " +
 //		 " isComplete BOOLEAN DEFAULT NULL, " +
 //		 " report VARCHAR (500), " +
+//		 " reportFilePathAndNameToWork VARCHAR (150), " +
 //		 " PRIMARY KEY (workId))";
 //
 //statement.executeUpdate(SQL);

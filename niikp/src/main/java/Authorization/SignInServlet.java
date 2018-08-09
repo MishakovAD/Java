@@ -16,7 +16,7 @@ import UserProfile.UserProfile;
 
 @WebServlet(urlPatterns = { "/signIn" })
 public class SignInServlet extends HttpServlet {
-	public static Map<String, UserProfile> userLoginMap = new HashMap<>();
+	public static Map<String, UserProfile> userLoginMap = new HashMap<>(); //заполняется в CheckerDB при проверке логина-пароля
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

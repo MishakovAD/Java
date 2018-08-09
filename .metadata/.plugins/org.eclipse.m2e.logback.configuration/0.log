@@ -5405,3 +5405,469 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact stax:stax-api
 2018-08-08 16:18:28,855 [Worker-231: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2018-08-08 16:18:28,856 [Worker-231: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
 2018-08-08 16:18:28,857 [Worker-231: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-08 16:24:02,620 [Worker-250: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-08 16:24:02,622 [Worker-250: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-08 16:24:02,624 [Worker-250: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-08 16:24:02,625 [Worker-250: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 08:37:29,842 [Worker-1: Loading available Gradle versions] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2018-08-09 08:37:30,123 [Worker-1: Loading available Gradle versions] INFO  c.g.t.t.d.PublishedGradleVersions - Updating Gradle version information cache failed. Using outdated cache.
+2018-08-09 08:37:34,585 [Worker-10: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 08:37:34,600 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 08:37:34,600 [Worker-10: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 08:37:34,600 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 08:50:18,704 [Worker-26: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 08:50:18,704 [Worker-26: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 08:50:18,704 [Worker-26: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 08:50:18,704 [Worker-26: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 09:32:17,234 [Worker-37: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:32:17,234 [Worker-37: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 09:32:17,234 [Worker-37: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:32:17,234 [Worker-37: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 09:33:11,012 [Worker-40: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:33:11,012 [Worker-40: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 09:33:11,012 [Worker-40: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:33:11,012 [Worker-40: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 09:37:27,414 [Worker-43: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:37:27,414 [Worker-43: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 09:37:27,414 [Worker-43: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:37:27,414 [Worker-43: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 09:38:26,147 [Worker-43: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:38:26,147 [Worker-43: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 09:38:26,147 [Worker-43: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:38:26,147 [Worker-43: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 09:39:01,486 [Worker-45: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:39:01,486 [Worker-45: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 09:39:01,486 [Worker-45: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:39:01,486 [Worker-45: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 09:40:30,476 [Worker-46: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:40:30,476 [Worker-46: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 09:40:30,476 [Worker-46: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:40:30,476 [Worker-46: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 09:41:50,822 [Worker-48: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:41:50,822 [Worker-48: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 09:41:50,822 [Worker-48: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:41:50,822 [Worker-48: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 09:46:44,549 [Worker-37: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:46:44,549 [Worker-37: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 09:46:44,549 [Worker-37: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:46:44,549 [Worker-37: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 09:48:00,657 [Worker-51: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:48:00,657 [Worker-51: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 09:48:00,657 [Worker-51: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:48:00,657 [Worker-51: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 09:48:40,112 [Worker-37: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:48:40,112 [Worker-37: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 09:48:40,112 [Worker-37: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:48:40,112 [Worker-37: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 09:49:28,494 [Worker-51: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:49:28,494 [Worker-51: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 09:49:28,494 [Worker-51: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:49:28,494 [Worker-51: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 09:50:08,900 [Worker-37: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:50:08,900 [Worker-37: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 09:50:08,900 [Worker-37: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:50:08,900 [Worker-37: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 09:52:00,692 [Worker-37: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:52:00,692 [Worker-37: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 09:52:00,692 [Worker-37: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:52:00,692 [Worker-37: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 09:53:17,746 [Worker-51: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:53:17,746 [Worker-51: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 09:53:17,746 [Worker-51: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:53:17,746 [Worker-51: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 09:53:39,448 [Worker-37: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:53:39,448 [Worker-37: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 09:53:39,464 [Worker-37: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:53:39,464 [Worker-37: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 09:53:41,523 [Worker-54: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:53:41,523 [Worker-54: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 09:53:41,538 [Worker-54: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:53:41,538 [Worker-54: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 09:53:57,965 [Worker-50: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:53:57,965 [Worker-50: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 09:53:57,965 [Worker-50: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:53:57,965 [Worker-50: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 09:54:26,470 [Worker-51: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:54:26,470 [Worker-51: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 09:54:26,470 [Worker-51: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:54:26,470 [Worker-51: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 09:54:59,728 [Worker-37: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:54:59,728 [Worker-37: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 09:54:59,728 [Worker-37: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 09:54:59,728 [Worker-37: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:02:33,869 [Worker-56: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:02:33,869 [Worker-56: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:02:33,869 [Worker-56: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:02:33,869 [Worker-56: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:03:06,233 [Worker-51: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:03:06,233 [Worker-51: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:03:06,233 [Worker-51: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:03:06,233 [Worker-51: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:03:34,740 [Worker-58: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:03:34,740 [Worker-58: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:03:34,740 [Worker-58: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:03:34,740 [Worker-58: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:03:52,499 [Worker-58: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:03:52,499 [Worker-58: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:03:52,499 [Worker-58: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:03:52,499 [Worker-58: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:05:16,208 [Worker-56: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:05:16,208 [Worker-56: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:05:16,208 [Worker-56: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:05:16,208 [Worker-56: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:06:41,158 [Worker-51: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:06:41,158 [Worker-51: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:06:41,158 [Worker-51: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:06:41,158 [Worker-51: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:06:46,353 [Worker-58: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:06:46,353 [Worker-58: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:06:46,353 [Worker-58: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:06:46,353 [Worker-58: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:08:09,500 [Worker-61: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:08:09,500 [Worker-61: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:08:09,500 [Worker-61: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:08:09,500 [Worker-61: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:08:22,575 [Worker-61: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:08:22,591 [Worker-61: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:08:22,591 [Worker-61: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:08:22,591 [Worker-61: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:12:31,318 [Worker-51: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:12:31,318 [Worker-51: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:12:31,318 [Worker-51: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:12:31,318 [Worker-51: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:13:50,730 [Worker-61: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:13:50,730 [Worker-61: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:13:50,730 [Worker-61: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:13:50,730 [Worker-61: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:14:49,285 [Worker-64: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:14:49,285 [Worker-64: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:14:49,285 [Worker-64: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:14:49,285 [Worker-64: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:15:05,589 [Worker-51: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:15:05,604 [Worker-51: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:15:05,604 [Worker-51: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:15:05,604 [Worker-51: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:15:26,394 [Worker-62: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:15:26,394 [Worker-62: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:15:26,394 [Worker-62: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:15:26,394 [Worker-62: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:16:05,725 [Worker-51: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:16:05,725 [Worker-51: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:16:05,725 [Worker-51: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:16:05,725 [Worker-51: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:17:02,268 [Worker-51: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:17:02,268 [Worker-51: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:17:02,268 [Worker-51: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:17:02,268 [Worker-51: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:18:13,845 [Worker-53: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:18:13,845 [Worker-53: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:18:13,845 [Worker-53: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:18:13,845 [Worker-53: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:19:28,162 [Worker-64: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:19:28,162 [Worker-64: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:19:28,162 [Worker-64: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:19:28,162 [Worker-64: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:20:01,441 [Worker-61: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:20:01,441 [Worker-61: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:20:01,441 [Worker-61: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:20:01,441 [Worker-61: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:20:29,720 [Worker-61: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:20:29,720 [Worker-61: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:20:29,720 [Worker-61: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:20:29,720 [Worker-61: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:20:41,336 [Worker-61: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:20:41,336 [Worker-61: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:20:41,336 [Worker-61: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:20:41,336 [Worker-61: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:21:07,021 [Worker-51: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:21:07,021 [Worker-51: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:21:07,021 [Worker-51: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:21:07,021 [Worker-51: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:23:26,815 [Worker-64: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:23:26,815 [Worker-64: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:23:26,830 [Worker-64: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:23:26,830 [Worker-64: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:30:44,705 [Worker-70: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:30:44,706 [Worker-70: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:30:44,707 [Worker-70: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:30:44,708 [Worker-70: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:30:55,917 [Worker-67: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:30:55,918 [Worker-67: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:30:55,918 [Worker-67: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:30:55,919 [Worker-67: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:31:05,911 [Worker-69: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:31:05,913 [Worker-69: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:31:05,914 [Worker-69: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:31:05,915 [Worker-69: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:33:01,513 [Worker-72: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:33:01,514 [Worker-72: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:33:01,515 [Worker-72: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:33:01,515 [Worker-72: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:37:00,127 [Worker-70: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:37:00,127 [Worker-70: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:37:00,127 [Worker-70: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:37:00,127 [Worker-70: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:38:48,597 [Worker-70: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:38:48,597 [Worker-70: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:38:48,597 [Worker-70: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:38:48,597 [Worker-70: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:39:08,274 [Worker-67: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:39:08,274 [Worker-67: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:39:08,290 [Worker-67: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:39:08,290 [Worker-67: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:42:27,361 [Worker-70: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:42:27,361 [Worker-70: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:42:27,361 [Worker-70: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:42:27,361 [Worker-70: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:42:51,190 [Worker-75: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:42:51,190 [Worker-75: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:42:51,190 [Worker-75: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:42:51,190 [Worker-75: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:43:11,042 [Worker-75: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:43:11,058 [Worker-75: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:43:11,058 [Worker-75: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:43:11,058 [Worker-75: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:44:39,118 [Worker-73: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:44:39,118 [Worker-73: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:44:39,118 [Worker-73: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:44:39,118 [Worker-73: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:51:04,815 [Worker-69: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:51:04,815 [Worker-69: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:51:04,815 [Worker-69: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:51:04,815 [Worker-69: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:51:25,859 [Worker-69: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:51:25,859 [Worker-69: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:51:25,874 [Worker-69: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:51:25,874 [Worker-69: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:51:53,205 [Worker-69: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:51:53,205 [Worker-69: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:51:53,221 [Worker-69: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:51:53,221 [Worker-69: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:51:58,395 [Worker-75: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:51:58,395 [Worker-75: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:51:58,395 [Worker-75: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:51:58,395 [Worker-75: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:52:55,230 [Worker-69: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:52:55,245 [Worker-69: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:52:55,245 [Worker-69: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:52:55,245 [Worker-69: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 10:53:08,371 [Worker-83: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:53:08,371 [Worker-83: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 10:53:08,371 [Worker-83: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 10:53:08,371 [Worker-83: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 11:01:33,144 [Worker-86: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:01:33,144 [Worker-86: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 11:01:33,144 [Worker-86: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:01:33,144 [Worker-86: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 11:01:54,295 [Worker-75: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:01:54,295 [Worker-75: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 11:01:54,295 [Worker-75: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:01:54,295 [Worker-75: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 11:02:03,500 [Worker-75: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:02:03,500 [Worker-75: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 11:02:03,500 [Worker-75: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:02:03,500 [Worker-75: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 11:02:30,039 [Worker-86: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:02:30,039 [Worker-86: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 11:02:30,039 [Worker-86: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:02:30,039 [Worker-86: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 11:02:57,361 [Worker-75: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:02:57,361 [Worker-75: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 11:02:57,361 [Worker-75: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:02:57,361 [Worker-75: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 11:03:06,926 [Worker-75: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:03:06,926 [Worker-75: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 11:03:06,941 [Worker-75: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:03:06,941 [Worker-75: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 11:03:12,105 [Worker-75: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:03:12,105 [Worker-75: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 11:03:12,121 [Worker-75: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:03:12,121 [Worker-75: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 11:03:18,384 [Worker-75: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:03:18,384 [Worker-75: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 11:03:18,384 [Worker-75: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:03:18,384 [Worker-75: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 11:03:25,509 [Worker-75: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:03:25,525 [Worker-75: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 11:03:25,525 [Worker-75: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:03:25,525 [Worker-75: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 11:03:36,589 [Worker-91: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:03:36,589 [Worker-91: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 11:03:36,589 [Worker-91: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:03:36,589 [Worker-91: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 11:04:33,247 [Worker-91: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:04:33,263 [Worker-91: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 11:04:33,263 [Worker-91: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:04:33,263 [Worker-91: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 11:04:45,014 [Worker-75: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:04:45,014 [Worker-75: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 11:04:45,030 [Worker-75: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:04:45,031 [Worker-75: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 11:04:59,360 [Worker-75: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:04:59,360 [Worker-75: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 11:04:59,360 [Worker-75: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:04:59,360 [Worker-75: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 11:05:20,032 [Worker-88: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:05:20,032 [Worker-88: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 11:05:20,032 [Worker-88: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:05:20,032 [Worker-88: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 11:17:15,320 [Worker-95: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:17:15,336 [Worker-95: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 11:17:15,336 [Worker-95: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:17:15,336 [Worker-95: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 11:25:34,379 [Worker-99: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:25:34,379 [Worker-99: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 11:25:34,379 [Worker-99: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:25:34,379 [Worker-99: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 11:27:58,561 [Worker-100: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:27:58,561 [Worker-100: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 11:27:58,561 [Worker-100: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:27:58,561 [Worker-100: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 11:29:23,826 [Worker-100: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:29:23,826 [Worker-100: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 11:29:23,826 [Worker-100: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:29:23,826 [Worker-100: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 11:29:33,096 [Worker-103: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:29:33,097 [Worker-103: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 11:29:33,099 [Worker-103: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:29:33,099 [Worker-103: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 11:29:45,122 [Worker-75: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:29:45,122 [Worker-75: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 11:29:45,137 [Worker-75: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:29:45,137 [Worker-75: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 11:31:12,901 [Worker-100: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:31:12,901 [Worker-100: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 11:31:12,917 [Worker-100: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:31:12,917 [Worker-100: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 11:31:16,892 [Worker-103: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:31:16,892 [Worker-103: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 11:31:16,908 [Worker-103: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:31:16,908 [Worker-103: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 11:31:26,457 [Worker-100: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:31:26,457 [Worker-100: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 11:31:26,457 [Worker-100: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:31:26,457 [Worker-100: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 11:31:35,537 [Worker-103: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:31:35,537 [Worker-103: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 11:31:35,552 [Worker-103: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 11:31:35,552 [Worker-103: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 12:19:02,113 [Worker-131: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:19:02,128 [Worker-131: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 12:19:02,128 [Worker-131: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:19:02,128 [Worker-131: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 12:19:14,050 [Worker-123: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:19:14,050 [Worker-123: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 12:19:14,050 [Worker-123: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:19:14,050 [Worker-123: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 12:19:27,216 [Worker-132: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:19:27,216 [Worker-132: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 12:19:27,216 [Worker-132: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:19:27,216 [Worker-132: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 12:26:17,510 [Worker-123: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:26:17,510 [Worker-123: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 12:26:17,510 [Worker-123: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:26:17,510 [Worker-123: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 12:26:58,732 [Worker-131: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:26:58,732 [Worker-131: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 12:26:58,748 [Worker-131: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:26:58,748 [Worker-131: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 12:29:19,223 [Worker-123: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:29:19,223 [Worker-123: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 12:29:19,238 [Worker-123: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:29:19,238 [Worker-123: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 12:30:12,259 [Worker-133: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:30:12,259 [Worker-133: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 12:30:12,259 [Worker-133: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:30:12,259 [Worker-133: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 12:31:01,260 [Worker-131: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:31:01,260 [Worker-131: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 12:31:01,260 [Worker-131: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:31:01,260 [Worker-131: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 12:31:43,199 [Worker-130: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:31:43,199 [Worker-130: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 12:31:43,214 [Worker-130: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:31:43,214 [Worker-130: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 12:31:50,731 [Worker-131: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:31:50,731 [Worker-131: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 12:31:50,731 [Worker-131: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:31:50,747 [Worker-131: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 12:33:43,926 [Worker-123: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:33:43,926 [Worker-123: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 12:33:43,926 [Worker-123: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:33:43,926 [Worker-123: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 12:34:14,397 [Worker-123: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:34:14,397 [Worker-123: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 12:34:14,397 [Worker-123: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:34:14,397 [Worker-123: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 12:38:25,013 [Worker-138: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:38:25,013 [Worker-138: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 12:38:25,028 [Worker-138: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:38:25,028 [Worker-138: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 12:38:36,449 [Worker-138: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:38:36,449 [Worker-138: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 12:38:36,449 [Worker-138: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:38:36,465 [Worker-138: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 12:38:38,939 [Worker-138: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:38:38,939 [Worker-138: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 12:38:38,939 [Worker-138: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:38:38,939 [Worker-138: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 12:40:18,289 [Worker-138: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:40:18,289 [Worker-138: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 12:40:18,289 [Worker-138: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:40:18,305 [Worker-138: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 12:40:28,503 [Worker-138: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:40:28,518 [Worker-138: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 12:40:28,518 [Worker-138: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:40:28,518 [Worker-138: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 12:40:52,149 [Worker-139: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:40:52,149 [Worker-139: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 12:40:52,149 [Worker-139: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:40:52,165 [Worker-139: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 12:53:58,098 [Worker-138: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:53:58,114 [Worker-138: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 12:53:58,114 [Worker-138: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:53:58,114 [Worker-138: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 12:55:11,680 [Worker-148: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:55:11,680 [Worker-148: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 12:55:11,680 [Worker-148: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:55:11,680 [Worker-148: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 12:56:16,012 [Worker-148: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:56:16,012 [Worker-148: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 12:56:16,012 [Worker-148: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:56:16,028 [Worker-148: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 12:57:29,548 [Worker-138: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:57:29,548 [Worker-138: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 12:57:29,548 [Worker-138: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:57:29,548 [Worker-138: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 12:58:01,503 [Worker-153: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:58:01,503 [Worker-153: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 12:58:01,518 [Worker-153: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:58:01,518 [Worker-153: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 12:58:36,629 [Worker-153: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:58:36,629 [Worker-153: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 12:58:36,629 [Worker-153: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:58:36,629 [Worker-153: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 12:58:43,082 [Worker-138: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:58:43,082 [Worker-138: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 12:58:43,082 [Worker-138: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 12:58:43,082 [Worker-138: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 13:11:03,168 [Worker-157: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 13:11:03,168 [Worker-157: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 13:11:03,168 [Worker-157: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 13:11:03,184 [Worker-157: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 13:11:11,559 [Worker-157: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 13:11:11,559 [Worker-157: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 13:11:11,559 [Worker-157: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 13:11:11,575 [Worker-157: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 13:11:34,151 [Worker-157: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 13:11:34,151 [Worker-157: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 13:11:34,151 [Worker-157: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 13:11:34,167 [Worker-157: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 13:12:07,265 [Worker-157: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 13:12:07,265 [Worker-157: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 13:12:07,265 [Worker-157: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 13:12:07,281 [Worker-157: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources
+2018-08-09 13:12:59,486 [Worker-157: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 13:12:59,486 [Worker-157: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-08-09 13:12:59,486 [Worker-157: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-08-09 13:12:59,486 [Worker-157: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Java\niikp\src\test\resources

@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import DAO.GetterDB;
+import DAO.IncomingMailDB;
 import DAO.WorkDB;
 import UserProfile.UserProfile;
 import Users.UsersList;
@@ -28,6 +29,7 @@ import Users.UsersList;
 @MultipartConfig
 public class WorkAddServlet extends HttpServlet {
 	private String mailId = null;
+	private String idMail = null;
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -48,7 +50,7 @@ public class WorkAddServlet extends HttpServlet {
 		}
 		
 		
-		String idMail = request.getParameter("id");
+		idMail = request.getParameter("id");
 		String typeMail = request.getParameter("type");
 		mailId = typeMail + "_" + idMail;
 		request.setAttribute("usersList", (HashMap<Integer, UserProfile>) UsersList.usersList);
@@ -80,16 +82,39 @@ public class WorkAddServlet extends HttpServlet {
 		int toUserId = 0;
 		int observerId = 0;
 		String filePathAndNameToWork = null;
+		try {
+			filePathAndNameToWork = IncomingMailDB.getFileIncomingMailToId(Integer.parseInt(idMail));
+			System.out.println(filePathAndNameToWork);
+		} catch (NumberFormatException | InstantiationException | IllegalAccessException | SQLException e1) {
+			e1.printStackTrace();
+		}
 		
 		String userNameSecondName = request.getParameter("user");
-		int indexOfSpaseFromUser = userNameSecondName.indexOf(" ");
-		String userName = userNameSecondName.substring(0, indexOfSpaseFromUser);
-		String userSecondName = userNameSecondName.substring(indexOfSpaseFromUser+1);
+		String userName;
+		String userSecondName;
+		if (userNameSecondName != null) {
+			int indexOfSpaseFromUser = userNameSecondName.indexOf(" ");
+			userName = userNameSecondName.substring(0, indexOfSpaseFromUser);
+			userSecondName = userNameSecondName.substring(indexOfSpaseFromUser+1);
+		} else {
+			userName = "Не";
+			userSecondName = "заполнено";
+		}
+		
 		
 		String observer = request.getParameter("observer");
-		int indexOfSpaseFromObserver = observer.indexOf(" ");
-		String observerName = observer.substring(0, indexOfSpaseFromObserver);
-		String observerSecondName = observer.substring(indexOfSpaseFromObserver+1);
+		String observerName;
+		String observerSecondName; 
+		System.out.println("observer" + observer);
+		if(!observer.isEmpty()) {
+			int indexOfSpaseFromObserver = observer.indexOf(" ");
+			observerName = observer.substring(0, indexOfSpaseFromObserver);
+			observerSecondName = observer.substring(indexOfSpaseFromObserver+1);
+		} else {
+			observerName = "Не";
+			observerSecondName = "заполнено";
+		}
+
 		
 		for (Map.Entry entry : UsersList.usersList.entrySet()) { 
 			UserProfile user = (UserProfile) entry.getValue();

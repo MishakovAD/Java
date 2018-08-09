@@ -124,7 +124,7 @@ pageEncoding="UTF-8"%>
     chart.draw(data, options);
    }
   </script>
-<div id="oil" style="width: 500px; height: 400px;"></div>
+<!-- <div id="oil" style="width: 500px; height: 400px;"></div> -->
 <!-- КОНЕЦ ГИСТОГРАММЫ  -->
 
 <nav class="navbar navbar-inverse" role="navigation">

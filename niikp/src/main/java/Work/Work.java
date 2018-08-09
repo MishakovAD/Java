@@ -16,6 +16,7 @@ public class Work {
 	private String filePathAndNameToWork; //дл€ данного пол€ конструктор не задан
 	private boolean isComplete = false; //данные два пол€ предназначены дл€ отчетности, конструктора дл€ них нет
 	private String report; //будут заноситьс€ в бд путем апдейта по workId
+	private String reportFilePathAndNameToWork;
 	
 	public static Map<Integer, Work> workList = new HashMap<>(); //userId -> Work
 	//не продумано, что если на одного человека несколько резолюций
@@ -134,6 +135,12 @@ public class Work {
 	}
 	public void setReport(String report) {
 		this.report = report;
+	}
+	public String getReportFilePathAndNameToWork() {
+		return reportFilePathAndNameToWork;
+	}
+	public void setReportFilePathAndNameToWork(String reportFilePathAndNameToWork) {
+		this.reportFilePathAndNameToWork = reportFilePathAndNameToWork;
 	}
 	public static Map<Integer, Work> getWorkList() {
 		return workList;

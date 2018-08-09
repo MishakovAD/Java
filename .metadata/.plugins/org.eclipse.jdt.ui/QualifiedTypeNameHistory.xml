@@ -8,7 +8,6 @@
 <fullyQualifiedTypeName name="java.io.InputStream"/>
 <fullyQualifiedTypeName name="java.io.BufferedReader"/>
 <fullyQualifiedTypeName name="java.io.InputStreamReader"/>
-<fullyQualifiedTypeName name="Work.Work"/>
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="java.util.Locale"/>
 <fullyQualifiedTypeName name="IncomingMail.IncomingMail"/>
@@ -40,4 +39,6 @@
 <fullyQualifiedTypeName name="IncomingMail.IncomingMailServlet"/>
 <fullyQualifiedTypeName name="DAO.IncomingMailDB"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="Work.Work"/>
+<fullyQualifiedTypeName name="DAO.WorkDB"/>
 </qualifiedTypeNameHistroy>

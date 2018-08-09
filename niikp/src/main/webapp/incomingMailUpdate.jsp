@@ -63,10 +63,8 @@
 		<input type="text" name="secondFloorDate" value="<%= secondFloorDate %>" placeholder="Дата, присваевыемая при первичной рег. документа" />
 		<input type="text" required name="secondFloorNum" value="<%= incomingMail.getSecondFloorNum() %>" placeholder="Номер письма, присваевыемый при первичной рег. документа" />
 		<br><br><br>
-		<input type="text" name="resolution" value="<%= incomingMail.getResolution() %>" placeholder="Резолюция" /> <!-- Добавить отдельную таблицу -->
-		<br><br><br>
-		<input name="file" type="file" value="<%= incomingMail.getFilePathAndName() %>"><br>
-		<br><br><br>
+		<!--  <input name="file" type="file" value="<%= incomingMail.getFilePathAndName() %>"><br>
+		<br><br><br> -->
        	<button type="submit">Save</button>
 	</form>
 </body>

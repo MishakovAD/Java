@@ -77,6 +77,8 @@ public class GetterDB {
 					userProfileBirthday.setBirthday(birthday);				
 					userBirthdayArray.add(userProfileBirthday);
 				}
+				if(statement != null) statement.close(); 
+			    if(con != null)  con.close();
 				return userBirthdayArray;		
 			}
 			
@@ -109,6 +111,8 @@ public class GetterDB {
 							user.setBirthday(birthday);				
 							usersList.put(userId, user);
 						}
+						if(statement != null) statement.close(); 
+					    if(con != null)  con.close();
 						return usersList;		
 					}
 					
@@ -139,6 +143,8 @@ public class GetterDB {
 							user.setEmail(email);
 							user.setBirthday(birthday);				
 						}
+						if(statement != null) statement.close(); 
+					    if(con != null)  con.close();
 						return user;		
 					}
 }

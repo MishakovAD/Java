@@ -12,11 +12,14 @@
 		<form method="post" action="incomingMail?action=submit" enctype="multipart/form-data">
 		<p>Тип письма: </>
 		<select name="typeMail">
-    		<option value="Письмо1">Письмо</option>
-    		<option value="Письмо2">Письмо</option>
-    		<option value="Письмо3">Письмо</option>
-    		<option value="Письмо4">Письмо</option>
-   		</select></p> 
+		<%@ page import="IncomingMail.*"%>
+		<%@ page import="java.util.ArrayList"%>
+		<% 
+			ArrayList<String> typeMail = (ArrayList<String>) request.getAttribute("typeMailList");
+			for (String values : typeMail) { %>
+				<option value="<%= values %>"><%= values %></option>
+			<% } %>
+    	</select></p> 
    		<br><br><br>
    		<p>Отправитель: </>
 		<input type="text" name="sender" value="" list="senderList" placeholder="Отправитель" />	
@@ -35,13 +38,23 @@
 		<p>Номер письма, присваевыемый при первичной рег. документа: </>
 		<input type="text" required name="secondFloorNum" value="" placeholder="Номер письма, присваевыемый при первичной рег. документа" />
 		<br><br><br>
-		<p>Резолюция: </>
-		<input type="text" name="resolution" value="" placeholder="Резолюция" /> <!-- Добавить отдельную таблицу -->
-		<br><br><br>
 		<p>Письмо: </>
 		<input name="file" type="file"><br>
 		<br><br><br>
        	<button type="submit">Save</button>
+       	
+       	<datalist id="senderList">
+						<%@ page import="IncomingMail.*"%>
+						<%@ page import="java.util.ArrayList"%>
+						<% 
+							ArrayList<String> senderList = (ArrayList<String>) request.getAttribute("senderMailList");
+							for (String values : senderList) { 
+							out.println("<option>");
+            				out.println(values); 
+            				out.println("</option>");	
+            			} %>
+						</datalist>
+       	
 	</form>
 </body>
 </html>
