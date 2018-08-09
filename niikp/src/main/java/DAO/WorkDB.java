@@ -102,32 +102,41 @@ public class WorkDB {
 		return listWorkFromMethodGet;
 	}
 	
-	public static IncomingMail getIncomingMailToId(int id) throws SQLException, InstantiationException, IllegalAccessException { //Change to Work
-		IncomingMail incMail = new IncomingMail();
+	public static ArrayList<Work> getWorkListToId(int userId) throws SQLException, InstantiationException, IllegalAccessException { 
+		//Добавляются только невыполненные дела! Для этого проверка переменной
+		Work work = new Work();
+		ArrayList<Work> workListToId = new ArrayList<>();
 		
 		Connection con = DriverManager.getConnection(url, username, password);	
 		Statement statement = null;
 		statement = con.createStatement();
 
-		String SQL_get_incomingMail_to_id = "SELECT * FROM incomingMail WHERE idMail=" + id + ";";		
+		String SQL_get_incomingMail_to_id = "SELECT * FROM work WHERE toUserId=" + userId + ";";		
 		
 		ResultSet rs = statement.executeQuery(SQL_get_incomingMail_to_id);		
 		while (rs.next()) {
-			incMail.setRegDate(rs.getString("regDate"));
-			incMail.setIdMail(rs.getInt("idMail"));
-			incMail.setTypeMail(rs.getString("typeMail"));
-			incMail.setSender(rs.getString("sender"));
-			incMail.setSendDate(rs.getString("sendDate"));
-			incMail.setMailNum(rs.getString("mailNum"));
-			incMail.setMailTheme(rs.getString("mailTheme"));
-			incMail.setSecondFloorDate(rs.getString("secondFloorDate"));
-			incMail.setSecondFloorNum(rs.getString("secondFloorNum"));
-			incMail.setFilePathAndName(rs.getString("filePathAndName"));
-			incMail.setFilePathAndName(rs.getString("reportFilePathAndNameToWork"));
+			work.setWorkId(rs.getInt("workId"));
+			work.setToUserId(rs.getInt("toUserId"));
+			work.setObserverId(rs.getInt("observerId"));
+			work.setFromUserId(rs.getInt("fromUserId"));
+			work.setStartDate(rs.getString("startDate"));
+			work.setEndDate(rs.getString("endDate"));
+			work.setAssignment(rs.getString("assignment"));
+			work.setMailId(rs.getString("mailId"));			
+			work.setComplete(rs.getBoolean("isComplete"));
+			work.setReport(rs.getString("report"));
+			work.setReportFilePathAndNameToWork(rs.getString("reportFilePathAndNameToWork"));
+			if (work.isComplete() == false) {
+				workListToId.add(work);
+				work = new Work();
+			} else {
+				work = new Work();
+			}
+			
 		}
 		if(statement != null) statement.close(); 
 	    if(con != null)  con.close(); 
-		return incMail;
+		return workListToId;
 
 	}
 	

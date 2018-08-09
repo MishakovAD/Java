@@ -27,8 +27,10 @@
 					<br><br><br>
 					<input type="text" name="observer" value="" list="names" placeholder="Ответственный" />	
 					<br><br><br>
+					<p>Дата начала: </p>
 					<input type="date" name="startDate" value="" placeholder="Дата начала" />
 					<br><br><br>
+					<p>Срок исполнения: </p>
 					<input type="date" name="endDate" value="" placeholder="Срок исполнения" />
 					<br><br><br>
 					<input type="text" name="assignment" value="" placeholder="Поручение" />

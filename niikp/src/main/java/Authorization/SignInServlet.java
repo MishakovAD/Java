@@ -2,6 +2,7 @@ package Authorization;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.CheckerDB;
+import DAO.WorkDB;
 import UserProfile.UserProfile;
+import Work.Work;
 
 @WebServlet(urlPatterns = { "/signIn" })
 public class SignInServlet extends HttpServlet {
@@ -32,6 +35,8 @@ public class SignInServlet extends HttpServlet {
 		try {
 			if (CheckerDB.checkUser(email, password)) {
 				request.getSession().setAttribute("userSignIn", userLoginMap.get(email));
+				ArrayList<Work> workListToUser = WorkDB.getWorkListToId(userLoginMap.get(email).getUserId());
+				request.setAttribute("workListToUser", workListToUser);
 				response.sendRedirect("/niikp/");
 			} else {
 				System.out.println("Incorrect email/password");

@@ -73,20 +73,31 @@ pageEncoding="UTF-8"%>
         <div class="col-md-2"></div>
         <div class="col-md-8"style="text-align:end;">
             
+            <%@ page import="java.util.ArrayList"%>
+			<%@ page import="Work.*"%>
             <%
             UserProfile userSignIn = (UserProfile) request.getSession().getAttribute("userSignIn");
-            System.out.println("id = " + userSignIn.getUserId() + " email: " + userSignIn.getEmail());
+            //System.out.println("id = " + userSignIn.getUserId() + " email: " + userSignIn.getEmail());
+            ArrayList<Work> workListToUser = (ArrayList<Work>) request.getAttribute("workListToUser");
+			System.out.println(workListToUser.size());
             %>
 
           	<c:set var="id" value="${userSignIn.getUserId()}"/>    
           	<c:set var="email" value="${userSignIn.getEmail()}"/>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-            <a href="/niikp/users/${id}"  style="color:black">Привет, <%= userSignIn.getName() %></a>            
-          </li>
-          <li class="btn btn-link btn-lg">
-            <a href="/niikp/logOut"  style="color:black">Выйти</a>
-          </li>
+            <a href="/niikp/users/${id}"  style="color:black">
+            	<p align="center">Привет, <%= userSignIn.getName() %></p>
+            </a>            
+            <a href="/niikp/logOut"  style="color:black">
+            <p align="center">Выйти</p>
+            </a>
+          <a href="/niikp/workList">
+          	<p align="center">Невыполненных дел: <%= workListToUser.size() %></p>
+          </a>
+          <br>
+           
           <li class="btn btn-link btn-lg" style="color:black">         
            </li>
+           
          </div>
 
        </div>

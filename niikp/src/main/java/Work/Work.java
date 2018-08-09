@@ -18,6 +18,7 @@ public class Work {
 	private String report; //будут заноситься в бд путем апдейта по workId
 	private String reportFilePathAndNameToWork;
 	
+	
 	public static Map<Integer, Work> workList = new HashMap<>(); //userId -> Work
 	//не продумано, что если на одного человека несколько резолюций
 	//тогда старая просто перезапишется
