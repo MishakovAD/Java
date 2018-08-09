@@ -1,9 +1,0 @@
-package Work;
-
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-
-@WebServlet(urlPatterns = { "/work" })
-public class Work  extends HttpServlet {
-
-}

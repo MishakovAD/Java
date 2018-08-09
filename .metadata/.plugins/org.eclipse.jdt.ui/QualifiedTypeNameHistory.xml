@@ -38,7 +38,10 @@
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="IncomingMail.IncomingMailServlet"/>
 <fullyQualifiedTypeName name="DAO.IncomingMailDB"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="Work.Work"/>
+<fullyQualifiedTypeName name="Translit.Translit"/>
 <fullyQualifiedTypeName name="DAO.WorkDB"/>
+<fullyQualifiedTypeName name="Work.Work"/>
+<fullyQualifiedTypeName name="UserProfile.UserProfile"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="DocumentPathTemplate.DocumentPathTemplate"/>
 </qualifiedTypeNameHistroy>

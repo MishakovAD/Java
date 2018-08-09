@@ -1,5 +1,6 @@
 package Translit;
 
+//„естно скопипасчено с https://habr.com/post/265455/ , но добавлен нижний регистр
 public class Translit {
 	public static String cyr2lat(char ch){
 		switch (ch){
