@@ -18,7 +18,8 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
-  	<servlet> 
+  	<!-- for local development -->
+     <servlet> 
      <servlet-name>DownloadServlet</servlet-name> 
      <servlet-class>com.jsos.download.DownloadServlet</servlet-class> 
      <init-param> 
@@ -29,5 +30,19 @@
   	<servlet-mapping> 
      <servlet-name>DownloadServlet</servlet-name> 
      <url-pattern>/DownloadServlet</url-pattern> 
-    </servlet-mapping>
+    </servlet-mapping> 
+    
+    <!-- for Server -->
+     <!-- <servlet> 
+     <servlet-name>DownloadServlet</servlet-name> 
+     <servlet-class>com.jsos.download.DownloadServlet</servlet-class> 
+     <init-param> 
+      <param-name>dir</param-name> 
+      <param-value>C:/niikp/uploadDir/</param-value> 
+     </init-param>
+    </servlet>
+  	<servlet-mapping> 
+     <servlet-name>DownloadServlet</servlet-name> 
+     <url-pattern>/DownloadServlet</url-pattern> 
+    </servlet-mapping>  -->
 </web-app>

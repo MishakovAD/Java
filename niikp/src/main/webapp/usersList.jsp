@@ -2,10 +2,19 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
+<title>Пользователи</title>
+
+<!-- Подключение bootstrap -->
+<script type="text/javascript">
+  <%@include file="/resources/bootstrap/js/bootstrap.min.js"%>  
+</script>
+<style>
+	<%@include file="/resources/bootstrap/css/bootstrap.min.css"%> 
+</style>
+<%@ include file = "head.jsp" %>
+
+
 <body>
 
 			<%@ page import="java.util.HashMap" %>

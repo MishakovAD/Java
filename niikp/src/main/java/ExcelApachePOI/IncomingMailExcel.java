@@ -18,12 +18,15 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFTable;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import Property.Property;
+
 public class IncomingMailExcel {
 
 	public static void writeIntoExcel(String regDateValue, int idMailValue, String typeMailValue, 
 			String senderValue, String sendDateValue, String mailNumValue, String mailThemeValue, 
 			String secondFloorDateValue, String filePathAndNameValue) throws FileNotFoundException, IOException {
-		String filePath = "E:/JavaProjectDocs/excel/incomingMail.xlsx";
+		String filePath = Property.getProperty("fileIncomingMail");
+		//String filePath = "C:/niikp/excel/incomingMail.xlsx"; //server
 		XSSFWorkbook book;
 		File f = new File(filePath);
 		if (f.exists() && !f.isDirectory()) {

@@ -20,7 +20,9 @@ import javax.servlet.http.Part;
 
 import DAO.IncomingMailDB;
 import ExcelApachePOI.IncomingMailExcel;
+import Property.Property;
 import Translit.Translit;
+import UserProfile.UserProfile;
 
 /*
  * DONT FORGOT ABOUT MAILID!!!!
@@ -30,40 +32,59 @@ import Translit.Translit;
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 20, // 2MB
 		maxFileSize = 1024 * 1024 * 10, // 20MB
 		maxRequestSize = 1024 * 1024 * 50) // 50MB
-public class IncomingMailServlet extends HttpServlet {	
+public class IncomingMailServlet extends HttpServlet {
 	public static final String SAVE_DIRECTORY = "uploadDir";
-	//для редактирования сделать мапу с ключом - айди письма, чтобы письмо, после изменения, заменяло старое на новое
-	//только нужнопродумать, что делать с датами и не измененными полями, как их заново получать. (в особенности даты и файл)
+	public static final String SAVE_DIR = Property.getProperty("saveDir");
+	// public static final String SAVE_DIR = "C:/niikp/"; //server
+
+	// для редактирования сделать мапу с ключом - айди письма, чтобы письмо, после
+	// изменения, заменяло старое на новое
+	// только нужнопродумать, что делать с датами и не измененными полями, как их
+	// заново получать. (в особенности даты и файл)
 	public static ArrayList<IncomingMail> incomingMailList = new ArrayList<>();
 	public static ArrayList<String> typeMailList = IncomingMail.getTypeMailList();
 	public static ArrayList<String> senderMailList = IncomingMail.getSenderList();
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-			request.setCharacterEncoding("UTF-8");
-			
-			request.setAttribute("typeMailList", typeMailList);
-			request.setAttribute("senderMailList", senderMailList);
-			request.getRequestDispatcher("/incomingMail.jsp").forward(request, response);		
+		try {
+			UserProfile user = (UserProfile) request.getSession().getAttribute("userSignIn");
+			if (user != null && Rules.Rules.getLawToAddMail(user)) {
+				request.setCharacterEncoding("UTF-8");
+
+				request.setAttribute("typeMailList", typeMailList);
+				request.setAttribute("senderMailList", senderMailList);
+				request.getRequestDispatcher("/incomingMail.jsp").forward(request, response);
+			} else {
+				// вывести страницу с ошибкой вместо редиректа
+				response.sendRedirect("/niikp/");
+			}
+		} catch (NullPointerException e) {
+			// вывести страницу со свойствами юзера, или вообще отправить запрос к
+			// администратору сразу
+			response.sendRedirect("/niikp/");
+		}
+
 		// super.doGet(request, response); //из-за этой строчки была ошибка sendError()
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		IncomingMail incMail = new IncomingMail();
 		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
 		if ("submit".equals(action)) {
 			String typeMail = request.getParameter("typeMail");
 			String sender = request.getParameter("sender");
-			String sendDateParameter = request.getParameter("sendDate");			
+			String sendDateParameter = request.getParameter("sendDate");
 			String mailNum = request.getParameter("mailNum");
 			String mailTheme = request.getParameter("mailTheme");
 			String secondFloorDateParameter = request.getParameter("secondFloorDate");
 			String secondFloorNum = request.getParameter("secondFloorNum");
-			
+
 			Date resultSendDate = null;
 			Date resultSecondFloorDate = null;
 			String regDate = null;
@@ -74,7 +95,7 @@ public class IncomingMailServlet extends HttpServlet {
 			try {
 				resultSendDate = oldDateFormat.parse(sendDateParameter);
 				resultSecondFloorDate = oldDateFormat.parse(secondFloorDateParameter);
-				
+
 				sendDate = newDateFormat.format(resultSendDate);
 				secondFloorDate = newDateFormat.format(resultSecondFloorDate);
 				System.out.println();
@@ -82,8 +103,9 @@ public class IncomingMailServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
-			//IncomingMail incMail = new IncomingMail(regDate, typeMail, sender, sendDate, mailNum, mailTheme, secondFloorDate);
+
+			// IncomingMail incMail = new IncomingMail(regDate, typeMail, sender, sendDate,
+			// mailNum, mailTheme, secondFloorDate);
 			incMail.setRegDate(regDate);
 			incMail.setTypeMail(typeMail);
 			incMail.setSender(sender);
@@ -96,7 +118,7 @@ public class IncomingMailServlet extends HttpServlet {
 				String appPath = request.getServletContext().getRealPath("");
 				appPath = appPath.replace('\\', '/');
 				String fullSavePath = null;
-	            fullSavePath = "E:/JavaProjectDocs/" + SAVE_DIRECTORY;
+				fullSavePath = SAVE_DIR + SAVE_DIRECTORY;
 
 				// Creates the save directory if it does not exists
 				File fileSaveDir = new File(fullSavePath);
@@ -115,7 +137,7 @@ public class IncomingMailServlet extends HttpServlet {
 							// Write to file
 							part.write(filePath);
 						}
-						
+
 					}
 				}
 				// Upload successfully!.
@@ -133,24 +155,24 @@ public class IncomingMailServlet extends HttpServlet {
 			} catch (InstantiationException | IllegalAccessException | SQLException e) {
 				e.printStackTrace();
 			}
-			/* 
+			/*
 			 * 
-			 * ВАЖНО!!!!!!!!!!
-			 * ПОСТАВИТЬ СЮДА АЙДИ ПИСЬМА ИЗ БД!!!!!!
-			 * И про дату регистрации. Это все делается автоматом и получается из БД
+			 * ВАЖНО!!!!!!!!!! ПОСТАВИТЬ СЮДА АЙДИ ПИСЬМА ИЗ БД!!!!!! И про дату
+			 * регистрации. Это все делается автоматом и получается из БД
 			 * 
 			 * 
-			 * */
+			 */
 			try {
-				IncomingMail incMailToExcel = IncomingMailDB.getIncomingMailToId(IncomingMailDB.getLastIndexIncomingMail()-1);
-				IncomingMailExcel.writeIntoExcel(incMailToExcel.getRegDate(), incMailToExcel.getIdMail(), typeMail, sender, 
-						sendDate, mailNum, mailTheme, secondFloorDate, incMail.getFilePathAndName());
+				IncomingMail incMailToExcel = IncomingMailDB
+						.getIncomingMailToId(IncomingMailDB.getLastIndexIncomingMail() - 1);
+				IncomingMailExcel.writeIntoExcel(incMailToExcel.getRegDate(), incMailToExcel.getIdMail(), typeMail,
+						sender, sendDate, mailNum, mailTheme, secondFloorDate, incMail.getFilePathAndName());
 			} catch (InstantiationException | IllegalAccessException | SQLException e) {
 				e.printStackTrace();
 			}
-						
+
 			System.out.println(incMail);
-		} //end if
+		} // end if
 	}
 
 	private String extractFileName(Part part, int prefix) {
@@ -162,7 +184,8 @@ public class IncomingMailServlet extends HttpServlet {
 			if (s.trim().startsWith("filename")) {
 				// C:\file1.zip
 				// C:\Note\file2.zip
-				String clientFileName = "VhodKorr_NPK-1_" + prefix + "_" + s.substring(s.indexOf("=") + 2, s.length() - 1);
+				String clientFileName = "VhodKorr_NPK-1_" + prefix + "_"
+						+ s.substring(s.indexOf("=") + 2, s.length() - 1);
 				clientFileName = Translit.cyr2lat(clientFileName);
 				clientFileName = clientFileName.replace("\\", "/");
 				int i = clientFileName.lastIndexOf('/');

@@ -1,27 +1,24 @@
 package DAO;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAccessor;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Locale;
 
-import Authorization.SignUpServlet;
 import UserProfile.UserProfile;
+import Property.Property;
 
 //for registration and create new table and connect to db
-public class DataBase {
-	private static String url = "jdbc:mysql://localhost:3306/niikp_db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-	private static String username = "root";
-	private static String password = "hedghog";
+public class DataBase {  
+	public static String url = Property.getProperty("db.url");
+	public static String username = Property.getProperty("db.login");
+	public static String password = Property.getProperty("db.password");
+	
+//	public static String url = "jdbc:mysql://localhost:3307/niikp_db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+//	public static String username = "root";
+//	public static String password = "root"; // for server
 
 
 	// Для отдельного запуска работы с БД
@@ -38,22 +35,27 @@ public class DataBase {
 
 		Statement statement = null;
 		statement = con.createStatement();
-	// Создание таблицы в БД
+		// Создание таблицы в БД
 		//CREATE DATABASE `my_db` CHARACTER SET utf8 COLLATE utf8_general_ci;
 //		String SQL = "CREATE TABLE users " +
 //				 "(userId INTEGER not NULL AUTO_INCREMENT, " +
 //				 " dateRegistration DATETIME not NULL, " +
 //				 " name VARCHAR (100), " +
 //				 " secondName VARCHAR (100), " +
+//				 " middleName VARCHAR (100), " +
 //				 " email VARCHAR (50) not NULL, " +
 //				 " password VARCHAR (100) not NULL, " +
-//				 " birthday DATE not NULL, " +				 
+//				 " birthday DATE not NULL, " +
+//				 " phoneNumber VARCHAR (15), " +
+//				 " roomNumber VARCHAR (10), " +
+//				 " position VARCHAR (100), " +
+//				 " userGroup VARCHAR (50), " +
+//				 " privilege VARCHAR (50), " +
 //				 " PRIMARY KEY (userId))";
 //		
 //		 statement.executeUpdate(SQL);
 //		 System.out.println("Table successfully created...");
-		// Создание таблицы в БД
-		//(dateRegistration, name, secondName, email, password, birthday)
+////
 //		String SQL = "CREATE TABLE incomingMail " +
 //				 "(regDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " +
 //				 " idMail INTEGER not NULL AUTO_INCREMENT, " +
@@ -84,7 +86,7 @@ public class DataBase {
 //		 " report VARCHAR (500), " +
 //		 " reportFilePathAndNameToWork VARCHAR (150), " +
 //		 " PRIMARY KEY (workId))";
-//
+////
 //statement.executeUpdate(SQL);
 //System.out.println("Table successfully created...");
 	}

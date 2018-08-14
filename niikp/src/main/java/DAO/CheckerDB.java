@@ -11,9 +11,9 @@ import Authorization.SignInServlet;
 
 
 public class CheckerDB {
-	private static String url = "jdbc:mysql://localhost:3306/niikp_db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-	private static String username = "root";
-	private static String password = "hedghog";
+	private static String url = DataBase.url;
+	private static String username = DataBase.username;
+	private static String password = DataBase.password;
 	
 	
 	// ѕроверка: верны ли данные логин пароль.
@@ -22,14 +22,19 @@ public class CheckerDB {
 		Statement statement = null;
 		statement = con.createStatement();
 
-		String SQL_check_correct_email_and_password = "SELECT userId, name, secondName,"
-				+ " email, password, birthday FROM users WHERE email='" + email + "';";
+		String SQL_check_correct_email_and_password = "SELECT * FROM users WHERE email='" + email + "';";
 		
 		ResultSet rs = statement.executeQuery(SQL_check_correct_email_and_password);
 		while (rs.next()) {
 			if (email.equals(rs.getString("email")) && passwwordUser.equals(rs.getString("password"))) { 
 				UserProfile userProfileSignIn = new UserProfile(rs.getInt("userId"), rs.getString("name"),
 						rs.getString("secondName"),rs.getString("email"),rs.getString("password"),rs.getString("birthday"));
+				userProfileSignIn.setMiddleName(rs.getString("middleName"));
+				userProfileSignIn.setPhoneNumber(rs.getString("phoneNumber"));
+				userProfileSignIn.setRoomNumber(rs.getString("roomNumber"));
+				userProfileSignIn.setRole(rs.getString("privilege"));
+				userProfileSignIn.setPosition(rs.getString("position"));
+				userProfileSignIn.setUserGroup(rs.getString("userGroup"));
 				SignInServlet.userLoginMap.put(rs.getString("email"), userProfileSignIn);
 				return true;
 			}				

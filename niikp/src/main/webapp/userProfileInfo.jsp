@@ -5,11 +5,12 @@
 	<title>Данные пользователя</title>
 </head>
 
-<link rel="stylesheet" href="http://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css" />
-<link rel="stylesheet" href="http://bootstraptema.ru/plugins/font-awesome/4-4-0/font-awesome.min.css" />
-<script src="http://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
-<script src="http://bootstraptema.ru/plugins/2015/b-v3-3-6/bootstrap.min.js"></script>
-
+<script type="text/javascript">
+  <%@include file="/resources/bootstrap/js/bootstrap.min.js"%>  
+</script>
+<style>
+	<%@include file="/resources/bootstrap/css/bootstrap.min.css"%> 
+</style>
 <body>
 
 	<br><br><br>

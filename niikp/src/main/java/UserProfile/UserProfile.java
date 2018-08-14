@@ -4,9 +4,17 @@ public class UserProfile {
 	private Integer userId;
 	private String name;
 	private String secondName;
+	private String middleName; //изменить таблицу в бд и добавить эти поля
 	private String email;
 	private String password;
 	private String birthday;
+	private String phoneNumber; //
+	private String roomNumber;//
+	private String position;// должность
+	private String userGroup;//группа (например секретари)
+	private String role;//привилегии
+	
+	
 	
 	private static UserProfile ourInstance = new UserProfile();
     public static UserProfile getInstance() {
@@ -110,6 +118,62 @@ public class UserProfile {
 
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
+	}
+
+	public String getMiddleName() {
+		return middleName;
+	}
+
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public String getRoomNumber() {
+		return roomNumber;
+	}
+
+	public void setRoomNumber(String roomNumber) {
+		this.roomNumber = roomNumber;
+	}
+
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
+	public String getUserGroup() {
+		return userGroup;
+	}
+
+	public void setUserGroup(String group) {
+		this.userGroup = group;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String privilege) {
+		this.role = privilege;
+	}
+
+	public static UserProfile getOurInstance() {
+		return ourInstance;
+	}
+
+	public static void setOurInstance(UserProfile ourInstance) {
+		UserProfile.ourInstance = ourInstance;
 	}
 
 	@Override

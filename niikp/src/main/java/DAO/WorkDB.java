@@ -11,9 +11,9 @@ import IncomingMail.IncomingMail;
 import Work.Work;
 
 public class WorkDB {
-	private static String url = "jdbc:mysql://localhost:3306/niikp_db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-	private static String username = "root";
-	private static String password = "hedghog";
+	private static String url = DataBase.url;
+	private static String username = DataBase.username;
+	private static String password = DataBase.password;
 	
 	public static void addWork(Work work) throws SQLException, InstantiationException, IllegalAccessException {
 		Connection con = DriverManager.getConnection(url, username, password);			
@@ -106,6 +106,7 @@ public class WorkDB {
 		//Добавляются только невыполненные дела! Для этого проверка переменной
 		Work work = new Work();
 		ArrayList<Work> workListToId = new ArrayList<>();
+		ArrayList<Work> workListDoneToId = new ArrayList<>();
 		
 		Connection con = DriverManager.getConnection(url, username, password);	
 		Statement statement = null;
@@ -130,6 +131,7 @@ public class WorkDB {
 				workListToId.add(work);
 				work = new Work();
 			} else {
+				workListDoneToId.add(work); //не используется, но это список уже выполненных поручений
 				work = new Work();
 			}
 			
@@ -200,7 +202,6 @@ public class WorkDB {
 			try {
 				deleteIncomingMail(i);
 			} catch (InstantiationException | IllegalAccessException | SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

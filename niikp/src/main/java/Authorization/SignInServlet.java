@@ -40,6 +40,7 @@ public class SignInServlet extends HttpServlet {
 				response.sendRedirect("/niikp/");
 			} else {
 				System.out.println("Incorrect email/password");
+				response.sendRedirect("/niikp/");
 			}
 		} catch (InstantiationException | IllegalAccessException | SQLException e) {
 			e.printStackTrace();

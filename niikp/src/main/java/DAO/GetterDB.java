@@ -14,9 +14,9 @@ import java.util.Locale;
 import UserProfile.UserProfile;
 
 public class GetterDB {
-	private static String url = "jdbc:mysql://localhost:3306/niikp_db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-	private static String username = "root";
-	private static String password = "hedghog";
+	private static String url = DataBase.url;
+	private static String username = DataBase.username;
+	private static String password = DataBase.password;
 	
 	private static UserProfile userProfileBirthday;
 	

@@ -18,6 +18,7 @@ import DAO.WorkDB;
 import DocumentPathTemplate.*;
 import ExcelApachePOI.IncomingMailExcel;
 import IncomingMail.IncomingMail;
+import Property.Property;
 import Translit.Translit;
 
 @WebServlet(urlPatterns = { "/workDone" })
@@ -28,6 +29,8 @@ public class WorkDoneServlet extends HttpServlet {
 	String action;
 	String workId;
 	public static final String SAVE_DIRECTORY = "uploadDir";
+	public static final String SAVE_DIR = Property.getProperty("saveDir");
+	//public static final String SAVE_DIR = "C:/niikp/"; //server
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		action = request.getParameter("action");
@@ -46,7 +49,7 @@ public class WorkDoneServlet extends HttpServlet {
 				String appPath = request.getServletContext().getRealPath("");
 				appPath = appPath.replace('\\', '/');
 				String fullSavePath = null;
-	            fullSavePath = "E:/JavaProjectDocs/" + SAVE_DIRECTORY;
+	            fullSavePath = SAVE_DIR + SAVE_DIRECTORY;
 
 				// Creates the save directory if it does not exists
 				File fileSaveDir = new File(fullSavePath);
@@ -106,6 +109,10 @@ public class WorkDoneServlet extends HttpServlet {
 			} catch (NumberFormatException | InstantiationException | IllegalAccessException | SQLException e) {
 				e.printStackTrace();
 			}
+		} else if (action.equals("accept")) {
+			
+		} else if (action.equals("refuse")) {
+
 		}
 		
 		

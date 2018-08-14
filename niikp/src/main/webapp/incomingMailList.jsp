@@ -3,10 +3,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-<head>
 <meta charset="UTF-8">
 <title>Входящая корреспонденция</title>
-</head>
+
+<!-- Подключение bootstrap -->
+<script type="text/javascript">
+  <%@include file="/resources/bootstrap/js/bootstrap.min.js"%>  
+</script>
+<style>
+	<%@include file="/resources/bootstrap/css/bootstrap.min.css"%> 
+</style>
+
+<%@ include file = "head.jsp" %>
+
+
 <body>
 	<table border="1">
 		<caption>Входящая корреспонденция</caption>
@@ -80,7 +90,7 @@
 				}
 				
 				if (list.get(i).getFilePathAndName() != null) {
-					out.println("<td><a href=\"/niikp/DownloadServlet?" + list.get(i).getFilePathAndName().substring(28) + "\">" + list.get(i).getFilePathAndName().substring(28) + "</a></td>");
+					out.println("<td><a href=\"/niikp/DownloadServlet?" + list.get(i).getFilePathAndName().substring(28) + "\">" + list.get(i).getFilePathAndName().substring(28) + "</a></td>"); //was 28
 				} else {
 					out.println("<td>Не заполнено</td>");
 				}
@@ -103,7 +113,7 @@
 			}
 			out.println("</table>");
 		%>
-	<button type="submit"><a href="/niikp/incomingMail">Добавить</a></button>
+	<a href="/niikp/incomingMail"><button type="submit">Добавить</button></a>
 	
 </body>
 </html>

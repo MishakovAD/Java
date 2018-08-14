@@ -13,9 +13,9 @@ import IncomingMail.IncomingMailServlet;
 import UserProfile.UserProfile;
 
 public class IncomingMailDB {
-	private static String url = "jdbc:mysql://localhost:3306/niikp_db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-	private static String username = "root";
-	private static String password = "hedghog";
+	private static String url = DataBase.url;
+	private static String username = DataBase.username;
+	private static String password = DataBase.password;
 	
 	public static void addIncomingMail(IncomingMail incMail) throws SQLException, InstantiationException, IllegalAccessException {
 		Connection con = DriverManager.getConnection(url, username, password);			
@@ -168,6 +168,19 @@ public class IncomingMailDB {
 		statement.executeUpdate(SQL_delete_incomingMail_to_id);		
 		if(statement != null) statement.close(); 
 	    if(con != null)  con.close(); 
+	}
+	
+	public static void updateIncomingMail(String report, int workId, String reportFile) throws SQLException, InstantiationException, IllegalAccessException {
+		Connection con = DriverManager.getConnection(url, username, password);	
+		Statement statement = null;
+		statement = con.createStatement();
+
+		String SQL_update_work = "UPDATE work SET isComplete=true, report='" + report + "', reportFilePathAndNameToWork='" + reportFile + "' WHERE workId=" + workId + ";";		
+		
+		statement.executeUpdate(SQL_update_work);		
+		if(statement != null) statement.close(); 
+	    if(con != null)  con.close(); 
+
 	}
 	
 	public static void main(String[] args) {
