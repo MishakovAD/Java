@@ -85,7 +85,28 @@ public class DataBase {
 //		 " isComplete BOOLEAN DEFAULT NULL, " +
 //		 " report VARCHAR (500), " +
 //		 " reportFilePathAndNameToWork VARCHAR (150), " +
+//		 " template VARCHAR (50), " +
 //		 " PRIMARY KEY (workId))";
+////
+//statement.executeUpdate(SQL);
+//System.out.println("Table successfully created...");
+////	
+//	String SQL = "CREATE TABLE workWithTemplate " +
+//	 "(workId INTEGER not NULL AUTO_INCREMENT, " +
+//	 " workTemplateId INTEGER not NULL, " +
+//	 " toUserId INTEGER, " +
+//	 " observerId INTEGER, " +
+//	 " fromUserId INTEGER, " +
+//	 " startDate TIMESTAMP, " +	
+//	 " endDate TIMESTAMP, " +
+//	 " assignment VARCHAR (500), " +
+//	 " mailId VARCHAR (50), " +
+//	 " filePathAndNameToWork VARCHAR (100), " +
+//	 " isComplete BOOLEAN DEFAULT NULL, " +
+//	 " report VARCHAR (500), " +
+//	 " reportFilePathAndNameToWork VARCHAR (150), " +
+//	 " template VARCHAR (50), " +
+//	 " PRIMARY KEY (workId))";
 ////
 //statement.executeUpdate(SQL);
 //System.out.println("Table successfully created...");

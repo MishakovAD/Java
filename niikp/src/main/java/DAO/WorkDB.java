@@ -197,6 +197,25 @@ public class WorkDB {
 	    if(con != null)  con.close(); 
 	}
 	
+	public static int getLastIndexWork() throws SQLException, InstantiationException, IllegalAccessException {
+		int lastId = 0;
+		
+		Connection con = DriverManager.getConnection(url, username, password);	
+		Statement statement = null;
+		statement = con.createStatement();
+
+		String SQL_get_incomingMail_to_id = "SELECT workId FROM work ORDER BY workId DESC LIMIT 1;";		
+		
+		ResultSet rs = statement.executeQuery(SQL_get_incomingMail_to_id);		
+		while (rs.next()) {
+			lastId = rs.getInt("workId");
+		}
+		if(statement != null) statement.close(); 
+	    if(con != null)  con.close(); 
+		return lastId+1;
+
+	}
+	
 	public static void main(String[] args) {
 		for (int i=1; i<11; i++) {
 			try {

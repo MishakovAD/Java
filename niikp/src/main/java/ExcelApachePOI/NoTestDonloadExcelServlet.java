@@ -1,14 +1,13 @@
-package UploadFileTutorial;
+package ExcelApachePOI;
 
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.util.Date;
 import java.util.zip.GZIPOutputStream;
-import javax.servlet.RequestDispatcher;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -17,167 +16,35 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpUtils;
 
-@WebServlet("/download")
+import Property.Property;
+
+@WebServlet("/downloadExcel")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 20, // 2MB
 		maxFileSize = 1024 * 1024 * 10, // 20MB
 		maxRequestSize = 1024 * 1024 * 50) // 50MB
-public class DownloadServlet extends HttpServlet {
-	private static final String DIR = "dir";
-	private static final String GZIP = "gzip";
-	private static final String MIME = "mime";
-	private static final String SET_MIME = "set-mime";
-	private static final String ERROR = "error";
-	private static final String SIZE = "size";
-	private static final String DISPOSITION = "disposition";
-	private static final String EXPIRES = "expires";
+public class NoTestDonloadExcelServlet extends HttpServlet {
 	private ServletContext context;
-	private String separator = "/";
-	// private String root = ".";
-	private String root = "E:/JavaProjectDocs/uploadDir/";
+	private String root = Property.getProperty("rootToExcelIncom"); // папка, в которой находится файл
 	private String error = null;
 	private boolean disposition = true;
-	private static final String VERSION = "ver. 2.2";
-	private static final String CPR = "&copy; <a href=\"mailto:info@servletsuite.com\">Coldbeans</a> ";
 
-	public DownloadServlet() {
+	public NoTestDonloadExcelServlet() {
 	}
 
-	public void init(ServletConfig paramServletConfig) throws ServletException {
-		super.init(paramServletConfig);
-		context = paramServletConfig.getServletContext();
-		error = getInitParameter("error");
-		String str = getInitParameter("disposition"); // в данном месте мы получаем параметр из web.xml методом. Но
-														// такого параметра нет.
-		if ((str != null) && ("false".equalsIgnoreCase(str))) {
-			disposition = false;
-		}
-		if ((str = getInitParameter("dir")) == null) {
-			str = root;
-		}
-		separator = System.getProperty("file.separator");
-		if ((!str.endsWith(separator)) && (!str.endsWith("/"))) {
-			str = str + separator;
-		}
-		root = str;
-	}
 
-	public void doGet(HttpServletRequest paramHttpServletRequest, HttpServletResponse paramHttpServletResponse)
+	@Override
+	protected void doGet(HttpServletRequest paramHttpServletRequest, HttpServletResponse paramHttpServletResponse)
 			throws ServletException, IOException {
 		doPost(paramHttpServletRequest, paramHttpServletResponse);
 	}
 
-	public void doPost(HttpServletRequest paramHttpServletRequest, HttpServletResponse paramHttpServletResponse)
+	@Override
+	protected void doPost(HttpServletRequest paramHttpServletRequest, HttpServletResponse paramHttpServletResponse)
 			throws ServletException, IOException {
-		PrintWriter localPrintWriter = null;
-		String str1 = "";
-		str1 = HttpUtils.getRequestURL(paramHttpServletRequest).toString();
-		//System.out.println("str1 download " + str1); /////////////// !!!!!!!!!!!!!!
-		int i;
-		if ((i = str1.indexOf("?")) > 0) {
-			str1 = str1.substring(0, i);
-		}
-		String str2;
-		if ((str2 = paramHttpServletRequest.getQueryString()) == null) {
-			str2 = "";
-		} else {
-			str2 = decode(str2);
-		}
-		//System.out.println("str2 download " + str2);
-		//System.out.println("download root " + root);
-		if (str2.length() == 0) {
-			if (error != null) {
-				if (error.startsWith("http://")) {
-					paramHttpServletResponse.sendRedirect(paramHttpServletResponse.encodeRedirectURL(error));
-				} else {
-					RequestDispatcher localObject1 = getServletConfig().getServletContext().getRequestDispatcher(error);
-					((RequestDispatcher) localObject1).forward(paramHttpServletRequest, paramHttpServletResponse);
-				}
-			} else {
-				paramHttpServletResponse.setContentType("text/html");
-				localPrintWriter = paramHttpServletResponse.getWriter();
-				localPrintWriter.println("<html>");
-				localPrintWriter.println("<br><br><br>Could not get file name ");
-				localPrintWriter
-						.println("<br><br><br>&copy; <a href=\"mailto:info@servletsuite.com\">Coldbeans</a> ver. 2.2");
-				localPrintWriter.println("</html>");
-				localPrintWriter.flush();
-				localPrintWriter.close();
-			}
-			return;
-		}
-		if ((str2.indexOf(".." + separator) >= 0) || (str2.indexOf("../") >= 0)) {
-			if (error != null) {
-				if (error.startsWith("http://")) {
-					paramHttpServletResponse.sendRedirect(paramHttpServletResponse.encodeRedirectURL(error));
-				} else {
-					RequestDispatcher localObject1 = getServletConfig().getServletContext().getRequestDispatcher(error);
-					((RequestDispatcher) localObject1).forward(paramHttpServletRequest, paramHttpServletResponse);
-				}
-			} else {
-				paramHttpServletResponse.setContentType("text/html");
-				localPrintWriter = paramHttpServletResponse.getWriter();
-				localPrintWriter.println("<html>");
-				localPrintWriter.println("<br><br><br>Could not use this file name by the security restrictions ");
-				localPrintWriter
-						.println("<br><br><br>&copy; <a href=\"mailto:info@servletsuite.com\">Coldbeans</a> ver. 2.2");
-				localPrintWriter.println("</html>");
-				localPrintWriter.flush();
-				localPrintWriter.close();
-			}
-			return;
-		}
+		String str2 = "incomingMail.xlsx";
 		Object localObject1 = lookupFile(root + str2);
 		Object localObject2;
-		if (localObject1 == null) {
-			if (error != null) {
-				if (error.startsWith("http://")) {
-					paramHttpServletResponse.sendRedirect(paramHttpServletResponse.encodeRedirectURL(error));
-				} else {
-					localObject2 = getServletConfig().getServletContext().getRequestDispatcher(error);
-					((RequestDispatcher) localObject2).forward(paramHttpServletRequest, paramHttpServletResponse);
-				}
-			} else {
-				paramHttpServletResponse.setContentType("text/html");
-				localPrintWriter = paramHttpServletResponse.getWriter();
-				localPrintWriter.println("<html>");
-				localPrintWriter.println("<br><br><br>Could not read file " + str2);
-				localPrintWriter
-						.println("<br><br><br>&copy; <a href=\"mailto:info@servletsuite.com\">Coldbeans</a> ver. 2.2");
-				localPrintWriter.println("</html>");
-				localPrintWriter.flush();
-				localPrintWriter.close();
-			}
-			return;
-		}
-		if ((!((File) localObject1).exists()) || (!((File) localObject1).canRead())) {
-			if (error != null) {
-				if (error.startsWith("http://")) {
-					paramHttpServletResponse.sendRedirect(paramHttpServletResponse.encodeRedirectURL(error));
-				} else {
-					localObject2 = getServletConfig().getServletContext().getRequestDispatcher(error);
-					((RequestDispatcher) localObject2).forward(paramHttpServletRequest, paramHttpServletResponse);
-				}
-			} else {
-				paramHttpServletResponse.setContentType("text/html");
-				localPrintWriter = paramHttpServletResponse.getWriter();
-				localPrintWriter.println("<html><font face=\"Arial\">");
-				localPrintWriter.println("<br><br><br>Could not read file " + str2);
-				localPrintWriter.print("<br>Reasons are: ");
-				if (!((File) localObject1).exists()) {
-					localPrintWriter.println("file does not exist");
-				} else {
-					localPrintWriter.println("file is not readable at this moment");
-				}
-				localPrintWriter
-						.println("<br><br><br>&copy; <a href=\"mailto:info@servletsuite.com\">Coldbeans</a> ver. 2.2");
-				localPrintWriter.println("</font></html>");
-				localPrintWriter.flush();
-				localPrintWriter.close();
-			}
-			return;
-		}
 		String str3 = paramHttpServletRequest.getHeader("Accept-Encoding");
 		System.out.println("download str3 " + str3);
 		int j = 0;
@@ -236,21 +103,13 @@ public class DownloadServlet extends HttpServlet {
 			((OutputStream) localObject2).flush();
 			((OutputStream) localObject2).close();
 		}
+
 	}
 
-	private String getFromQuery(String paramString1, String paramString2) {
-		if (paramString1 == null) {
-			return "";
-		}
-		int i = paramString1.indexOf(paramString2);
-		if (i < 0) {
-			return "";
-		}
-		String str = paramString1.substring(i + paramString2.length());
-		if ((i = str.indexOf("&")) < 0) {
-			return str;
-		}
-		return str.substring(0, i);
+	private File lookupFile(String paramString) {
+		System.out.println("lookupFile " + paramString);
+		File localFile = new File(paramString);
+		return localFile.isAbsolute() ? localFile : new File(context.getRealPath("/"), paramString);
 	}
 
 	private void dumpFile(String paramString, OutputStream paramOutputStream, long paramLong) {
@@ -274,73 +133,7 @@ public class DownloadServlet extends HttpServlet {
 		} catch (Exception localException) {
 		}
 	}
-
-	private String decode(String paramString) {
-		StringBuffer localStringBuffer = new StringBuffer(0);
-		paramString = paramString.replaceAll("%20", " "); //Исправлен быг с тем, что пробелы не заменялись нормально. Возможно это костыль.
-		for (int j = 0; j < paramString.length(); j++) {
-			char c = paramString.charAt(j);
-			if (c == '+') {
-				localStringBuffer.append(' ');
-			} else if (c == '%') {
-				int i = 0;
-				for (int k = 0; k < 2; k++) {
-					i = (char) (i * 16);
-					c = paramString.charAt(++j);
-					if ((c >= '0') && (c <= '9')) {
-						i = (char) (i + (c - '0'));
-					} else {
-						if (((c < 'A') || (c > 'F')) && ((c < 'a') || (c > 'f'))) {
-							break;
-						}
-						switch (c) {
-						case 'A':
-						case 'a':
-							i = (char) (i + 10);
-							break;
-						case 'B':
-						case 'b':
-							i = (char) (i + 11);
-							break;
-						case 'C':
-						case 'c':
-							i = (char) (i + 12);
-							break;
-						case 'D':
-						case 'd':
-							i = (char) (i + 13);
-							break;
-						case 'E':
-						case 'e':
-							i = (char) (i + 14);
-							break;
-						case 'F':
-						case 'f':
-							i = (char) (i + 15);
-						}
-					}
-				}
-				localStringBuffer.append(i);
-			} else {
-				localStringBuffer.append(c);
-			}
-		}
-		return localStringBuffer.toString();
-	}
-
-	public String getServletInfo() {
-		return "A DownloadServlet servlet (c) Coldbeans  mailto: info@servletsuite.com";
-	}
-
-	private File lookupFile(String paramString) // Вероятно производится поиск и получение файла. paramString - путь до
-												// него ТОЧНО ЕСТЬ БАГ С СИМВОЛОМ ПРОБЕЛ %20 - не декодирует. вместо
-												// него символ 32 (исправлено в методе decode)
-	{
-		System.out.println("lookupFile " + paramString);
-		File localFile = new File(paramString);
-		return localFile.isAbsolute() ? localFile : new File(context.getRealPath("/"), paramString);
-	}
-
+	
 	private String getMimeType(String paramString) {
 		int i = paramString.lastIndexOf(".");
 		if ((i > 0) && (i < paramString.length() - 1)) {
@@ -726,4 +519,5 @@ public class DownloadServlet extends HttpServlet {
 		}
 		return "application/octet-stream";
 	}
+
 }

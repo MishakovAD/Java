@@ -7,6 +7,7 @@ import java.util.Map;
 
 public class Work {
 	private int workId;
+	private int workTemplateId;
 	private int toUserId;
 	private int observerId; //otvetstvennbIy
 	private int fromUserId;	
@@ -79,6 +80,12 @@ public class Work {
 	}
 	public void setWorkId(int workId) {
 		this.workId = workId;
+	}
+	public int getWorkTemplateId() {
+		return workTemplateId;
+	}
+	public void setWorkTemplateId(int workTemplateId) {
+		this.workTemplateId = workTemplateId;
 	}
 	public int getToUserId() {
 		return toUserId;

@@ -1,4 +1,4 @@
-package UploadFileTutorial;
+package ExcelApachePOI;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.Date;
 import java.util.zip.GZIPOutputStream;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -19,11 +20,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpUtils;
 
-@WebServlet("/download")
+import Property.Property;
+import UserProfile.UserProfile;
+
+//@WebServlet("/downloadExcel") //не используем!
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 20, // 2MB
-		maxFileSize = 1024 * 1024 * 10, // 20MB
-		maxRequestSize = 1024 * 1024 * 50) // 50MB
-public class DownloadServlet extends HttpServlet {
+maxFileSize = 1024 * 1024 * 10, // 20MB
+maxRequestSize = 1024 * 1024 * 50) // 50MB
+public class DownloadExcelServlet extends HttpServlet {
 	private static final String DIR = "dir";
 	private static final String GZIP = "gzip";
 	private static final String MIME = "mime";
@@ -35,21 +39,20 @@ public class DownloadServlet extends HttpServlet {
 	private ServletContext context;
 	private String separator = "/";
 	// private String root = ".";
-	private String root = "E:/JavaProjectDocs/uploadDir/";
+	private String root = Property.getProperty("rootToExcelIncom"); //папка, в которой находится файл
 	private String error = null;
 	private boolean disposition = true;
 	private static final String VERSION = "ver. 2.2";
 	private static final String CPR = "&copy; <a href=\"mailto:info@servletsuite.com\">Coldbeans</a> ";
 
-	public DownloadServlet() {
+	public DownloadExcelServlet() {
 	}
 
 	public void init(ServletConfig paramServletConfig) throws ServletException {
 		super.init(paramServletConfig);
 		context = paramServletConfig.getServletContext();
 		error = getInitParameter("error");
-		String str = getInitParameter("disposition"); // в данном месте мы получаем параметр из web.xml методом. Но
-														// такого параметра нет.
+		String str = getInitParameter("disposition");
 		if ((str != null) && ("false".equalsIgnoreCase(str))) {
 			disposition = false;
 		}
@@ -73,7 +76,7 @@ public class DownloadServlet extends HttpServlet {
 		PrintWriter localPrintWriter = null;
 		String str1 = "";
 		str1 = HttpUtils.getRequestURL(paramHttpServletRequest).toString();
-		//System.out.println("str1 download " + str1); /////////////// !!!!!!!!!!!!!!
+		//System.out.println("str1 download " + str1); /////////////// !!!!!!!!!!!!!! URL обычный
 		int i;
 		if ((i = str1.indexOf("?")) > 0) {
 			str1 = str1.substring(0, i);
@@ -84,7 +87,7 @@ public class DownloadServlet extends HttpServlet {
 		} else {
 			str2 = decode(str2);
 		}
-		//System.out.println("str2 download " + str2);
+		//System.out.println("str2 download " + str2); Строка, после знака ?
 		//System.out.println("download root " + root);
 		if (str2.length() == 0) {
 			if (error != null) {
@@ -128,6 +131,7 @@ public class DownloadServlet extends HttpServlet {
 			}
 			return;
 		}
+
 		Object localObject1 = lookupFile(root + str2);
 		Object localObject2;
 		if (localObject1 == null) {
@@ -329,7 +333,7 @@ public class DownloadServlet extends HttpServlet {
 	}
 
 	public String getServletInfo() {
-		return "A DownloadServlet servlet (c) Coldbeans  mailto: info@servletsuite.com";
+		return " (c) NII-KP team";
 	}
 
 	private File lookupFile(String paramString) // Вероятно производится поиск и получение файла. paramString - путь до

@@ -31,6 +31,7 @@
 			<th>Дата 2 этажа</th>
 			<th>Номер 2 этажа</th>
 			<th>Документ</th>
+			<th><a href="/niikp/downloadExcel">Excel файл</a></th>
 		</tr>
 		<%@ page import="java.util.ArrayList"%>
 		<%@ page import="IncomingMail.*"%>

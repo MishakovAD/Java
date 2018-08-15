@@ -27,6 +27,8 @@
 					<br><br><br>
 					<input type="text" name="observer" value="" list="names" placeholder="Ответственный" />	
 					<br><br><br>
+					<input type="text" name="template" value="" list="templates" placeholder="Шаблон" />	
+					<br><br><br>
 					<p>Дата начала: </p>
 					<input type="date" name="startDate" value="" placeholder="Дата начала" />
 					<br><br><br>

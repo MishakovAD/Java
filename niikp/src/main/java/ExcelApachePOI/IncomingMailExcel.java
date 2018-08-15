@@ -38,10 +38,10 @@ public class IncomingMailExcel {
 		Sheet sheet;
 		if (book.getSheet("incomingMail") != null) {
 			sheet = book.getSheet("incomingMail");
-			System.out.println("get");
+			//System.out.println("get");
 		} else {
 			sheet = book.createSheet("incomingMail");
-			System.out.println("create");
+			//System.out.println("create");
 		}
 
 		// Нумерация начинается с нуля

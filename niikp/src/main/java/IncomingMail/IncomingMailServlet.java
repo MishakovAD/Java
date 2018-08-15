@@ -98,7 +98,7 @@ public class IncomingMailServlet extends HttpServlet {
 
 				sendDate = newDateFormat.format(resultSendDate);
 				secondFloorDate = newDateFormat.format(resultSecondFloorDate);
-				System.out.println();
+
 			} catch (ParseException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -129,11 +129,11 @@ public class IncomingMailServlet extends HttpServlet {
 				// Part list (multi files).
 				for (Part part : request.getParts()) {
 					String fileName = extractFileName(part, IncomingMailDB.getLastIndexIncomingMail());
-					if (fileName != null && fileName.length() > 0) {
+					if (fileName != null && fileName.length() > 20) {
 						String filePath = fullSavePath + File.separator + fileName;
 						if (filePath != null) {
 							incMail.setFilePathAndName(filePath);
-							System.out.println("Write attachment to file: " + filePath);
+							// System.out.println("Write attachment to file: " + filePath);
 							// Write to file
 							part.write(filePath);
 						}
@@ -171,7 +171,7 @@ public class IncomingMailServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 
-			System.out.println(incMail);
+			// System.out.println(incMail);
 		} // end if
 	}
 

@@ -117,7 +117,7 @@
 					}
 
 					if (!list.get(i).getReportFilePathAndNameToWork().contains("null")) {
-						System.out.println("list.get(i).getFilePathAndNameToWork() = " + list.get(i).getFilePathAndNameToWork());
+						//System.out.println("list.get(i).getFilePathAndNameToWork() = " + list.get(i).getFilePathAndNameToWork());
 						out.println("<td><a href=\"/niikp/DownloadServlet?"
 								+ list.get(i).getReportFilePathAndNameToWork().substring(27) + "\">"
 								+ list.get(i).getReportFilePathAndNameToWork().substring(27) + "</a></td>");
