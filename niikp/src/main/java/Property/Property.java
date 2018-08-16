@@ -13,9 +13,13 @@ public class Property {
 	static {
 		props = new Properties();
 		try {
+			System.out.println("Start get property");
 			Property util = new Property();
-			//props = util.getPropertiesFromClasspath("src/main/resources/local-config.properties");
+			//props = util.getProperties("C:/niikp/server-config.properties"); //server
 			props = util.getProperties("E:/JavaProjectDocs/local-config.properties");
+			System.out.println("db.url " + props.getProperty("db.url"));
+			System.out.println("db.login " + props.getProperty("db.login"));
+			System.out.println("db.password " + props.getProperty("db.password"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

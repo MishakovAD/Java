@@ -24,13 +24,13 @@ public class Rules {
 	}
 	
 	public static boolean getLawToWatchMail (UserProfile user) {
-		if (user.getRole().equalsIgnoreCase(Roles.ADMINISTRATOR)) {
+		if (user.getRole().equalsIgnoreCase(Privileges.ADMINISTRATOR)) {
 			return true;
-		} else if (user.getRole().equalsIgnoreCase(Roles.USER) && user.getUserGroup().equalsIgnoreCase(Groups.SECRETARY)) {
+		} else if (user.getRole().equalsIgnoreCase(Privileges.USER) && user.getUserGroup().equalsIgnoreCase(Groups.SECRETARY)) {
 			return true;
-		} else if (user.getRole().equalsIgnoreCase(Roles.USER) && user.getUserGroup().equalsIgnoreCase(Groups.TESTER)) {
+		} else if (user.getRole().equalsIgnoreCase(Privileges.USER) && user.getUserGroup().equalsIgnoreCase(Groups.TESTER)) {
 			return false;
-		} else if (user.getRole().equalsIgnoreCase(Roles.USER)) {
+		} else if (user.getRole().equalsIgnoreCase(Privileges.USER)) {
 			return false;
 		} 
 		
@@ -38,13 +38,13 @@ public class Rules {
 	}
 	
 	public static boolean getLawToAddMail (UserProfile user) {
-		if (user.getRole().equalsIgnoreCase(Roles.ADMINISTRATOR)) {
+		if (user.getRole().equalsIgnoreCase(Privileges.ADMINISTRATOR)) {
 			return true;
-		} else if (user.getRole().equalsIgnoreCase(Roles.USER) && user.getUserGroup().equalsIgnoreCase(Groups.SECRETARY)) {
+		} else if (user.getRole().equalsIgnoreCase(Privileges.USER) && user.getUserGroup().equalsIgnoreCase(Groups.SECRETARY)) {
 			return true;
-		} else if (user.getRole().equalsIgnoreCase(Roles.USER) && user.getUserGroup().equalsIgnoreCase(Groups.TESTER)) {
+		} else if (user.getRole().equalsIgnoreCase(Privileges.USER) && user.getUserGroup().equalsIgnoreCase(Groups.TESTER)) {
 			return false;
-		} else if (user.getRole().equalsIgnoreCase(Roles.USER)) {
+		} else if (user.getRole().equalsIgnoreCase(Privileges.USER)) {
 			return false;
 		} 
 		
@@ -52,13 +52,13 @@ public class Rules {
 	}
 	
 	public static boolean getLawToWatchWork (UserProfile user) {
-		if (user.getRole().equalsIgnoreCase(Roles.ADMINISTRATOR)) {
+		if (user.getRole().equalsIgnoreCase(Privileges.ADMINISTRATOR)) {
 			return true;
-		} else if (user.getRole().equalsIgnoreCase(Roles.USER) && user.getUserGroup().equalsIgnoreCase(Groups.SECRETARY)) {
+		} else if (user.getRole().equalsIgnoreCase(Privileges.USER) && user.getUserGroup().equalsIgnoreCase(Groups.SECRETARY)) {
 			return true;
-		} else if (user.getRole().equalsIgnoreCase(Roles.USER) && user.getUserGroup().equalsIgnoreCase(Groups.TESTER)) {
+		} else if (user.getRole().equalsIgnoreCase(Privileges.USER) && user.getUserGroup().equalsIgnoreCase(Groups.TESTER)) {
 			return false;
-		} else if (user.getRole().equalsIgnoreCase(Roles.USER)) {
+		} else if (user.getRole().equalsIgnoreCase(Privileges.USER)) {
 			return false;
 		} 
 		
@@ -67,13 +67,13 @@ public class Rules {
 	
 	public static boolean getLawToAddWork (UserProfile user) {
 		//Можно так же сделать разграничение по должностям, когда список будет
-		if (user.getRole().equalsIgnoreCase(Roles.ADMINISTRATOR)) {
+		if (user.getRole().equalsIgnoreCase(Privileges.ADMINISTRATOR)) {
 			return true;
-		} else if (user.getRole().equalsIgnoreCase(Roles.USER) && user.getUserGroup().equalsIgnoreCase(Groups.SECRETARY)) {
+		} else if (user.getRole().equalsIgnoreCase(Privileges.USER) && user.getUserGroup().equalsIgnoreCase(Groups.SECRETARY)) {
 			return true;
-		} else if (user.getRole().equalsIgnoreCase(Roles.USER) && user.getUserGroup().equalsIgnoreCase(Groups.TESTER)) {
+		} else if (user.getRole().equalsIgnoreCase(Privileges.USER) && user.getUserGroup().equalsIgnoreCase(Groups.TESTER)) {
 			return false;
-		} else if (user.getRole().equalsIgnoreCase(Roles.USER)) {
+		} else if (user.getRole().equalsIgnoreCase(Privileges.USER)) {
 			return false;
 		} 
 		

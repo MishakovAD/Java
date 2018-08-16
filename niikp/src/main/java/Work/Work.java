@@ -17,6 +17,7 @@ public class Work {
 	private String mailId;
 	private String filePathAndNameToWork; //для данного поля конструктор не задан
 	private boolean isComplete = false; //данные два поля предназначены для отчетности, конструктора для них нет
+	private String isAccept; //принято дело или отправлено на переделывание Accept/Refuse/Null
 	private String report; //будут заноситься в бд путем апдейта по workId
 	private String reportFilePathAndNameToWork;
 	private String template; //пусть будет тип маршрута стринг - будем класть номер маршрута и по номеру маршрута смотреть. Хотя нужно ли это поле? Пока пробуем без
@@ -140,6 +141,12 @@ public class Work {
 	}
 	public void setComplete(boolean isComplete) {
 		this.isComplete = isComplete;
+	}
+	public String getIsAccept() {
+		return isAccept;
+	}
+	public void setIsAccept(String isAccept) {
+		this.isAccept = isAccept;
 	}
 	public String getReport() {
 		return report;

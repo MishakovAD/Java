@@ -1,6 +1,6 @@
 package Rules;
 
-public class Roles {
+public class Privileges {
 	public static String ADMINISTRATOR = "admin";
 	public static String USER = "user";
 

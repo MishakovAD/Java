@@ -27,6 +27,7 @@ public class WorkDB {
 		String mailId = work.getMailId();
 		String filePathAndNameToWork = work.getFilePathAndNameToWork();
 		boolean isComplete = work.isComplete();
+		String isAccept = "null";
 		String report = work.getReport();
 		String reportFilePathAndNameToWork = work.getReportFilePathAndNameToWork();
 		
@@ -34,10 +35,10 @@ public class WorkDB {
 		statement = con.createStatement();
 
 		String SQL_insert_work = "insert into work (toUserId, observerId, fromUserId, startDate, "
-				+ "endDate, assignment, mailId, filePathAndNameToWork, isComplete, report, reportFilePathAndNameToWork)"
+				+ "endDate, assignment, mailId, filePathAndNameToWork, isComplete, isAccept, report, reportFilePathAndNameToWork)"
 				+ " values (" + toUserId + ", " + observerId + ", " + fromUserId
 				+ ", '" + startDate + "', '" + endDate + "', '" + assignment
-				+ "', '" + mailId + "', '" + filePathAndNameToWork + "', " + isComplete + ", '" + report + "', '" + reportFilePathAndNameToWork + "');";
+				+ "', '" + mailId + "', '" + filePathAndNameToWork + "', " + isComplete + ", '" + isAccept + "', '" + report + "', '" + reportFilePathAndNameToWork + "');";
 				
 		statement.execute(SQL_insert_work);
 		
@@ -92,6 +93,7 @@ public class WorkDB {
 			work.setMailId(rs.getString("mailId"));
 			
 			work.setComplete(rs.getBoolean("isComplete"));
+			work.setIsAccept(rs.getString("isAccept"));
 			work.setReport(rs.getString("report"));
 			work.setReportFilePathAndNameToWork(rs.getString("reportFilePathAndNameToWork"));
 			listWorkFromMethodGet.add(work);
@@ -125,9 +127,10 @@ public class WorkDB {
 			work.setAssignment(rs.getString("assignment"));
 			work.setMailId(rs.getString("mailId"));			
 			work.setComplete(rs.getBoolean("isComplete"));
+			work.setIsAccept(rs.getString("isAccept"));
 			work.setReport(rs.getString("report"));
 			work.setReportFilePathAndNameToWork(rs.getString("reportFilePathAndNameToWork"));
-			if (work.isComplete() == false) {
+			if (work.isComplete() == false && !work.getIsAccept().equals("accept")) {
 				workListToId.add(work);
 				work = new Work();
 			} else {
@@ -147,7 +150,33 @@ public class WorkDB {
 		Statement statement = null;
 		statement = con.createStatement();
 
-		String SQL_update_work = "UPDATE work SET isComplete=true, report='" + report + "', reportFilePathAndNameToWork='" + reportFile + "' WHERE workId=" + workId + ";";		
+		String SQL_update_work = "UPDATE work SET isComplete=true, isAccept='done', report='" + report + "', reportFilePathAndNameToWork='" + reportFile + "' WHERE workId=" + workId + ";";		
+		
+		statement.executeUpdate(SQL_update_work);		
+		if(statement != null) statement.close(); 
+	    if(con != null)  con.close(); 
+
+	}
+	
+	public static void acceptWorkToUser(int workId) throws SQLException, InstantiationException, IllegalAccessException {
+		Connection con = DriverManager.getConnection(url, username, password);	
+		Statement statement = null;
+		statement = con.createStatement();
+
+		String SQL_update_work = "UPDATE work SET isAccept='" + "accept" + "' WHERE workId=" + workId + ";";		
+		
+		statement.executeUpdate(SQL_update_work);		
+		if(statement != null) statement.close(); 
+	    if(con != null)  con.close(); 
+
+	}
+	
+	public static void refuseWorkToUser(int workId) throws SQLException, InstantiationException, IllegalAccessException {
+		Connection con = DriverManager.getConnection(url, username, password);	
+		Statement statement = null;
+		statement = con.createStatement();
+
+		String SQL_update_work = "UPDATE work SET isComplete=false, isAccept='" + "refuse" + "' WHERE workId=" + workId + ";";		
 		
 		statement.executeUpdate(SQL_update_work);		
 		if(statement != null) statement.close(); 
@@ -175,6 +204,7 @@ public class WorkDB {
 			workToWorkID.setAssignment(rs.getString("assignment"));
 			workToWorkID.setMailId(rs.getString("mailId"));			
 			workToWorkID.setComplete(rs.getBoolean("isComplete"));
+			workToWorkID.setIsAccept(rs.getString("isAccept"));
 			workToWorkID.setReport(rs.getString("report"));
 			workToWorkID.setReportFilePathAndNameToWork(rs.getString("reportFilePathAndNameToWork"));
 		}

@@ -26,6 +26,7 @@ public class WorkWithTemplateDB {
 		String mailId = work.getMailId();
 		String filePathAndNameToWork = work.getFilePathAndNameToWork();
 		boolean isComplete = work.isComplete();
+		String isAccept = "null";
 		String report = work.getReport();
 		String reportFilePathAndNameToWork = work.getReportFilePathAndNameToWork();
 		String template = work.getTemplate();
@@ -34,10 +35,10 @@ public class WorkWithTemplateDB {
 		statement = con.createStatement();
 
 		String SQL_insert_work = "insert into work (workTemplateId, toUserId, observerId, fromUserId, startDate, "
-				+ "endDate, assignment, mailId, filePathAndNameToWork, isComplete, report, reportFilePathAndNameToWork, template)"
+				+ "endDate, assignment, mailId, filePathAndNameToWork, isComplete, isAssept, report, reportFilePathAndNameToWork, template)"
 				+ " values (" + workTemplateId + toUserId + ", " + observerId + ", " + fromUserId
 				+ ", '" + startDate + "', '" + endDate + "', '" + assignment
-				+ "', '" + mailId + "', '" + filePathAndNameToWork + "', " + isComplete + ", '" + report + "', '" + reportFilePathAndNameToWork  + "', '" + template + "');";
+				+ "', '" + mailId + "', '" + filePathAndNameToWork + "', " + isComplete + ", '" + isAccept + "', '" + report + "', '" + reportFilePathAndNameToWork  + "', '" + template + "');";
 				
 		statement.execute(SQL_insert_work);
 		

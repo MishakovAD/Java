@@ -40,5 +40,10 @@
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/JavaProjectDocs/local-config.properties</locationURI>
 		</link>
+		<link>
+			<name>src/main/resources/server-config.properties</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/JavaProjectDocs/server-config.properties</locationURI>
+		</link>
 	</linkedResources>
 </projectDescription>

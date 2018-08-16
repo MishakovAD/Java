@@ -83,6 +83,7 @@ public class DataBase {
 //		 " mailId VARCHAR (50), " +
 //		 " filePathAndNameToWork VARCHAR (100), " +
 //		 " isComplete BOOLEAN DEFAULT NULL, " +
+//		 " isAccept VARCHAR (10), " +
 //		 " report VARCHAR (500), " +
 //		 " reportFilePathAndNameToWork VARCHAR (150), " +
 //		 " template VARCHAR (50), " +
@@ -103,6 +104,7 @@ public class DataBase {
 //	 " mailId VARCHAR (50), " +
 //	 " filePathAndNameToWork VARCHAR (100), " +
 //	 " isComplete BOOLEAN DEFAULT NULL, " +
+//	 " isAccept VARCHAR (10), " +
 //	 " report VARCHAR (500), " +
 //	 " reportFilePathAndNameToWork VARCHAR (150), " +
 //	 " template VARCHAR (50), " +

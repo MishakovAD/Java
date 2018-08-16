@@ -12,7 +12,7 @@ public class UserProfile {
 	private String roomNumber;//
 	private String position;// должность
 	private String userGroup;//группа (например секретари)
-	private String role;//привилегии
+	private String role;//привилегии //privilege into DB!!!
 	
 	
 	

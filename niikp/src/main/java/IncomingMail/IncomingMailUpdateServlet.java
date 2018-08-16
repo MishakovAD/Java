@@ -27,7 +27,7 @@ import DAO.IncomingMailDB;
 		maxRequestSize = 1024 * 1024 * 50) // 50MB
 public class IncomingMailUpdateServlet  extends HttpServlet {
 	public static final String SAVE_DIRECTORY = "uploadDir";
-	IncomingMail incMail;
+	String id;
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -49,9 +49,15 @@ public class IncomingMailUpdateServlet  extends HttpServlet {
 		} else if (action != null && action.equals("update")) {
 			String url_str = request.getPathInfo();
 			if (url_str != null) {
-				String id = url_str.substring(1);
-				request.setAttribute("incomingMail", IncomingMailServlet.incomingMailList.get(Integer.parseInt(id)));
-				incMail = IncomingMailServlet.incomingMailList.get(Integer.parseInt(id));
+				id = url_str.substring(1);
+				try {
+					request.setAttribute("incomingMail", IncomingMailDB.getIncomingMailToId(Integer.parseInt(id)));
+					request.setAttribute("typeMailList", IncomingMailServlet.typeMailList);
+					request.setAttribute("senderMailList", IncomingMailServlet.senderMailList);
+				} catch (NumberFormatException | InstantiationException | IllegalAccessException | SQLException e) {
+					e.printStackTrace();
+				}
+				//incMail = IncomingMailServlet.incomingMailList.get(Integer.parseInt(id));
 				request.getRequestDispatcher("/incomingMailUpdate.jsp").forward(request, response);
 			}
 		} else if (action == null) {
@@ -65,11 +71,9 @@ public class IncomingMailUpdateServlet  extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		IncomingMail incMail = new IncomingMail();
 		String action = request.getParameter("action");
 		if ("submit".equals(action)) {
-			IncomingMailServlet.incomingMailList.remove(incMail);
-			String regDateParameter = request.getParameter("regDate");			
-			int idMail = 0; //regNum
 			String typeMail = request.getParameter("typeMail");
 			String sender = request.getParameter("sender");
 			String sendDateParameter = request.getParameter("sendDate");			
@@ -78,30 +82,23 @@ public class IncomingMailUpdateServlet  extends HttpServlet {
 			String secondFloorDateParameter = request.getParameter("secondFloorDate");
 			String secondFloorNum = request.getParameter("secondFloorNum");
 			
-			Date resultRegDate = null;
 			Date resultSendDate = null;
 			Date resultSecondFloorDate = null;
-			String regDate = null;
 			String sendDate = null;
 			String secondFloorDate = null;
 			SimpleDateFormat oldDateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
 			SimpleDateFormat newDateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 			try {
-				resultRegDate = oldDateFormat.parse(regDateParameter);
 				resultSendDate = oldDateFormat.parse(sendDateParameter);
 				resultSecondFloorDate = oldDateFormat.parse(secondFloorDateParameter);
 				
-				regDate = newDateFormat.format(resultRegDate);
 				sendDate = newDateFormat.format(resultSendDate);
 				secondFloorDate = newDateFormat.format(resultSecondFloorDate);
 				System.out.println();
 			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
-			//IncomingMail incMail = new IncomingMail(regDate, typeMail, sender, sendDate, mailNum, mailTheme, secondFloorDate);
-			if (regDate != null) incMail.setRegDate(regDate);
+			incMail.setIdMail(Integer.parseInt(id));
 			if (typeMail != null) incMail.setTypeMail(typeMail);
 			if (sender != null) incMail.setSender(sender);
 			if (sendDate != null) incMail.setSendDate(sendDate);
@@ -144,8 +141,12 @@ public class IncomingMailUpdateServlet  extends HttpServlet {
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/incomingMail.jsp");
 				dispatcher.forward(request, response);
 			}
-			IncomingMailServlet.incomingMailList.add(incMail);
-			System.out.println(incMail);
+			try {
+				IncomingMailDB.updateIncomingMail(incMail);
+			} catch (InstantiationException | IllegalAccessException | SQLException e) {
+				e.printStackTrace();
+			}
+			//System.out.println(incMail);
 		} //end if
 	}
 

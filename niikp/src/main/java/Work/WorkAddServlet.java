@@ -78,6 +78,14 @@ public class WorkAddServlet extends HttpServlet {
 //		}
 	}
 
+	
+	/*
+	 * 
+	 * Так как мы можем добавлять дело к корреспонденции, а перенаправление у нас идет только после успешной загрузкифайла
+	 * то при проверки на маршрут, перенаправления не идет, поэтому и с маршрутом и без нужно добавить редирект
+	 * иначе у нас не будет переадресации после добавления и придется это делать ручками
+	 * 
+	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -151,6 +159,7 @@ public class WorkAddServlet extends HttpServlet {
 				try {
 					String filePathAndNameToWork = IncomingMailDB.getFileIncomingMailToId(Integer.parseInt(idMail));
 					work.setFilePathAndNameToWork(filePathAndNameToWork);
+					response.sendRedirect(request.getContextPath() + "/workList");
 				} catch (NumberFormatException | InstantiationException | IllegalAccessException | SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -195,10 +204,11 @@ public class WorkAddServlet extends HttpServlet {
 			/* 
 			 * ТУТ БУДЕТ ЛОГИКА ДОБАВЛЕНИЯ И ОТСЛЕЖИВАНИЯ МАРШРУТА
 			 */
+			
 			String template = request.getParameter("template");
-			System.out.println(template);
+			
 			if (template.length() > 1) {
-				System.out.println("template");
+				System.out.println("start template");
 				work.setTemplate(template);
 				try {
 					work.setWorkTemplateId(WorkWithTemplateDB.getLastIndexWorkTemplateId());

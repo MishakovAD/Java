@@ -38,12 +38,14 @@
 <fullyQualifiedTypeName name="Translit.Translit"/>
 <fullyQualifiedTypeName name="DAO.WorkDB"/>
 <fullyQualifiedTypeName name="Work.Work"/>
-<fullyQualifiedTypeName name="DocumentPathTemplate.DocumentPathTemplate"/>
 <fullyQualifiedTypeName name="ExcelApachePOI.IncomingMailExcel"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.io.FileInputStream"/>
-<fullyQualifiedTypeName name="Property.Property"/>
 <fullyQualifiedTypeName name="Rules.Roles"/>
 <fullyQualifiedTypeName name="UserProfile.UserProfile"/>
+<fullyQualifiedTypeName name="Property.Property"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="DocumentPathTemplate.DocumentPathTemplate"/>
+<fullyQualifiedTypeName name="DAO.WorkWithTemplateDB"/>
 </qualifiedTypeNameHistroy>

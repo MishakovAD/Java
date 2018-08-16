@@ -90,7 +90,7 @@
 					out.println("<td>Не заполнено</td>");
 				}
 				
-				if (list.get(i).getFilePathAndName() != null) {
+				if (list.get(i).getFilePathAndName() != null && !list.get(i).getFilePathAndName().contains("null")) {
 					out.println("<td><a href=\"/niikp/DownloadServlet?" + list.get(i).getFilePathAndName().substring(28) + "\">" + list.get(i).getFilePathAndName().substring(28) + "</a></td>"); //was 28
 				} else {
 					out.println("<td>Не заполнено</td>");

@@ -42,7 +42,7 @@
 			UserProfile userToWork = (UserProfile) request.getSession().getAttribute("userSignIn");
 			out.println("Поручено мне: <br>");
 			for (int i = 0; i < list.size(); i++) {
-				if (list.get(i).getToUserId() == userToWork.getUserId()) {
+				if (list.get(i).getToUserId() == userToWork.getUserId()  && (list.get(i).getIsAccept().equals("null") || list.get(i).getIsAccept().equals("refuse"))) {
 					
 					out.println("<tr>");
 					if (list.get(i).getToUserId() != 0) {
@@ -166,7 +166,7 @@
 
 			out.println("Я поручил: <br>");
 			for (int i = 0; i < list.size(); i++) {
-				if (list.get(i).getFromUserId() == userToWork.getUserId()) {
+				if (list.get(i).getFromUserId() == userToWork.getUserId() && (list.get(i).getIsAccept().equals("null") || list.get(i).getIsAccept().equals("refuse") || list.get(i).getIsAccept().equals("done"))) {
 					
 					out.println("<tr>");
 					if (list.get(i).getToUserId() != 0) {

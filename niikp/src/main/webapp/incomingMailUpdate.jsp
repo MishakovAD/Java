@@ -16,56 +16,83 @@
 			<%@ page import="java.util.Locale"%>
 	<%
 		IncomingMail incomingMail = (IncomingMail) request.getAttribute("incomingMail");
-			Date resultRegDate = null;
+	
 			Date resultSendDate = null;
 			Date resultSecondFloorDate = null;
-			String regDate = null;
 			String sendDate = null;
 			String secondFloorDate = null;
 			SimpleDateFormat oldDateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 			SimpleDateFormat newDateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
-			
-				resultRegDate = oldDateFormat.parse(incomingMail.getRegDate());
+			if (!incomingMail.getSendDate().equals("null")) {
 				resultSendDate = oldDateFormat.parse(incomingMail.getSendDate());
-				resultSecondFloorDate = oldDateFormat.parse(incomingMail.getSecondFloorDate());
-				
-				regDate = newDateFormat.format(resultRegDate);
 				sendDate = newDateFormat.format(resultSendDate);
+			} else {
+				resultSendDate = oldDateFormat.parse("01-01-0001");
+				sendDate = newDateFormat.format(resultSendDate);
+			}
+			if (!incomingMail.getSecondFloorDate().equals("null")) {
+				resultSecondFloorDate = oldDateFormat.parse(incomingMail.getSecondFloorDate());				
 				secondFloorDate = newDateFormat.format(resultSecondFloorDate);
-				System.out.println(regDate); 
-
+			} else {
+				resultSecondFloorDate = oldDateFormat.parse("01-01-0001");				
+				secondFloorDate = newDateFormat.format(resultSecondFloorDate);
+			}
+			
+				
+			
 			
 				%>
 	
 	
 
-	<c:set var="regDate" value="${incMail.getRegDate()}"/>
+	
 	<form method="post" action="incomingMail?action=submit" enctype="multipart/form-data">
-		<input type="text" name="regDate" value="<%= regDate %>" placeholder="Дата регистрации" /> 
-		<br><br><br>
-		<input type="number" name="regNum" value="<%= incomingMail.getIdMail() %>" placeholder="Порядковый номер" /> <!-- Скрыть, будет обычный айди записи -->
-		<br><br><br>
-		<p><select name="typeMail">
-    		<option value="Письмо1">Письмо</option>
-    		<option value="Письмо2">Письмо</option>
-    		<option value="Письмо3">Письмо</option>
-    		<option value="Письмо4">Письмо</option>
-   		</select></p> 
+		<p>Тип письма: </>
+		<select name="typeMail">
+		<%@ page import="IncomingMail.*"%>
+		<%@ page import="java.util.ArrayList"%>
+		<% 
+			ArrayList<String> typeMail = (ArrayList<String>) request.getAttribute("typeMailList");
+			for (String values : typeMail) { %>
+				<option value="<%= values %>"><%= values %></option>
+			<% } %>
+    	</select></p> 
    		<br><br><br>
+   		<p>Отправитель: </>
 		<input type="text" name="sender" value="<%= incomingMail.getSender() %>" list="senderList" placeholder="Отправитель" />	
 		<br><br><br>
-		<input type="text" name="sendDate" value="<%= sendDate %>" placeholder="Дата отправления письма" />
+		<p>Дата отправления письма: </>
+		<input type="text" required name="sendDate" value="<%= sendDate %>" placeholder="Дата отправления письма" />
 		<br><br><br>
+		<p>Номер письма: </>
 		<input type="text" name="mailNum" value="<%= incomingMail.getMailNum() %>" placeholder="Номер письма" />
 		<br><br><br>
+		<p>Тема письма: </>
 		<input type="text" name="mailTheme" value="<%= incomingMail.getMailTheme() %>" placeholder="Тема письма" />
 		<br><br><br>
+		<p>Дата, присваевыемая при первичной рег. документа: </>
 		<input type="text" name="secondFloorDate" value="<%= secondFloorDate %>" placeholder="Дата, присваевыемая при первичной рег. документа" />
-		<input type="text" required name="secondFloorNum" value="<%= incomingMail.getSecondFloorNum() %>" placeholder="Номер письма, присваевыемый при первичной рег. документа" />
+		<p>Номер письма, присваевыемый при первичной рег. документа: </>
+		<input type="text" name="secondFloorNum" value="<%= incomingMail.getSecondFloorNum() %>" placeholder="Номер письма, присваевыемый при первичной рег. документа" />
 		<br><br><br>
-		<!--  <input name="file" type="file" value="<%= incomingMail.getFilePathAndName() %>"><br>
-		<br><br><br> -->
+		<p>Документ: </>
+		<input name="file" type="file"><br>
+		<br><br><br>
        	<button type="submit">Save</button>
+       	
+       	<datalist id="senderList">
+						<%@ page import="IncomingMail.*"%>
+						<%@ page import="java.util.ArrayList"%>
+						<% 
+							ArrayList<String> senderList = (ArrayList<String>) request.getAttribute("senderMailList");
+							for (String values : senderList) { 
+							out.println("<option>");
+            				out.println(values); 
+            				out.println("</option>");	
+            			} %>
+						</datalist>
+       	
 	</form>
+	
 </body>
 </html>

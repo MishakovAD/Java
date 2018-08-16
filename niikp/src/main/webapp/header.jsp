@@ -32,7 +32,7 @@ pageEncoding="UTF-8"%>
             UserProfile userSignIn = (UserProfile) request.getSession().getAttribute("userSignIn");
             //System.out.println("id = " + userSignIn.getUserId() + " email: " + userSignIn.getEmail());
             ArrayList<Work> workListToUser = (ArrayList<Work>) request.getAttribute("workListToUser");
-			System.out.println(workListToUser.size());
+			//System.out.println(workListToUser.size());
             %>
 
           	<c:set var="id" value="${userSignIn.getUserId()}"/>    

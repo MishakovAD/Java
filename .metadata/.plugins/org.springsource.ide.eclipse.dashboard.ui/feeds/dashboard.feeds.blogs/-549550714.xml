@@ -5,7 +5,7 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2018-08-15T05:37:39Z</updated>
+  <updated>2018-08-15T05:37:00Z</updated>
   <entry>
     <title>This Week in Spring - August 14th, 2018</title>
     <link rel="alternate" href="https://spring.io/blog/2018/08/15/this-week-in-spring-august-14th-2018" />
@@ -14,7 +14,7 @@
       <name>Josh Long</name>
     </author>
     <id>tag:spring.io,2018-08-15:3360</id>
-    <updated>2018-08-15T05:37:39Z</updated>
+    <updated>2018-08-15T05:37:00Z</updated>
     <content type="html">&lt;p&gt;Hi Spring fans! Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! This week I&amp;rsquo;m in San Francisco, Seattle, and Los Angeles talking to customers.&lt;/p&gt;
 &lt;p&gt;We on the Spring team are heads down, preparing for this year&amp;rsquo;s event-to-not-miss, &lt;a href="https://springoneplatform.io/"&gt;SpringOne Platform&lt;/a&gt;. Come to learn about cloud-native application development, cloud computing, agile, devops, big-data, continuous-delivery, testing, and so much more. Get your tickets now! The event is September 24-27th, 2018 in Washington, D.C.&lt;/p&gt;
 &lt;p&gt;..Speaking of! &lt;a href="https://twitter.com/kmanthey/status/1025515975586852870"&gt;See this kid&lt;/a&gt;? He just passed his Java camp certification and if he gets 1000 likes/RTs, Pivotal&amp;rsquo;ll send him to SpringOne Platform. &lt;em&gt;Please RETWEET!&lt;/em&gt;&lt;/p&gt;
@@ -28,16 +28,14 @@
   &lt;li&gt;&lt;a href="https://spring.io/blog/2018/08/09/spring-cloud-for-google-cloud-platform-1-0-goes-ga"&gt;Spring Cloud for Google Cloud Platform 1.0 goes GA!&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Matt Raible has &lt;a href="https://twitter.com/mraible/status/1029367544103280640?s=12"&gt; updated his &amp;ldquo;Develop a Microservices Architecture with OAuth 2.0 and JHipster&amp;rdquo;&lt;/a&gt; to use JHipster v5.1.0 and Spring Boot 2.0.3. We&amp;rsquo;ll ignore that Spring Boot 2.0.4 is already available! :D&lt;/li&gt;
   &lt;li&gt;I love this JAXEnter blog post on the results of a Cloud Foundry survey &lt;a href="https://jaxenter.com/cloudfoundry-severless-container-146536.html"&gt;on serverless computing and container technologies&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;My buddy, Okta&amp;rsquo;s Matt Rabile, has updated his &amp;quot;Develop a Microservices Architecture &lt;a href="https://developer.okta.com/blog/2018/03/01/develop-microservices-jhipster-oauth"&gt;with OAuth 2.0 and JHipster&amp;quot; to use JHipster v5.1.0 and Spring Boot 2.0.3.&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;This is pretty cool! &lt;a href="https://www.youtube.com/watch?v=-BlJQqT8Kpg"&gt;Spring Boot and Spring Developer Stephane Nicoll has a nice video with Vaadin&amp;rsquo;s Matti Tahvonen on building Spring Boot applications with Vaadin 10&lt;/a&gt;. I&amp;rsquo;ve got this bookmarked and will watch.&lt;/li&gt;
-  &lt;li&gt;I love production and apparently so does &lt;a href="https://twitter.com/tkvangorder/status/1029422327811825664"&gt;Tyler Van Gorder and his company&lt;/a&gt; because they just moved a Spring Boot and Spring Cloud-based system with 657k lines of Java code to Spring Boot 2.0 and Spring Cloud Finchley and into production! Congratulations!&lt;br/&gt;?&lt;/li&gt;
+  &lt;li&gt;I love production and apparently so does &lt;a href="https://twitter.com/tkvangorder/status/1029422327811825664"&gt;Tyler Van Gorder and his company&lt;/a&gt; because they just moved a Spring Boot and Spring Cloud-based system with 657k lines of Java code to Spring Boot 2.0 and Spring Cloud Finchley and into production! Congratulations!&lt;/li&gt;
   &lt;li&gt;Our friends at SUSE &lt;a href="https://www.linkedin.com/jobs/view/781140125/"&gt;are hiring for a product management&lt;/a&gt; role working on Cloudfoundry Kkubernetesio and OpenStack. Interested? Ping &lt;a href="https://twitter.com/DevinDavis"&gt;Devin Davis&lt;/a&gt; and he can make the introduction..&lt;/li&gt;
   &lt;li&gt;The &lt;em&gt;Spring Framework Guru&lt;/em&gt; website has a very &lt;a href="https://springframework.guru/defining-spring-cloud-contracts-in-open-api/"&gt;interesting post on defining Spring Cloud Contracts with OpenAPI&lt;/a&gt;. This is &lt;em&gt;awesome&lt;/em&gt;!&lt;/li&gt;
   &lt;li&gt;Spring is a good choice for services for JavaFX clients, especially in the reactive world made possible by Reactor. &lt;a href="https://twitter.com/bsideup/status/1029259551466553344?s=12"&gt;This thread is pretty inspiring&lt;/a&gt;.&lt;/li&gt;
   &lt;li&gt;&lt;a href="https://twitter.com/springcentral/status/1029376610229600257"&gt; riff v0.1.1 on Knative is now available&lt;/a&gt;. The new release has system uninstall and command function invoker support. This is awesome!&lt;/li&gt;
   &lt;li&gt;&lt;a href="https://www.infoq.com/presentations/ci-cd-jenkins-pcf"&gt;Continuous Integration and Deployment with Jenkins for PCF&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;The latest installment of [this Japanese language magazine on programming - &lt;em&gt;WEB+DB&lt;/em&gt; - has a &lt;a href="http://gihyo.jp/amp/magazine/wdpress/archive/2018/vol106?__twitter_impression=true"&gt;nice article on Spring Boot&lt;/a&gt;. Check it out!&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://twitter.com/jaxentercom/status/1029008807379251200?s=12"&gt;twitter.com&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;The Flowable BPMN engine - which works ideally with Spring Boot - &lt;a href="https://twitter.com/tijsrademakers/status/1028942097536180224?s=12"&gt;now supports running on MongoDB&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;I was interviewed, along with a number of other folks in the Java ecosystem, on the cadence of new Java releases. You &lt;a href="https://jaxenter.com/java-influencers-series-part-1-148058.html"&gt;might enjoy some of the insight&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;the SD Times have a nice writeup of the latest &lt;a href="https://sdtimes.com/softwaredev/sd-times-news-digest-spring-cloud-gcp-1-0-openmetrics-and-the-academy-software-foundation/"&gt;and greatest in Spring Cloud GCP&lt;/a&gt;&lt;/li&gt;

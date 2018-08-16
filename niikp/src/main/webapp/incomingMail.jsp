@@ -34,9 +34,9 @@
 		<input type="text" name="mailTheme" value="" placeholder="Тема письма" />
 		<br><br><br>
 		<p>Дата, присваевыемая при первичной рег. документа: </>
-		<input type="date" required name="secondFloorDate" value="" placeholder="Дата, присваевыемая при первичной рег. документа" />
+		<input type="date" name="secondFloorDate" value="" placeholder="Дата, присваевыемая при первичной рег. документа" />
 		<p>Номер письма, присваевыемый при первичной рег. документа: </>
-		<input type="text" required name="secondFloorNum" value="" placeholder="Номер письма, присваевыемый при первичной рег. документа" />
+		<input type="text" name="secondFloorNum" value="" placeholder="Номер письма, присваевыемый при первичной рег. документа" />
 		<br><br><br>
 		<p>Письмо: </>
 		<input name="file" type="file"><br>

@@ -50,7 +50,7 @@ public class AddPrivilegeUsersDB {
 			Statement statement = null;
 			statement = con.createStatement();
 
-			String SQL_add_role = "UPDATE users SET userGroup='" + role + "' WHERE userId=" + userId + ";";
+			String SQL_add_role = "UPDATE users SET privilege='" + role + "' WHERE userId=" + userId + ";";
 			statement.executeUpdate(SQL_add_role);
 
 			if (statement != null)
