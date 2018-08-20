@@ -7,6 +7,7 @@ pageEncoding="UTF-8"%>
 <!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
 
 
+
 <!-- Подключение js и css только таким образом! -->
 <!-- Если добавить новый css js, то сначала сделать рефреш проекта,иначе не будет видеть файл! -->
 <script type="text/javascript">
@@ -30,38 +31,70 @@ pageEncoding="UTF-8"%>
 
 
 <body>
-<!-- ГИСТОГРАММА  
-<script src="https://www.google.com/jsapi"></script>
-  <script>
-   google.load("visualization", "1", {packages:["corechart"]});
-   google.setOnLoadCallback(drawChart);
-   function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-     ['Число', 'Выполнено', 'Не выполнено'],
-     ['1860', 1.3, 70],
-     ['1885', 2000, 3120],
-     ['1901', 12170, 9920]
-    ]);
-    var options = {
-     title: 'График выполнения работы',
-     hAxis: {title: 'Число'},
-     vAxis: {title: 'Стадия'}
-    };
-    var chart = new google.visualization.ColumnChart(document.getElementById('oil'));
-    chart.draw(data, options);
-   }
-  </script>
-<!-- <div id="oil" style="width: 500px; height: 400px;"></div> -->
-<!-- КОНЕЦ ГИСТОГРАММЫ  -->
 
-
+<style>
+.five {
+  background: -webkit-linear-gradient(right, #76b852);
+  padding: 50px 20px 50px 170px;
+  text-align: center;
+} 
+.five h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  position: relative;
+  color: #587493;
+  font-size: 2.5em;
+  font-weight: normal;
+  display: inline-block;
+  margin: 0;
+  line-height: 1;
+  padding: 8px 20px 8px 2px;
+  border-top: 4px solid;
+}
+.five h1:before {
+  content: "НИИ";
+  position: absolute;
+  top: -10px;
+  left: -160px;
+  font-size: 1.5em;
+  transform: rotate(-25deg);
+  font-family: 'Marck Script', cursive;
+}
+.five h1:after {
+  content: ""; 
+  position: absolute;
+  width: 120%;
+  height: 4px;
+  right: 0;
+  bottom: -4px;
+  background: #587493;
+}
+@media (max-width: 580px) {
+  .five {padding-left: 130px;}
+  .five h1 {font-size: 2em;}
+  .five h1:before {left: -130px;}
+}
+@media (max-width: 480px) {
+  .five {padding-left: 100px;}
+  .five h1 {
+    font-size: 1.5em;
+    padding-right: 10px;
+}
+  .five h1:before {left: -100px;}
+}
+@media (max-width: 380px) {
+  .five {padding-left: 90px;}
+  .five h1 {font-size: 1.3em;}
+  .five h1:before {left: -88px;}
+}
+</style>
 
 <div class="container-fluid">
   <div class="row">
     <div class="col-9">
-      1
+      <div class="five"><h1>Космического приборостроения</h1></div>
     </div>
-    <div class="col-3">
+    <div class="col-3" align="right" style="padding-right: 0px;">
       <%@ include file = "header.jsp" %>
     </div>
   </div>

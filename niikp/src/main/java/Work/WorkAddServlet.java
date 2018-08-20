@@ -33,14 +33,14 @@ import Users.UsersList;
 
 @WebServlet(urlPatterns = { "/workAdd" })
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 20, // 2MB
-maxFileSize = 1024 * 1024 * 10, // 20MB
-maxRequestSize = 1024 * 1024 * 50) // 50MB
+		maxFileSize = 1024 * 1024 * 10, // 20MB
+		maxRequestSize = 1024 * 1024 * 50) // 50MB
 public class WorkAddServlet extends HttpServlet {
 	private String mailId = null;
 	private String idMail = null;
-	public static final String SAVE_DIRECTORY = "uploadDir";
+	public static final String SAVE_DIRECTORY = Property.getProperty("saveDirectory");
 	public static final String SAVE_DIR = Property.getProperty("saveDir");
-	
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -51,15 +51,14 @@ public class WorkAddServlet extends HttpServlet {
 		} catch (InstantiationException | IllegalAccessException | SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		String action = request.getParameter("action");
-		if (action != null ) {
+		if (action != null) {
 			if (action.equals("submit")) {
-				response.sendRedirect("/workList");
+				response.sendRedirect("/workList?parameter=toMe");
 			}
 		}
-		
-		
+
 		idMail = request.getParameter("id");
 		String typeMail = request.getParameter("type");
 		mailId = typeMail + "_" + idMail;
@@ -78,12 +77,13 @@ public class WorkAddServlet extends HttpServlet {
 //		}
 	}
 
-	
 	/*
 	 * 
-	 * Так как мы можем добавлять дело к корреспонденции, а перенаправление у нас идет только после успешной загрузкифайла
-	 * то при проверки на маршрут, перенаправления не идет, поэтому и с маршрутом и без нужно добавить редирект
-	 * иначе у нас не будет переадресации после добавления и придется это делать ручками
+	 * Так как мы можем добавлять дело к корреспонденции, а перенаправление у нас
+	 * идет только после успешной загрузкифайла то при проверки на маршрут,
+	 * перенаправления не идет, поэтому и с маршрутом и без нужно добавить редирект
+	 * иначе у нас не будет переадресации после добавления и придется это делать
+	 * ручками
 	 * 
 	 */
 	@Override
@@ -96,56 +96,62 @@ public class WorkAddServlet extends HttpServlet {
 		if (userSignIn != null) {
 			fromUserId = userSignIn.getUserId();
 		}
-				
+
 		int toUserId = 0;
 		int observerId = 0;
-		
+
 		String action = request.getParameter("action");
-		if ("submit".equals(action)) { 
+		if ("submit".equals(action)) {
 			String userNameSecondName = request.getParameter("user");
 			String userName;
 			String userSecondName;
 			if (userNameSecondName != null) {
 				int indexOfSpaseFromUser = userNameSecondName.indexOf(" ");
 				userName = userNameSecondName.substring(0, indexOfSpaseFromUser);
-				userSecondName = userNameSecondName.substring(indexOfSpaseFromUser+1);
+				userSecondName = userNameSecondName.substring(indexOfSpaseFromUser + 1);
 			} else {
 				userName = "Не";
 				userSecondName = "заполнено";
 			}
-			
-			
+
 			String observer = request.getParameter("observer");
 			String observerName;
-			String observerSecondName; 
-			if(!observer.isEmpty()) {
+			String observerSecondName;
+			if (!observer.isEmpty()) {
 				int indexOfSpaseFromObserver = observer.indexOf(" ");
 				observerName = observer.substring(0, indexOfSpaseFromObserver);
-				observerSecondName = observer.substring(indexOfSpaseFromObserver+1);
+				observerSecondName = observer.substring(indexOfSpaseFromObserver + 1);
 			} else {
 				observerName = "Не";
 				observerSecondName = "заполнено";
 			}
 
-			
-			for (Map.Entry entry : UsersList.usersList.entrySet()) { 
+			for (Map.Entry entry : UsersList.usersList.entrySet()) {
 				UserProfile user = (UserProfile) entry.getValue();
-				if (user.getName().equalsIgnoreCase(userName) && user.getSecondName().equalsIgnoreCase(userSecondName)) {
+				if (user.getName().equalsIgnoreCase(userName)
+						&& user.getSecondName().equalsIgnoreCase(userSecondName)) {
 					toUserId = (int) entry.getKey();
 				}
 			}
-			for (Map.Entry entry : UsersList.usersList.entrySet()) { 
+			for (Map.Entry entry : UsersList.usersList.entrySet()) {
 				UserProfile user = (UserProfile) entry.getValue();
-				if (user.getName().equalsIgnoreCase(observerName) && user.getSecondName().equalsIgnoreCase(observerSecondName)) {
+				if (user.getName().equalsIgnoreCase(observerName)
+						&& user.getSecondName().equalsIgnoreCase(observerSecondName)) {
 					observerId = (int) entry.getKey();
 				}
 			}
 
-			
 			String startDate = request.getParameter("startDate");
+			System.out.println(startDate);
+			if (startDate.isEmpty()) {
+				startDate = "2015-01-01";
+			}
 			String endDate = request.getParameter("endDate");
+			if (endDate.isEmpty()) {
+				endDate = "2015-01-01";
+			}
 			String assignment = request.getParameter("assignment");
-			
+
 			work.setToUserId(toUserId);
 			work.setObserverId(observerId);
 			work.setFromUserId(fromUserId);
@@ -153,8 +159,7 @@ public class WorkAddServlet extends HttpServlet {
 			work.setEndDate(endDate);
 			work.setAssignment(assignment);
 			work.setMailId(mailId);
-			
-			
+
 			if (idMail != null) {
 				try {
 					String filePathAndNameToWork = IncomingMailDB.getFileIncomingMailToId(Integer.parseInt(idMail));
@@ -178,9 +183,12 @@ public class WorkAddServlet extends HttpServlet {
 
 					// Part list (multi files).
 					for (Part part : request.getParts()) {
-						String fileName = extractFileName(part, WorkDB.getLastIndexWork()); 
-						if (fileName != null && fileName.length() > 22) {  //Почему то он думал, что тут несколько файлов, а из за того, что мы добавляем свой префикс, то файлнэйм никогда не пустой
-							//и он занулял его
+						String fileName = extractFileName(part, WorkDB.getLastIndexWork());
+						if (fileName != null && fileName.length() > 22) { // Почему то он думал, что тут несколько
+																			// файлов, а из за того, что мы добавляем
+																			// свой префикс, то файлнэйм никогда не
+																			// пустой
+							// и он занулял его
 							String filePath = fullSavePath + File.separator + fileName;
 							if (filePath != null) {
 								work.setFilePathAndNameToWork(filePath);
@@ -191,7 +199,7 @@ public class WorkAddServlet extends HttpServlet {
 						}
 					}
 					// Upload successfully!.
-					response.sendRedirect(request.getContextPath() + "/workList");
+					response.sendRedirect(request.getContextPath() + "/workList?parameter=toMe");
 					// response.sendRedirect("/niikp");
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -200,13 +208,13 @@ public class WorkAddServlet extends HttpServlet {
 					dispatcher.forward(request, response);
 				}
 			}
-			
-			/* 
+
+			/*
 			 * ТУТ БУДЕТ ЛОГИКА ДОБАВЛЕНИЯ И ОТСЛЕЖИВАНИЯ МАРШРУТА
 			 */
-			
+
 			String template = request.getParameter("template");
-			
+
 			if (template.length() > 1) {
 				System.out.println("start template");
 				work.setTemplate(template);
@@ -216,7 +224,7 @@ public class WorkAddServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 				for (Integer userId : DocumentPathTemplate.getTemplate(template)) {
-					
+
 				}
 			} else {
 				try {
@@ -224,15 +232,12 @@ public class WorkAddServlet extends HttpServlet {
 				} catch (InstantiationException | IllegalAccessException | SQLException e) {
 					e.printStackTrace();
 				}
-			}			
-			
+			}
+
 		}
-		
-		
-		
-		
+
 	}
-	
+
 	private String extractFileName(Part part, int prefix) {
 		// form-data; name="file"; filename="C:\file1.zip"
 		// form-data; name="file"; filename="C:\Note\file2.zip"

@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import DAO.IncomingMailDB;
+import Property.Property;
 
 
 @WebServlet("/incomingMail/*")
@@ -26,7 +27,7 @@ import DAO.IncomingMailDB;
 		maxFileSize = 1024 * 1024 * 10, // 20MB
 		maxRequestSize = 1024 * 1024 * 50) // 50MB
 public class IncomingMailUpdateServlet  extends HttpServlet {
-	public static final String SAVE_DIRECTORY = "uploadDir";
+	public static final String SAVE_DIRECTORY = Property.getProperty("saveDirectory");
 	String id;
 	
 	@Override
@@ -40,10 +41,11 @@ public class IncomingMailUpdateServlet  extends HttpServlet {
 				//IncomingMailServlet.incomingMailList.remove(Integer.parseInt(id));
 				try {
 					IncomingMailDB.deleteIncomingMail(Integer.parseInt(id));
+					response.sendRedirect("/niikp/incomingMailList?pageNumber=1");
 				} catch (NumberFormatException | InstantiationException | IllegalAccessException | SQLException e) {
 					e.printStackTrace();
 				}
-				response.sendRedirect("/niikp/incomingMailList");
+				
 				
 			}
 		} else if (action != null && action.equals("update")) {
@@ -133,7 +135,7 @@ public class IncomingMailUpdateServlet  extends HttpServlet {
 					}
 				}
 				// Upload successfully!.
-				response.sendRedirect(request.getContextPath() + "/incomingMailList");
+				response.sendRedirect(request.getContextPath() + "/incomingMailList?pageNumber=1");
 				// response.sendRedirect("/niikp");
 			} catch (Exception e) {
 				e.printStackTrace();

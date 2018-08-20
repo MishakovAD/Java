@@ -5,6 +5,47 @@ pageEncoding="UTF-8"%>
 <html>
 <meta charset="UTF-8">
 
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 220px;
+  height: 220px;
+  align: right;
+  text-align: center;
+  font-family: arial;
+  background-color: gainsboro;
+}
+
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 16px;
+  color: black;
+}
+
+h1 {
+  font-size: 20px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+</style>
+
 <header>
 <%@ taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core' %>
 
@@ -36,20 +77,28 @@ pageEncoding="UTF-8"%>
             %>
 
           	<c:set var="id" value="${userSignIn.getUserId()}"/>    
-          	<c:set var="email" value="${userSignIn.getEmail()}"/>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-            <a href="/niikp/users/${id}"  style="color:black">
-            	<p align="right">Привет, <%= userSignIn.getName() %></p>
-            </a>            
-            <a href="/niikp/logOut"  style="color:black">
-            <p align="right">Выйти</p>
-            </a>
-          <a href="/niikp/workList">
-          	<p align="right">Невыполненных дел: <%= workListToUser.size() %></p>
-          </a>
-          <br>
+<div class="card" align="right">
+  <a href="/niikp/users/${id}"  style="color:black">
+  <h1><%= userSignIn.getName() %> <%= userSignIn.getSecondName() %> </h1>
+  </a>
+  <a href="/niikp/logOut"  style="color:black">
+ <p><button>Выйти</button></p>
+ </a>
+   <a href="/niikp/workList?parameter=toMe">
+  <p class="title">Невыполненных дел: <%= workListToUser.size() %></p>
+  </a>
+</div>
            
-          <li class="btn btn-link btn-lg" style="color:black">         
-           </li>
+           
+
+
+
+
+
+
+
+
+
 
 	
 	<% } %>

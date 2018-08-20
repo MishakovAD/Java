@@ -65,7 +65,7 @@ public class IncomingMailDB {
 		Statement statement = null;
 		statement = con.createStatement();
 
-		String SQL_get_incomingMail = "SELECT * FROM incomingMail;";
+		String SQL_get_incomingMail = "SELECT * FROM incomingMail ORDER BY idMail DESC;";
 
 		statement.execute(SQL_get_incomingMail);
 		ResultSet rs = statement.executeQuery(SQL_get_incomingMail);

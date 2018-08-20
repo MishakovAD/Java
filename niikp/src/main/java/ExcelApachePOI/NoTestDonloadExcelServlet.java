@@ -42,7 +42,7 @@ public class NoTestDonloadExcelServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest paramHttpServletRequest, HttpServletResponse paramHttpServletResponse)
 			throws ServletException, IOException {
-		String str2 = "incomingMail.xlsx";
+		String str2 = "incomingMail.xlsx"; //file name
 		Object localObject1 = lookupFile(root + str2);
 		Object localObject2;
 		String str3 = paramHttpServletRequest.getHeader("Accept-Encoding");

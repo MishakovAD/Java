@@ -33,7 +33,7 @@ import UserProfile.UserProfile;
 		maxFileSize = 1024 * 1024 * 10, // 20MB
 		maxRequestSize = 1024 * 1024 * 50) // 50MB
 public class IncomingMailServlet extends HttpServlet {
-	public static final String SAVE_DIRECTORY = "uploadDir";
+	public static final String SAVE_DIRECTORY = Property.getProperty("saveDirectory");
 	public static final String SAVE_DIR = Property.getProperty("saveDir");
 	// public static final String SAVE_DIR = "C:/niikp/"; //server
 
@@ -84,20 +84,30 @@ public class IncomingMailServlet extends HttpServlet {
 			String mailTheme = request.getParameter("mailTheme");
 			String secondFloorDateParameter = request.getParameter("secondFloorDate");
 			String secondFloorNum = request.getParameter("secondFloorNum");
-
+			
 			Date resultSendDate = null;
-			Date resultSecondFloorDate = null;
-			String regDate = null;
 			String sendDate = null;
+			
+			Date resultSecondFloorDate = null;			
 			String secondFloorDate = null;
+			
 			SimpleDateFormat oldDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 			SimpleDateFormat newDateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 			try {
-				resultSendDate = oldDateFormat.parse(sendDateParameter);
-				resultSecondFloorDate = oldDateFormat.parse(secondFloorDateParameter);
-
-				sendDate = newDateFormat.format(resultSendDate);
-				secondFloorDate = newDateFormat.format(resultSecondFloorDate);
+				if (sendDateParameter != null) {
+					resultSendDate = oldDateFormat.parse(sendDateParameter);
+					sendDate = newDateFormat.format(resultSendDate);
+				} else {
+					sendDate = null;
+				}
+				
+				if (secondFloorDateParameter != null) {
+					resultSecondFloorDate = oldDateFormat.parse(secondFloorDateParameter);				
+					secondFloorDate = newDateFormat.format(resultSecondFloorDate);
+				} else {
+					secondFloorDate = null;
+				}
+				
 
 			} catch (ParseException e1) {
 				// TODO Auto-generated catch block
@@ -106,7 +116,6 @@ public class IncomingMailServlet extends HttpServlet {
 
 			// IncomingMail incMail = new IncomingMail(regDate, typeMail, sender, sendDate,
 			// mailNum, mailTheme, secondFloorDate);
-			incMail.setRegDate(regDate);
 			incMail.setTypeMail(typeMail);
 			incMail.setSender(sender);
 			incMail.setSendDate(sendDate);
@@ -141,7 +150,7 @@ public class IncomingMailServlet extends HttpServlet {
 					}
 				}
 				// Upload successfully!.
-				response.sendRedirect(request.getContextPath() + "/incomingMailList");
+				response.sendRedirect(request.getContextPath() + "/incomingMailList?pageNumber=1");
 				// response.sendRedirect("/niikp");
 			} catch (Exception e) {
 				e.printStackTrace();

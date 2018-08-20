@@ -16,14 +16,23 @@ import DAO.WorkDB;
 public class WorkListServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String parameter = request.getParameter("parameter");
 		ArrayList<Work> workList = null;
 		try {
 			workList = WorkDB.getWorkList();
 		} catch (InstantiationException | IllegalAccessException | SQLException e) {
 			e.printStackTrace();
 		} 
-		request.setAttribute("workList", workList);
-		request.getRequestDispatcher("/workList.jsp").forward(request, response);
+		
+		if (parameter.equalsIgnoreCase("toMe")) {
+			request.setAttribute("workList", workList);
+			request.getRequestDispatcher("/workListToMe.jsp").forward(request, response);
+		} else if (parameter.equalsIgnoreCase("fromMe")) {
+			request.setAttribute("workList", workList);
+			request.getRequestDispatcher("/workListFromMe.jsp").forward(request, response);
+		} else {
+			response.sendRedirect("/niikp");
+		}
 	}
 
 	@Override

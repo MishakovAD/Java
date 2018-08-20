@@ -44,8 +44,9 @@
 <fullyQualifiedTypeName name="java.io.FileInputStream"/>
 <fullyQualifiedTypeName name="Rules.Roles"/>
 <fullyQualifiedTypeName name="UserProfile.UserProfile"/>
-<fullyQualifiedTypeName name="Property.Property"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="DocumentPathTemplate.DocumentPathTemplate"/>
 <fullyQualifiedTypeName name="DAO.WorkWithTemplateDB"/>
+<fullyQualifiedTypeName name="Property.Property"/>
+<fullyQualifiedTypeName name="Pagination.Pagination"/>
 </qualifiedTypeNameHistroy>

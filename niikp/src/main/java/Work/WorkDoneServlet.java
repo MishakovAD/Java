@@ -28,7 +28,7 @@ import Translit.Translit;
 public class WorkDoneServlet extends HttpServlet {
 	String action;
 	String workId;
-	public static final String SAVE_DIRECTORY = "uploadDir";
+	public static final String SAVE_DIRECTORY = Property.getProperty("saveDirectory");
 	public static final String SAVE_DIR = Property.getProperty("saveDir");
 
 	// public static final String SAVE_DIR = "C:/niikp/"; //server
@@ -43,7 +43,7 @@ public class WorkDoneServlet extends HttpServlet {
 			} catch (NumberFormatException | InstantiationException | IllegalAccessException | SQLException e) {
 				e.printStackTrace();
 			}
-			response.sendRedirect("/niikp/workList");
+			response.sendRedirect("/niikp/workList?parameter=fromMe");
 			return;
 		} else if (action.equals("refuse")) {
 			try {
@@ -51,7 +51,7 @@ public class WorkDoneServlet extends HttpServlet {
 			} catch (NumberFormatException | InstantiationException | IllegalAccessException | SQLException e) {
 				e.printStackTrace();
 			}
-			response.sendRedirect("/niikp/workList");
+			response.sendRedirect("/niikp/workList?parameter=fromMe");
 			return;
 		}
 		request.getRequestDispatcher("/workDone.jsp").forward(request, response);
@@ -92,7 +92,7 @@ public class WorkDoneServlet extends HttpServlet {
 					}
 				}
 				// Upload successfully!.
-				response.sendRedirect(request.getContextPath() + "/workList");
+				response.sendRedirect(request.getContextPath() + "/workList?parameter=toMe");
 				// response.sendRedirect("/niikp");
 			} catch (Exception e) {
 				e.printStackTrace();
