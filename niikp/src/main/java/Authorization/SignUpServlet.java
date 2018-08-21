@@ -2,6 +2,7 @@ package Authorization;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +20,12 @@ public class SignUpServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("Enter doGet SignUpServlet");
+		ArrayList<String> groupList = new ArrayList<>();
+		groupList.add("Секретари");
+		groupList.add("Испытатели");
+		groupList.add("Бухгалтера");
+		request.setAttribute("groupList", groupList);
+
 		request.getRequestDispatcher("/registration.jsp").forward(request, response);
 
 	}
@@ -27,7 +33,7 @@ public class SignUpServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("Enter doPost SignUpServlet");
+
 		UserProfile userProfile;
 
 		request.setCharacterEncoding("UTF-8");
@@ -41,9 +47,14 @@ public class SignUpServlet extends HttpServlet {
 					// //Получаем из БД и автоинкремент,либо в базе само
 					userProfile.setName(request.getParameter("name"));
 					userProfile.setSecondName(request.getParameter("secondName"));
+					userProfile.setMiddleName(request.getParameter("middleName"));
 					userProfile.setBirthday(request.getParameter("birthday"));
 					userProfile.setEmail(request.getParameter("email"));
 					userProfile.setPassword(request.getParameter("password"));
+					userProfile.setPhoneNumber(request.getParameter("phoneNumber"));
+					userProfile.setRoomNumber(request.getParameter("roomNumber"));
+					userProfile.setUserGroup(request.getParameter("userGroup"));
+					
 					DataBase.regNewUser(userProfile);
 					//Need do getter for userId from BD. Because userId dont set for userProfile 
 					//And in Attribute we dont have this parametr

@@ -35,6 +35,7 @@ public class CheckerDB {
 				userProfileSignIn.setRole(rs.getString("privilege"));
 				userProfileSignIn.setPosition(rs.getString("position"));
 				userProfileSignIn.setUserGroup(rs.getString("userGroup"));
+				System.out.println(rs.getString("userGroup"));
 				SignInServlet.userLoginMap.put(rs.getString("email"), userProfileSignIn);
 				return true;
 			}				

@@ -44,8 +44,8 @@ pageEncoding="UTF-8"%>
 						<li><a href="#">Корреспонденция<i class="fa fa-angle-down"></i></a>
 							<ul class="submenu">
 								<li><a href="/niikp/incomingMailList?pageNumber=1">Входящая корреспонденция</a></li>
-								<li><a href="/niikp">Исходящая корреспонденция</a></li>
-								<li><a href="/niikp">Внутренняя корреспонденция</a></li>
+								<!-- <li><a href="/niikp">Исходящая корреспонденция</a></li>
+								<li><a href="/niikp">Внутренняя корреспонденция</a></li>  -->
 							</ul>
 						</li>
 					</ul>
@@ -60,7 +60,6 @@ pageEncoding="UTF-8"%>
 </head>
 
 <style>
-@import url(https://fonts.googleapis.com/css?family=Lora);
 body {margin:0;}
 h2 {
 	font-family: monospace;
@@ -84,7 +83,6 @@ a {
 	padding: 10px 15px;
 	text-decoration: none;
 	outline: none;
-	font-family: 'Lora', serif;
 	transition: .5s linear;
 }
 .fa {

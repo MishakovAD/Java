@@ -17,14 +17,26 @@
 </head>
 <body>
 
+
 <div class="login-page">
 <div class="form">
 		<form method="post" action="registration?action=submit" class="login-form">
+					<input type="text" required name="email" value="${userProfile.email}" placeholder="Login" />
+					<input type="password" required name="password" value="${userProfile.password}" placeholder="Пароль" />
 					<input type="text" name="name" value="${userProfile.name}" placeholder="Имя" />
 					<input type="text" name="secondName" value="${userProfile.secondName}" placeholder="Фамилия" />
-					<input type="date" name="birthday" value="${userProfile.birthday}" placeholder="Дата Рождения" />
-					<input type="text" name="email" value="${userProfile.email}" placeholder="email" />
-					<input type="password" name="password" value="${userProfile.password}" placeholder="Пароль" />
+					<input type="text" name="middleName" value="${userProfile.middleName}" placeholder="Отчество" />
+					<input type="date" required name="birthday" value="${userProfile.birthday}" placeholder="Дата Рождения" />					
+					<input type="text" name="phoneNumber" value="${userProfile.phoneNumber}" placeholder="Номер телефона" />
+					<input type="text" name="roomNumber" value="${userProfile.roomNumber}" placeholder="Номер комнаты" />
+					<select name="userGroup" style="width: 269px; height: 35px;">
+						<%@ page import="java.util.ArrayList"%>
+						<% 
+						ArrayList<String> typeMail = (ArrayList<String>) request.getAttribute("groupList");
+							for (String values : typeMail) { %>
+						<option value="<%= values %>"><%= values %></option>
+							<% } %>
+    				</select></p> 
 			<button type="submit">Регистрация</button>
 		</form>
 	</div>

@@ -117,27 +117,35 @@ public class DataBase {
 	public static void regNewUser(UserProfile userProfile) throws SQLException, InstantiationException, IllegalAccessException {
 		Connection con = DriverManager.getConnection(url, username, password);
 		System.out.println("Регистрация нового пользователя!");
-		
+
 		String name = userProfile.getName();
 		String secondName = userProfile.getSecondName();
+		String middleName = userProfile.getMiddleName();
 		String email = userProfile.getEmail();
 		String password = userProfile.getPassword();
-		String birthday = userProfile.getBirthday();		
+		String birthday = userProfile.getBirthday();
+		String phoneNumber = userProfile.getPhoneNumber();
+		String roomNumber = userProfile.getRoomNumber();
+		String userGroup = userProfile.getUserGroup();
 
 		Statement statement = null;
 		statement = con.createStatement();
 
-		String SQL_insert_new_user = "insert into users (dateRegistration, name, secondName, email, "
-				+ "password, birthday)"
-				+ " values (now(), '" + name + "', '" + secondName + "', '" 
-				+ email + "', '" + password + "', '" + birthday + "');";
+		String SQL_insert_new_user = "insert into users (dateRegistration, name, secondName, middleName, email, "
+				+ "password, birthday, phoneNumber, roomNumber, userGroup, privilege)"
+				+ " values (now(), '" + name + "', '" + secondName + "', '"  + middleName + "', '"
+				+ email + "', '" + password + "', '" + birthday  + "', '" +  phoneNumber + "', '" + roomNumber + "', '" + userGroup + "', 'user');";
 				
 		statement.execute(SQL_insert_new_user);
 		name = null;
 		secondName = null;
+		middleName = null;
 		email = null;
 		password = null;
 		birthday = null;
+		phoneNumber = null;
+		roomNumber = null;
+		userGroup = null;
 	}
 		
 
