@@ -28,6 +28,7 @@ import Property.Property;
 		maxRequestSize = 1024 * 1024 * 50) // 50MB
 public class IncomingMailUpdateServlet  extends HttpServlet {
 	public static final String SAVE_DIRECTORY = Property.getProperty("saveDirectory");
+	public static final String SAVE_DIR = Property.getProperty("saveDir");
 	String id;
 	
 	@Override
@@ -112,7 +113,7 @@ public class IncomingMailUpdateServlet  extends HttpServlet {
 				String appPath = request.getServletContext().getRealPath("");
 				appPath = appPath.replace('\\', '/');
 				String fullSavePath = null;
-	            fullSavePath = "E:/JavaProjectDocs/" + SAVE_DIRECTORY;
+	            fullSavePath = SAVE_DIR + SAVE_DIRECTORY;
 
 				// Creates the save directory if it does not exists
 				File fileSaveDir = new File(fullSavePath);

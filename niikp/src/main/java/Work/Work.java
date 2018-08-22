@@ -1,8 +1,11 @@
 package Work;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import DAO.GetterDB;
 
 
 public class Work {
@@ -91,6 +94,21 @@ public class Work {
 	public int getToUserId() {
 		return toUserId;
 	}
+	
+	public String getUserNameFromId(int userId) {
+		String name = " ";
+		String secondName = " ";
+
+		try {
+			name = GetterDB.getUserFromId(userId).getName();
+			secondName = GetterDB.getUserFromId(userId).getSecondName();
+		} catch (InstantiationException | IllegalAccessException | SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return name + " " + secondName;
+	}
+	
 	public void setToUserId(int toUserId) {
 		this.toUserId = toUserId;
 	}
@@ -171,6 +189,15 @@ public class Work {
 	}
 	public static void setWorkList(Map<Integer, Work> workList) {
 		Work.workList = workList;
+	}
+	@Override
+	public String toString() {
+		return "Work [workId=" + workId + ", workTemplateId=" + workTemplateId + ", toUserId=" + toUserId
+				+ ", observerId=" + observerId + ", fromUserId=" + fromUserId + ", startDate=" + startDate
+				+ ", endDate=" + endDate + ", assignment=" + assignment + ", mailId=" + mailId
+				+ ", filePathAndNameToWork=" + filePathAndNameToWork + ", isComplete=" + isComplete + ", isAccept="
+				+ isAccept + ", report=" + report + ", reportFilePathAndNameToWork=" + reportFilePathAndNameToWork
+				+ ", template=" + template + "]";
 	}
 	
 }

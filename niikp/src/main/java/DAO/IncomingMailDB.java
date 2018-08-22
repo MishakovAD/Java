@@ -5,7 +5,11 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 import ExcelApachePOI.IncomingMailExcel;
 import IncomingMail.IncomingMail;
@@ -36,6 +40,46 @@ public class IncomingMailDB {
 
 		String SQL_insert_incomingMail = "insert into incomingMail (regDate, typeMail, sender, sendDate, "
 				+ "mailNum, mailTheme, secondFloorDate, secondFloorNum, filePathAndName)" + " values (now(), '"
+				+ typeMail + "', '" + sender + "', '" + sendDate + "', '" + mailNum + "', '" + mailTheme + "', '"
+				+ secondFloorDate + "', '" + secondFloorNum + "', '" + filePathAndName + "');";
+
+		statement.execute(SQL_insert_incomingMail);
+		// regDate = null;
+		typeMail = null;
+		sender = null;
+		sendDate = null;
+		mailNum = null;
+		mailTheme = null;
+		secondFloorDate = null;
+		secondFloorNum = null;
+		filePathAndName = null;
+		if (statement != null)
+			statement.close();
+		if (con != null)
+			con.close();
+
+	}
+	
+	public static void addIncomingMailFromExcel(IncomingMail incMail)
+			throws SQLException, InstantiationException, IllegalAccessException {
+		Connection con = DriverManager.getConnection(url, username, password);
+
+		String regDate = incMail.getRegDate();
+		String typeMail = incMail.getTypeMail();
+		String sender = incMail.getSender();
+		String sendDate = incMail.getSendDate();
+		String mailNum = incMail.getMailNum();
+		String mailTheme = incMail.getMailTheme();
+		String secondFloorDate = incMail.getSecondFloorDate();
+		String secondFloorNum = incMail.getSecondFloorNum();
+		String filePathAndName = incMail.getFilePathAndName();
+
+		Statement statement = null;
+		statement = con.createStatement();
+		
+
+		String SQL_insert_incomingMail = "insert into incomingMail (regDate, typeMail, sender, sendDate, "
+				+ "mailNum, mailTheme, secondFloorDate, secondFloorNum, filePathAndName)" + " values ('" + regDate + "', '"
 				+ typeMail + "', '" + sender + "', '" + sendDate + "', '" + mailNum + "', '" + mailTheme + "', '"
 				+ secondFloorDate + "', '" + secondFloorNum + "', '" + filePathAndName + "');";
 
@@ -218,6 +262,46 @@ public class IncomingMailDB {
 			statement.close();
 		if (con != null)
 			con.close();
+
+	}
+	
+	public static ArrayList<IncomingMail> getIncomingMailSortedByRegDate(String sort)
+			throws SQLException, InstantiationException, IllegalAccessException {
+		IncomingMail incMail = new IncomingMail();
+		ArrayList<IncomingMail> listIncomingMailSirtByRegDate = new ArrayList<>();
+
+		Connection con = DriverManager.getConnection(url, username, password);
+		Statement statement = null;
+		statement = con.createStatement();
+
+		String SQL_get_incomingMail = "SELECT * FROM incomingMail ORDER BY regDate " + sort + ";";
+
+		statement.execute(SQL_get_incomingMail);
+		ResultSet rs = statement.executeQuery(SQL_get_incomingMail);
+		while (rs.next()) {
+			incMail.setRegDate(rs.getString("regDate"));
+			incMail.setIdMail(rs.getInt("idMail"));
+			incMail.setTypeMail(rs.getString("typeMail"));
+			incMail.setSender(rs.getString("sender"));
+			incMail.setSendDate(rs.getString("sendDate"));
+			incMail.setMailNum(rs.getString("mailNum"));
+			incMail.setMailTheme(rs.getString("mailTheme"));
+			incMail.setSecondFloorDate(rs.getString("secondFloorDate"));
+			incMail.setSecondFloorNum(rs.getString("secondFloorNum"));
+			incMail.setFilePathAndName(rs.getString("filePathAndName"));
+			listIncomingMailSirtByRegDate.add(incMail);
+			incMail = new IncomingMail();
+		}
+		if (statement != null)
+			statement.close();
+		if (con != null)
+			con.close();
+		return listIncomingMailSirtByRegDate;
+		// Нужно определить, что лучше:
+		/*
+		 * возвращать массив, созданный в этом методе или же просто наполнять уже
+		 * созданный массив в другом классе
+		 */
 
 	}
 

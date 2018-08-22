@@ -27,6 +27,7 @@ import DAO.WorkDB;
 import DAO.WorkWithTemplateDB;
 import DocumentPathTemplate.DocumentPathTemplate;
 import Property.Property;
+import Rules.Groups;
 import Translit.Translit;
 import UserProfile.UserProfile;
 import Users.UsersList;
@@ -58,6 +59,9 @@ public class WorkAddServlet extends HttpServlet {
 				response.sendRedirect("/workList?parameter=toMe");
 			}
 		}
+		
+		
+		request.setAttribute("groupList", Groups.groupList);
 
 		idMail = request.getParameter("id");
 		String typeMail = request.getParameter("type");
@@ -103,6 +107,8 @@ public class WorkAddServlet extends HttpServlet {
 		String action = request.getParameter("action");
 		if ("submit".equals(action)) {
 			String userNameSecondName = request.getParameter("user");
+			System.out.println("user in workAdd: " + userNameSecondName);
+			System.out.println("isGroup = " + request.getParameter("isGroup"));
 			String userName;
 			String userSecondName;
 			if (userNameSecondName != null) {
@@ -164,7 +170,7 @@ public class WorkAddServlet extends HttpServlet {
 				try {
 					String filePathAndNameToWork = IncomingMailDB.getFileIncomingMailToId(Integer.parseInt(idMail));
 					work.setFilePathAndNameToWork(filePathAndNameToWork);
-					response.sendRedirect(request.getContextPath() + "/workList");
+					response.sendRedirect(request.getContextPath() + "/workList?parameter=toMe");
 				} catch (NumberFormatException | InstantiationException | IllegalAccessException | SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -215,7 +221,7 @@ public class WorkAddServlet extends HttpServlet {
 
 			String template = request.getParameter("template");
 
-			if (template.length() > 1) {
+			if (!(template == null)) {
 				System.out.println("start template");
 				work.setTemplate(template);
 				try {

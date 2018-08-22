@@ -1,53 +1,111 @@
 <%@page import="UserProfile.UserProfile"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
+<!-- Подключение bootstrap -->
+<script type="text/javascript">
+	<%@include file="/resources/bootstrap/js/bootstrap.min.js"%>  
+</script>
+<style>
+<%@include file="/resources/bootstrap/css/bootstrap.min.css"%> 
+</style>
+
 <head>
-<meta charset="UTF-8">
-<title>Дела/Поручения</title>
+	<meta charset="UTF-8">
+	<title>Дела/Поручения</title>
 </head>
 <body>
-			<%@ page import="java.util.HashMap" %>
-			<%@ page import="java.util.Map" %> 
-            <%@ page import="Users.*" %>
-            <%@ page import="UserProfile.*" %>
-            
-            <%
-            HashMap<Integer, UserProfile> list = (HashMap<Integer, UserProfile>) request.getAttribute("usersList");
-            
-            for (Map.Entry entry : list.entrySet()) {
-            	UserProfile user = (UserProfile) entry.getValue(); 
-                %>
+	
 
-             
- 
+	
+	
 	<form method="post" action="workAdd?action=submit" enctype="multipart/form-data">
-					<input type="text" name="user" value="" list="names" placeholder="Имя и Фамилия" />	
-					<br><br><br>
-					<input type="text" name="observer" value="" list="names" placeholder="Ответственный" />	
-					<br><br><br>
-					<input type="text" name="template" value="" list="templates" placeholder="Шаблон" />	
-					<br><br><br>
-					<p>Дата начала: </p>
-					<input type="date" name="startDate" value="" placeholder="Дата начала" />
-					<br><br><br>
-					<p>Срок исполнения: </p>
-					<input type="date" name="endDate" value="" placeholder="Срок исполнения" />
-					<br><br><br>
-					<input type="text" name="assignment" value="" placeholder="Поручение" />
-					<br><br><br>
-					<input name="file" type="file"><br>
-					<br><br><br>
-       				<button type="submit">Save</button>
-       				
-       				<datalist id="names">
+		
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-4">
+					<h3>Исполнитель: &nbsp; &nbsp; &nbsp; <input type="text" name="user" value="" list="names" placeholder="Имя и Фамилия" /></h3> 
+					
+					<%@ page import="java.util.HashMap" %>
+					<%@ page import="java.util.Map" %> 
+					<%@ page import="Users.*" %>
+					<%@ page import="UserProfile.*" %>
+					
+					
+					<!--  <h3>Исполнители: </h3>
+					<select size="15" multiple name="user" style="width: 269px;">
+						<%@ page import="java.util.ArrayList"%>
 						<%
+						/*HashMap<Integer, UserProfile> list1 = (HashMap<Integer, UserProfile>) request.getAttribute("usersList");
+						
+						for (Map.Entry entry : list1.entrySet()) {
+						UserProfile user = (UserProfile) entry.getValue(); 
+						out.println("<option>");
+							out.println(user.getName() + " " + user.getSecondName()); 
+						out.println("</option>");	
+					} */ %>
+				</select></p> -->
+			</div>
+			<div class="col-4">
+				
+				
+				<select name="userGroup" style="width: 269px; height: 35px;">
+					<%@ page import="java.util.ArrayList"%>
+					<% 
+					ArrayList<String> typeMail = (ArrayList<String>) request.getAttribute("groupList");
+						for (String values : typeMail) { %>
+						<option value="<%= values %>"><%= values %></option>
+						<% } %>
+					</select></p> 
+					<p><input type="checkbox" name="isGroup" value="true" unchecked>Выбрать группу<Br></p> <!-- либо null либо true -->
+					
+					<!-- <input type="text" name="template" value="" list="templates" placeholder="Шаблон" />
+						<br><br><br> -->
+						<h3>Дата начала:
+							<input type="date" name="startDate" value="" placeholder="Дата начала" />
+						</h3>
+						<br><br><br>
+						<h3>Срок исполнения:
+							<input type="date" name="endDate" value="" placeholder="Срок исполнения" />
+						</h3>
+						<br><br><br>
+						<h3>Поручение:
+							<input type="text" name="assignment" value="" placeholder="Поручение" />
+						</h3>
+						<br><br><br>
+						<input name="file" type="file"><br>
+						<br><br><br>
+						<button type="submit">Save</button>
+						
+						<datalist id="names">
+							<%@ page import="java.util.HashMap" %>
+							<%@ page import="java.util.Map" %> 
+							<%@ page import="Users.*" %>
+							<%@ page import="UserProfile.*" %>
+							
+							<%
+							HashMap<Integer, UserProfile> list = (HashMap<Integer, UserProfile>) request.getAttribute("usersList");
+							
+							for (Map.Entry entry : list.entrySet()) {
+							UserProfile user = (UserProfile) entry.getValue(); 
 							out.println("<option>");
-            				out.println(user.getName() + " " + user.getSecondName()); 
-            				out.println("</option>");	
-            			} %>
-						</datalist>
-    </form>
-</body>
-</html>
+								out.println(user.getName() + " " + user.getSecondName()); 
+							out.println("</option>");	
+						} %>
+					</datalist>
+				</div>
+				<div class="col-4">
+					<h3>Ответсвенный:
+						<input type="text" name="observer" value="" list="names" placeholder="Ответственный" />	
+					</h3>
+					<br><br><br>
+				</div>
+			</div>
+			
+			
+			
+		</form>
+	</body>
+	</html>

@@ -45,16 +45,16 @@ pageEncoding="UTF-8"%>
 							<ul class="submenu">
 								<li><a href="/niikp/incomingMailList?pageNumber=1">Входящая корреспонденция</a></li>
 								<!-- <li><a href="/niikp">Исходящая корреспонденция</a></li>
-								<li><a href="/niikp">Внутренняя корреспонденция</a></li>  -->
-							</ul>
-						</li>
-					</ul>
-				</nav>
-			</ul>
-<!-- <form class="form-inline my-2 my-lg-0">
+									<li><a href="/niikp">Внутренняя корреспонденция</a></li>  -->
+								</ul>
+							</li>
+						</ul>
+					</nav>
+				</ul>
+<form class="form-inline my-2 my-lg-0">
 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-</form> -->
+</form>
 </div>
 </nav>
 </head>

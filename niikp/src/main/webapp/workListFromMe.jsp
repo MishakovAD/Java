@@ -98,7 +98,7 @@
 					}
 
 					if (list.get(i).getFilePathAndNameToWork() != null
-							&& !list.get(i).getFilePathAndNameToWork().contains("null")) {
+							&& !list.get(i).getFilePathAndNameToWork().contains("null")  && list.get(i).getFilePathAndNameToWork().length()>28) {
 						//System.out.println("list.get(i).getFilePathAndNameToWork() = " + list.get(i).getFilePathAndNameToWork());
 						out.println("<td><a href=\"/niikp/DownloadServlet?"
 								+ list.get(i).getFilePathAndNameToWork().substring(28) + "\">"

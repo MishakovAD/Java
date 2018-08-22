@@ -8,7 +8,6 @@
 <fullyQualifiedTypeName name="java.io.InputStream"/>
 <fullyQualifiedTypeName name="java.io.BufferedReader"/>
 <fullyQualifiedTypeName name="java.io.InputStreamReader"/>
-<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="java.util.Locale"/>
 <fullyQualifiedTypeName name="IncomingMail.IncomingMail"/>
 <fullyQualifiedTypeName name="org.apache.poi.ss.usermodel.Workbook"/>
@@ -34,19 +33,24 @@
 <fullyQualifiedTypeName name="org.apache.poi.xssf.usermodel.XSSFTable"/>
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="IncomingMail.IncomingMailServlet"/>
-<fullyQualifiedTypeName name="DAO.IncomingMailDB"/>
 <fullyQualifiedTypeName name="Translit.Translit"/>
 <fullyQualifiedTypeName name="DAO.WorkDB"/>
 <fullyQualifiedTypeName name="Work.Work"/>
-<fullyQualifiedTypeName name="ExcelApachePOI.IncomingMailExcel"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.io.FileInputStream"/>
 <fullyQualifiedTypeName name="Rules.Roles"/>
 <fullyQualifiedTypeName name="UserProfile.UserProfile"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="DocumentPathTemplate.DocumentPathTemplate"/>
 <fullyQualifiedTypeName name="DAO.WorkWithTemplateDB"/>
-<fullyQualifiedTypeName name="Property.Property"/>
 <fullyQualifiedTypeName name="Pagination.Pagination"/>
+<fullyQualifiedTypeName name="Property.Property"/>
+<fullyQualifiedTypeName name="MainPage.MainPageServlet"/>
+<fullyQualifiedTypeName name="java.util.Collections"/>
+<fullyQualifiedTypeName name="java.util.Comparator"/>
+<fullyQualifiedTypeName name="DAO.IncomingMailDB"/>
+<fullyQualifiedTypeName name="ExcelApachePOI.IncomingMailExcel"/>
+<fullyQualifiedTypeName name="java.text.Format"/>
+<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>

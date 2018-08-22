@@ -145,6 +145,44 @@ public class WorkDB {
 
 	}
 	
+	public static ArrayList<Work> getWorkToMailId(String mailId) throws SQLException, InstantiationException, IllegalAccessException { 
+		//Добавляются только невыполненные дела! Для этого проверка переменной
+		Work work = new Work();
+		ArrayList<Work> workListToMailId = new ArrayList<>();
+
+		
+		Connection con = DriverManager.getConnection(url, username, password);	
+		Statement statement = null;
+		statement = con.createStatement();
+
+		String SQL_get_workList_to_mailId = "SELECT * FROM work WHERE mailId='" + mailId + "';";		
+		
+		ResultSet rs = statement.executeQuery(SQL_get_workList_to_mailId);		
+		while (rs.next()) {
+			work.setWorkId(rs.getInt("workId"));
+			work.setToUserId(rs.getInt("toUserId"));
+			work.setObserverId(rs.getInt("observerId"));
+			work.setFromUserId(rs.getInt("fromUserId"));
+			work.setStartDate(rs.getString("startDate"));
+			work.setEndDate(rs.getString("endDate"));
+			work.setAssignment(rs.getString("assignment"));
+			work.setMailId(rs.getString("mailId"));			
+			work.setComplete(rs.getBoolean("isComplete"));
+			work.setIsAccept(rs.getString("isAccept"));
+			work.setReport(rs.getString("report"));
+			work.setReportFilePathAndNameToWork(rs.getString("reportFilePathAndNameToWork"));
+			workListToMailId.add(work);
+			
+			work = new Work();
+						
+		}
+		
+		if(statement != null) statement.close(); 
+	    if(con != null)  con.close(); 
+		return workListToMailId;
+
+	}
+	
 	public static void doneWorkToUser(String report, int workId, String reportFile) throws SQLException, InstantiationException, IllegalAccessException {
 		Connection con = DriverManager.getConnection(url, username, password);	
 		Statement statement = null;

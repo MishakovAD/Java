@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO.CheckerDB;
 import DAO.DataBase;
+import Rules.Groups;
 import UserProfile.UserProfile;
 
 @WebServlet(urlPatterns = { "/registration", "/reg" })
@@ -20,11 +21,9 @@ public class SignUpServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ArrayList<String> groupList = new ArrayList<>();
-		groupList.add("Секретари");
-		groupList.add("Испытатели");
-		groupList.add("Бухгалтера");
-		request.setAttribute("groupList", groupList);
+		
+			
+		request.setAttribute("groupList", Groups.groupList);
 
 		request.getRequestDispatcher("/registration.jsp").forward(request, response);
 

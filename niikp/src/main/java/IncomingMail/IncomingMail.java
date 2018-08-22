@@ -1,10 +1,16 @@
 package IncomingMail;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import Work.Work;
 
-public class IncomingMail {
+public class IncomingMail  implements Comparable<IncomingMail> {
+	@Override
+	public int compareTo(IncomingMail arg0) {
+		return 0;
+	}
+
 	/*
 	 * add user id, who add mail if it need */
 	private String regDate;
@@ -230,6 +236,13 @@ public class IncomingMail {
 		this.filePathAndName = filePathAndName;
 		this.resolution = resolution;
 	}
+	
+	public static Comparator<IncomingMail> COMPARE_BY_IDMAIL = new Comparator<IncomingMail>() {
+        public int compare(IncomingMail one, IncomingMail other) {
+            //return one.idMail.compareTo(other.idMail);
+            return Integer.compare(one.idMail, other.idMail);
+        }
+    };
 
 	public String getRegDate() {
 		return regDate;
