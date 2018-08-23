@@ -19,7 +19,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpUtils;
 
-@WebServlet("/download")
+import Property.Property;
+
+@WebServlet("/DownloadServlet")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 20, // 2MB
 		maxFileSize = 1024 * 1024 * 10, // 20MB
 		maxRequestSize = 1024 * 1024 * 50) // 50MB
@@ -35,7 +37,7 @@ public class DownloadServlet extends HttpServlet {
 	private ServletContext context;
 	private String separator = "/";
 	// private String root = ".";
-	private String root = "E:/JavaProjectDocs/uploadDir/";
+	private String root = Property.getProperty("saveDir") + Property.getProperty("saveDirectory");
 	private String error = null;
 	private boolean disposition = true;
 	private static final String VERSION = "ver. 2.2";

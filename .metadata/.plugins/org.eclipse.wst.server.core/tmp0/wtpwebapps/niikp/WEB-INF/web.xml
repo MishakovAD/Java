@@ -19,7 +19,7 @@
   </welcome-file-list>
   
   	<!-- for local development -->
-     <servlet> 
+    <!-- <servlet> 
      <servlet-name>DownloadServlet</servlet-name> 
      <servlet-class>com.jsos.download.DownloadServlet</servlet-class> 
      <init-param> 
@@ -30,7 +30,7 @@
   	<servlet-mapping> 
      <servlet-name>DownloadServlet</servlet-name> 
      <url-pattern>/DownloadServlet</url-pattern> 
-    </servlet-mapping> 
+    </servlet-mapping> -->
     
     <!-- for Server -->
      <!-- <servlet> 

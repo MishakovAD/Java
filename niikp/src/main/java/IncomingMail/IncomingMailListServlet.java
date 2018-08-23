@@ -19,6 +19,7 @@ import DAO.IncomingMailDB;
 import DAO.WorkDB;
 import MainPage.MainPageServlet;
 import Pagination.Pagination;
+import Property.Property;
 import UserProfile.UserProfile;
 import Work.Work;
 
@@ -31,11 +32,18 @@ public class IncomingMailListServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		UserProfile user = (UserProfile) request.getSession().getAttribute("userSignIn");
 		String pageNumber = request.getParameter("pageNumber");
+
+		if (pageNumber.equals("num")) {
+			String num = request.getParameter("pageNum");
+			response.sendRedirect("/niikp/incomingMailList?pageNumber=" + num);
+			return;
+		}
+		
 		ArrayList<IncomingMail> list = null;
 		try {
 			if (user != null && Rules.Rules.getLawToWatchMail(user)) {
 				
-				if (MainPageServlet.lastIndexIncomingMail < (IncomingMailDB.getLastIndexIncomingMail()-1)) {
+				if (MainPageServlet.lastIndexIncomingMail != (IncomingMailDB.getLastIndexIncomingMail()-1)) {
 					MainPageServlet.listIncomingMail = IncomingMailDB.getIncomingMail(); 
 					list = MainPageServlet.listIncomingMail;
 					MainPageServlet.lastIndexIncomingMail++;
@@ -57,14 +65,16 @@ public class IncomingMailListServlet extends HttpServlet {
 				
 				ArrayList<IncomingMail> listForPage = new ArrayList<>();
 				if (pageNumber.equals("null")) {
-					request.setAttribute("paginationPages", Pagination.getPagination(pageCount, 1, 10, 3));
-					for (int i=0; i<=10; i++) {	
+					request.setAttribute("paginationPages", Pagination.getPagination(pageCount, 1, 
+							Integer.parseInt(Property.getProperty("counterElementsOnPage")), 3));
+					for (int i=0; i<=Integer.parseInt(Property.getProperty("counterElementsOnPage")); i++) {	
 						if (i==pageCount) break;
 						listForPage.add(list.get(i));						
 					}
 				} else {
-					request.setAttribute("paginationPages", Pagination.getPagination(pageCount, Integer.parseInt(pageNumber), 10, 3));
-					for (int i=0 + 10*(Integer.parseInt(pageNumber)-1); i<=10*Integer.parseInt(pageNumber); i++) {
+					request.setAttribute("paginationPages", Pagination.getPagination(pageCount, Integer.parseInt(pageNumber),
+							Integer.parseInt(Property.getProperty("counterElementsOnPage")), 3));
+					for (int i=0 + Integer.parseInt(Property.getProperty("counterElementsOnPage"))*(Integer.parseInt(pageNumber)-1); i<=Integer.parseInt(Property.getProperty("counterElementsOnPage"))*Integer.parseInt(pageNumber); i++) {
 						if (i==pageCount) break;
 						listForPage.add(list.get(i));					
 					}
@@ -120,8 +130,12 @@ public class IncomingMailListServlet extends HttpServlet {
 		String sortSendDate = request.getParameter("sortSendDate");
 
 		
-		if (sortDateReg.equals("noSort")) {
-			
+		if (sortDateReg.equals("noSort") && sortNumReg.equals("noSort")) {
+			try {
+				MainPageServlet.listIncomingMail = IncomingMailDB.getIncomingMail();
+			} catch (InstantiationException | IllegalAccessException | SQLException e) {
+				e.printStackTrace();
+			}
 		} else if (sortDateReg.equals("increase")) {
 			try {
 				MainPageServlet.listIncomingMail = IncomingMailDB.getIncomingMailSortedByRegDate("ASC");
@@ -136,8 +150,12 @@ public class IncomingMailListServlet extends HttpServlet {
 			}		
 		}
 		
-		if (sortNumReg.equals("noSort")) {
-			
+		if (sortNumReg.equals("noSort") && sortDateReg.equals("noSort")) {
+			try {
+				MainPageServlet.listIncomingMail = IncomingMailDB.getIncomingMail();
+			} catch (InstantiationException | IllegalAccessException | SQLException e) {
+				e.printStackTrace();
+			}
 		} else if (sortNumReg.equals("increase")) {
 			if (MainPageServlet.listIncomingMail.get(0).getIdMail() > MainPageServlet.listIncomingMail.get(1).getIdMail()) {
 				Collections.reverse(MainPageServlet.listIncomingMail);

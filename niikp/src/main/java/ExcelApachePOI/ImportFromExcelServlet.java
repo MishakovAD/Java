@@ -30,7 +30,7 @@ public class ImportFromExcelServlet  extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		try {
 			System.out.println("Property   itno ImportFromExcelServlet" + Property.getProperty("fileForExportIncomingMail"));
-			IncomingMailExcel.readFromExcel("C:/niikp/excel/mail.xlsx");
+			IncomingMailExcel.readFromExcel(Property.getProperty("fileForExportIncomingMail"));
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

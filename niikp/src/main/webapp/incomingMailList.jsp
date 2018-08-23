@@ -18,9 +18,53 @@ pageEncoding="UTF-8"%>
 
 
 <body>
-	<h2>Входящая корреспонденция</h2>
+	<p><h2>Входящая корреспонденция</h2>
+	
+	<a href="/niikp/incomingMail">Добавить Входящую корреспонденцию</button></a>
+	<a href="/niikp/downloadExcel">Скачать Excel файл</a> </p>
+	
+	<form method="get" action="/niikp/incomingMailList?pageNumber=num">
+Перейти к странице: <input type="text" name="pageNumber" size="20">
+<button type="submit">Перейти</button>
+</form>
+
+<style>
+.pagination {padding: 20px; clear:both;}
+.pagination ul {text-align: center;}
+.pagination ul li {display: inline-block; margin: 0 1px; vertical-align: middle; line-height: 12px; padding: 2px 6px;}
+.pagination ul li a, .pagination ul li span {color: #666f80;} 
+.pagination ul li a:hover, .pagination ul li span:hover {background: #f5f5f5; -webkit-border-radius: 1px; -moz-border-radius: 1px; border-radius: 1px;}
+.pagination ul li a.prev, .pagination ul li a.next {font-weight: bold;}
+.pagination ul li.active a, .pagination ul li.active span {color: #2d4c80; font-size: 16px; font-weight: bold;}
+.pagination ul li.active a:hover, .pagination ul li.active span:hover {background: none;} 
+}
+
+
+</style>
+
+<%@ page import="Pagination.*"%>
+<%@ page import="java.util.Map"%>
+<%
+Map<Integer, Boolean> paginationPages = (Map<Integer, Boolean>) request.getAttribute("paginationPages");
+int lastValueKey = paginationPages.keySet().size();
+
+%>
+
+
+<div class="pagination">
+	<ul>
+		<li><a href="#" class="prev"><</a></li>
+		<% for (Integer key : paginationPages.keySet()) { %>
+		<li><a href="/niikp/incomingMailList?pageNumber=<%=key%>"><%=key%></a></li>
+		<% } %>
+		<span>&hellip;</span>
+		<li><a href="/niikp/incomingMailList?pageNumber=1">Вернуться в начало</a></li>
+		<li><a href="#" class="next">></a></li>
+	</ul>
+</div>
+	
 	<table border="1">	
-	<form method="post" action="/niikp/incomingMailList?action=sort">
+	<!-- <form method="post" action="/niikp/incomingMailList?action=sort">
 	<button type="submit">Сортировать</button>
 	<br>	
 		<tr>
@@ -42,32 +86,66 @@ pageEncoding="UTF-8"%>
 			Рег. номер письма
 			<br>
 		</th>
-		<th>Тип письма</th>
-		<th>		
-			<!-- <select name="sortSender" style="width: 170px; height: 35px;">
-					<option value="noSort">Не сортировать</option>
-					<option value="increase">От А до Я</option>
-					<option value="decrease">От Я до А</option>
-			</select></p>  -->
-			Отправитель
-			<!-- <br> -->
+		</form> -->
+		
+	<tr>
+		<th>Дата регистрации
+		<form method="post" action="/niikp/search?search=searchRegDate" class="form-inline my-2 my-lg-0">
+<input class="form-control mr-sm-2" type="search" name="searchRegDate" placeholder="Search" aria-label="Search">
+<button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+</form>
 		</th>
-		<th>		
-		<!--	<select name="sortSendDate" style="width: 170px; height: 35px;">
-					<option value="noSort">Не сортировать</option>
-					<option value="increase">Возрастанию</option>
-					<option value="decrease">Убыванию</option>
-			</select></p>  -->
-			Дата отпр. письма
-		<!--	<br> -->
+		<th>Рег. номер письма
+		<form method="post" action="/niikp/search?search=searchIdMail" class="form-inline my-2 my-lg-0">
+<input class="form-control mr-sm-2" type="search" name="searchIdMail" placeholder="Search" aria-label="Search">
+<button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+</form>
+		</th>
+		
+		<th>Тип письма
+		<form method="post" action="/niikp/search?search=searchMailType" class="form-inline my-2 my-lg-0">
+<input class="form-control mr-sm-2" type="search" name="searchMailType" placeholder="Search" aria-label="Search">
+<button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+</form>
+		</th>
+		<th>Отправитель
+		<form method="post" action="/niikp/search?search=searchSender" class="form-inline my-2 my-lg-0">
+<input class="form-control mr-sm-2" type="search" name="searchSender" placeholder="Search" aria-label="Search">
+<button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+</form>
 			
-		</form>
+		</th>
+		<th>Дата отпр. письма
+		<form method="post" action="/niikp/search?search=searchSendDate" class="form-inline my-2 my-lg-0">
+<input class="form-control mr-sm-2" type="search" name="searchSendDate" placeholder="Search" aria-label="Search">
+<button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+</form>		
 		</th>
 			
-			<th>Номер письма</th>
-			<th>Тема письма</th>
-			<th>Дата 2 этажа</th>
-			<th>Номер 2 этажа</th>
+			<th>Номер письма
+					<form method="post" action="/niikp/search?search=searchMailNum" class="form-inline my-2 my-lg-0">
+<input class="form-control mr-sm-2" type="search" name="searchMailNum" placeholder="Search" aria-label="Search">
+<button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+</form>
+			</th>
+			<th>Тема письма
+			<form method="post" action="/niikp/search?search=searchMailTheme" class="form-inline my-2 my-lg-0">
+<input class="form-control mr-sm-2" type="search" name="searchMailTheme" placeholder="Search" aria-label="Search">
+<button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+</form>
+			</th>
+			<th>Дата 2 этажа
+			<form method="post" action="/niikp/search?search=searchSecondFloorDate" class="form-inline my-2 my-lg-0">
+<input class="form-control mr-sm-2" type="search" name="searchSecondFloorDate" placeholder="Search" aria-label="Search">
+<button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+</form>
+			</th>
+			<th>Номер 2 этажа
+			<form method="post" action="/niikp/search?search=searchSecondFloorNum" class="form-inline my-2 my-lg-0">
+<input class="form-control mr-sm-2" type="search" name="searchSecondFloorNum" placeholder="Search" aria-label="Search">
+<button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+</form>
+			</th>
 			<th>Документ</th>
 		</tr>
 		<%@ page import="java.util.ArrayList"%>
@@ -124,16 +202,16 @@ out.println("<td>" + list.get(i).getMailTheme() + "</td>");
 out.println("<td>Не заполнено</td>");
 }
 
-if (list.get(i).getSecondFloorDate() != null) {
+if (list.get(i).getSecondFloorDate() != null && !list.get(i).getSecondFloorDate().equals("null")) {
 out.println("<td>" + list.get(i).getSecondFloorDate() + "</td>");
 } else {
-out.println("<td>Не заполнено</td>");
+out.println("<td>-</td>");
 }
 
-if (list.get(i).getSecondFloorNum() != null) {
+if (list.get(i).getSecondFloorNum() != null && !list.get(i).getSecondFloorNum().equals("null")) {
 out.println("<td>" + list.get(i).getSecondFloorNum() + "</td>");
 } else {
-out.println("<td>Не заполнено</td>");
+out.println("<td>-</td>");
 }
 
 if (list.get(i).getFilePathAndName() != null && !list.get(i).getFilePathAndName().contains("null") && list.get(i).getFilePathAndName().length() > 28) {
@@ -141,7 +219,7 @@ out.println("<td><a href=\"/niikp/DownloadServlet?" + list.get(i).getFilePathAnd
 } else if (list.get(i).getFilePathAndName() != null && !list.get(i).getFilePathAndName().contains("null")) {
 	out.println("<td>" + list.get(i).getFilePathAndName() + "</td>");
 } else {
-out.println("<td>Не заполнено</td>");
+out.println("<td>-</td>");
 }
 
 
@@ -210,53 +288,6 @@ out.println("</tr>");
 }
 out.println("</table>");
 %>
-
-<a href="/niikp/incomingMail">Добавить Входящую корреспонденцию</button></a>
-<a href="/niikp/downloadExcel">Скачать Excel файл</a>
-
-<style>
-.pagination {padding: 20px; clear:both;}
-.pagination ul {text-align: center;}
-.pagination ul li {display: inline-block; margin: 0 1px; vertical-align: middle; line-height: 12px; padding: 2px 6px;}
-.pagination ul li a, .pagination ul li span {color: #666f80;} 
-.pagination ul li a:hover, .pagination ul li span:hover {background: #f5f5f5; -webkit-border-radius: 1px; -moz-border-radius: 1px; border-radius: 1px;}
-.pagination ul li a.prev, .pagination ul li a.next {font-weight: bold;}
-.pagination ul li.active a, .pagination ul li.active span {color: #2d4c80; font-size: 16px; font-weight: bold;}
-.pagination ul li.active a:hover, .pagination ul li.active span:hover {background: none;} 
-}
-
-
-</style>
-
-<%@ page import="Pagination.*"%>
-<%@ page import="java.util.Map"%>
-<%
-Map<Integer, Boolean> paginationPages = (Map<Integer, Boolean>) request.getAttribute("paginationPages");
-int lastValueKey = paginationPages.keySet().size();
-
-%>
-
-
-<div class="pagination">
-	<ul>
-		<li><a href="#" class="prev"><</a></li>
-		<% for (Integer key : paginationPages.keySet()) { %>
-		<li><a href="/niikp/incomingMailList?pageNumber=<%=key%>"><%=key%></a></li>
-		<% } %>
-		<span>&hellip;</span>
-		<li><a href="/niikp/incomingMailList?pageNumber=1">Вернуться в начало</a></li>
-		<li><a href="#" class="next">></a></li>
-	</ul>
-</div>
-
-<div class="paginator">
-	<% 
-	//for (Integer key : paginationPages.keySet()) {
-	//  out.print("<a href=\"/niikp/incomingMailList?pageNumber=" + key + "\">" + String.valueOf(key) + "</a> ");
-	//} 
-	%>
-	
-</div>
 
 </body>
 </html>

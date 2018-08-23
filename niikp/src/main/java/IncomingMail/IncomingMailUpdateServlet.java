@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import DAO.IncomingMailDB;
+import MainPage.MainPageServlet;
 import Property.Property;
 
 
@@ -146,6 +147,7 @@ public class IncomingMailUpdateServlet  extends HttpServlet {
 			}
 			try {
 				IncomingMailDB.updateIncomingMail(incMail);
+				MainPageServlet.listIncomingMail = IncomingMailDB.getIncomingMail();
 			} catch (InstantiationException | IllegalAccessException | SQLException e) {
 				e.printStackTrace();
 			}
