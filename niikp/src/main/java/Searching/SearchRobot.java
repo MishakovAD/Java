@@ -1,6 +1,7 @@
 package Searching;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import IncomingMail.IncomingMail;
 
@@ -80,6 +81,7 @@ public class SearchRobot {
 	public static ArrayList<IncomingMail> searchIntoIncomingMailForOneField(String searchParameterForOnceSearcing,
 			ArrayList<IncomingMail> listWhereNeedSearch) {
 		ArrayList<IncomingMail> listOfSearch = new ArrayList<>();
+		Collections.reverse(listWhereNeedSearch);
 
 		for (IncomingMail iterList : listWhereNeedSearch) {
 			String regDate = iterList.getRegDate();

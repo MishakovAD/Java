@@ -42,6 +42,19 @@
 			<item value="[name]"/>
 		</list>
 	</section>
+	<section name="wizardPage">
+		<list key="groupId">
+			<item value="DifferentExport"/>
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+			<item value="DifferentExport"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
 	<section name="org.eclipse.m2e.core.ui.internal.wizards.CustomArchetypeDialog">
 	</section>
 	<section name="MavenProjectWizardLocationPage">
@@ -60,13 +73,16 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
+			<item value="import.different"/>
 			<item value="server.niikp"/>
 			<item value="server.niikp_work"/>
 		</list>
 		<list key="groupId">
+			<item value="import"/>
 			<item value="server"/>
 		</list>
 		<list key="artifactId">
+			<item value="different"/>
 			<item value="niikp"/>
 			<item value="niikp_work"/>
 		</list>
