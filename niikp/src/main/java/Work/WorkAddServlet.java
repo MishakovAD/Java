@@ -106,6 +106,11 @@ public class WorkAddServlet extends HttpServlet {
 
 		String action = request.getParameter("action");
 		if ("submit".equals(action)) {
+//			String userNameSecondName1 = request.getParameter("user1");
+//			String userNameSecondName2 = request.getParameter("user2");
+//			System.out.println("user1 in workAdd: " + userNameSecondName1);
+//			System.out.println("user2 in workAdd: " + userNameSecondName2);
+			//Лучше сделать массив, в который заполнять через ; а потом распарсивать
 			String userNameSecondName = request.getParameter("user");
 			System.out.println("user in workAdd: " + userNameSecondName);
 			System.out.println("isGroup = " + request.getParameter("isGroup"));

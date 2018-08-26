@@ -15,6 +15,15 @@ pageEncoding="UTF-8"%>
 <head>
 	<meta charset="UTF-8">
 	<title>Дела/Поручения</title>
+	 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>
+        var n = 2;
+        function add_input(){
+            var inputs = $('.inputs input[type="text"]');
+            $('.inputs').append('<input id="id-'+n+'" list="names" name="user'+n+'"  style="height: 25px; width: 200px;" /><br><br>');
+            n++
+        }
+        </script>
 </head>
 <body>
 	
@@ -26,8 +35,14 @@ pageEncoding="UTF-8"%>
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-4">
-					<h3>Исполнитель: &nbsp; &nbsp; &nbsp; <input type="text" name="user" value="" list="names" placeholder="Имя и Фамилия" /></h3> 
-					
+					<form id="Form">
+        <input type="button" onclick="add_input()" value="Добавить исполнителя" />
+        <br><br>
+        	<label> Исполнитель: </label>
+            <div class="inputs">
+                <input id="id-1" name="user1" list="names" style="height: 25px; width: 200px;" />
+                <br><br>
+            </div>
 					<%@ page import="java.util.HashMap" %>
 					<%@ page import="java.util.Map" %> 
 					<%@ page import="Users.*" %>
