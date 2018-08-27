@@ -30,6 +30,9 @@ public class WorkListServlet extends HttpServlet {
 		} else if (parameter.equalsIgnoreCase("fromMe")) {
 			request.setAttribute("workList", workList);
 			request.getRequestDispatcher("/workListFromMe.jsp").forward(request, response);
+		} else if (parameter.equalsIgnoreCase("Arhiv")) {
+			request.setAttribute("workList", workList);
+			request.getRequestDispatcher("/workListArhiv.jsp").forward(request, response);
 		} else {
 			response.sendRedirect("/niikp");
 		}

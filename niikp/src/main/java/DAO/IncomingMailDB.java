@@ -34,14 +34,15 @@ public class IncomingMailDB {
 		String secondFloorDate = incMail.getSecondFloorDate();
 		String secondFloorNum = incMail.getSecondFloorNum();
 		String filePathAndName = incMail.getFilePathAndName();
+		boolean onControl = incMail.isOnControl();
 
 		Statement statement = null;
 		statement = con.createStatement();
 
 		String SQL_insert_incomingMail = "insert into incomingMail (regDate, typeMail, sender, sendDate, "
-				+ "mailNum, mailTheme, secondFloorDate, secondFloorNum, filePathAndName)" + " values (now(), '"
+				+ "mailNum, mailTheme, secondFloorDate, secondFloorNum, filePathAndName, onControl)" + " values (now(), '"
 				+ typeMail + "', '" + sender + "', '" + sendDate + "', '" + mailNum + "', '" + mailTheme + "', '"
-				+ secondFloorDate + "', '" + secondFloorNum + "', '" + filePathAndName + "');";
+				+ secondFloorDate + "', '" + secondFloorNum + "', '" + filePathAndName + "', " + onControl + ");";
 
 		statement.execute(SQL_insert_incomingMail);
 		// regDate = null;
@@ -124,6 +125,7 @@ public class IncomingMailDB {
 			incMail.setSecondFloorDate(rs.getString("secondFloorDate"));
 			incMail.setSecondFloorNum(rs.getString("secondFloorNum"));
 			incMail.setFilePathAndName(rs.getString("filePathAndName"));
+			incMail.setOnControl(rs.getBoolean("onControl"));
 			listIncomingMailFromMethodGet.add(incMail);
 			incMail = new IncomingMail();
 		}
@@ -162,6 +164,7 @@ public class IncomingMailDB {
 			incMail.setSecondFloorDate(rs.getString("secondFloorDate"));
 			incMail.setSecondFloorNum(rs.getString("secondFloorNum"));
 			incMail.setFilePathAndName(rs.getString("filePathAndName"));
+			incMail.setOnControl(rs.getBoolean("onControl"));
 		}
 		if (statement != null)
 			statement.close();
@@ -289,6 +292,7 @@ public class IncomingMailDB {
 			incMail.setSecondFloorDate(rs.getString("secondFloorDate"));
 			incMail.setSecondFloorNum(rs.getString("secondFloorNum"));
 			incMail.setFilePathAndName(rs.getString("filePathAndName"));
+			incMail.setOnControl(rs.getBoolean("onControl"));
 			listIncomingMailSirtByRegDate.add(incMail);
 			incMail = new IncomingMail();
 		}

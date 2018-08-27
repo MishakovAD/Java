@@ -78,7 +78,7 @@ public class SearchRobot {
 		return listOfSearch;
 	}
 
-	public static ArrayList<IncomingMail> searchIntoIncomingMailForOneField(String searchParameterForOnceSearcing,
+	public static ArrayList<IncomingMail> searchIntoIncomingMailForOneField(String searchParameter, String searchParameterForOnceSearcing,
 			ArrayList<IncomingMail> listWhereNeedSearch) {
 		ArrayList<IncomingMail> listOfSearch = new ArrayList<>();
 		Collections.reverse(listWhereNeedSearch);
@@ -94,48 +94,75 @@ public class SearchRobot {
 			String secondFloorDate = iterList.getSecondFloorDate();
 			String secondFloorNum = iterList.getSecondFloorNum();
 			String filePathAndName = iterList.getFilePathAndName();
-
-			if (regDate.contains(searchParameterForOnceSearcing)) {
-				listOfSearch.add(iterList);
-				continue;
+			
+			if (searchParameter.equals("searchRegDate")) {
+				if (regDate.contains(searchParameterForOnceSearcing)) {
+					listOfSearch.add(iterList);
+					continue;
+				}
 			}
-			if (String.valueOf(idMail).equalsIgnoreCase(searchParameterForOnceSearcing)) {
-				listOfSearch.add(iterList);
-				//continue;
-				break;
+			
+			if (searchParameter.equals("searchIdMail")) {
+				if (String.valueOf(idMail).equalsIgnoreCase(searchParameterForOnceSearcing)) {
+					listOfSearch.add(iterList);
+					//continue;
+					break;
+				}
 			}
-			if (typeMail.equalsIgnoreCase(searchParameterForOnceSearcing)) {
-				listOfSearch.add(iterList);
-				continue;
+			
+			if (searchParameter.equals("searchMailType")) {
+				if (typeMail.equalsIgnoreCase(searchParameterForOnceSearcing)) {
+					listOfSearch.add(iterList);
+					continue;
+				}
+			}		
+			
+			if (searchParameter.equals("searchSender")) {
+				if (sender.contains(searchParameterForOnceSearcing)) {
+					listOfSearch.add(iterList);
+					continue;
+				}
+			}			
+			
+			if (searchParameter.equals("searchSendDate")) {
+				if (sendDate.contains(searchParameterForOnceSearcing)) {
+					listOfSearch.add(iterList);
+					continue;
+				}
 			}
-			if (sender.contains(searchParameterForOnceSearcing)) {
-				listOfSearch.add(iterList);
-				continue;
+			
+			if (searchParameter.equals("searchMailNum")) {
+				if (mailNum.equalsIgnoreCase(searchParameterForOnceSearcing)) {
+					listOfSearch.add(iterList);
+					continue;
+				}
 			}
-			if (sendDate.contains(searchParameterForOnceSearcing)) {
-				listOfSearch.add(iterList);
-				continue;
+			
+			if (searchParameter.equals("searchMailTheme")) {
+				if (mailTheme.contains(searchParameterForOnceSearcing)) {
+					listOfSearch.add(iterList);
+					continue;
+				}
 			}
-			if (mailNum.equalsIgnoreCase(searchParameterForOnceSearcing)) {
-				listOfSearch.add(iterList);
-				continue;
+			
+			if (searchParameter.equals("searchSecondFloorNum")) {
+				if (secondFloorNum.contains(searchParameterForOnceSearcing)) {
+					listOfSearch.add(iterList);
+					continue;
+				}
 			}
-			if (mailTheme.contains(searchParameterForOnceSearcing)) {
-				listOfSearch.add(iterList);
-				continue;
+			
+			if (searchParameter.contains("searchSecondFloorDate")) {
+				if (secondFloorDate.contains(searchParameterForOnceSearcing)) {
+					listOfSearch.add(iterList);
+					continue;
+				}
 			}
-			if (secondFloorDate.contains(searchParameterForOnceSearcing)) {
-				listOfSearch.add(iterList);
-				continue;
-			}
-			if (secondFloorNum.contains(searchParameterForOnceSearcing)) {
-				listOfSearch.add(iterList);
-				continue;
-			}
-			if (filePathAndName.contains(searchParameterForOnceSearcing)) {
-				listOfSearch.add(iterList);
-				continue;
-			}
+			
+			
+			
+			
+			
 
 			regDate = null;
 			idMail = 0;

@@ -17,10 +17,11 @@
 <%@ include file = "head.jsp" %>
 
 <body>
-
+<h1>Дела/Поручения</h1>
 	<table border="1">
-		<caption>Дела/Поручения</caption>
+		
 		<tr>
+			<th>№</th>
 			<th>Кому</th>
 			<th>Ответсвенный</th>
 			<th>От кого</th>
@@ -41,10 +42,12 @@
 			ArrayList<Work> list = (ArrayList<Work>) request.getAttribute("workList");
 			UserProfile userToWork = (UserProfile) request.getSession().getAttribute("userSignIn");
 			out.println("Поручено мне: <br>");
+			int counter = 1;
 			for (int i = 0; i < list.size(); i++) {
 				if (list.get(i).getToUserId() == userToWork.getUserId()  && (list.get(i).getIsAccept().equals("null") || list.get(i).getIsAccept().equals("refuse"))) {
-					
+
 					out.println("<tr>");
+					out.println("<td>" + counter + ") </td>");
 					if (list.get(i).getToUserId() != 0) {
 						UserProfile toUser = GetterDB.getUserFromId(list.get(i).getToUserId());
 						out.println("<td>" + toUser.getName() + " " + toUser.getSecondName() + "</td>");
@@ -134,6 +137,7 @@
 					//out.println("<td><button type=\"submit\"><a href=\"/niikp/workAdd?id=" + list.get(i).getIdMail() + "&type=incomingMail\">Добавить резолюцию</a></button></td>");
 					//out.println("</tr>");	
 					//Для добавления резолюции к определенному письму можно создать кнопку с адресом и параметрами, которые будут передаваться, типа вход, айди. И красота
+					counter++;
 				}
 			}
 			
@@ -141,9 +145,6 @@
 			
 			out.println("</table>");
 		%>
-		<a href="/niikp/workAdd">
-			<button type="submit">Добавить</button>
-		</a>
 		<br><br><br>
 </body>
 </html>

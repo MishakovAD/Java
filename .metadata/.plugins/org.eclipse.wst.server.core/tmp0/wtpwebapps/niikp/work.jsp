@@ -6,15 +6,26 @@ pageEncoding="UTF-8"%>
 
 <!-- Подключение bootstrap -->
 <script type="text/javascript">
-	<%@include file="/resources/bootstrap/js/bootstrap.min.js"%>  
+	<%@include file="/resources/bootstrap/js/bootstrap.min.js"%> 
 </script>
 <style>
 <%@include file="/resources/bootstrap/css/bootstrap.min.css"%> 
 </style>
 
+<%@ include file = "head.jsp" %>
+
 <head>
+<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jquery.js"></script>
 	<meta charset="UTF-8">
 	<title>Дела/Поручения</title>
+	<script>
+		var n = 2;
+		function add_input(){
+			var inputs = $('.inputs input[type="text"]');
+			$('.inputs').append('<input id="id-'+n+'" list="names" name="user'+n+'"  style="height: 25px; width: 200px;" /><br><br>');
+			n++
+		}
+	</script>
 </head>
 <body>
 	
@@ -26,14 +37,21 @@ pageEncoding="UTF-8"%>
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-4">
-					<h3>Исполнитель: &nbsp; &nbsp; &nbsp; <input type="text" name="user" value="" list="names" placeholder="Имя и Фамилия" /></h3> 
-					
-					<%@ page import="java.util.HashMap" %>
-					<%@ page import="java.util.Map" %> 
-					<%@ page import="Users.*" %>
-					<%@ page import="UserProfile.*" %>
-					
-					
+					<form id="Form">
+						<input type="button" onclick="add_input()" value="Добавить исполнителя" />
+						<br><br>
+						<label> Исполнитель: </label>
+						<div class="inputs">
+							<input id="id-1" name="user1" list="names" style="height: 25px; width: 200px;" />
+							<br><br>
+						</div> 
+						
+						<%@ page import="java.util.HashMap" %>
+						<%@ page import="java.util.Map" %> 
+						<%@ page import="Users.*" %>
+						<%@ page import="UserProfile.*" %>
+						
+						
 					<!--  <h3>Исполнители: </h3>
 					<select size="15" multiple name="user" style="width: 269px;">
 						<%@ page import="java.util.ArrayList"%>
@@ -51,16 +69,16 @@ pageEncoding="UTF-8"%>
 			<div class="col-4">
 				
 				
-				<select name="userGroup" style="width: 269px; height: 35px;">
+			<!-- 	<select name="userGroup" style="width: 269px; height: 35px;">
 					<%@ page import="java.util.ArrayList"%>
-					<% 
+					<% /*
 					ArrayList<String> typeMail = (ArrayList<String>) request.getAttribute("groupList");
-						for (String values : typeMail) { %>
-						<option value="<%= values %>"><%= values %></option>
-						<% } %>
-					</select></p> 
-					<p><input type="checkbox" name="isGroup" value="true" unchecked>Выбрать группу<Br></p> <!-- либо null либо true -->
-					
+					for (String values : typeMail) { %>
+					<option value="<%= values %>"><%= values %></option>
+					<% } */%>
+				</select></p> 
+				<p><input type="checkbox" name="isGroup" value="true" unchecked>Выбрать группу<Br></p> <!-- либо null либо true -->
+				
 					<!-- <input type="text" name="template" value="" list="templates" placeholder="Шаблон" />
 						<br><br><br> -->
 						<h3>Дата начала:

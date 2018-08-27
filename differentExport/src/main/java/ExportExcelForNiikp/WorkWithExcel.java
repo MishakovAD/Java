@@ -113,7 +113,7 @@ public class WorkWithExcel {
 		String secondFloorNum;
 		String filePathAndName;
 
-		for (int i = 4; i <= 1148; i++) {
+		for (int i = 4; i <= lastRowNum; i++) {
 			XSSFRow row = myExcelSheet.getRow(i);
 			if (!row.getCell(0).equals("null")) {
 				regDate = row.getCell(0).getDateCellValue();

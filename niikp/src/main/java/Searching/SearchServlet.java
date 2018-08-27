@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.IncomingMailDB;
 import DAO.WorkDB;
 import IncomingMail.IncomingMail;
 import MainPage.MainPageServlet;
@@ -40,7 +41,7 @@ public class SearchServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		ArrayList<IncomingMail> searchList;
+		ArrayList<IncomingMail> searchList = new ArrayList<>();
 		
 		String refererURL = request.getHeader("Referer"); //ссылка, с которой производился запрос поиска.
 		int indexOfSplit = refererURL.indexOf("niikp/");
@@ -54,12 +55,17 @@ public class SearchServlet extends HttpServlet {
 		if (refererURL.equalsIgnoreCase("incomingMailList")) {	
 			
 			String searchParameterForOnceSearcing = request.getParameter("search");
-			if (!searchParameterForOnceSearcing.isEmpty()) {
-//				System.out.println("searchParameterForOnceSearcing = " + searchParameterForOnceSearcing);
+			if (!(searchParameterForOnceSearcing == null)) {
+				System.out.println("searchParameterForOnceSearcing = " + searchParameterForOnceSearcing);
 //				System.out.println("request.getParameter(\"searchParameterForOnceSearcing\") =" + request.getParameter(searchParameterForOnceSearcing));
 				String findWord = request.getParameter(searchParameterForOnceSearcing);
-				searchList = SearchRobot.searchIntoIncomingMailForOneField(findWord, MainPageServlet.listIncomingMail);
-				Collections.reverse(searchList);
+//				searchList = SearchRobot.searchIntoIncomingMailForOneField(findWord, MainPageServlet.listIncomingMail);
+//				Collections.reverse(searchList);
+				try {
+					searchList = SearchRobot.searchIntoIncomingMailForOneField(searchParameterForOnceSearcing, findWord, IncomingMailDB.getIncomingMail());
+				} catch (InstantiationException | IllegalAccessException | SQLException e) {
+					e.printStackTrace();
+				}
 			} else {
 				String searchParameter = request.getParameter("searchAll");
 				searchList = SearchRobot.searchIntoIncomingMail(searchParameter, MainPageServlet.listIncomingMail);

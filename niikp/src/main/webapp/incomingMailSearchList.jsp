@@ -201,7 +201,7 @@ out.println("<td width=\"50\"><a href=\"/niikp/incomingMail/" + list.get(i).getI
 	} else {
 	out.println("Отчетный файл: Не прикреплен<br>");
 }
-
+		out.println("*******************<br>");
 }
 
 }

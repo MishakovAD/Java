@@ -35,6 +35,8 @@ pageEncoding="UTF-8"%>
 							<ul class="submenu">
 								<li><a href="/niikp/workList?parameter=toMe">Поручено мне</a></li>
 								<li><a href="/niikp/workList?parameter=fromMe">Поручено мной</a></li>
+								<li><a href="/niikp/workList?parameter=Arhiv">Архив поручений</a></li>
+								<li><a href="/niikp/workAdd"><button>Создать поручение</button></a></li>
 							</ul>
 						</li>
 					</ul>

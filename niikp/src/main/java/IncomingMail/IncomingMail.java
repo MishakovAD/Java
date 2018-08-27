@@ -23,6 +23,8 @@ public class IncomingMail  implements Comparable<IncomingMail> {
 	private String secondFloorDate;
 	private String secondFloorNum;
 	private String filePathAndName;
+	private boolean onControl = false;
+	private boolean needTalk = false;
 	private Work resolution;
 	
 	public static ArrayList<String> typeMailList = new ArrayList<>(); // заполнить необходимыми типами письма
@@ -322,6 +324,22 @@ public class IncomingMail  implements Comparable<IncomingMail> {
 
 	public void setFilePathAndName(String filePathAndName) {
 		this.filePathAndName = filePathAndName;
+	}
+	
+	public boolean isOnControl() {
+		return onControl;
+	}
+
+	public void setOnControl(boolean onControl) {
+		this.onControl = onControl;
+	}
+
+	public boolean isNeedTalk() {
+		return needTalk;
+	}
+
+	public void setNeedTalk(boolean needTalk) {
+		this.needTalk = needTalk;
 	}
 
 	public Work getResolution() {

@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.file.Paths;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +27,7 @@ import DAO.IncomingMailDB;
 import DAO.WorkDB;
 import DAO.WorkWithTemplateDB;
 import DocumentPathTemplate.DocumentPathTemplate;
+import ExcelApachePOI.IncomingMailExcel;
 import Property.Property;
 import Rules.Groups;
 import Translit.Translit;
@@ -101,20 +103,37 @@ public class WorkAddServlet extends HttpServlet {
 			fromUserId = userSignIn.getUserId();
 		}
 
-		int toUserId = 0;
+		ArrayList<Integer> toUserId = new ArrayList<>();
 		int observerId = 0;
 
 		String action = request.getParameter("action");
 		if ("submit".equals(action)) {
-			String userNameSecondName = request.getParameter("user");
-			System.out.println("user in workAdd: " + userNameSecondName);
-			System.out.println("isGroup = " + request.getParameter("isGroup"));
+			StringBuilder users = new StringBuilder();
+			for (int i = 1; ; i++) {
+				if (request.getParameter("user" + i) == null){
+					break;
+				} else {
+					users.append(request.getParameter("user" + i) + ";");
+				}				
+			}
 			String userName;
 			String userSecondName;
-			if (userNameSecondName != null) {
-				int indexOfSpaseFromUser = userNameSecondName.indexOf(" ");
-				userName = userNameSecondName.substring(0, indexOfSpaseFromUser);
-				userSecondName = userNameSecondName.substring(indexOfSpaseFromUser + 1);
+			if (users.length() > 0) {
+				String[] usersListNameAndSecondname = users.toString().split(";");
+				for (int i = 0; i < usersListNameAndSecondname.length; i++) {
+					int indexOfSpaseFromUser = usersListNameAndSecondname[i].indexOf(" ");
+					userName = usersListNameAndSecondname[i].substring(0, indexOfSpaseFromUser);
+					userSecondName = usersListNameAndSecondname[i].substring(indexOfSpaseFromUser + 1);
+					
+					for (Map.Entry entry : UsersList.usersList.entrySet()) {
+						UserProfile user = (UserProfile) entry.getValue();
+						if (user.getName().equalsIgnoreCase(userName)
+								&& user.getSecondName().equalsIgnoreCase(userSecondName)) {
+							toUserId.add((int) entry.getKey());
+						}
+						
+					}
+				}
 			} else {
 				userName = "Не";
 				userSecondName = "заполнено";
@@ -134,13 +153,6 @@ public class WorkAddServlet extends HttpServlet {
 
 			for (Map.Entry entry : UsersList.usersList.entrySet()) {
 				UserProfile user = (UserProfile) entry.getValue();
-				if (user.getName().equalsIgnoreCase(userName)
-						&& user.getSecondName().equalsIgnoreCase(userSecondName)) {
-					toUserId = (int) entry.getKey();
-				}
-			}
-			for (Map.Entry entry : UsersList.usersList.entrySet()) {
-				UserProfile user = (UserProfile) entry.getValue();
 				if (user.getName().equalsIgnoreCase(observerName)
 						&& user.getSecondName().equalsIgnoreCase(observerSecondName)) {
 					observerId = (int) entry.getKey();
@@ -158,7 +170,6 @@ public class WorkAddServlet extends HttpServlet {
 			}
 			String assignment = request.getParameter("assignment");
 
-			work.setToUserId(toUserId);
 			work.setObserverId(observerId);
 			work.setFromUserId(fromUserId);
 			work.setStartDate(startDate);
@@ -170,7 +181,10 @@ public class WorkAddServlet extends HttpServlet {
 				try {
 					String filePathAndNameToWork = IncomingMailDB.getFileIncomingMailToId(Integer.parseInt(idMail));
 					work.setFilePathAndNameToWork(filePathAndNameToWork);
-					response.sendRedirect(request.getContextPath() + "/workList?parameter=toMe");
+					
+					IncomingMailExcel.writeResolutionIntoExcel(Integer.parseInt(idMail), work.getAssignment(), work.getStartDate(), work.getEndDate(), toUserId, WorkDB.getLastIndexWork()-1);
+					
+					response.sendRedirect(request.getContextPath() + "/incomingMailList?pageNumber=1");
 				} catch (NumberFormatException | InstantiationException | IllegalAccessException | SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -234,7 +248,10 @@ public class WorkAddServlet extends HttpServlet {
 				}
 			} else {
 				try {
-					WorkDB.addWork(work);
+					for (Integer userId : toUserId) {
+						work.setToUserId(userId);
+						WorkDB.addWork(work);
+					}
 				} catch (InstantiationException | IllegalAccessException | SQLException e) {
 					e.printStackTrace();
 				}

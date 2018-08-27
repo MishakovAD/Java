@@ -5,7 +5,14 @@ import java.util.Comparator;
 import java.util.Date;
 
 
-public class IncomingMail {
+public class IncomingMail  implements Comparable<IncomingMail> {
+	@Override
+	public int compareTo(IncomingMail arg0) {
+		return 0;
+	}
+
+	/*
+	 * add user id, who add mail if it need */
 	private String regDate;
 	private int idMail; //regNum
 	private String typeMail;
@@ -16,7 +23,9 @@ public class IncomingMail {
 	private String secondFloorDate;
 	private String secondFloorNum;
 	private String filePathAndName;
-
+	private boolean onControl = false;
+	private boolean needTalk = false;
+	
 	public static ArrayList<String> typeMailList = new ArrayList<>(); // заполнить необходимыми типами письма
 	public static ArrayList<String> senderList = new ArrayList<>(); // заполнить необходимыми отправителями
 	
@@ -113,6 +122,50 @@ public class IncomingMail {
 		super();
 	}
 
+	public IncomingMail(String regDate, String typeMail, String sender, String sendDate, String mailNum, String mailTheme,
+			String secondFloorDate) {
+		super();
+		this.regDate = regDate;
+		this.typeMail = typeMail;
+		this.sender = sender;
+		this.sendDate = sendDate;
+		this.mailNum = mailNum;
+		this.mailTheme = mailTheme;
+		this.secondFloorDate = secondFloorDate;
+	}
+
+
+
+	public IncomingMail(String regDate, String typeMail, String sender, String sendDate, String mailNum, String mailTheme,
+			String secondFloorDate, String filePathAndName) {
+		super();
+		this.regDate = regDate;
+		this.typeMail = typeMail;
+		this.sender = sender;
+		this.sendDate = sendDate;
+		this.mailNum = mailNum;
+		this.mailTheme = mailTheme;
+		this.secondFloorDate = secondFloorDate;
+		this.filePathAndName = filePathAndName;
+	}
+	
+	
+
+	public IncomingMail(String regDate, String typeMail, String sender, String sendDate, String mailNum,
+			String mailTheme, String secondFloorDate, String secondFloorNum, String filePathAndName) {
+		super();
+		this.regDate = regDate;
+		this.typeMail = typeMail;
+		this.sender = sender;
+		this.sendDate = sendDate;
+		this.mailNum = mailNum;
+		this.mailTheme = mailTheme;
+		this.secondFloorDate = secondFloorDate;
+		this.secondFloorNum = secondFloorNum;
+		this.filePathAndName = filePathAndName;
+	}
+
+	
 	
 	public static Comparator<IncomingMail> COMPARE_BY_IDMAIL = new Comparator<IncomingMail>() {
         public int compare(IncomingMail one, IncomingMail other) {
@@ -199,6 +252,22 @@ public class IncomingMail {
 
 	public void setFilePathAndName(String filePathAndName) {
 		this.filePathAndName = filePathAndName;
+	}
+	
+	public boolean isOnControl() {
+		return onControl;
+	}
+
+	public void setOnControl(boolean onControl) {
+		this.onControl = onControl;
+	}
+
+	public boolean isNeedTalk() {
+		return needTalk;
+	}
+
+	public void setNeedTalk(boolean needTalk) {
+		this.needTalk = needTalk;
 	}
 
 

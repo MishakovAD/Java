@@ -12,6 +12,7 @@ public class Groups {
 		groupList.add("Секретари");
 		groupList.add("Испытатели");
 		groupList.add("Бухгалтера");
+		groupList.add("IT отдел");
 	}
 	
 

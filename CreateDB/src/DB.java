@@ -39,7 +39,8 @@ public class DB {
 		SQL = "CREATE TABLE incomingMail " + "(regDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP, "
 				+ " idMail INTEGER not NULL AUTO_INCREMENT, " + " typeMail VARCHAR (50), " + " sender VARCHAR (150), "
 				+ " sendDate VARCHAR (100), " + " mailNum VARCHAR (50), " + " mailTheme VARCHAR (200), "
-				+ " secondFloorDate VARCHAR (50), " + " secondFloorNum VARCHAR (100), "
+				+ " secondFloorDate VARCHAR (50), " + " secondFloorNum VARCHAR (100), " 
+				+ " onControl BOOLEAN DEFAULT false, " + " needTalk BOOLEAN DEFAULT false, " 
 				+ " filePathAndName VARCHAR (100), " + " PRIMARY KEY (idMail))";
 
 		statement.executeUpdate(SQL);

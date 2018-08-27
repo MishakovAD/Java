@@ -91,26 +91,26 @@ int lastValueKey = paginationPages.keySet().size();
 	<tr>
 		<th>Дата регистрации
 		<form method="post" action="/niikp/search?search=searchRegDate" class="form-inline my-2 my-lg-0">
-<input class="form-control mr-sm-2" type="search" name="searchRegDate" placeholder="Search" aria-label="Search">
+<input class="form-control mr-sm-2" style="width: 150px; height: 40px;" type="search" name="searchRegDate" placeholder="Search" aria-label="Search">
 <button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
 </form>
 		</th>
 		<th>Рег. номер письма
 		<form method="post" action="/niikp/search?search=searchIdMail" class="form-inline my-2 my-lg-0">
-<input class="form-control mr-sm-2" type="search" name="searchIdMail" placeholder="Search" aria-label="Search">
+<input class="form-control mr-sm-2" style="width: 150px; height: 40px;" type="search" name="searchIdMail" placeholder="Search" aria-label="Search">
 <button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
 </form>
 		</th>
 		
 		<th>Тип письма
 		<form method="post" action="/niikp/search?search=searchMailType" class="form-inline my-2 my-lg-0">
-<input class="form-control mr-sm-2" type="search" name="searchMailType" placeholder="Search" aria-label="Search">
+<input class="form-control mr-sm-2" style="width: 150px; height: 40px;" type="search" name="searchMailType" placeholder="Search" aria-label="Search">
 <button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
 </form>
 		</th>
 		<th>Отправитель
 		<form method="post" action="/niikp/search?search=searchSender" class="form-inline my-2 my-lg-0">
-<input class="form-control mr-sm-2" type="search" name="searchSender" placeholder="Search" aria-label="Search">
+<input class="form-control mr-sm-2" style="width: 150px; height: 40px;" type="search" name="searchSender" placeholder="Search" aria-label="Search">
 <button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
 </form>
 			
@@ -124,7 +124,7 @@ int lastValueKey = paginationPages.keySet().size();
 			
 			<th>Номер письма
 					<form method="post" action="/niikp/search?search=searchMailNum" class="form-inline my-2 my-lg-0">
-<input class="form-control mr-sm-2" type="search" name="searchMailNum" placeholder="Search" aria-label="Search">
+<input class="form-control mr-sm-2" style="width: 150px; height: 40px;" type="search" name="searchMailNum" placeholder="Search" aria-label="Search">
 <button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
 </form>
 			</th>
@@ -136,13 +136,13 @@ int lastValueKey = paginationPages.keySet().size();
 			</th>
 			<th>Дата 2 этажа
 			<form method="post" action="/niikp/search?search=searchSecondFloorDate" class="form-inline my-2 my-lg-0">
-<input class="form-control mr-sm-2" type="search" name="searchSecondFloorDate" placeholder="Search" aria-label="Search">
+<input class="form-control mr-sm-2" style="width: 150px; height: 40px;" type="search" name="searchSecondFloorDate" placeholder="Search" aria-label="Search">
 <button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
 </form>
 			</th>
 			<th>Номер 2 этажа
 			<form method="post" action="/niikp/search?search=searchSecondFloorNum" class="form-inline my-2 my-lg-0">
-<input class="form-control mr-sm-2" type="search" name="searchSecondFloorNum" placeholder="Search" aria-label="Search">
+<input class="form-control mr-sm-2" style="width: 150px; height: 40px;" type="search" name="searchSecondFloorNum" placeholder="Search" aria-label="Search">
 <button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
 </form>
 			</th>
@@ -165,7 +165,11 @@ int lastValueKey = paginationPages.keySet().size();
 		
 
 		if (list.get(i).getRegDate() != null) {
-		out.println("<td>" + list.get(i).getRegDate() + "</td>");
+			if (list.get(i).isOnControl()) {
+				out.println("<td bgcolor=\"#FFFB00\">" + list.get(i).getRegDate() + "</td>");
+			} else {
+				out.println("<td>" + list.get(i).getRegDate() + "</td>");
+			}		
 	} else {
 	out.println("<td>Не заполнено</td>");
 }
@@ -244,7 +248,7 @@ out.println("<td width=\"50\"><a href=\"/niikp/incomingMail/" + list.get(i).getI
 	out.println("</tr>");
 		
 	out.println("<tr>");
-	out.println("<td>");
+	out.println("<td colspan=\"10\">");
 		out.println("<div class=\"demo\">");			
 		out.println("<input class=\"hide\" id=\"hd-" + i + "\" type=\"checkbox\">");
 		out.println("<label for=\"hd-" + i + "\">Резолюция</label>");
@@ -273,6 +277,8 @@ out.println("<td width=\"50\"><a href=\"/niikp/incomingMail/" + list.get(i).getI
 	} else {
 	out.println("Отчетный файл: Не прикреплен<br>");
 }
+		
+		out.println("*******************<br>");
 
 }
 
@@ -280,6 +286,7 @@ out.println("<td width=\"50\"><a href=\"/niikp/incomingMail/" + list.get(i).getI
 out.println("</div>");
 out.println("</div>");
 out.println("</td>");
+
 out.println("</tr>");
 
 

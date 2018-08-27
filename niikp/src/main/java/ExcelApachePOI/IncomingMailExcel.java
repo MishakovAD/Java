@@ -22,6 +22,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFTable;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import DAO.GetterDB;
 import DAO.IncomingMailDB;
 import IncomingMail.IncomingMail;
 import Property.Property;
@@ -29,8 +30,8 @@ import Property.Property;
 public class IncomingMailExcel {
 
 	public static void writeIntoExcel(String regDateValue, int idMailValue, String typeMailValue, String senderValue,
-			String sendDateValue, String mailNumValue, String mailThemeValue, String secondFloorDateValue,
-			String filePathAndNameValue) throws FileNotFoundException, IOException {
+			String sendDateValue, String mailNumValue, String mailThemeValue, String secondFloorDateValue, String secondFloorNumValue,
+			String filePathAndNameValue, boolean onControlValue) throws FileNotFoundException, IOException {
 		String filePath = Property.getProperty("fileIncomingMail");
 		// String filePath = "C:/niikp/excel/incomingMail.xlsx"; //server
 		XSSFWorkbook book;
@@ -62,14 +63,20 @@ public class IncomingMailExcel {
 		Cell mailNum = row.createCell(5);
 		Cell mailTheme = row.createCell(6);
 		Cell secondFloorDate = row.createCell(7);
-		Cell filePathAndName = row.createCell(8);
+		Cell secondFloorNum = row.createCell(8);
+		Cell filePathAndName = row.createCell(9);
+		Cell onControl = row.createCell(10);
+
 
 		idMail.setCellValue(idMailValue);
 		typeMail.setCellValue(typeMailValue);
 		sender.setCellValue(senderValue);
 		mailNum.setCellValue(mailNumValue);
 		mailTheme.setCellValue(mailThemeValue);
+		secondFloorNum.setCellValue(secondFloorNumValue);
 		filePathAndName.setCellValue(filePathAndNameValue);
+		onControl.setCellValue(onControlValue);
+
 
 		DataFormat format = book.createDataFormat();
 		CellStyle dateStyle = book.createCellStyle();
@@ -89,6 +96,111 @@ public class IncomingMailExcel {
 //		m.addArea(sheet.getFirstRowNum()+1, 0, sheet.getLastRowNum(), 8);
 		// EmpNo
 		XSSFTable table = new XSSFTable();
+
+		// Записываем всё в файл
+		book.write(new FileOutputStream(filePath));
+		book.close();
+	}
+	
+	public static void writeResolutionIntoExcel(int mailId, String resolutionValue, String startDateValue, String endDateValue, ArrayList<Integer> toUserIdValue, int workIdValue) throws FileNotFoundException, IOException {
+		String filePath = Property.getProperty("fileIncomingMail");
+		// String filePath = "C:/niikp/excel/incomingMail.xlsx"; //server
+		XSSFWorkbook book;
+		File f = new File(filePath);
+		if (f.exists() && !f.isDirectory()) {
+			book = new XSSFWorkbook(new FileInputStream(filePath)); // дозапись в уже существующий
+		} else {
+			book = new XSSFWorkbook(); // создание нового файла
+		}
+
+		Sheet sheet;
+		if (book.getSheet("incomingMail") != null) {
+			sheet = book.getSheet("incomingMail");
+			// System.out.println("get");
+		} else {
+			sheet = book.createSheet("incomingMail");
+			// System.out.println("create");
+		}
+
+		// Нумерация начинается с нуля
+		Row row = sheet.getRow(9999);
+		int lastRowNum = sheet.getLastRowNum();
+		for (int i = 1; i <= lastRowNum; i++) {
+			row = sheet.getRow(i);
+			if (row.getCell(1).getNumericCellValue() == mailId) {
+				break;
+			}
+		}
+
+
+
+		Cell resolution = row.createCell(12);
+		Cell startDate = row.createCell(14);
+		Cell endDate = row.createCell(15);
+		Cell toUserId = row.createCell(17);
+		Cell workId = row.createCell(19);
+
+		resolution.setCellValue(resolutionValue);
+		startDate.setCellValue(startDateValue);
+		endDate.setCellValue(endDateValue);
+		workId.setCellValue(workIdValue);
+		
+		StringBuilder usersToWork = new StringBuilder();
+		for (Integer usersId : toUserIdValue) {
+			try {
+				usersToWork.append(GetterDB.getUserFromId(usersId).getName() + " " + GetterDB.getUserFromId(usersId).getSecondName() + "; ");
+			} catch (InstantiationException | IllegalAccessException | SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		toUserId.setCellValue(usersToWork.toString());
+
+		// Записываем всё в файл
+		book.write(new FileOutputStream(filePath));
+		book.close();
+	}
+	
+	public static void writeResolutionResultIntoExcel(int mailId, String resolutionResultValue) throws FileNotFoundException, IOException {
+		String filePath = Property.getProperty("fileIncomingMail");
+		// String filePath = "C:/niikp/excel/incomingMail.xlsx"; //server
+		XSSFWorkbook book;
+		File f = new File(filePath);
+		if (f.exists() && !f.isDirectory()) {
+			book = new XSSFWorkbook(new FileInputStream(filePath)); // дозапись в уже существующий
+		} else {
+			book = new XSSFWorkbook(); // создание нового файла
+		}
+
+		Sheet sheet;
+		if (book.getSheet("incomingMail") != null) {
+			sheet = book.getSheet("incomingMail");
+			// System.out.println("get");
+		} else {
+			sheet = book.createSheet("incomingMail");
+			// System.out.println("create");
+		}
+
+		// Нумерация начинается с нуля
+		Row row = sheet.getRow(9999);
+		int lastRowNum = sheet.getLastRowNum();
+		for (int i = 0; i < lastRowNum; i++) {
+			row = sheet.getRow(i);
+			if (row.getCell(1).getStringCellValue().equals(String.valueOf(mailId))) {
+				break;
+			}
+		}
+
+
+		Cell resolutionResult = row.createCell(16);
+
+
+//		StringBuilder usersToWork = new StringBuilder();
+//		for (Integer usersId : toUserIdValue) {
+//			usersToWork.append(usersId + ";");
+//		}
+//		toUserId.setCellValue(usersToWork.toString());
+		resolutionResult.setCellValue(resolutionResultValue);
+
 
 		// Записываем всё в файл
 		book.write(new FileOutputStream(filePath));

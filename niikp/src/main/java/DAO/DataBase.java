@@ -67,6 +67,8 @@ public class DataBase {
 //				 " secondFloorDate VARCHAR (50), " +
 //				 " secondFloorNum VARCHAR (100), " +
 //				 " filePathAndName VARCHAR (100), " +
+//				 " onControl BOOLEAN DEFAULT false, " +
+//		 		 " needTalk BOOLEAN DEFAULT false, " +
 //				 " PRIMARY KEY (idMail))";
 //		
 //		 statement.executeUpdate(SQL);

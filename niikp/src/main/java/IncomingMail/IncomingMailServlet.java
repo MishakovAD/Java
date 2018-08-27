@@ -84,6 +84,11 @@ public class IncomingMailServlet extends HttpServlet {
 			String mailTheme = request.getParameter("mailTheme");
 			String secondFloorDateParameter = request.getParameter("secondFloorDate");
 			String secondFloorNum = request.getParameter("secondFloorNum");
+			String onControl = request.getParameter("onControl");
+			
+			if (onControl != null) {
+				incMail.setOnControl(true);
+			}
 			
 			Date resultSendDate = null;
 			String sendDate = null;
@@ -175,7 +180,8 @@ public class IncomingMailServlet extends HttpServlet {
 				IncomingMail incMailToExcel = IncomingMailDB
 						.getIncomingMailToId(IncomingMailDB.getLastIndexIncomingMail() - 1);
 				IncomingMailExcel.writeIntoExcel(incMailToExcel.getRegDate(), incMailToExcel.getIdMail(), typeMail,
-						sender, sendDate, mailNum, mailTheme, secondFloorDate, incMail.getFilePathAndName());
+						sender, sendDate, mailNum, mailTheme, secondFloorDate, secondFloorNum, incMail.getFilePathAndName(),
+						incMail.isOnControl());
 			} catch (InstantiationException | IllegalAccessException | SQLException e) {
 				e.printStackTrace();
 			}
