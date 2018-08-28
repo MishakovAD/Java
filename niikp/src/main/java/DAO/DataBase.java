@@ -73,7 +73,28 @@ public class DataBase {
 //		
 //		 statement.executeUpdate(SQL);
 //		 System.out.println("Table successfully created...");
-////		
+////	
+//		String SQL = "CREATE TABLE outgoingMail " +
+//		 "(regDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " +
+//		 " idMail INTEGER not NULL AUTO_INCREMENT, " +
+//		 " mailNum VARCHAR (50), " +
+//		 " destination VARCHAR (50), " +
+//		 " forWhomId INT, " +
+//		 " sendDate VARCHAR (50), " +
+//		 " mailTheme VARCHAR (50), " +
+//		 " executorId INT, " +
+//		 " realExecutorId INT, " +
+//		 " incomingMailNum VARCHAR (50), " +
+//		 " toWhomItIsPainted VARCHAR (50), " +
+//		 " incomingMailId INT, " +
+//		 " note VARCHAR (50), " +
+//		 " mailingNote VARCHAR (50), " +
+//		 " filePathAndName VARCHAR (100), " +
+//		 " isDeleted BOOLEAN DEFAULT false, " +
+//		 " PRIMARY KEY (idMail))";
+//statement.executeUpdate(SQL);
+//System.out.println("Table successfully created...");
+////
 //		String SQL = "CREATE TABLE work " +
 //		 "(workId INTEGER not NULL AUTO_INCREMENT, " +
 //		 " toUserId INTEGER, " +

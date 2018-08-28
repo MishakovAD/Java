@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO.DataBase;
 import DAO.IncomingMailDB;
+import DAO.OutgoingMailDB;
 import DAO.WorkDB;
 import IncomingMail.IncomingMail;
 import OutgoingMail.OutgoingMail;
