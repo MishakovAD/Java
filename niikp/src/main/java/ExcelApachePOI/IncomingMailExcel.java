@@ -102,6 +102,87 @@ public class IncomingMailExcel {
 		book.close();
 	}
 	
+	public static void writeSearchListIntoExcel(ArrayList<IncomingMail> searchList) throws FileNotFoundException, IOException {
+		String filePath = Property.getProperty("fileIncomingMailForSearchList");
+		// String filePath = "C:/niikp/excel/incomingMail.xlsx"; //server
+		XSSFWorkbook book;
+		File f = new File(filePath);
+		if (f.exists() && !f.isDirectory()) {
+			book = new XSSFWorkbook(new FileInputStream(filePath)); // дозапись в уже существующий
+		} else {
+			book = new XSSFWorkbook(); // создание нового файла
+		}
+
+		Sheet sheet;
+		if (book.getSheet("incomingMail") != null) {
+			sheet = book.getSheet("incomingMail");
+			// System.out.println("get");
+		} else {
+			sheet = book.createSheet("incomingMail");
+			// System.out.println("create");
+		}
+		
+		int lastRowNum = sheet.getLastRowNum();
+		for (int i = 1; i <= lastRowNum; i++) {
+			Row row = sheet.getRow(i);
+			sheet.removeRow(row);
+		}
+
+		for (IncomingMail incMail : searchList) {
+		// Нумерация начинается с нуля
+		//int lastRowNum = sheet.getLastRowNum();
+		lastRowNum = sheet.getLastRowNum();
+		Row row = sheet.createRow(lastRowNum + 1);
+
+		Cell regDate = row.createCell(0);
+		Cell idMail = row.createCell(1);
+		Cell typeMail = row.createCell(2);
+		Cell sender = row.createCell(3);
+		Cell sendDate = row.createCell(4);
+		Cell mailNum = row.createCell(5);
+		Cell mailTheme = row.createCell(6);
+		Cell secondFloorDate = row.createCell(7);
+		Cell secondFloorNum = row.createCell(8);
+		Cell filePathAndName = row.createCell(9);
+		Cell onControl = row.createCell(10);		
+
+
+		idMail.setCellValue(incMail.getIdMail());
+		typeMail.setCellValue(incMail.getTypeMail());
+		sender.setCellValue(incMail.getSender());
+		mailNum.setCellValue(incMail.getMailNum());
+		mailTheme.setCellValue(incMail.getMailTheme());
+		secondFloorNum.setCellValue( incMail.getSecondFloorNum());
+		filePathAndName.setCellValue(incMail.getFilePathAndName());
+		onControl.setCellValue(incMail.isOnControl());
+
+
+		DataFormat format = book.createDataFormat();
+		CellStyle dateStyle = book.createCellStyle();
+		dateStyle.setDataFormat(format.getFormat("dd.mm.yyyy"));
+		regDate.setCellStyle(dateStyle);
+		regDate.setAsActiveCell();
+		sendDate.setCellStyle(dateStyle);
+		secondFloorDate.setCellStyle(dateStyle);
+
+		regDate.setCellValue(incMail.getRegDate());
+		sendDate.setCellValue(incMail.getSendDate());
+		secondFloorDate.setCellValue(incMail.getSecondFloorDate());
+		
+		}
+
+		// Меняем размер столбца
+		// sheet.autoSizeColumn(1);
+//		MergedCellsTable m = new MergedCellsTable();
+//		m.addArea(sheet.getFirstRowNum()+1, 0, sheet.getLastRowNum(), 8);
+		// EmpNo
+		XSSFTable table = new XSSFTable();
+
+		// Записываем всё в файл
+		book.write(new FileOutputStream(filePath));
+		book.close();
+	}
+	
 	public static void writeResolutionIntoExcel(int mailId, String resolutionValue, String startDateValue, String endDateValue, ArrayList<Integer> toUserIdValue, int workIdValue) throws FileNotFoundException, IOException {
 		String filePath = Property.getProperty("fileIncomingMail");
 		// String filePath = "C:/niikp/excel/incomingMail.xlsx"; //server

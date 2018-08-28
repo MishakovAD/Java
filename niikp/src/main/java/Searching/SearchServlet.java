@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -56,13 +57,64 @@ public class SearchServlet extends HttpServlet {
 			
 			String searchParameterForOnceSearcing = request.getParameter("search");
 			if (!(searchParameterForOnceSearcing == null)) {
-				System.out.println("searchParameterForOnceSearcing = " + searchParameterForOnceSearcing);
+//				System.out.println("searchParameterForOnceSearcing = " + searchParameterForOnceSearcing);
 //				System.out.println("request.getParameter(\"searchParameterForOnceSearcing\") =" + request.getParameter(searchParameterForOnceSearcing));
-				String findWord = request.getParameter(searchParameterForOnceSearcing);
+//				String findWord = request.getParameter(searchParameterForOnceSearcing);
 //				searchList = SearchRobot.searchIntoIncomingMailForOneField(findWord, MainPageServlet.listIncomingMail);
 //				Collections.reverse(searchList);
+				
+				Map<String, String> searchParameterMap = new HashMap<>();
+				
+				String searchRegDate = request.getParameter("searchRegDate");
+				String searchIdMail = request.getParameter("searchIdMail");
+				String searchMailType = request.getParameter("searchMailType");
+				String searchSender = request.getParameter("searchSender");
+				String searchSendDate = request.getParameter("searchSendDate");
+				String searchMailNum = request.getParameter("searchMailNum");
+				String searchMailTheme = request.getParameter("searchMailTheme");
+				String searchSecondFloorDate = request.getParameter("searchSecondFloorDate");
+				String searchSecondFloorNum = request.getParameter("searchSecondFloorNum");
+				
+				if (!searchRegDate.isEmpty()) {
+					searchParameterMap.put("searchRegDate", searchRegDate);
+				}
+				
+				if (!searchIdMail.isEmpty()) {
+					searchParameterMap.put("searchIdMail", searchIdMail);
+				}
+				
+				if (!searchMailType.isEmpty()) {
+					searchParameterMap.put("searchMailType", searchMailType);
+				}
+				
+				if (!searchSender.isEmpty()) {
+					searchParameterMap.put("searchSender", searchSender);
+				}
+				
+				if (!searchSendDate.isEmpty()) {
+					searchParameterMap.put("searchSendDate", searchSendDate);
+				}
+				
+				if (!searchMailNum.isEmpty()) {
+					searchParameterMap.put("searchMailNum", searchMailNum);
+				}
+				
+				if (!searchMailTheme.isEmpty()) {
+					searchParameterMap.put("searchMailTheme", searchMailTheme);
+				}
+				
+				if (!searchSecondFloorDate.isEmpty()) {
+					searchParameterMap.put("searchSecondFloorDate", searchSecondFloorDate);
+				}
+				
+				if (!searchSecondFloorNum.isEmpty()) {
+					searchParameterMap.put("searchSecondFloorNum", searchSecondFloorNum);
+				}
+				
+				
+				
 				try {
-					searchList = SearchRobot.searchIntoIncomingMailForOneField(searchParameterForOnceSearcing, findWord, IncomingMailDB.getIncomingMail());
+					searchList = SearchRobot.searchIntoIncomingMailForOneField(searchParameterMap, IncomingMailDB.getIncomingMail());
 				} catch (InstantiationException | IllegalAccessException | SQLException e) {
 					e.printStackTrace();
 				}
@@ -95,7 +147,7 @@ public class SearchServlet extends HttpServlet {
 			
 			request.setAttribute("resolutionMapForSearchIncomingMail", resolutionMapForSearchIncomingMail);
 			
-			request.setAttribute("searchList", searchList);
+			request.getSession().setAttribute("searchList", searchList);
 			request.getRequestDispatcher("/incomingMailSearchList.jsp").forward(request, response);
 
 		}

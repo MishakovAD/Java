@@ -19,6 +19,8 @@ pageEncoding="UTF-8"%>
 
 <body>
 	<h2>Входящая корреспонденция</h2>
+	<p><a href="/niikp/incomingMailList?pageNumber=1"><button>Назад</button></a>
+	<a href="/niikp/exportSearchListIntoExcel"><button>Экспорт в Excel</button></a></p>
 	
 	<table border="1">	
 	<!-- <form method="post" action="/niikp/incomingMailList?action=sort">
@@ -85,7 +87,7 @@ pageEncoding="UTF-8"%>
 		<%@include file="/resources/css/showHideForIncomingMailList.css"%> 
 	</style>
 	<%
-	ArrayList<IncomingMail> list = (ArrayList<IncomingMail>) request.getAttribute("searchList");
+	ArrayList<IncomingMail> list = (ArrayList<IncomingMail>) request.getSession().getAttribute("searchList");
 	HashMap<Integer, ArrayList<Work>> resolutionMapForSearch = (HashMap<Integer, ArrayList<Work>>) request.getAttribute("resolutionMapForSearchIncomingMail");
 	
 	for (int i = 0; i < list.size(); i++) {				

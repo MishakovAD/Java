@@ -116,15 +116,10 @@ public class WorkAddServlet extends HttpServlet {
 					users.append(request.getParameter("user" + i) + ";");
 				}				
 			}
-<<<<<<< HEAD
-			String userName;
-			String userSecondName;
-=======
-			
+
 			String userName;
 			String userSecondName;
 			
->>>>>>> f8d99debb07e1dc4e8743c2be2f8f48b7bfa63da
 			if (users.length() > 0) {
 				String[] usersListNameAndSecondname = users.toString().split(";");
 				for (int i = 0; i < usersListNameAndSecondname.length; i++) {
@@ -141,10 +136,7 @@ public class WorkAddServlet extends HttpServlet {
 						
 					}
 				}
-<<<<<<< HEAD
-=======
-				
->>>>>>> f8d99debb07e1dc4e8743c2be2f8f48b7bfa63da
+
 			} else {
 				userName = "Не";
 				userSecondName = "заполнено";
@@ -262,11 +254,8 @@ public class WorkAddServlet extends HttpServlet {
 					for (Integer userId : toUserId) {
 						work.setToUserId(userId);
 						WorkDB.addWork(work);
-<<<<<<< HEAD
 					}
-=======
-					}					
->>>>>>> f8d99debb07e1dc4e8743c2be2f8f48b7bfa63da
+					
 				} catch (InstantiationException | IllegalAccessException | SQLException e) {
 					e.printStackTrace();
 				}

@@ -18,7 +18,6 @@ pageEncoding="UTF-8"%>
 <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jquery.js"></script>
 	<meta charset="UTF-8">
 	<title>Дела/Поручения</title>
-<<<<<<< HEAD
 	<script>
 		var n = 2;
 		function add_input(){
@@ -27,7 +26,7 @@ pageEncoding="UTF-8"%>
 			n++
 		}
 	</script>
-=======
+
 	 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>
         var n = 2;
@@ -37,7 +36,7 @@ pageEncoding="UTF-8"%>
             n++
         }
         </script>
->>>>>>> f8d99debb07e1dc4e8743c2be2f8f48b7bfa63da
+
 </head>
 <body>
 	
@@ -50,7 +49,6 @@ pageEncoding="UTF-8"%>
 			<div class="row">
 				<div class="col-4">
 					<form id="Form">
-<<<<<<< HEAD
 						<input type="button" onclick="add_input()" value="Добавить исполнителя" />
 						<br><br>
 						<label> Исполнитель: </label>
@@ -65,7 +63,6 @@ pageEncoding="UTF-8"%>
 						<%@ page import="UserProfile.*" %>
 						
 						
-=======
         <input type="button" onclick="add_input()" value="Добавить исполнителя" />
         <br><br>
         	<label> Исполнитель: </label>
@@ -78,8 +75,6 @@ pageEncoding="UTF-8"%>
 					<%@ page import="Users.*" %>
 					<%@ page import="UserProfile.*" %>
 					
-					
->>>>>>> f8d99debb07e1dc4e8743c2be2f8f48b7bfa63da
 					<!--  <h3>Исполнители: </h3>
 					<select size="15" multiple name="user" style="width: 269px;">
 						<%@ page import="java.util.ArrayList"%>

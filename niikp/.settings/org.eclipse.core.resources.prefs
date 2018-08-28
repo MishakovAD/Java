@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//src/main/java/ExcelApachePOI/DownloadExcelServlet.java=UTF-8
+encoding//src/main/java/ExcelApachePOI/DownloadSearchListExcelServlet.java=UTF-8
 encoding//src/main/java/ExcelApachePOI/NoTestDonloadExcelServlet.java=UTF-8
 encoding//src/main/java/UploadFileTutorial/DownloadServlet.java=UTF-8
 encoding//src/main/webapp/workDone.jsp=UTF-8

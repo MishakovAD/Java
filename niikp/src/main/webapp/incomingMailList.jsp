@@ -93,55 +93,41 @@ int lastValueKey = paginationPages.keySet().size();
 		<form method="post" action="/niikp/search?search=searchRegDate" class="form-inline my-2 my-lg-0">
 <input class="form-control mr-sm-2" style="width: 150px; height: 40px;" type="search" name="searchRegDate" placeholder="Search" aria-label="Search">
 <button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-</form>
+
 		</th>
 		<th>Рег. номер письма
-		<form method="post" action="/niikp/search?search=searchIdMail" class="form-inline my-2 my-lg-0">
 <input class="form-control mr-sm-2" style="width: 150px; height: 40px;" type="search" name="searchIdMail" placeholder="Search" aria-label="Search">
 <button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-</form>
 		</th>
 		
 		<th>Тип письма
-		<form method="post" action="/niikp/search?search=searchMailType" class="form-inline my-2 my-lg-0">
 <input class="form-control mr-sm-2" style="width: 150px; height: 40px;" type="search" name="searchMailType" placeholder="Search" aria-label="Search">
 <button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-</form>
 		</th>
 		<th>Отправитель
-		<form method="post" action="/niikp/search?search=searchSender" class="form-inline my-2 my-lg-0">
 <input class="form-control mr-sm-2" style="width: 150px; height: 40px;" type="search" name="searchSender" placeholder="Search" aria-label="Search">
 <button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-</form>
 			
 		</th>
 		<th>Дата отпр. письма
-		<form method="post" action="/niikp/search?search=searchSendDate" class="form-inline my-2 my-lg-0">
 <input class="form-control mr-sm-2" type="search" name="searchSendDate" placeholder="Search" aria-label="Search">
 <button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-</form>		
 		</th>
 			
 			<th>Номер письма
-					<form method="post" action="/niikp/search?search=searchMailNum" class="form-inline my-2 my-lg-0">
 <input class="form-control mr-sm-2" style="width: 150px; height: 40px;" type="search" name="searchMailNum" placeholder="Search" aria-label="Search">
 <button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-</form>
 			</th>
 			<th>Тема письма
 			<form method="post" action="/niikp/search?search=searchMailTheme" class="form-inline my-2 my-lg-0">
 <input class="form-control mr-sm-2" type="search" name="searchMailTheme" placeholder="Search" aria-label="Search">
 <button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-</form>
 			</th>
 			<th>Дата 2 этажа
-			<form method="post" action="/niikp/search?search=searchSecondFloorDate" class="form-inline my-2 my-lg-0">
 <input class="form-control mr-sm-2" style="width: 150px; height: 40px;" type="search" name="searchSecondFloorDate" placeholder="Search" aria-label="Search">
 <button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-</form>
 			</th>
 			<th>Номер 2 этажа
-			<form method="post" action="/niikp/search?search=searchSecondFloorNum" class="form-inline my-2 my-lg-0">
 <input class="form-control mr-sm-2" style="width: 150px; height: 40px;" type="search" name="searchSecondFloorNum" placeholder="Search" aria-label="Search">
 <button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
 </form>
@@ -219,7 +205,7 @@ out.println("<td>-</td>");
 }
 
 if (list.get(i).getFilePathAndName() != null && !list.get(i).getFilePathAndName().contains("null") && list.get(i).getFilePathAndName().length() > 28) {
-out.println("<td><a href=\"/niikp/DownloadServlet?" + list.get(i).getFilePathAndName().substring(28) + "\">" + list.get(i).getFilePathAndName().substring(28) + "</a></td>"); //was 28
+out.println("<td><a href=\"/niikp/DownloadServlet?" + list.get(i).getFilePathAndName().substring(28) + "\">" + list.get(i).getFilePathAndName().substring(43) + "</a></td>"); //was 28
 } else if (list.get(i).getFilePathAndName() != null && !list.get(i).getFilePathAndName().contains("null")) {
 	out.println("<td>" + list.get(i).getFilePathAndName() + "</td>");
 } else {
