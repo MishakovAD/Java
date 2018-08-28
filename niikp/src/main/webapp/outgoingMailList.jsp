@@ -18,12 +18,12 @@ pageEncoding="UTF-8"%>
 
 
 <body>
-	<p><h2>Входящая корреспонденция</h2>
+	<p><h2>Исходящая корреспонденция</h2>
 	
-	<a href="/niikp/incomingMail">Добавить Входящую корреспонденцию</button></a>
-	<a href="/niikp/downloadExcel">Скачать Excel файл</a> </p>
+	<a href="/niikp/outgoingMail">Добавить Исходящую корреспонденцию</button></a>
+	<a href="/niikp/downloadOutgoingMailExcel">Скачать Excel файл</a> </p>
 	
-	<form method="get" action="/niikp/incomingMailList?pageNumber=num">
+	<form method="get" action="/niikp/outgoingMailList?pageNumber=num">
 Перейти к странице: <input type="text" name="pageNumber" size="20">
 <button type="submit">Перейти</button>
 </form>
@@ -55,56 +55,32 @@ int lastValueKey = paginationPages.keySet().size();
 	<ul>
 		<li><a href="#" class="prev"><</a></li>
 		<% for (Integer key : paginationPages.keySet()) { %>
-		<li><a href="/niikp/incomingMailList?pageNumber=<%=key%>"><%=key%></a></li>
+		<li><a href="/niikp/outgoingMailList?pageNumber=<%=key%>"><%=key%></a></li>
 		<% } %>
 		<span>&hellip;</span>
-		<li><a href="/niikp/incomingMailList?pageNumber=1">Вернуться в начало</a></li>
+		<li><a href="/niikp/outgoingMailList?pageNumber=1">Вернуться в начало</a></li>
 		<li><a href="#" class="next">></a></li>
 	</ul>
 </div>
 	
 	<table border="1">	
-	<!-- <form method="post" action="/niikp/incomingMailList?action=sort">
-	<button type="submit">Сортировать</button>
-	<br>	
-		<tr>
-		<th>		
-			<select name="sortDateReg" style="width: 170px; height: 35px;">
-					<option value="noSort">Не сортировать</option>
-					<option value="increase">Возрастанию</option>
-					<option value="decrease">Убыванию</option>
-			</select></p> 
-			Дата регистрации
-			<br>
-		</th>
-		<th>
-			<select name="sortNumReg" style="width: 170px; height: 35px;">
-					<option value="noSort">Не сортировать</option>
-					<option value="increase">Возрастанию</option>
-					<option value="decrease">Убыванию</option>
-			</select></p> 
-			Рег. номер письма
-			<br>
-		</th>
-		</form> -->
-		
 	<tr>
 		<th>Дата регистрации
-		<form method="post" action="/niikp/search?search=searchIncomingMail" class="form-inline my-2 my-lg-0">
+		<form method="post" action="/niikp/search?search=searchOutgoingMail" class="form-inline my-2 my-lg-0">
 <input class="form-control mr-sm-2" style="width: 150px; height: 40px;" type="search" name="searchRegDate" placeholder="Search" aria-label="Search">
 <button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
 
 		</th>
-		<th>Рег. номер письма
+		<th>№ Ф-ВА-01/
 <input class="form-control mr-sm-2" style="width: 150px; height: 40px;" type="search" name="searchIdMail" placeholder="Search" aria-label="Search">
 <button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
 		</th>
 		
-		<th>Тип письма
+		<th>Адресат
 <input class="form-control mr-sm-2" style="width: 150px; height: 40px;" type="search" name="searchMailType" placeholder="Search" aria-label="Search">
 <button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
 		</th>
-		<th>Отправитель
+		<th>ФИО кому
 <input class="form-control mr-sm-2" style="width: 150px; height: 40px;" type="search" name="searchSender" placeholder="Search" aria-label="Search">
 <button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
 			
@@ -113,25 +89,29 @@ int lastValueKey = paginationPages.keySet().size();
 <input class="form-control mr-sm-2" type="search" name="searchSendDate" placeholder="Search" aria-label="Search">
 <button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
 		</th>
-			
-			<th>Номер письма
-<input class="form-control mr-sm-2" style="width: 150px; height: 40px;" type="search" name="searchMailNum" placeholder="Search" aria-label="Search">
-<button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-			</th>
-			<th>Тема письма
+		<th>Тема письма
 			<form method="post" action="/niikp/search?search=searchMailTheme" class="form-inline my-2 my-lg-0">
 <input class="form-control mr-sm-2" type="search" name="searchMailTheme" placeholder="Search" aria-label="Search">
 <button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
 			</th>
-			<th>Дата 2 этажа
+			<th>Исполнитель письма
 <input class="form-control mr-sm-2" style="width: 150px; height: 40px;" type="search" name="searchSecondFloorDate" placeholder="Search" aria-label="Search">
 <button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
 			</th>
-			<th>Номер 2 этажа
+			<th>Исполнитель реальный
 <input class="form-control mr-sm-2" style="width: 150px; height: 40px;" type="search" name="searchSecondFloorNum" placeholder="Search" aria-label="Search">
 <button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-</form>
-			</th>
+</th>
+
+			<th>Номер вх. письма
+<input class="form-control mr-sm-2" style="width: 150px; height: 40px;" type="search" name="searchMailNum" placeholder="Search" aria-label="Search">
+<button hidden class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+</th>
+</form>			
+			<th>Кому расписано</th>
+			<th>Ответ на вх. №</th>
+			<th>Примечание</th>
+			<th>Примечание по списку рассылки</th>
 			<th>Документ</th>
 		</tr>
 		<%@ page import="java.util.ArrayList"%>

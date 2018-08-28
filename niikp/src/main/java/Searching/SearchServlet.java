@@ -56,7 +56,7 @@ public class SearchServlet extends HttpServlet {
 		if (refererURL.equalsIgnoreCase("incomingMailList")) {	
 			
 			String searchParameterForOnceSearcing = request.getParameter("search");
-			if (!(searchParameterForOnceSearcing == null)) {
+			if (!(searchParameterForOnceSearcing == null) && searchParameterForOnceSearcing.equals("searchIncomingMail")) {
 //				System.out.println("searchParameterForOnceSearcing = " + searchParameterForOnceSearcing);
 //				System.out.println("request.getParameter(\"searchParameterForOnceSearcing\") =" + request.getParameter(searchParameterForOnceSearcing));
 //				String findWord = request.getParameter(searchParameterForOnceSearcing);

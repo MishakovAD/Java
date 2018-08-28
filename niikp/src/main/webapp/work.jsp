@@ -26,17 +26,6 @@ pageEncoding="UTF-8"%>
 			n++
 		}
 	</script>
-
-	 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script>
-        var n = 2;
-        function add_input(){
-            var inputs = $('.inputs input[type="text"]');
-            $('.inputs').append('<input id="id-'+n+'" list="names" name="user'+n+'"  style="height: 25px; width: 200px;" /><br><br>');
-            n++
-        }
-        </script>
-
 </head>
 <body>
 	
@@ -56,38 +45,7 @@ pageEncoding="UTF-8"%>
 							<input id="id-1" name="user1" list="names" style="height: 25px; width: 200px;" />
 							<br><br>
 						</div> 
-						
-						<%@ page import="java.util.HashMap" %>
-						<%@ page import="java.util.Map" %> 
-						<%@ page import="Users.*" %>
-						<%@ page import="UserProfile.*" %>
-						
-						
-        <input type="button" onclick="add_input()" value="Добавить исполнителя" />
-        <br><br>
-        	<label> Исполнитель: </label>
-            <div class="inputs">
-                <input id="id-1" name="user1" list="names" style="height: 25px; width: 200px;" />
-                <br><br>
-            </div>
-					<%@ page import="java.util.HashMap" %>
-					<%@ page import="java.util.Map" %> 
-					<%@ page import="Users.*" %>
-					<%@ page import="UserProfile.*" %>
-					
-					<!--  <h3>Исполнители: </h3>
-					<select size="15" multiple name="user" style="width: 269px;">
-						<%@ page import="java.util.ArrayList"%>
-						<%
-						/*HashMap<Integer, UserProfile> list1 = (HashMap<Integer, UserProfile>) request.getAttribute("usersList");
-						
-						for (Map.Entry entry : list1.entrySet()) {
-						UserProfile user = (UserProfile) entry.getValue(); 
-						out.println("<option>");
-							out.println(user.getName() + " " + user.getSecondName()); 
-						out.println("</option>");	
-					} */ %>
-				</select></p> -->
+					</form>
 			</div>
 			<div class="col-4">
 				

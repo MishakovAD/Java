@@ -46,8 +46,8 @@ pageEncoding="UTF-8"%>
 						<li><a href="#">Корреспонденция<i class="fa fa-angle-down"></i></a>
 							<ul class="submenu">
 								<li><a href="/niikp/incomingMailList?pageNumber=1">Входящая корреспонденция</a></li>
-								<!-- <li><a href="/niikp">Исходящая корреспонденция</a></li>
-									<li><a href="/niikp">Внутренняя корреспонденция</a></li>  -->
+								<li><a href="/niikp/outgoingMailList?pageNumber=1">Исходящая корреспонденция</a></li>
+								<!-- 	<li><a href="/niikp">Внутренняя корреспонденция</a></li>  -->
 								</ul>
 							</li>
 						</ul>
