@@ -10,11 +10,11 @@ public class OutgoingMail {
 	private String regDate;
 	private String mailNum;
 	private String destination; //adresat
-	private int forWhomId; //ispolnitel'
+	private String forWhom; //ispolnitel'
 	private String sendDate;
 	private String mailTheme;
-	private int executorId; //ispolnitel'
-	private int realExecutorId; //real ispolnitel'
+	private String executor; //ispolnitel'
+	private String realExecutor; //real ispolnitel'
 	private String incomingMailNum;
 	private String toWhomItIsPainted;
 	private int incomingMailId;
@@ -114,12 +114,12 @@ public class OutgoingMail {
 		this.idMail = idMail;
 	}
 
-	public int getForWhom() {
-		return forWhomId;
+	public String getForWhom() {
+		return forWhom;
 	}
 
-	public void setForWhom(int forWhom) {
-		this.forWhomId = forWhom;
+	public void setForWhom(String forWhom) {
+		this.forWhom = forWhom;
 	}
 
 	public String getSendDate() {
@@ -143,7 +143,7 @@ public class OutgoingMail {
 	}
 
 	public void setMailNum(String mailNum) {
-		this.mailNum = "¹ Ô-ÂÀ-01/" + mailNum;
+		this.mailNum = mailNum;
 	}
 
 	public String getDestination() {
@@ -162,20 +162,20 @@ public class OutgoingMail {
 		this.mailTheme = mailTheme;
 	}
 
-	public int getExecutor() {
-		return executorId;
+	public String getExecutor() {
+		return executor;
 	}
 
-	public void setExecutor(int executor) {
-		this.executorId = executor;
+	public void setExecutor(String executor) {
+		this.executor = executor;
 	}
 
-	public int getRealExecutor() {
-		return realExecutorId;
+	public String getRealExecutor() {
+		return realExecutor;
 	}
 
-	public void setRealExecutor(int realExecutor) {
-		this.realExecutorId = realExecutor;
+	public void setRealExecutor(String realExecutor) {
+		this.realExecutor = realExecutor;
 	}
 
 	public String getIncomingMailNum() {
@@ -237,8 +237,8 @@ public class OutgoingMail {
 	@Override
 	public String toString() {
 		return "OutgoingMail [idMail=" + idMail + ", regDate=" + regDate + ", mailNum=" + mailNum + ", destination="
-				+ destination + ", forWhomId=" + forWhomId + ", sendDate=" + sendDate + ", mailTheme=" + mailTheme
-				+ ", executorId=" + executorId + ", realExecutorId=" + realExecutorId + ", incomingMailNum="
+				+ destination + ", forWhom=" + forWhom + ", sendDate=" + sendDate + ", mailTheme=" + mailTheme
+				+ ", executor=" + executor + ", realExecutor=" + realExecutor + ", incomingMailNum="
 				+ incomingMailNum + ", toWhomItIsPainted=" + toWhomItIsPainted + ", note=" + note + ", mailingNote="
 				+ mailingNote + ", filePathAndName=" + filePathAndName + "]";
 	}

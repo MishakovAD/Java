@@ -75,9 +75,6 @@ secondFloorDate = newDateFormat.format(resultSecondFloorDate);
 							<p>Номер письма, присваевыемый при первичной рег. документа: </>
 								<input type="text" name="secondFloorNum" value="<%= incomingMail.getSecondFloorNum() %>" placeholder="Номер письма, присваевыемый при первичной рег. документа" />
 								<br><br><br>
-								<p>Документ: </>
-									<input name="file" type="file"><br>
-									<br><br><br>
 									<button type="submit">Save</button>
 									
 									<datalist id="senderList">

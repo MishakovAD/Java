@@ -79,11 +79,11 @@ public class DataBase {
 //		 " idMail INTEGER not NULL AUTO_INCREMENT, " +
 //		 " mailNum VARCHAR (50), " +
 //		 " destination VARCHAR (50), " +
-//		 " forWhomId INT, " +
+//		 " forWhom VARCHAR (50), " +
 //		 " sendDate VARCHAR (50), " +
 //		 " mailTheme VARCHAR (50), " +
-//		 " executorId INT, " +
-//		 " realExecutorId INT, " +
+//		 " executor VARCHAR (50), " +
+//		 " realExecutor VARCHAR (50), " +
 //		 " incomingMailNum VARCHAR (50), " +
 //		 " toWhomItIsPainted VARCHAR (50), " +
 //		 " incomingMailId INT, " +

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.IncomingMailDB;
+import DAO.OutgoingMailDB;
 import DAO.WorkDB;
 import IncomingMail.IncomingMail;
 import MainPage.MainPageServlet;
@@ -32,7 +33,7 @@ public class OutgoingMailListServlet extends HttpServlet {
 
 		if (pageNumber.equals("num")) {
 			String num = request.getParameter("pageNum");
-			response.sendRedirect("/niikp/incomingMailList?pageNumber=" + num);
+			response.sendRedirect("/niikp/outgoingMailList?pageNumber=" + num);
 			return;
 		}
 		
@@ -77,13 +78,13 @@ public class OutgoingMailListServlet extends HttpServlet {
 					}
 				}
 				
-				HashMap<Integer, ArrayList<Work>> resolutionMapForIncomingMail = new HashMap<>();
+				HashMap<Integer, ArrayList<Work>> resolutionMapForOutgoingMail = new HashMap<>();
 				ArrayList<Work> resolutionList = new ArrayList<>();
 				
 				
-				for (OutgoingMail incMail : listForPage) {
-					int idFromMail = incMail.getIdMail();
-					String prefix = "incomingMail_";
+				for (OutgoingMail outMail : listForPage) {
+					int idFromMail = outMail.getIdMail();
+					String prefix = "outgoingMail_";
 					String idMail = prefix + idFromMail;
 					
 					try {
@@ -93,16 +94,16 @@ public class OutgoingMailListServlet extends HttpServlet {
 					}
 				
 					
-					resolutionMapForIncomingMail.put(idFromMail, resolutionList);
+					resolutionMapForOutgoingMail.put(idFromMail, resolutionList);
 					idMail = null;
 				}
 
 						
 				
-				request.setAttribute("resolutionListForIncomingMail", resolutionMapForIncomingMail);
-				request.setAttribute("incomingMailList", listForPage);
+				request.setAttribute("resolutionMapForOutgoingMail", resolutionMapForOutgoingMail);
+				request.setAttribute("outgoingMailList", listForPage);
 				listForPage = null;
-				resolutionMapForIncomingMail = null;
+				resolutionMapForOutgoingMail = null;
 				request.getRequestDispatcher("/outgoingMailList.jsp").forward(request, response);				
 			} else {
 				// вывести страницу с ошибкой вместо редиректа

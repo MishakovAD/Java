@@ -19,17 +19,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import Property.Property;
 
-@WebServlet("/downloadSearchListExcel")
+@WebServlet("/downloadOutgoingMailSearchListExcel")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 20, // 2MB
 		maxFileSize = 1024 * 1024 * 10, // 20MB
 		maxRequestSize = 1024 * 1024 * 50) // 50MB
-public class DownloadSearchListExcelServlet extends HttpServlet {
+public class DownloadOutgoingMailSearchListExcelServlet extends HttpServlet {
 	private ServletContext context;
 	private String root = Property.getProperty("rootToExcelIncom"); // папка, в которой находится файл
 	private String error = null;
 	private boolean disposition = true;
 
-	public DownloadSearchListExcelServlet() {
+	public DownloadOutgoingMailSearchListExcelServlet() {
 	}
 
 
@@ -42,7 +42,7 @@ public class DownloadSearchListExcelServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest paramHttpServletRequest, HttpServletResponse paramHttpServletResponse)
 			throws ServletException, IOException {
-		String str2 = "incomingMailForSearchList.xlsx"; //file name
+		String str2 = "outgoingMailForSearchList.xlsx"; //file name
 		Object localObject1 = lookupFile(root + str2);
 		Object localObject2;
 		String str3 = paramHttpServletRequest.getHeader("Accept-Encoding");

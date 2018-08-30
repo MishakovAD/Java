@@ -4,7 +4,6 @@ pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-
 <!-- Подключение bootstrap -->
 <script type="text/javascript">
 	<%@include file="/resources/bootstrap/js/bootstrap.min.js"%>  
@@ -28,43 +27,55 @@ pageEncoding="UTF-8"%>
 	<title>Исходящая корреспонденция</title>
 </head>
 <body>
-	<form method="post" action="outgoingMail?action=submit" enctype="multipart/form-data">
+<%@ page import="OutgoingMail.*" %>
+<%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.Date"%>
+<%@ page import="java.util.Locale"%>
+<%
+OutgoingMail outgoingMail = (OutgoingMail) request.getAttribute("outgoingMail");
+%>
+
+
+
+
+<form method="post" action="outgoingMail?action=submit" enctype="multipart/form-data">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-4">
 					<p>№ Ф-ВА-01/: </p>
-					<input type="text" name="mailNum" style="width: 250px; height: 40px;" value="" placeholder="Номер письма" />
+					<input type="text" name="mailNum" style="width: 250px; height: 40px;" value="<%= outgoingMail.getMailNum() %>" placeholder="Номер письма" />
 					<br><br><br>
 					<p>Адресат: </p> 
-					<input type="text" name="destination" style="width: 250px; height: 40px;" value="" list="destinationList" placeholder="Адресат" />    
+					<input type="text" name="destination" style="width: 250px; height: 40px;" value="<%= outgoingMail.getDestination() %>" list="destinationList" placeholder="Адресат" />    
 					<br><br><br>
 					<p>Кому: </p> 
-					<input type="text" name="forWhom" style="width: 250px; height: 40px;" value="" list="names" placeholder="Адресат" />    
+					<input type="text" name="forWhom" style="width: 250px; height: 40px;" value="<%= outgoingMail.getForWhom() %>" list="names" placeholder="Адресат" />    
 					<br><br><br>
 					<p>Дата отправления письма: </p>
-					<input type="date" required class="form-control" style="width: 250px;" name="sendDate" value="" placeholder="Дата отправления письма" />
+					<input type="date" required class="form-control" style="width: 250px;" name="sendDate" value="<%= outgoingMail.getSendDate() %>" placeholder="Дата отправления письма" />
 					<br><br><br>
 				</div>
 						
 				<div class="col-4">
 					<p>Тема письма: </p>
-					<input type="text" name="mailTheme" style="width: 250px; height: 40px;" value="" placeholder="Тема письма" />
+					<input type="text" name="mailTheme" style="width: 250px; height: 40px;" value="<%= outgoingMail.getMailTheme() %>" placeholder="Тема письма" />
 					<br><br><br>
 					<p>Исполнитель: </p> 
-					<input type="text" name="executor" style="width: 250px; height: 40px;" value="" list="names" placeholder="Адресат" />    
+					<input type="text" name="executor" style="width: 250px; height: 40px;" value="<%= outgoingMail.getExecutor() %>" list="names" placeholder="Адресат" />    
 					<br><br><br>
 					<p>Реальный исполнитель: </p> 
-					<input type="text" name="realExecutor" style="width: 250px; height: 40px;" value="" list="names" placeholder="Адресат" />    
+					<input type="text" name="realExecutor" style="width: 250px; height: 40px;" value="<%= outgoingMail.getRealExecutor() %>" list="names" placeholder="Адресат" />    
 					<br><br><br>
 					<p>№ входящего: </p>
-					<input type="text" name="incomingMailNum" style="width: 250px; height: 40px;" value="" placeholder="Номер письма" />
+					<input type="text" name="incomingMailNum" style="width: 250px; height: 40px;" value="<%= outgoingMail.getIncomingMailNum() %>" placeholder="Номер письма" />
 					<br><br><br>
 					<form id="Form">
 						<input type="button" onclick="add_input()" value="Добавить #Кому расписано#" />
 						<br><br>
 						<label>Кому расписано: </label>
 						<div class="inputs">
-							<input id="id-1" name="toWhomItIsPainted1" list="names" style="height: 25px; width: 200px;" />
+							<input required id="id-1" name="toWhomItIsPainted1" list="names" style="height: 25px; width: 200px;" />
 							<br><br>
 						</div> 
 					</form>
@@ -72,13 +83,11 @@ pageEncoding="UTF-8"%>
 						
 				<div class="col-4">
 					<p>Примечание: </p>
-					<input type="text" name="note" style="width: 250px; height: 40px;" value="" placeholder="Номер письма" />
+					<input type="text" name="note" style="width: 250px; height: 40px;" value="<%= outgoingMail.getNote() %>" placeholder="Номер письма" />
 					<br><br><br>
 					<p>Примечание рассылки: </p>
-					<input type="text" name="mailingNote" style="width: 250px; height: 40px;" value="" placeholder="Номер письма" />
+					<input type="text" name="mailingNote" style="width: 250px; height: 40px;" value="<%= outgoingMail.getMailingNote() %>" placeholder="Номер письма" />
 					<br><br><br>
-					<p>Письмо: </p>
-					<input name="file" type="file"><br><br>
 					<button type="submit">Добавить</button>
 				</div>
 						<datalist id="destinationList">
@@ -113,5 +122,6 @@ pageEncoding="UTF-8"%>
 					</div>
 				</div>
 			</form>
-		</body>
-		</html>
+	
+	</body>
+	</html>

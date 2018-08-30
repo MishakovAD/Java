@@ -12,16 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import ExcelApachePOI.IncomingMailExcel;
 import IncomingMail.*;
 
-@WebServlet("/exportSearchListIntoExcel")
-public class ExportSearchListIntoExcelServlet extends HttpServlet {
+@WebServlet("/exportIncomingMailSearchListIntoExcel")
+public class ExportIncomingMailSearchListIntoExcelServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ArrayList<IncomingMail> searchList = (ArrayList<IncomingMail>) request.getSession().getAttribute("searchList");
-		IncomingMailExcel.writeSearchListIntoExcel(searchList);
+		ArrayList<IncomingMail> searchListIncomingMail = (ArrayList<IncomingMail>) request.getSession().getAttribute("searchListIncomingMail");
+		IncomingMailExcel.writeSearchListIntoExcel(searchListIncomingMail);
 		
-		response.sendRedirect("/niikp/downloadSearchListExcel");
+		response.sendRedirect("/niikp/downloadIncomingMailSearchListExcel");
 
 		// request.getRequestDispatcher("/index.jsp").forward(request, response);
 	}

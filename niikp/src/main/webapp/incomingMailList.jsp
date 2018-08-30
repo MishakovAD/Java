@@ -21,7 +21,7 @@ pageEncoding="UTF-8"%>
 	<p><h2>Входящая корреспонденция</h2>
 	
 	<a href="/niikp/incomingMail">Добавить Входящую корреспонденцию</button></a>
-	<a href="/niikp/downloadExcel">Скачать Excel файл</a> </p>
+	<a href="/niikp/downloadIncomingMailExcel">Скачать Excel файл</a> </p>
 	
 	<form method="get" action="/niikp/incomingMailList?pageNumber=num">
 Перейти к странице: <input type="text" name="pageNumber" size="20">

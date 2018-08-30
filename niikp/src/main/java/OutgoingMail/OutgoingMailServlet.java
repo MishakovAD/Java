@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
+//import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.servlet.RequestDispatcher;
@@ -23,7 +23,9 @@ import javax.servlet.http.Part;
 
 import DAO.GetterDB;
 import DAO.IncomingMailDB;
+import DAO.OutgoingMailDB;
 import ExcelApachePOI.IncomingMailExcel;
+import ExcelApachePOI.OutgoingMailExcel;
 import IncomingMail.IncomingMail;
 import Property.Property;
 import Translit.Translit;
@@ -84,9 +86,6 @@ public class OutgoingMailServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
 		if ("submit".equals(action)) {
-			int forWhomId = 0;
-			int executorId = 0;
-			int realExecutorId = 0;
 			String mailNum = request.getParameter("mailNum");
 			String destination = request.getParameter("destination");
 			String forWhomNameAdnSecondName = request.getParameter("forWhom");
@@ -113,56 +112,60 @@ public class OutgoingMailServlet extends HttpServlet {
 			} catch (ParseException e1) {
 				e1.printStackTrace();
 			}
-			
-			String userNameforWhom = "Не";
-			String userSecondNameforWhom = "Заполнено";
-			if (forWhomNameAdnSecondName.length() > 0) {
-				int indexOfSpaceForWhomNameAdnSecondName = forWhomNameAdnSecondName.indexOf(" ");
-				userNameforWhom = forWhomNameAdnSecondName.substring(0, indexOfSpaceForWhomNameAdnSecondName);
-				userSecondNameforWhom = forWhomNameAdnSecondName.substring(indexOfSpaceForWhomNameAdnSecondName+1);
-			}
-			
-			String userNameexecutor = "Не";
-			String userSecondNameexecutor = "Заполнено";
-			if (executorNameAdnSecondName.length() > 0) {
-				int indexOfSpaceExecutorNameAdnSecondName = executorNameAdnSecondName.indexOf(" ");
-				userNameexecutor = executorNameAdnSecondName.substring(0, indexOfSpaceExecutorNameAdnSecondName);
-				userSecondNameexecutor = executorNameAdnSecondName.substring(indexOfSpaceExecutorNameAdnSecondName+1);
-			}
-			
-			String userNameRealExecutor = "Не";
-			String userSecondNameRealExecutor = "Заполнено";
-			if (realExecutorNameAdnSecondName.length() > 0) {
-				int indexOfSpaceRealExecutorNameAdnSecondName = realExecutorNameAdnSecondName.indexOf(" ");
-				userNameRealExecutor = realExecutorNameAdnSecondName.substring(0, indexOfSpaceRealExecutorNameAdnSecondName);
-				userSecondNameRealExecutor = realExecutorNameAdnSecondName.substring(indexOfSpaceRealExecutorNameAdnSecondName+1);
-			}
-			
-			
-			HashMap<Integer, UserProfile> usersList = new HashMap<>();
-			try {
-				usersList = GetterDB.getUsersList();
-			} catch (InstantiationException | IllegalAccessException | SQLException e1) {
-				e1.printStackTrace();
-			}
-			for (Map.Entry user : usersList.entrySet()) {
-				UserProfile userProfile = (UserProfile) user.getValue();
-				if (userProfile.getName().equalsIgnoreCase(userNameforWhom)
-						&& userProfile.getSecondName().equalsIgnoreCase(userSecondNameforWhom)) {
-					forWhomId = (int) userProfile.getUserId();
-				} 
-				if (userProfile.getName().equalsIgnoreCase(userNameexecutor)
-						&& userProfile.getSecondName().equalsIgnoreCase(userSecondNameexecutor)) {
-					executorId = (int) userProfile.getUserId();
-				} 
-				if (userProfile.getName().equalsIgnoreCase(userNameRealExecutor)
-						&& userProfile.getSecondName().equalsIgnoreCase(userSecondNameRealExecutor)) {
-					realExecutorId = (int) userProfile.getUserId();
-				}
-			}
-			outMail.setForWhom(forWhomId);
-			outMail.setExecutor(executorId);
-			outMail.setRealExecutor(realExecutorId);
+/**
+ * 
+ * It is the logic for get Id user from his name and secind name
+ * 			
+ */
+//			String userNameforWhom = "Не";
+//			String userSecondNameforWhom = "Заполнено";
+//			if (forWhomNameAdnSecondName.length() > 0) {
+//				int indexOfSpaceForWhomNameAdnSecondName = forWhomNameAdnSecondName.indexOf(" ");
+//				userNameforWhom = forWhomNameAdnSecondName.substring(0, indexOfSpaceForWhomNameAdnSecondName);
+//				userSecondNameforWhom = forWhomNameAdnSecondName.substring(indexOfSpaceForWhomNameAdnSecondName+1);
+//			}
+//			
+//			String userNameexecutor = "Не";
+//			String userSecondNameexecutor = "Заполнено";
+//			if (executorNameAdnSecondName.length() > 0) {
+//				int indexOfSpaceExecutorNameAdnSecondName = executorNameAdnSecondName.indexOf(" ");
+//				userNameexecutor = executorNameAdnSecondName.substring(0, indexOfSpaceExecutorNameAdnSecondName);
+//				userSecondNameexecutor = executorNameAdnSecondName.substring(indexOfSpaceExecutorNameAdnSecondName+1);
+//			}
+//			
+//			String userNameRealExecutor = "Не";
+//			String userSecondNameRealExecutor = "Заполнено";
+//			if (realExecutorNameAdnSecondName.length() > 0) {
+//				int indexOfSpaceRealExecutorNameAdnSecondName = realExecutorNameAdnSecondName.indexOf(" ");
+//				userNameRealExecutor = realExecutorNameAdnSecondName.substring(0, indexOfSpaceRealExecutorNameAdnSecondName);
+//				userSecondNameRealExecutor = realExecutorNameAdnSecondName.substring(indexOfSpaceRealExecutorNameAdnSecondName+1);
+//			}
+//			
+//			
+//			HashMap<Integer, UserProfile> usersList = new HashMap<>();
+//			try {
+//				usersList = GetterDB.getUsersList();
+//			} catch (InstantiationException | IllegalAccessException | SQLException e1) {
+//				e1.printStackTrace();
+//			}
+//			for (Map.Entry user : usersList.entrySet()) {
+//				UserProfile userProfile = (UserProfile) user.getValue();
+//				if (userProfile.getName().equalsIgnoreCase(userNameforWhom)
+//						&& userProfile.getSecondName().equalsIgnoreCase(userSecondNameforWhom)) {
+//					forWhomId = (int) userProfile.getUserId();
+//				} 
+//				if (userProfile.getName().equalsIgnoreCase(userNameexecutor)
+//						&& userProfile.getSecondName().equalsIgnoreCase(userSecondNameexecutor)) {
+//					executorId = (int) userProfile.getUserId();
+//				} 
+//				if (userProfile.getName().equalsIgnoreCase(userNameRealExecutor)
+//						&& userProfile.getSecondName().equalsIgnoreCase(userSecondNameRealExecutor)) {
+//					realExecutorId = (int) userProfile.getUserId();
+//				}
+//			}
+			outMail.setForWhom(forWhomNameAdnSecondName);
+			outMail.setExecutor(executorNameAdnSecondName);
+			outMail.setRealExecutor(realExecutorNameAdnSecondName);
 			
 			outMail.setMailNum(mailNum);
 			outMail.setDestination(destination);
@@ -174,7 +177,7 @@ public class OutgoingMailServlet extends HttpServlet {
 			
 			
 			StringBuilder usersToWhomItIsPainted = new StringBuilder();
-			StringBuilder usersToWhomItIsPaintedId = new StringBuilder();
+//			StringBuilder usersToWhomItIsPaintedId = new StringBuilder();
 			for (int i = 1; ; i++) {
 				if (request.getParameter("toWhomItIsPainted" + i) == null){
 					break;
@@ -183,29 +186,29 @@ public class OutgoingMailServlet extends HttpServlet {
 				}				
 			}
 
-			String userName;
-			String userSecondName;
+//			String userName;
+//			String userSecondName;
+//			
+//			if (usersToWhomItIsPainted.length() > 0) {
+//				String[] usersListNameAndSecondname = usersToWhomItIsPainted.toString().split(";");
+//				for (int i = 0; i < usersListNameAndSecondname.length; i++) {
+//					int indexOfSpaseFromUser = usersListNameAndSecondname[i].indexOf(" ");
+//					userName = usersListNameAndSecondname[i].substring(0, indexOfSpaseFromUser);
+//					userSecondName = usersListNameAndSecondname[i].substring(indexOfSpaseFromUser + 1);
+//					
+//					for (Map.Entry entry : usersList.entrySet()) {
+//						UserProfile user = (UserProfile) entry.getValue();
+//						if (user.getName().equalsIgnoreCase(userName)
+//								&& user.getSecondName().equalsIgnoreCase(userSecondName)) {
+//							usersToWhomItIsPaintedId.append(user.getUserId() + ";");
+//						}
+//						
+//					}
+//				}
+//
+//			}
 			
-			if (usersToWhomItIsPainted.length() > 0) {
-				String[] usersListNameAndSecondname = usersToWhomItIsPainted.toString().split(";");
-				for (int i = 0; i < usersListNameAndSecondname.length; i++) {
-					int indexOfSpaseFromUser = usersListNameAndSecondname[i].indexOf(" ");
-					userName = usersListNameAndSecondname[i].substring(0, indexOfSpaseFromUser);
-					userSecondName = usersListNameAndSecondname[i].substring(indexOfSpaseFromUser + 1);
-					
-					for (Map.Entry entry : usersList.entrySet()) {
-						UserProfile user = (UserProfile) entry.getValue();
-						if (user.getName().equalsIgnoreCase(userName)
-								&& user.getSecondName().equalsIgnoreCase(userSecondName)) {
-							usersToWhomItIsPaintedId.append(user.getUserId() + ";");
-						}
-						
-					}
-				}
-
-			}
-			
-			outMail.setToWhomItIsPainted(usersToWhomItIsPaintedId.toString());
+			outMail.setToWhomItIsPainted(usersToWhomItIsPainted.toString());
 			
 			
 			//raspisat'
@@ -227,7 +230,7 @@ public class OutgoingMailServlet extends HttpServlet {
 
 				// Part list (multi files).
 				for (Part part : request.getParts()) {
-					String fileName = extractFileName(part, IncomingMailDB.getLastIndexIncomingMail());
+					String fileName = extractFileName(part, OutgoingMailDB.getLastIndexOutgoingMail());
 					if (fileName != null && fileName.length() > 20) {
 						String filePath = fullSavePath + File.separator + fileName;
 						if (filePath != null) {
@@ -240,7 +243,7 @@ public class OutgoingMailServlet extends HttpServlet {
 					}
 				}
 				// Upload successfully!.
-				response.sendRedirect(request.getContextPath() + "/incomingMailList?pageNumber=1");
+				response.sendRedirect(request.getContextPath() + "/outgoingMailList?pageNumber=1");
 				// response.sendRedirect("/niikp");
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -248,23 +251,22 @@ public class OutgoingMailServlet extends HttpServlet {
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/incomingMail.jsp");
 				dispatcher.forward(request, response);
 			}
-//			try {
-//				OutgoingMailDB.addOutgoingMail(outMail);
-//			} catch (InstantiationException | IllegalAccessException | SQLException e) {
-//				e.printStackTrace();
-//			}
-//
-//			
-//			try {
-//				OutgoingMail outMailToExcel = OutgoingMailDB
-//						.getOutgoingMailToId(OutgoingMailDB.getLastIndexIncomingMail() - 1);
-//				IncomingMailExcel.writeIntoExcel(outMailToExcel.getRegDate(), outMailToExcel.getIdMail(), outMailToExcel,
-//						destination, sendDate, mailNum, mailTheme, outMailToExcel.getFilePathAndName());
-//			} catch (InstantiationException | IllegalAccessException | SQLException e) {
-//				e.printStackTrace();
-//			}
+			try {
+				OutgoingMailDB.addOutgoingMail(outMail);
+			} catch (InstantiationException | IllegalAccessException | SQLException e) {
+				e.printStackTrace();
+			}
 
-			System.out.println(outMail);
+			
+			try {
+				OutgoingMail outMailToExcel = OutgoingMailDB
+						.getOutgoingMailToId(OutgoingMailDB.getLastIndexOutgoingMail() - 1);
+				OutgoingMailExcel.writeIntoExcel(outMailToExcel);
+			} catch (InstantiationException | IllegalAccessException | SQLException e) {
+				e.printStackTrace();
+			}
+
+			//System.out.println(outMail);
 		} // end if
 	}
 

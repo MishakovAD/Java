@@ -24,36 +24,37 @@ public class OutgoingMailDB {
 	public static void addOutgoingMail(OutgoingMail outMail)
 			throws SQLException, InstantiationException, IllegalAccessException {
 		Connection con = DriverManager.getConnection(url, username, password);
-
-		// String regDate = outMail.getRegDate();
-		String typeMail = outMail.getTypeMail();
-		String sender = outMail.getSender();
-		String sendDate = outMail.getSendDate();
+		
+		
 		String mailNum = outMail.getMailNum();
+		String destination = outMail.getDestination() ; //adresat
+		String forWhom = outMail.getForWhom(); //ispolnitel'
+		String sendDate = outMail.getSendDate();
 		String mailTheme = outMail.getMailTheme();
-		String secondFloorDate = outMail.getSecondFloorDate();
-		String secondFloorNum = outMail.getSecondFloorNum();
+		String executor = outMail.getExecutor(); //ispolnitel'
+		String realExecutor = outMail.getRealExecutor(); //real ispolnitel'
+		String incomingMailNum = outMail.getIncomingMailNum();
+		String toWhomItIsPainted = outMail.getToWhomItIsPainted();
+		int incomingMailId = outMail.getIncomingMailId();
+		String note = outMail.getNote();
+		String mailingNote = outMail.getMailingNote(); //primechanie rassbIlki
 		String filePathAndName = outMail.getFilePathAndName();
-		boolean onControl = outMail.isOnControl();
+
 
 		Statement statement = null;
 		statement = con.createStatement();
 
-		String SQL_insert_outgoingMail = "insert into outgoingMail (regDate, typeMail, sender, sendDate, "
-				+ "mailNum, mailTheme, secondFloorDate, secondFloorNum, filePathAndName, onControl)" + " values (now(), '"
-				+ typeMail + "', '" + sender + "', '" + sendDate + "', '" + mailNum + "', '" + mailTheme + "', '"
-				+ secondFloorDate + "', '" + secondFloorNum + "', '" + filePathAndName + "', " + onControl + ");";
+		String SQL_insert_outgoingMail = "insert into outgoingMail (regDate, mailNum, destination, forWhom, "
+				+ "sendDate, mailTheme, executor, realExecutor, incomingMailNum, toWhomItIsPainted, "
+				+ "incomingMailId, note, mailingNote, filePathAndName)" + " values (now(), '"
+				+ mailNum + "', '" + destination + "', '" + forWhom + "', '" + sendDate + "', '" + mailTheme + "', '"
+				+ executor + "', '" + realExecutor + "', '"  + incomingMailNum + "', '" + toWhomItIsPainted + "', " + incomingMailId + ", '" 
+				+ note + "', '" + mailingNote + "', '" + filePathAndName + "');";
+
 
 		statement.execute(SQL_insert_outgoingMail);
-		// regDate = null;
-		typeMail = null;
-		sender = null;
-		sendDate = null;
-		mailNum = null;
-		mailTheme = null;
-		secondFloorDate = null;
-		secondFloorNum = null;
-		filePathAndName = null;
+
+		outMail = new OutgoingMail();
 		if (statement != null)
 			statement.close();
 		if (con != null)
@@ -66,34 +67,33 @@ public class OutgoingMailDB {
 		Connection con = DriverManager.getConnection(url, username, password);
 
 		String regDate = outMail.getRegDate();
-		String typeMail = outMail.getTypeMail();
-		String sender = outMail.getSender();
-		String sendDate = outMail.getSendDate();
 		String mailNum = outMail.getMailNum();
+		String destination = outMail.getDestination() ; //adresat
+		String forWhom = outMail.getForWhom(); //ispolnitel'
+		String sendDate = outMail.getSendDate();
 		String mailTheme = outMail.getMailTheme();
-		String secondFloorDate = outMail.getSecondFloorDate();
-		String secondFloorNum = outMail.getSecondFloorNum();
+		String executor = outMail.getExecutor(); //ispolnitel'
+		String realExecutor = outMail.getRealExecutor(); //real ispolnitel'
+		String incomingMailNum = outMail.getIncomingMailNum();
+		String toWhomItIsPainted = outMail.getToWhomItIsPainted();
+		int incomingMailId = outMail.getIncomingMailId();
+		String note = outMail.getNote();
+		String mailingNote = outMail.getMailingNote(); //primechanie rassbIlki
 		String filePathAndName = outMail.getFilePathAndName();
 
 		Statement statement = null;
 		statement = con.createStatement();
 		
 
-		String SQL_insert_outgoingMail = "insert into outgoingMail (regDate, typeMail, sender, sendDate, "
-				+ "mailNum, mailTheme, secondFloorDate, secondFloorNum, filePathAndName)" + " values ('" + regDate + "', '"
-				+ typeMail + "', '" + sender + "', '" + sendDate + "', '" + mailNum + "', '" + mailTheme + "', '"
-				+ secondFloorDate + "', '" + secondFloorNum + "', '" + filePathAndName + "');";
+		String SQL_insert_outgoingMail = "insert into outgoingMail (regDate, mailNum, destination, forWhom, "
+				+ "sendDate, mailTheme, executor, realExecutor, incomingMailNum, toWhomItIsPainted, "
+				+ "incomingMailId, note, mailingNote, filePathAndName)" + " values ('" + regDate + "', '"
+				+ mailNum + "', '" + destination + "', " + forWhom + ", '" + sendDate + "', '" + mailTheme + "', "
+				+ executor + ", " + realExecutor + ", '"  + incomingMailNum + "', '" + toWhomItIsPainted + "', " + incomingMailId + ", '" 
+				+ note + "', '" + mailingNote + "', '" + filePathAndName + "');";
 
 		statement.execute(SQL_insert_outgoingMail);
-		// regDate = null;
-		typeMail = null;
-		sender = null;
-		sendDate = null;
-		mailNum = null;
-		mailTheme = null;
-		secondFloorDate = null;
-		secondFloorNum = null;
-		filePathAndName = null;
+		outMail = new OutgoingMail();
 		if (statement != null)
 			statement.close();
 		if (con != null)
@@ -115,18 +115,25 @@ public class OutgoingMailDB {
 		statement.execute(SQL_get_outgoingMail);
 		ResultSet rs = statement.executeQuery(SQL_get_outgoingMail);
 		while (rs.next()) {
-			outMail.setRegDate(rs.getString("regDate"));
 			outMail.setIdMail(rs.getInt("idMail"));
-			outMail.setTypeMail(rs.getString("typeMail"));
-			outMail.setSender(rs.getString("sender"));
-			outMail.setSendDate(rs.getString("sendDate"));
+			outMail.setRegDate(rs.getString("regDate"));
 			outMail.setMailNum(rs.getString("mailNum"));
+			outMail.setDestination(rs.getString("destination")) ; //adresat
+			outMail.setForWhom(rs.getString("forWhom")); //ispolnitel'
+			outMail.setSendDate(rs.getString("sendDate"));
 			outMail.setMailTheme(rs.getString("mailTheme"));
-			outMail.setSecondFloorDate(rs.getString("secondFloorDate"));
-			outMail.setSecondFloorNum(rs.getString("secondFloorNum"));
+			outMail.setExecutor(rs.getString("executor")); //ispolnitel'
+			outMail.setRealExecutor(rs.getString("realExecutor")); //real ispolnitel'
+			outMail.setIncomingMailNum(rs.getString("incomingMailNum"));
+			outMail.setToWhomItIsPainted(rs.getString("toWhomItIsPainted"));
+			outMail.setIncomingMailId(rs.getInt("incomingMailId"));
+			outMail.setNote(rs.getString("note"));
+			outMail.setMailingNote(rs.getString("mailingNote")); //primechanie rassbIlki
 			outMail.setFilePathAndName(rs.getString("filePathAndName"));
-			outMail.setOnControl(rs.getBoolean("onControl"));
-			listOutgoingMailFromMethodGet.add(outMail);
+			outMail.setDeleted(rs.getBoolean("isDeleted"));
+			if (!outMail.isDeleted()) {
+				listOutgoingMailFromMethodGet.add(outMail);
+			}			
 			outMail = new OutgoingMail();
 		}
 		if (statement != null)
@@ -155,16 +162,20 @@ public class OutgoingMailDB {
 		ResultSet rs = statement.executeQuery(SQL_get_outgoingMail_to_id);
 		while (rs.next()) {
 			outMail.setRegDate(rs.getString("regDate"));
-			outMail.setIdMail(rs.getInt("idMail"));
-			outMail.setTypeMail(rs.getString("typeMail"));
-			outMail.setSender(rs.getString("sender"));
-			outMail.setSendDate(rs.getString("sendDate"));
 			outMail.setMailNum(rs.getString("mailNum"));
+			outMail.setDestination(rs.getString("destination")) ; //adresat
+			outMail.setForWhom(rs.getString("forWhom")); //ispolnitel'
+			outMail.setSendDate(rs.getString("sendDate"));
 			outMail.setMailTheme(rs.getString("mailTheme"));
-			outMail.setSecondFloorDate(rs.getString("secondFloorDate"));
-			outMail.setSecondFloorNum(rs.getString("secondFloorNum"));
+			outMail.setExecutor(rs.getString("executor")); //ispolnitel'
+			outMail.setRealExecutor(rs.getString("realExecutor")); //real ispolnitel'
+			outMail.setIncomingMailNum(rs.getString("incomingMailNum"));
+			outMail.setToWhomItIsPainted(rs.getString("toWhomItIsPainted"));
+			outMail.setIncomingMailId(rs.getInt("incomingMailId"));
+			outMail.setNote(rs.getString("note"));
+			outMail.setMailingNote(rs.getString("mailingNote")); //primechanie rassbIlki
 			outMail.setFilePathAndName(rs.getString("filePathAndName"));
-			outMail.setOnControl(rs.getBoolean("onControl"));
+			outMail.setDeleted(rs.getBoolean("isDeleted"));
 		}
 		if (statement != null)
 			statement.close();
@@ -182,9 +193,9 @@ public class OutgoingMailDB {
 		Statement statement = null;
 		statement = con.createStatement();
 
-		String SQL_get_outgoingMail_to_id = "SELECT filePathAndName FROM outgoingMail WHERE idMail=" + id + ";";
+		String SQL_get_file_outgoingMail_to_id = "SELECT filePathAndName FROM outgoingMail WHERE idMail=" + id + ";";
 
-		ResultSet rs = statement.executeQuery(SQL_get_outgoingMail_to_id);
+		ResultSet rs = statement.executeQuery(SQL_get_file_outgoingMail_to_id);
 		while (rs.next()) {
 			file = rs.getString("filePathAndName");
 		}
@@ -203,9 +214,9 @@ public class OutgoingMailDB {
 		Statement statement = null;
 		statement = con.createStatement();
 
-		String SQL_get_outgoingMail_to_id = "SELECT idMail FROM outgoingMail ORDER BY idMail DESC LIMIT 1;";
+		String SQL_get_lastIndex_outgoingMail = "SELECT idMail FROM outgoingMail ORDER BY idMail DESC LIMIT 1;";
 
-		ResultSet rs = statement.executeQuery(SQL_get_outgoingMail_to_id);
+		ResultSet rs = statement.executeQuery(SQL_get_lastIndex_outgoingMail);
 		while (rs.next()) {
 			lastId = rs.getInt("idMail");
 		}
@@ -222,6 +233,7 @@ public class OutgoingMailDB {
 		Statement statement = null;
 		statement = con.createStatement();
 
+		//String SQL_delete_outgoingMail_to_id = "UPDATE outgoingMail SET isDeleted=" + true + " WHERE idMail=" + id + ";";
 		String SQL_delete_outgoingMail_to_id = "DELETE FROM outgoingMail WHERE idMail=" + id + ";";
 
 		statement.executeUpdate(SQL_delete_outgoingMail_to_id);
@@ -237,30 +249,32 @@ public class OutgoingMailDB {
 		Statement statement = null;
 		statement = con.createStatement();
 
-		String typeMail = outMail.getTypeMail();
-		String sender = outMail.getSender();
-		String sendDate = outMail.getSendDate();
 		String mailNum = outMail.getMailNum();
+		String destination = outMail.getDestination() ; //adresat
+		String forWhom = outMail.getForWhom(); //ispolnitel'
+		String sendDate = outMail.getSendDate();
 		String mailTheme = outMail.getMailTheme();
-		String secondFloorDate = outMail.getSecondFloorDate();
-		String secondFloorNum = outMail.getSecondFloorNum();
+		String executor = outMail.getExecutor(); //ispolnitel'
+		String realExecutor = outMail.getRealExecutor(); //real ispolnitel'
+		String incomingMailNum = outMail.getIncomingMailNum();
+		String toWhomItIsPainted = outMail.getToWhomItIsPainted();
+		int incomingMailId = outMail.getIncomingMailId();
+		String note = outMail.getNote();
+		String mailingNote = outMail.getMailingNote(); //primechanie rassbIlki
 		String filePathAndName = outMail.getFilePathAndName();
+		//редактирование документа убираю, т.к. если не внесут, он удалится.
 
-		String SQL_update_outgoingMail = "UPDATE outgoingMail SET typeMail='" + typeMail + "', sender='" + sender
-				+ "', sendDate='" + sendDate + "', mailNum='" + mailNum + "', mailTheme='" + mailTheme + "', secondFloorDate='" + secondFloorDate
-				+ "', secondFloorNum='" + secondFloorNum + "' WHERE idMail=" + outMail.getIdMail() + ";";
+		String SQL_update_outgoingMail = "UPDATE outgoingMail SET mailNum='" + mailNum + "', destination='" + destination
+				+ "', forWhom='" + forWhom + "', sendDate='" + sendDate + "', mailTheme='" + mailTheme + "', executor='" + executor
+				+ "', realExecutor='" + realExecutor + "', incomingMailNum='" + incomingMailNum
+				+ "', toWhomItIsPainted='" + toWhomItIsPainted + "', incomingMailId=" + incomingMailId 
+				+ ", note='" + note + "', mailingNote='" + mailingNote +  "' WHERE idMail=" + outMail.getIdMail() + ";";
+		System.out.println(SQL_update_outgoingMail);
 
 		statement.executeUpdate(SQL_update_outgoingMail);
-		System.out.println(outMail);
-		System.out.println("UPDATE!");
-		typeMail = null;
-		sender = null;
-		sendDate = null;
-		mailNum = null;
-		mailTheme = null;
-		secondFloorDate = null;
-		secondFloorNum = null;
-		filePathAndName = null;
+		
+		outMail = new OutgoingMail();
+
 		if (statement != null)
 			statement.close();
 		if (con != null)
@@ -283,16 +297,20 @@ public class OutgoingMailDB {
 		ResultSet rs = statement.executeQuery(SQL_get_outgoingMail);
 		while (rs.next()) {
 			outMail.setRegDate(rs.getString("regDate"));
-			outMail.setIdMail(rs.getInt("idMail"));
-			outMail.setTypeMail(rs.getString("typeMail"));
-			outMail.setSender(rs.getString("sender"));
-			outMail.setSendDate(rs.getString("sendDate"));
 			outMail.setMailNum(rs.getString("mailNum"));
+			outMail.setDestination(rs.getString("destination")) ; //adresat
+			outMail.setForWhom(rs.getString("forWhom")); //ispolnitel'
+			outMail.setSendDate(rs.getString("sendDate"));
 			outMail.setMailTheme(rs.getString("mailTheme"));
-			outMail.setSecondFloorDate(rs.getString("secondFloorDate"));
-			outMail.setSecondFloorNum(rs.getString("secondFloorNum"));
+			outMail.setExecutor(rs.getString("executor")); //ispolnitel'
+			outMail.setRealExecutor(rs.getString("realExecutor")); //real ispolnitel'
+			outMail.setIncomingMailNum(rs.getString("incomingMailNum"));
+			outMail.setToWhomItIsPainted(rs.getString("toWhomItIsPainted"));
+			outMail.setIncomingMailId(rs.getInt("incomingMailId"));
+			outMail.setNote(rs.getString("note"));
+			outMail.setMailingNote(rs.getString("mailingNote")); //primechanie rassbIlki
 			outMail.setFilePathAndName(rs.getString("filePathAndName"));
-			outMail.setOnControl(rs.getBoolean("onControl"));
+			outMail.setDeleted(rs.getBoolean("isDeleted"));
 			listOutgoingMailSirtByRegDate.add(outMail);
 			outMail = new OutgoingMail();
 		}

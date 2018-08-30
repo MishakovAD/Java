@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="Users.UsersList"/>
-<fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="javax.servlet.annotation.MultipartConfig"/>
 <fullyQualifiedTypeName name="javax.servlet.http.Part"/>
 <fullyQualifiedTypeName name="java.nio.file.Paths"/>
@@ -35,7 +34,6 @@
 <fullyQualifiedTypeName name="Translit.Translit"/>
 <fullyQualifiedTypeName name="DAO.WorkDB"/>
 <fullyQualifiedTypeName name="Work.Work"/>
-<fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="java.io.FileInputStream"/>
 <fullyQualifiedTypeName name="Rules.Roles"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
@@ -43,15 +41,20 @@
 <fullyQualifiedTypeName name="DAO.WorkWithTemplateDB"/>
 <fullyQualifiedTypeName name="Pagination.Pagination"/>
 <fullyQualifiedTypeName name="java.util.Comparator"/>
-<fullyQualifiedTypeName name="DAO.IncomingMailDB"/>
-<fullyQualifiedTypeName name="ExcelApachePOI.IncomingMailExcel"/>
 <fullyQualifiedTypeName name="java.text.Format"/>
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
-<fullyQualifiedTypeName name="UserProfile.UserProfile"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="IncomingMail.IncomingMail"/>
 <fullyQualifiedTypeName name="MainPage.MainPageServlet"/>
 <fullyQualifiedTypeName name="Entity.IncomingMail"/>
 <fullyQualifiedTypeName name="Property.Property"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
+<fullyQualifiedTypeName name="DAO.IncomingMailDB"/>
+<fullyQualifiedTypeName name="DAO.GetterDB"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="ExcelApachePOI.IncomingMailExcel"/>
+<fullyQualifiedTypeName name="UserProfile.UserProfile"/>
+<fullyQualifiedTypeName name="IncomingMail.IncomingMail"/>
+<fullyQualifiedTypeName name="OutgoingMail.OutgoingMail"/>
+<fullyQualifiedTypeName name="DAO.OutgoingMailDB"/>
 </qualifiedTypeNameHistroy>
