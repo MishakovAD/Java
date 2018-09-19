@@ -12,16 +12,16 @@ import Property.Property;
 
 
 
-@WebServlet("/importExcel")
-public class ExportExcelServlet extends HttpServlet {
+@WebServlet("/importExcelOutgoingMail")
+public class ExportExcelServletOutgoingMail extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		try {
-			System.out.println("Property   itno ImportFromExcelServlet" + Property.getProperty("fileForExportIncomingMail"));
-			WorkWithExcel.readFromExcel(Property.getProperty("fileForExportIncomingMail"));
+			System.out.println("Property   itno ImportFromExcelServlet" + Property.getProperty("fileForExportOutgoingMail"));
+			WorkWithExcelOutgoingMail.readFromExcel(Property.getProperty("fileForExportOutgoingMail"));
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

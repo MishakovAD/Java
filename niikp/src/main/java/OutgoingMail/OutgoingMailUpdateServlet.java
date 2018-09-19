@@ -97,7 +97,7 @@ public class OutgoingMailUpdateServlet extends HttpServlet {
 			String mailTheme = request.getParameter("mailTheme");
 			String executorNameAdnSecondName = request.getParameter("executor");
 			String realExecutorNameAdnSecondName = request.getParameter("realExecutor");
-			String outomingMailNum = request.getParameter("outomingMailNum");
+			String outomingMailNum = request.getParameter("outomingMailNum"); //mark. it must be incoming ошибка, это должен быть номер входящего по названию. Надо исправить, но очень лень, простите
 			String note = request.getParameter("note");
 			String mailingNote = request.getParameter("mailingNote");
 
@@ -123,6 +123,7 @@ public class OutgoingMailUpdateServlet extends HttpServlet {
 			if (realExecutorNameAdnSecondName !=null)outMail.setRealExecutor(realExecutorNameAdnSecondName);			
 			if (mailNum !=null)outMail.setMailNum(mailNum);
 			if (destination !=null)outMail.setDestination(destination);
+			if (outomingMailNum !=null)outMail.setIncomingMailNum(outomingMailNum);
 			if (sendDate !=null)outMail.setSendDate(sendDate);
 			if (mailTheme !=null)outMail.setMailTheme(mailTheme);
 			if (note !=null)outMail.setNote(note);

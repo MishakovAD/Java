@@ -14,9 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.IncomingMailDB;
+import DAO.InternalMailDB;
 import DAO.OutgoingMailDB;
 import DAO.WorkDB;
 import IncomingMail.IncomingMail;
+import InternalMail.InternalMail;
 import MainPage.MainPageServlet;
 import OutgoingMail.OutgoingMail;
 import UserProfile.UserProfile;
@@ -45,7 +47,8 @@ public class SearchServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		ArrayList<IncomingMail> searchListIncomingMail = new ArrayList<>();
-		ArrayList<OutgoingMail> searchListOutgoingMail = new ArrayList<>();
+		ArrayList<OutgoingMail> searchListOutgoingMail = new ArrayList<>(); 
+		ArrayList<InternalMail> searchListInternalMail = new ArrayList<>(); 
 		
 		String refererURL = request.getHeader("Referer"); //ссылка, с которой производился запрос поиска.
 		int indexOfSplit = refererURL.indexOf("niikp/");
@@ -56,7 +59,7 @@ public class SearchServlet extends HttpServlet {
 			refererURL = refererURL.substring(0, indexOfChar);
 		}
 		
-		if (refererURL.equalsIgnoreCase("incomingMailList") || refererURL.equalsIgnoreCase("outgoingMailList")) {	
+		if (refererURL.equalsIgnoreCase("incomingMailList") || refererURL.equalsIgnoreCase("outgoingMailList") || refererURL.equalsIgnoreCase("internalMailList")) {	
 			
 			String searchParameterForOnceSearcing = request.getParameter("search");
 			if (!(searchParameterForOnceSearcing == null) && searchParameterForOnceSearcing.equals("searchIncomingMail")) {
@@ -214,7 +217,34 @@ public class SearchServlet extends HttpServlet {
 					
 				request.getSession().setAttribute("searchListOutgoingMail", searchListOutgoingMail);
 				request.getRequestDispatcher("/outgoingMailSearchList.jsp").forward(request, response);
-			} 
+			} else if (!(searchParameterForOnceSearcing == null) && searchParameterForOnceSearcing.equals("searchInternalMail")) {
+				Map<String, String> searchParameterMapInternalMail = new HashMap<>();
+				
+				String searchRegDate = request.getParameter("searchRegDate");
+				String searchDocTheme = request.getParameter("searchDocTheme");
+				String searchNote = request.getParameter("searchNote");
+				
+				if (!searchRegDate.isEmpty()) {
+					searchParameterMapInternalMail.put("searchRegDate", searchRegDate);
+				}
+
+				if (!searchDocTheme.isEmpty()) {
+					searchParameterMapInternalMail.put("searchDocTheme", searchDocTheme);
+				}
+
+				if (!searchNote.isEmpty()) {
+					searchParameterMapInternalMail.put("searchNote", searchNote);
+				}
+				
+				try {
+					searchListInternalMail = SearchRobot.searchIntoInternalMailForOneField(searchParameterMapInternalMail, InternalMailDB.getInternalMail());
+				} catch (InstantiationException | IllegalAccessException | SQLException e) {
+					e.printStackTrace();
+				}
+					
+				request.getSession().setAttribute("searchListInternalMail", searchListInternalMail);
+				request.getRequestDispatcher("/internalMailSearchList.jsp").forward(request, response);
+			}
 //			else {
 //				String searchParameter = request.getParameter("searchAll");
 //				searchList = SearchRobot.searchIntoIncomingMail(searchParameter, MainPageServlet.listIncomingMail);

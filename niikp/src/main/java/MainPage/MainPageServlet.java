@@ -13,9 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO.DataBase;
 import DAO.IncomingMailDB;
+import DAO.InternalMailDB;
 import DAO.OutgoingMailDB;
 import DAO.WorkDB;
 import IncomingMail.IncomingMail;
+import InternalMail.InternalMail;
 import OutgoingMail.OutgoingMail;
 import Rules.Groups;
 import UserProfile.UserProfile;
@@ -27,6 +29,9 @@ public class MainPageServlet extends HttpServlet {
 	public static int lastIndexIncomingMail;
 	public static ArrayList<OutgoingMail> listOutgoingMail;
 	public static int lastIndexOutgoingMail;
+	public static ArrayList<InternalMail> listInternalMail;
+	public static int lastIndexInternalMail;
+
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
@@ -39,6 +44,9 @@ public class MainPageServlet extends HttpServlet {
 			
 			listOutgoingMail = OutgoingMailDB.getOutgoingMail();
 			lastIndexOutgoingMail = OutgoingMailDB.getLastIndexOutgoingMail()-1;
+			
+			listInternalMail = InternalMailDB.getInternalMail();
+			lastIndexInternalMail = InternalMailDB.getLastIndexInternalMail()-1;
 		} catch (InstantiationException | IllegalAccessException | SQLException e) {
 			e.printStackTrace();
 		}

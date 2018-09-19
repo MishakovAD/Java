@@ -88,15 +88,13 @@ public class OutgoingMailDB {
 		String SQL_insert_outgoingMail = "insert into outgoingMail (regDate, mailNum, destination, forWhom, "
 				+ "sendDate, mailTheme, executor, realExecutor, incomingMailNum, toWhomItIsPainted, "
 				+ "incomingMailId, note, mailingNote, filePathAndName)" + " values ('" + regDate + "', '"
-				+ mailNum + "', '" + destination + "', " + forWhom + ", '" + sendDate + "', '" + mailTheme + "', "
-				+ executor + ", " + realExecutor + ", '"  + incomingMailNum + "', '" + toWhomItIsPainted + "', " + incomingMailId + ", '" 
+				+ mailNum + "', '" + destination + "', '" + forWhom + "', '" + sendDate + "', '" + mailTheme + "', '"
+				+ executor + "', '" + realExecutor + "', '"  + incomingMailNum + "', '" + toWhomItIsPainted + "', " + incomingMailId + ", '" 
 				+ note + "', '" + mailingNote + "', '" + filePathAndName + "');";
 
 		statement.execute(SQL_insert_outgoingMail);
 		outMail = new OutgoingMail();
-		if (statement != null)
 			statement.close();
-		if (con != null)
 			con.close();
 
 	}

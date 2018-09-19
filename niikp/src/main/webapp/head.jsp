@@ -47,7 +47,7 @@ pageEncoding="UTF-8"%>
 							<ul class="submenu">
 								<li><a href="/niikp/incomingMailList?pageNumber=1">Входящая корреспонденция</a></li>
 								<li><a href="/niikp/outgoingMailList?pageNumber=1">Исходящая корреспонденция</a></li>
-								<!-- 	<li><a href="/niikp">Внутренняя корреспонденция</a></li>  -->
+								<li><a href="/niikp/internalMailList?pageNumber=1"">Внутренняя корреспонденция</a></li>
 								</ul>
 							</li>
 						</ul>

@@ -159,7 +159,7 @@ int lastValueKey = paginationPages.keySet().size();
 		}
 		
 		if (list.get(i).getForWhom() != null) {
-			out.println("<td>" + list.get(i).getMailNum() + "</td>");
+			out.println("<td>" + list.get(i).getForWhom() + "</td>");
 		} else {
 			out.println("<td>Не заполнено</td>");
 		}

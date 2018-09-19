@@ -94,6 +94,20 @@ public class DataBase {
 //		 " PRIMARY KEY (idMail))";
 //statement.executeUpdate(SQL);
 //System.out.println("Table successfully created...");
+////	
+//		String SQL = "CREATE TABLE internalMail " +
+//		 "(regDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " +
+//		 " idMail INTEGER not NULL AUTO_INCREMENT, " +
+//		 " docType VARCHAR (50), " +
+//		 " numNPK VARCHAR (50), " +
+//		 " destination VARCHAR (50), " +
+//		 " additionalDestination VARCHAR (50), " +
+//		 " docTheme VARCHAR (50), " +
+//		 " executor VARCHAR (50), " +
+//		 " note VARCHAR (50), " +
+//		 " PRIMARY KEY (idMail))";
+//statement.executeUpdate(SQL);
+//System.out.println("Table successfully created...");
 ////
 //		String SQL = "CREATE TABLE work " +
 //		 "(workId INTEGER not NULL AUTO_INCREMENT, " +

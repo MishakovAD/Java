@@ -25,7 +25,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import DAO.IncomingMailDB;
 import Property.Property;
 
-public class WorkWithExcel {
+public class WorkWithExcelIncomingMail {
 	public static void writeIntoExcel(String regDateValue, int idMailValue, String typeMailValue, String senderValue,
 			String sendDateValue, String mailNumValue, String mailThemeValue, String secondFloorDateValue,
 			String filePathAndNameValue) throws FileNotFoundException, IOException {
@@ -113,7 +113,7 @@ public class WorkWithExcel {
 		String secondFloorNum;
 		String filePathAndName;
 
-		for (int i = 4; i <= lastRowNum; i++) {
+		for (int i = 4; i <= 1148; i++) {
 			XSSFRow row = myExcelSheet.getRow(i);
 			if (!row.getCell(0).equals("null")) {
 				regDate = row.getCell(0).getDateCellValue();
@@ -178,9 +178,15 @@ public class WorkWithExcel {
 				filePathAndName = "Не заполнено";
 				System.out.println("filePathAndName : " + filePathAndName);
 			}
-
+			
+			String stringRegDate;
 			Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			String stringRegDate = formatter.format(regDate);
+			try {
+				stringRegDate = formatter.format(regDate);
+			} catch (Exception e) {
+				stringRegDate = "2000-01-01";
+			}
+			
 //			
 			incMail.setRegDate(stringRegDate);
 			incMail.setIdMail(idMail);

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import IncomingMail.IncomingMail;
+import InternalMail.InternalMail;
 import OutgoingMail.OutgoingMail;
 import UserProfile.UserProfile;
 import Users.UsersList;
@@ -525,6 +526,95 @@ public class SearchRobot {
 
 					if (searchParameter.contains("searchIncomingMailId")) {
 						if (incomingMailId == Integer.parseInt(searchParameterForOnceSearcing)) {
+							continue;
+						} else {
+							listForRemove.add(sortList);
+						}
+					}
+				}
+			}
+
+		}
+		listOfSearch.removeAll(listForRemove);
+		count = 0;
+		return listOfSearch;
+	}
+	
+	public static ArrayList<InternalMail> searchIntoInternalMailForOneField(Map<String, String> searchParameterMap,
+			ArrayList<InternalMail> listWhereNeedSearch) {
+		ArrayList<InternalMail> listOfSearch = new ArrayList<>();
+		ArrayList<InternalMail> listForRemove = new ArrayList<>();
+
+		Collections.reverse(listWhereNeedSearch);
+
+		int count = 0;
+		for (String searchParameter : searchParameterMap.keySet()) {
+			String searchParameterForOnceSearcing = searchParameterMap.get(searchParameter);
+			if (count == 0) {
+				for (InternalMail iterList : listWhereNeedSearch) {
+					String regDate = iterList.getRegDate();
+					int idMail = iterList.getIdMail();
+					String docType = iterList.getDocType();
+					String numNPK = iterList.getNumNPK();
+					String destination = iterList.getDestination();
+					String additionalDestination = iterList.getAdditionalDestination();
+					String docTheme = iterList.getDocTheme();
+					String executor = iterList.getExecutor();
+					String note = iterList.getNote();
+
+					if (searchParameter.equals("searchRegDate")) {
+						if (regDate.contains(searchParameterForOnceSearcing)) {
+							listOfSearch.add(iterList);
+							continue;
+						}
+					}
+
+					if (searchParameter.equals("searchDocTheme")) {
+						if (docTheme.contains(searchParameterForOnceSearcing)) {
+							listOfSearch.add(iterList);
+							continue;
+						} 
+					}
+
+					if (searchParameter.equals("searchNote")) {
+						if (note.contains(searchParameterForOnceSearcing)) {
+							listOfSearch.add(iterList);
+							continue;
+						}
+					}
+
+				}
+				count++;
+			} else { 
+				for (InternalMail sortList : listOfSearch) {
+					String regDate = sortList.getRegDate();
+					int idMail = sortList.getIdMail();
+					String docType = sortList.getDocType();
+					String numNPK = sortList.getNumNPK();
+					String destination = sortList.getDestination();
+					String additionalDestination = sortList.getAdditionalDestination();
+					String docTheme = sortList.getDocTheme();
+					String executor = sortList.getExecutor();
+					String note = sortList.getNote();
+
+					if (searchParameter.equals("searchRegDate")) {
+						if (regDate.contains(searchParameterForOnceSearcing)) {
+							continue;
+						} else {
+							listForRemove.add(sortList);
+						}
+					}
+
+					if (searchParameter.equals("searchDocTheme")) {
+						if (docTheme.contains(searchParameterForOnceSearcing)) {
+							continue;
+						} else {
+							listForRemove.add(sortList);
+						}
+					}
+
+					if (searchParameter.equals("searchNote")) {
+						if (note.contains(searchParameterForOnceSearcing)) {
 							continue;
 						} else {
 							listForRemove.add(sortList);

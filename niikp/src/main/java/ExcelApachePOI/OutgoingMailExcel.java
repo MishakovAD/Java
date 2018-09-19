@@ -195,47 +195,56 @@ public class OutgoingMailExcel {
 		int lastRowNum = myExcelSheet.getLastRowNum();
 		OutgoingMail outMail = new OutgoingMail();
 		ArrayList<OutgoingMail> listMail = new ArrayList<>();
-
+		
 		Date regDate;
-		int idMail; // regNum
-		String typeMail;
-		String sender;
-		String sendDate;
 		String mailNum;
+		String destination; //adresat
+		String forWhom; //ispolnitel'
+		String sendDate;
 		String mailTheme;
-		String secondFloorDate;
-		String secondFloorNum;
+		String executor; //ispolnitel'
+		String realExecutor; //real ispolnitel'
+		String incomingMailNum;
+		String toWhomItIsPainted;
+		int incomingMailId;
+		String note;
+		String mailingNote; //primechanie rassbIlki
 		String filePathAndName;
 
-		for (int i = 4; i <= 1148; i++) {
+
+		for (int i = 4; i <= 872; i++) {
 			XSSFRow row = myExcelSheet.getRow(i);
-			if (!row.getCell(0).equals("null")) {
-				regDate = row.getCell(0).getDateCellValue();
-				System.out.println("regDate : " + regDate);
-			} else {
+			try {
+				if (!row.getCell(0).equals("null")) {
+					regDate = row.getCell(0).getDateCellValue();
+					System.out.println("regDate : " + regDate);
+				} else {
+					regDate = null;
+					System.out.println("regDate : " + regDate);
+				}
+			} catch (IllegalStateException e) {
 				regDate = null;
-				System.out.println("regDate : " + regDate);
 			}
-			if (row.getCell(1).getCellType() == XSSFCell.CELL_TYPE_NUMERIC) {
-				idMail = (int) row.getCell(1).getNumericCellValue();
-				System.out.println("idMail : " + idMail);
+			if (row.getCell(1).getCellType() == XSSFCell.CELL_TYPE_STRING) {
+				mailNum = row.getCell(1).getStringCellValue();
+				System.out.println("mailNum : " + mailNum);
 			} else {
-				idMail = 0;
-				System.out.println("idMail : " + idMail);
+				mailNum = "null";
+				System.out.println("mailNum : " + mailNum);
 			}
 			if (row.getCell(2).getCellType() == XSSFCell.CELL_TYPE_STRING) {
-				typeMail = row.getCell(2).getStringCellValue();
-				System.out.println("typeMail : " + typeMail);
+				destination = row.getCell(2).getStringCellValue();
+				System.out.println("destination : " + destination);
 			} else {
-				typeMail = "null";
-				System.out.println("typeMail : " + typeMail);
+				destination = "null";
+				System.out.println("destination : " + destination);
 			}
 			if (row.getCell(3).getCellType() == XSSFCell.CELL_TYPE_STRING) {
-				sender = row.getCell(3).getStringCellValue();
-				System.out.println("sender : " + sender);
+				forWhom = row.getCell(3).getStringCellValue();
+				System.out.println("forWhom : " + forWhom);
 			} else {
-				sender = "null";
-				System.out.println("sender : " + sender);
+				forWhom = "null";
+				System.out.println("forWhom : " + forWhom);
 			}
 			if (row.getCell(4).getCellType() == XSSFCell.CELL_TYPE_STRING) {
 				sendDate = row.getCell(4).getStringCellValue();
@@ -245,47 +254,94 @@ public class OutgoingMailExcel {
 				System.out.println("sendDate : " + sendDate);
 			}
 			if (row.getCell(5).getCellType() == XSSFCell.CELL_TYPE_STRING) {
-				mailNum = row.getCell(5).getStringCellValue();
-				System.out.println("mailNum : " + mailNum);
-			} else {
-				mailNum = "null";
-				System.out.println("mailNum : " + mailNum);
-			}
-			if (row.getCell(6).getCellType() == XSSFCell.CELL_TYPE_STRING) {
-				mailTheme = row.getCell(6).getStringCellValue();
+				mailTheme = row.getCell(5).getStringCellValue();
 				System.out.println("mailTheme : " + mailTheme);
 			} else {
 				mailTheme = "null";
 				System.out.println("mailTheme : " + mailTheme);
 			}
+			if (row.getCell(6).getCellType() == XSSFCell.CELL_TYPE_STRING) {
+				executor = row.getCell(6).getStringCellValue();
+				System.out.println("executor : " + executor);
+			} else {
+				executor = "null";
+				System.out.println("executor : " + executor);
+			}
 			if (row.getCell(7).getCellType() == XSSFCell.CELL_TYPE_STRING) {
-				secondFloorDate = row.getCell(7).getStringCellValue();
-				System.out.println("secondFloorDate : " + secondFloorDate);
+				realExecutor = row.getCell(7).getStringCellValue();
+				System.out.println("realExecutor : " + realExecutor);
 			} else {
-				secondFloorDate = "null";
-				System.out.println("secondFloorDate : " + secondFloorDate);
+				realExecutor = "null";
+				System.out.println("realExecutor : " + realExecutor);
 			}
-			if (!row.getCell(8).getStringCellValue().isEmpty()) {
-				filePathAndName = row.getCell(8).getStringCellValue();
-				System.out.println("filePathAndName : " + filePathAndName);
+			try {
+				if (row.getCell(8).getCellType() == XSSFCell.CELL_TYPE_STRING) {
+					incomingMailNum = row.getCell(8).getStringCellValue();
+					System.out.println("incomingMailNum : " + incomingMailNum);
+				} else {
+					incomingMailNum = "null";
+					System.out.println("incomingMailNum : " + incomingMailNum);
+				}
+			} catch (NullPointerException e) {
+				incomingMailNum = "null";
+			}
+			try {
+				if (row.getCell(9).getCellType() == XSSFCell.CELL_TYPE_STRING) {
+					toWhomItIsPainted = row.getCell(9).getStringCellValue();
+					System.out.println("toWhomItIsPainted : " + toWhomItIsPainted);
+				} else {
+					toWhomItIsPainted = "null";
+					System.out.println("toWhomItIsPainted : " + toWhomItIsPainted);
+				}
+			} catch (NullPointerException e) {
+				toWhomItIsPainted = "null";
+			}
+			if (row.getCell(10).getCellType() == XSSFCell.CELL_TYPE_NUMERIC) {
+				incomingMailId = (int) row.getCell(10).getNumericCellValue();
+				System.out.println("incomingMailId : " + incomingMailId);
 			} else {
-				filePathAndName = "Не заполнено";
-				System.out.println("filePathAndName : " + filePathAndName);
+				incomingMailId = 0;
+				System.out.println("incomingMailId : " + incomingMailId);
 			}
+			if (row.getCell(11).getCellType() == XSSFCell.CELL_TYPE_STRING) {
+				note = row.getCell(11).getStringCellValue();
+				System.out.println("note : " + note);
+			} else {
+				note = "null";
+				System.out.println("note : " + note);
+			}
+			if (row.getCell(12).getCellType() == XSSFCell.CELL_TYPE_STRING) {
+				mailingNote = row.getCell(12).getStringCellValue();
+				System.out.println("mailingNote : " + mailingNote);
+			} else {
+				mailingNote = "null";
+				System.out.println("mailingNote : " + mailingNote);
+			}
+//			if (!row.getCell(13).getStringCellValue().isEmpty()) {
+//				filePathAndName = row.getCell(13).getStringCellValue();
+//				System.out.println("filePathAndName : " + filePathAndName);
+//			} else {
+//				filePathAndName = "Не заполнено";
+//				System.out.println("filePathAndName : " + filePathAndName);
+//			}
 
 			Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			String stringRegDate = formatter.format(regDate);
-//			
+			
+			outMail.setDestination(destination);
+			outMail.setForWhom(forWhom);
+			outMail.setExecutor(executor);
+			outMail.setRealExecutor(realExecutor);
+			outMail.setIncomingMailNum(incomingMailNum);
+			outMail.setToWhomItIsPainted(toWhomItIsPainted);
+			outMail.setIncomingMailId(incomingMailId);
+			outMail.setNote(note);
+			outMail.setMailingNote(mailingNote);
 			outMail.setRegDate(stringRegDate);
-			outMail.setIdMail(idMail);
-			outMail.setTypeMail(typeMail);
-			outMail.setSender(sender);
 			outMail.setSendDate(sendDate);
 			outMail.setMailNum(mailNum);
 			outMail.setMailTheme(mailTheme);
-			outMail.setSecondFloorDate(secondFloorDate);
-//			outMail.setSecondFloorNum(secondFloorNum);
-			outMail.setFilePathAndName(filePathAndName);
+			//outMail.setFilePathAndName(filePathAndName);
 			listMail.add(outMail);
 
 			outMail = new OutgoingMail();

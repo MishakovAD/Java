@@ -55,6 +55,9 @@
 <fullyQualifiedTypeName name="ExcelApachePOI.IncomingMailExcel"/>
 <fullyQualifiedTypeName name="UserProfile.UserProfile"/>
 <fullyQualifiedTypeName name="IncomingMail.IncomingMail"/>
-<fullyQualifiedTypeName name="OutgoingMail.OutgoingMail"/>
 <fullyQualifiedTypeName name="DAO.OutgoingMailDB"/>
+<fullyQualifiedTypeName name="OutgoingMail.OutgoingMail"/>
+<fullyQualifiedTypeName name="ExcelApachePOI.OutgoingMailExcel"/>
+<fullyQualifiedTypeName name="DAO.InternalMailDB"/>
+<fullyQualifiedTypeName name="InternalMail.InternalMail"/>
 </qualifiedTypeNameHistroy>
