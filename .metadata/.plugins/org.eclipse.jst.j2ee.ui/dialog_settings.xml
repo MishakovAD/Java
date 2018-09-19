@@ -6,11 +6,10 @@
 		<item value="Apache Tomcat v9.0"/>
 	</list>
 	<list key="J2EE_EXPORT_JST_WEB">
+		<item value="E:\JavaProjectDocs\niikp_alpha_v3.1(Release Mail).war"/>
+		<item value="E:\JavaProjectDocs\differentExport_v2.0.war"/>
+		<item value="E:\JavaProjectDocs\niikp_alpha_v3.0(Release Internal Mail).war"/>
 		<item value="E:\JavaProjectDocs\niikp_alpha_v2.0(Release Outgoing Mail).war"/>
 		<item value="E:\JavaProjectDocs\niikp_alpha_v1.5(Release Incoming Mail).war"/>
-		<item value="E:\JavaProjectDocs\niikp_alpha_v1.4.war"/>
-		<item value="E:\JavaProjectDocs\differentExport_v1.0.war"/>
-		<item value="E:\JavaProjectDocs\niikp_alpha_v1.3(noStable).war"/>
-		<item value="E:\JavaProjectDocs\niikp_alpha_v1.2.war"/>
 	</list>
 </section>

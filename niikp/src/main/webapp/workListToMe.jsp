@@ -92,7 +92,7 @@
 						if (list.get(i).getMailId().contains("incomingMail")) {
 							mailName = list.get(i).getMailId().replaceAll("incomingMail", "VhodKorr");
 						}
-						out.println("<td>" + mailName + "</td>");
+						out.println("<td><a href=\"http://localhost:8080/niikp/link?type=work&mailName=" + mailName + "\">" + mailName + "</a></td>");
 					} else {
 						out.println("<td>Не заполнено</td>");
 					}

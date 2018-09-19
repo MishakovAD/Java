@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="Users.UsersList"/>
 <fullyQualifiedTypeName name="javax.servlet.annotation.MultipartConfig"/>
 <fullyQualifiedTypeName name="javax.servlet.http.Part"/>
 <fullyQualifiedTypeName name="java.nio.file.Paths"/>
@@ -45,7 +44,6 @@
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="MainPage.MainPageServlet"/>
 <fullyQualifiedTypeName name="Entity.IncomingMail"/>
-<fullyQualifiedTypeName name="Property.Property"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
 <fullyQualifiedTypeName name="DAO.IncomingMailDB"/>
 <fullyQualifiedTypeName name="DAO.GetterDB"/>
@@ -60,4 +58,6 @@
 <fullyQualifiedTypeName name="ExcelApachePOI.OutgoingMailExcel"/>
 <fullyQualifiedTypeName name="DAO.InternalMailDB"/>
 <fullyQualifiedTypeName name="InternalMail.InternalMail"/>
+<fullyQualifiedTypeName name="ExcelApachePOI.InternalMailExcel"/>
+<fullyQualifiedTypeName name="Property.Property"/>
 </qualifiedTypeNameHistroy>
