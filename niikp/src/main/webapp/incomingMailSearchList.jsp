@@ -48,6 +48,7 @@ pageEncoding="UTF-8"%>
 		</form> -->
 		
 	<tr>
+		<th>№</th>
 		<th>Дата регистрации</th>
 		<th>Рег. номер письмa</th>
 		<th>Тип письма</th>
@@ -92,6 +93,7 @@ pageEncoding="UTF-8"%>
 	
 	for (int i = 0; i < list.size(); i++) {				
 	out.println("<tr>");
+	out.println("<td>" + (i + 1) + "</td>");
 		
 
 		if (list.get(i).getRegDate() != null) {
@@ -174,10 +176,11 @@ out.println("<td width=\"50\"><a href=\"/niikp/incomingMail/" + list.get(i).getI
 	out.println("</tr>");
 		
 	out.println("<tr>");
-	out.println("<td>");
+	out.println("<td> &#8593; </td>");
+	out.println("<td colspan=\"10\">");
 		out.println("<div class=\"demo\">");			
 		out.println("<input class=\"hide\" id=\"hd-" + i + "\" type=\"checkbox\">");
-		out.println("<label for=\"hd-" + i + "\">Резолюция</label>");
+		out.println("<label for=\"hd-" + i + "\">Резолюция к письму под №" + (i+1) +"</label>");
 		out.println("<div>");
 			
 			if (!resolutionMapForSearch.isEmpty()) {

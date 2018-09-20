@@ -89,6 +89,7 @@ int lastValueKey = paginationPages.keySet().size();
 		</form> -->
 		
 	<tr>
+		<th>№</th>
 		<th>Дата регистрации
 		<form method="post" action="/niikp/search?search=searchIncomingMail" class="form-inline my-2 my-lg-0">
 <input class="form-control mr-sm-2" style="width: 150px; height: 40px;" type="search" name="searchRegDate" placeholder="Search" aria-label="Search">
@@ -148,6 +149,8 @@ int lastValueKey = paginationPages.keySet().size();
 	
 	for (int i = 0; i < list.size(); i++) {				
 	out.println("<tr>");
+	
+	out.println("<td>" + (i + 1) + "</td>");
 		
 
 		if (list.get(i).getRegDate() != null) {
@@ -236,11 +239,13 @@ out.println("<td width=\"50\"><a href=\"/niikp/incomingMail/" + list.get(i).getI
 	out.println("</tr>");
 		
 	out.println("<tr>");
+	out.println("<td> &#8593; </td>");
 	out.println("<td colspan=\"10\">");
 		out.println("<div class=\"demo\">");			
 		out.println("<input class=\"hide\" id=\"hd-" + i + "\" type=\"checkbox\">");
-		out.println("<label for=\"hd-" + i + "\">Резолюция</label>");
+		out.println("<label for=\"hd-" + i + "\">Резолюция к письму под №" + (i+1) +"</label>");
 		out.println("<div>");
+				
 			
 			if (!resolutionMap.isEmpty()) {
 			String isComplete = null;

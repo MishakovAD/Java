@@ -101,8 +101,34 @@ pageEncoding="UTF-8"%>
 
 
 
-	<section id="info--1"></section>
-	<section id="info--2"></section>
+	<section id="info--1">
+	<!-- <iframe
+    src="http://docs.google.com/gview?url=https://www.chelzeo.ru/files/downloads/pue_7.doc&embedded=true"
+    style="width:600px; height:500px;"
+    frameborder="0"
+	></iframe> -->
+	</section>
+	<section id="info--2"> <!-- 
+	<script src="/resources/js/jsFile-master/dist/jsfile.js"></script>
+	
+	<script> 
+	jDoc.read(file, {
+	    success: function (result) {
+	    	result.html()
+	    },
+
+	    error: function (error) {
+
+	    }
+	});
+	</script>
+	
+	<div>        
+        <embed name="myPdf" id="myPdf" src="/serverStartup.pdf" width="100%" height="400" frameborder="0" scrolling="no"> </embed>    
+    </div>
+	
+	<iframe src="serverStartup.pdf" width=400 height=500>  -->
+	</section>
 	<section id="featured-on"></section>
 	<section id="feature-rundown"></section>
 	<section id="pricing"></section>

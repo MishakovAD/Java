@@ -24,8 +24,10 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import DAO.GetterDB;
 import DAO.IncomingMailDB;
+import DAO.WorkDB;
 import IncomingMail.IncomingMail;
 import Property.Property;
+import Work.Work;
 
 public class IncomingMailExcel {
 
@@ -144,7 +146,8 @@ public class IncomingMailExcel {
 		Cell secondFloorDate = row.createCell(7);
 		Cell secondFloorNum = row.createCell(8);
 		Cell filePathAndName = row.createCell(9);
-		Cell onControl = row.createCell(10);		
+		Cell onControl = row.createCell(10);
+		Cell resolution = row.createCell(12);
 
 
 		idMail.setCellValue(incMail.getIdMail());
@@ -168,6 +171,37 @@ public class IncomingMailExcel {
 		regDate.setCellValue(incMail.getRegDate());
 		sendDate.setCellValue(incMail.getSendDate());
 		secondFloorDate.setCellValue(incMail.getSecondFloorDate());
+		
+		//Добавляем резолюцию в экспорт экселя, если она есть
+		int idFromMail = incMail.getIdMail();
+		String prefix = "incomingMail_";
+		String idMailForAdd = prefix + idFromMail;
+		ArrayList<Work> resolutionForMail = new ArrayList<Work>();
+		
+		try {
+			resolutionForMail = WorkDB.getWorkToMailId(idMailForAdd);						
+		} catch (InstantiationException | IllegalAccessException | SQLException e) {
+			e.printStackTrace();
+		}
+	
+		if (resolutionForMail.size() > 0) {
+			String workSet = "";
+			for (Work work : resolutionForMail) {
+				String user = "Кому: " + work.getUserNameFromId(work.getToUserId()) + System.getProperty("line.separator");
+				String assignment = "Поручение: " + work.getAssignment() + System.getProperty("line.separator");
+				String date = "Сроки: " + work.getStartDate().substring(0, 10) + " - " + work.getEndDate().substring(0, 10) + System.getProperty("line.separator");
+				String report = "Отчет: " + work.getReport() + System.getProperty("line.separator");
+				workSet += user + assignment + date + report;
+			}
+			CellStyle cs = book.createCellStyle();
+		    cs.setWrapText(true);
+		    resolution.setCellStyle(cs);
+			resolution.setCellValue(workSet);
+			
+		}
+		
+		resolutionForMail = new ArrayList<Work>();
+		idMail = null;
 		
 		}
 

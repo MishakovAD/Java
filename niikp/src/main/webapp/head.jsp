@@ -31,7 +31,7 @@ pageEncoding="UTF-8"%>
 				</li>
 				<nav class="four">
 					<ul class="topmenu">
-						<li><a href="#">Дела/Поручения<i class="fa fa-angle-down"></i></a>
+						<li><a href="/niikp/workList?parameter=toMe">Дела/Поручения<i class="fa fa-angle-down"></i></a>
 							<ul class="submenu">
 								<li><a href="/niikp/workList?parameter=toMe">Поручено мне</a></li>
 								<li><a href="/niikp/workList?parameter=fromMe">Поручено мной</a></li>
@@ -53,10 +53,10 @@ pageEncoding="UTF-8"%>
 						</ul>
 					</nav>
 				</ul>
-<form method="post" action="/niikp/search" class="form-inline my-2 my-lg-0">
+<!-- <form method="post" action="/niikp/search" class="form-inline my-2 my-lg-0">
 <input class="form-control mr-sm-2" type="search" name="searchAll" placeholder="Search" aria-label="Search">
 <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-</form>
+</form> -->
 </div>
 </nav>
 </head>

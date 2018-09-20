@@ -201,7 +201,7 @@ int lastValueKey = paginationPages.keySet().size();
 		}
 		
 		if (list.get(i).getIncomingMailId() != 0) {
-			out.println("<td>" + list.get(i).getIncomingMailId() + "</td>");
+			out.println("<td><a href=\"/niikp/link?type=outgoingMail&mailName=VhodKorr_" + list.get(i).getIncomingMailId() + "\">" + list.get(i).getIncomingMailId() + "</a></td>");
 		} else {
 			out.println("<td>Не заполнено</td>");
 		}

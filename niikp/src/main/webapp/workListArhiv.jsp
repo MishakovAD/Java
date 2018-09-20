@@ -44,7 +44,7 @@
 			ArrayList<Work> list = (ArrayList<Work>) request.getAttribute("workList");
 			UserProfile userToWork = (UserProfile) request.getSession().getAttribute("userSignIn");
 
-			out.println("Я поручил: <br>");
+
 			for (int i = 0; i < list.size(); i++) {
 				
 				if (userToWork.getRole() != null && userToWork.getRole().equalsIgnoreCase("admin")) {
@@ -95,7 +95,7 @@
 						if (list.get(i).getMailId().contains("incomingMail")) {
 							mailName = list.get(i).getMailId().replaceAll("incomingMail", "VhodKorr");
 						}
-						out.println("<td>" + mailName + "</td>");
+						out.println("<td><a href=\"/niikp/link?type=work&mailName=" + mailName + "\">" + mailName + "</a></td>");
 					} else {
 						out.println("<td>Не заполнено</td>");
 					}

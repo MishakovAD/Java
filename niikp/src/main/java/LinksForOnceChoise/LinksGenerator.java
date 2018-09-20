@@ -48,6 +48,18 @@ public class LinksGenerator extends HttpServlet {
 			}
 			request.setAttribute("incomingMailForLink", incomingMailForLink);
 			request.getRequestDispatcher("/link.jsp").forward(request, response);
+		} else if (type.equals("outgoingMail")) {
+			int indexCharOf_ = mailName.indexOf("_");
+			String mailId = mailName.substring(indexCharOf_+1);
+			if (mailName.contains("Vhod") || mailName.contains("incoming")) {
+				try {
+					incomingMailForLink = IncomingMailDB.getIncomingMailToId(Integer.parseInt(mailId));
+				} catch (NumberFormatException | InstantiationException | IllegalAccessException | SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			request.setAttribute("incomingMailForLink", incomingMailForLink);
+			request.getRequestDispatcher("/link.jsp").forward(request, response);
 		}
 		
 
