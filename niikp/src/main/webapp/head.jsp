@@ -150,7 +150,25 @@ a {
 			</script>
 			
 			<script language="javascript" type="text/javascript">
+			var request = false;
+			   try {
+			     request = new XMLHttpRequest();
+			   } catch (trymicrosoft) {
+			     try {
+			       request = new ActiveXObject("Msxml2.XMLHTTP");
+			     } catch (othermicrosoft) {
+			       try {
+			         request = new ActiveXObject("Microsoft.XMLHTTP");
+			       } catch (failed) {
+			         request = false;
+			       }  
+			     }
+			   }
 				console.log("Captain’s Log"); // выводит “Captain’s Log” в панель консоли 11работает!!
+				var work = document.getElementById("work");
+				var url = "/niikp/ajax?work=" + work.innerHTML;
+				alert("Server is done! " + work.innerHTML + " " + url);
+				request.open("GET", url, true);
 			</script>
 
 </html>
