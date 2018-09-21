@@ -58,6 +58,21 @@ pageEncoding="UTF-8"%>
 <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
 </form> -->
 </div>
+	
+	
+	<%@ page import="java.util.ArrayList"%>
+	<%@ page import="Work.*"%>
+			<%
+			if (!(request.getSession().getAttribute("userSignIn") == null)) {
+            ArrayList<Work> workListToUserInHead = (ArrayList<Work>) request.getSession().getAttribute("workListToUser");
+			%>
+			 <div align="right">
+				<a href="/niikp/workList?parameter=toMe">
+					<p class="title" style="color: white">Невыполненных дел: <span id="work"><%= workListToUserInHead.size() %></span></p>
+				</a>
+			</div> 
+			<% } %>
+
 </nav>
 </head>
 
@@ -129,6 +144,13 @@ a {
 }
 </style>
 
-
+			<script type="text/javascript">
+				<%@include file="/resources/js/sendNotification.js"%> 	
+				<%@include file="/resources/js/Ajax.js"%> 
+			</script>
+			
+			<script language="javascript" type="text/javascript">
+				console.log("Captain’s Log"); // выводит “Captain’s Log” в панель консоли 11работает!!
+			</script>
 
 </html>

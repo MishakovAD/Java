@@ -9,7 +9,7 @@ pageEncoding="UTF-8"%>
 .card {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 	width: 220px;
-	height: 220px;
+	height: 150px;
 	align: right;
 	text-align: center;
 	font-family: arial;
@@ -72,7 +72,7 @@ button:hover, a:hover {
 	<%
 	UserProfile userSignIn = (UserProfile) request.getSession().getAttribute("userSignIn");
             //System.out.println("id = " + userSignIn.getUserId() + " email: " + userSignIn.getEmail());
-            ArrayList<Work> workListToUser = (ArrayList<Work>) request.getAttribute("workListToUser");
+            ArrayList<Work> workListToUser = (ArrayList<Work>) request.getSession().getAttribute("workListToUser");
 			//System.out.println(workListToUser.size());
 			%>
 
@@ -84,9 +84,9 @@ button:hover, a:hover {
 				<a href="/niikp/logOut"  style="color:black">
 					<p><button>Выйти</button></p>
 				</a>
-				<a href="/niikp/workList?parameter=toMe">
+				<!-- <a href="/niikp/workList?parameter=toMe">
 					<p class="title">Невыполненных дел: <%= workListToUser.size() %></p>
-				</a>
+				</a> -->
 			</div>
 			
 			
@@ -102,8 +102,6 @@ button:hover, a:hover {
 
 			
 			<% } %>
-
-			
 			
 		</header>
 

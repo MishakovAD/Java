@@ -106,6 +106,7 @@ public class IncomingMailListServlet extends HttpServlet {
 				request.setAttribute("incomingMailList", listForPage);
 				listForPage = null;
 				resolutionMapForIncomingMail = null;
+	
 				request.getRequestDispatcher("/incomingMailList.jsp").forward(request, response);				
 			} else {
 				// вывести страницу с ошибкой вместо редиректа

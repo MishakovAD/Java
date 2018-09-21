@@ -16,6 +16,7 @@ public class Work {
 	private int fromUserId;	
 	private String startDate;
 	private String endDate;
+	private String finishDate;
 	private String assignment; //поручение poruchenie	ограничение в БД 500
 	private String mailId;
 	private String filePathAndNameToWork; //для данного поля конструктор не задан
@@ -135,6 +136,12 @@ public class Work {
 	}
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
+	}
+	public String getFinishDate() {
+		return finishDate;
+	}
+	public void setFinishDate(String finishDate) {
+		this.finishDate = finishDate;
 	}
 	public String getAssignment() {
 		return assignment;

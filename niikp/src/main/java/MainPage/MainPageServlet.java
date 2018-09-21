@@ -63,7 +63,7 @@ public class MainPageServlet extends HttpServlet {
 			} catch (InstantiationException | IllegalAccessException | SQLException e) {
 				e.printStackTrace();
 			}
-			request.setAttribute("workListToUser", workListToUser);
+			request.getSession().setAttribute("workListToUser", workListToUser);
 		}
 
 		request.getRequestDispatcher("/index.jsp").forward(request, response);

@@ -71,7 +71,8 @@ pageEncoding="UTF-8"%>
 						</h3>
 						<br><br><br>
 						<h3>Поручение:
-							<input type="text" name="assignment" value="" placeholder="Поручение" />
+							<textarea rows="6" cols="35" name="assignment"></textarea>
+							<!-- <input type="text" name="assignment" value="" placeholder="Поручение" /> -->
 						</h3>
 						<br><br><br>
 						<input name="file" type="file"><br>

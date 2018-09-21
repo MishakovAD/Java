@@ -188,7 +188,7 @@ public class WorkDB {
 		Statement statement = null;
 		statement = con.createStatement();
 
-		String SQL_update_work = "UPDATE work SET isComplete=true, isAccept='done', report='" + report + "', reportFilePathAndNameToWork='" + reportFile + "' WHERE workId=" + workId + ";";		
+		String SQL_update_work = "UPDATE work SET isComplete=true, finishDate=now(), isAccept='done', report='" + report + "', reportFilePathAndNameToWork='" + reportFile + "' WHERE workId=" + workId + ";";		
 		
 		statement.executeUpdate(SQL_update_work);		
 		if(statement != null) statement.close(); 

@@ -116,6 +116,7 @@ public class DataBase {
 //		 " fromUserId INTEGER, " +
 //		 " startDate TIMESTAMP, " +	
 //		 " endDate TIMESTAMP, " +
+//		 " finishDate TIMESTAMP, " +
 //		 " assignment VARCHAR (500), " +
 //		 " mailId VARCHAR (50), " +
 //		 " filePathAndNameToWork VARCHAR (100), " +
@@ -137,6 +138,7 @@ public class DataBase {
 //	 " fromUserId INTEGER, " +
 //	 " startDate TIMESTAMP, " +	
 //	 " endDate TIMESTAMP, " +
+//	 " finishDate TIMESTAMP, " +
 //	 " assignment VARCHAR (500), " +
 //	 " mailId VARCHAR (50), " +
 //	 " filePathAndNameToWork VARCHAR (100), " +

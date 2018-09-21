@@ -32,7 +32,6 @@
 <fullyQualifiedTypeName name="IncomingMail.IncomingMailServlet"/>
 <fullyQualifiedTypeName name="Translit.Translit"/>
 <fullyQualifiedTypeName name="DAO.WorkDB"/>
-<fullyQualifiedTypeName name="Work.Work"/>
 <fullyQualifiedTypeName name="java.io.FileInputStream"/>
 <fullyQualifiedTypeName name="Rules.Roles"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
@@ -60,4 +59,5 @@
 <fullyQualifiedTypeName name="InternalMail.InternalMail"/>
 <fullyQualifiedTypeName name="ExcelApachePOI.InternalMailExcel"/>
 <fullyQualifiedTypeName name="Property.Property"/>
+<fullyQualifiedTypeName name="Work.Work"/>
 </qualifiedTypeNameHistroy>
