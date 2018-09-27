@@ -4,6 +4,7 @@ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
 
 <!-- Подключение bootstrap -->
@@ -26,9 +27,9 @@ pageEncoding="UTF-8"%>
 				<li class="nav-item active">
 					<a class="nav-link" href="/niikp/">Главная страница <span class="sr-only">(current)</span></a>
 				</li>
-				<li class="nav-item">
+				<!-- <li class="nav-item">
 					<a class="nav-link" href="/niikp/users">Пользователи</a>
-				</li>
+				</li> -->
 				<nav class="four">
 					<ul class="topmenu">
 						<li><a href="/niikp/workList?parameter=toMe">Дела/Поручения<i class="fa fa-angle-down"></i></a>
@@ -65,13 +66,25 @@ pageEncoding="UTF-8"%>
 			<%
 			if (!(request.getSession().getAttribute("userSignIn") == null)) {
             ArrayList<Work> workListToUserInHead = (ArrayList<Work>) request.getSession().getAttribute("workListToUser");
+            ArrayList<Work> workListToUserFromCo_executor = (ArrayList<Work>) request.getSession().getAttribute("workListToUserFromCo_executor");
 			%>
 			 <div align="right">
 				<a href="/niikp/workList?parameter=toMe">
 					<p class="title" style="color: white">Невыполненных дел: <span id="work"><%= workListToUserInHead.size() %></span></p>
+					<p class="title" style="color: white">Соисполнитель: <span id="workForCo_executor"><%= workListToUserFromCo_executor.size() %></span></p>
 				</a>
 			</div> 
 			<% } %>
+			
+			<%@ page import="java.util.ArrayList"%>
+			<%@ page import="Work.*"%>
+			<%  UserProfile userSignInForAjax = (UserProfile) request.getSession().getAttribute("userSignIn"); 
+			if (userSignInForAjax != null) { %>
+				<div id="userSignIn" ><%=userSignInForAjax.getUserId() %></div>
+			<%
+			}
+			%>
+			
 
 </nav>
 </head>
@@ -164,10 +177,10 @@ a {
 			       }  
 			     }
 			   }
-				console.log("Captain’s Log"); // выводит “Captain’s Log” в панель консоли 11работает!!
+				console.log("Captain’s Log. Привет, зачем Вы открыли кончоль?"); // выводит “Captain’s Log” в панель консоли 11работает!!
 				var work = document.getElementById("work");
 				var url = "/niikp/ajax?work=" + work.innerHTML;
-				alert("Server is done! " + work.innerHTML + " " + url);
+				//alert("Server is done! " + work.innerHTML + " " + url);
 				request.open("GET", url, true);
 			</script>
 

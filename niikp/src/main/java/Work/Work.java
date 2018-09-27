@@ -11,7 +11,9 @@ import DAO.GetterDB;
 public class Work {
 	private int workId;
 	private int workTemplateId;
+	private String assigmentSourse;
 	private int toUserId;
+	private String Co_executor;
 	private int observerId; //otvetstvennbIy
 	private int fromUserId;	
 	private String startDate;
@@ -112,6 +114,19 @@ public class Work {
 	
 	public void setToUserId(int toUserId) {
 		this.toUserId = toUserId;
+	}
+	
+	public String getAssigmentSourse() {
+		return assigmentSourse;
+	}
+	public void setAssigmentSourse(String assigmentSourse) {
+		this.assigmentSourse = assigmentSourse;
+	}
+	public String getCo_executor() {
+		return Co_executor;
+	}
+	public void setCo_executor(String co_executor) {
+		Co_executor = co_executor;
 	}
 	public int getObserverId() {
 		return observerId;

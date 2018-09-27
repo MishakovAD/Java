@@ -15,7 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 public class Ajax extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println(request.getParameter("work"));
+		int workCount = Integer.parseInt(request.getParameter("work"));
+		int userId = Integer.parseInt(request.getParameter("user"));
+		//System.out.println(request.getParameter("work") + " Это GET запрос! " + request.getParameter("user"));
 
 	}
 

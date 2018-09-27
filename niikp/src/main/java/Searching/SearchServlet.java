@@ -49,6 +49,7 @@ public class SearchServlet extends HttpServlet {
 		ArrayList<IncomingMail> searchListIncomingMail = new ArrayList<>();
 		ArrayList<OutgoingMail> searchListOutgoingMail = new ArrayList<>(); 
 		ArrayList<InternalMail> searchListInternalMail = new ArrayList<>(); 
+		ArrayList<Work> searchListWorkArhiv = new ArrayList<>(); 
 		
 		String refererURL = request.getHeader("Referer"); //ссылка, с которой производился запрос поиска.
 		int indexOfSplit = refererURL.indexOf("niikp/");
@@ -59,7 +60,8 @@ public class SearchServlet extends HttpServlet {
 			refererURL = refererURL.substring(0, indexOfChar);
 		}
 		
-		if (refererURL.equalsIgnoreCase("incomingMailList") || refererURL.equalsIgnoreCase("outgoingMailList") || refererURL.equalsIgnoreCase("internalMailList")) {	
+		if (refererURL.equalsIgnoreCase("incomingMailList") || refererURL.equalsIgnoreCase("outgoingMailList") 
+				|| refererURL.equalsIgnoreCase("internalMailList") || refererURL.equalsIgnoreCase("workList")) {	
 			
 			String searchParameterForOnceSearcing = request.getParameter("search");
 			if (!(searchParameterForOnceSearcing == null) && searchParameterForOnceSearcing.equals("searchIncomingMail")) {
@@ -244,6 +246,36 @@ public class SearchServlet extends HttpServlet {
 					
 				request.getSession().setAttribute("searchListInternalMail", searchListInternalMail);
 				request.getRequestDispatcher("/internalMailSearchList.jsp").forward(request, response);
+			} else if (!(searchParameterForOnceSearcing == null) && searchParameterForOnceSearcing.equals("searchWorkArhiv")) {
+				Map<String, String> searchParameterMapWorkArhiv = new HashMap<>();
+				
+				String searchObserverId = request.getParameter("searchObserverId");
+				String searchCo_executor = request.getParameter("searchCo_executor");
+				String searchStartDate = request.getParameter("searchStartDate");
+
+				
+				if (!searchObserverId.isEmpty()) {
+					searchParameterMapWorkArhiv.put("searchObserverId", searchObserverId);
+				}
+
+				if (!searchCo_executor.isEmpty()) {
+					searchParameterMapWorkArhiv.put("searchCo_executor", searchCo_executor);
+				}
+
+				if (!searchStartDate.isEmpty()) {
+					searchParameterMapWorkArhiv.put("searchStartDate", searchStartDate);
+				}
+
+				
+				
+				try {
+					searchListWorkArhiv = SearchRobot.searchIntoWorkListArhivForOneField(searchParameterMapWorkArhiv, WorkDB.getWorkList());
+				} catch (InstantiationException | IllegalAccessException | SQLException e) {
+					e.printStackTrace();
+				}
+					
+				request.getSession().setAttribute("searchListWorkArhiv", searchListWorkArhiv);
+				//request.getRequestDispatcher("/workArhivSearchList.jsp").forward(request, response);
 			}
 //			else {
 //				String searchParameter = request.getParameter("searchAll");

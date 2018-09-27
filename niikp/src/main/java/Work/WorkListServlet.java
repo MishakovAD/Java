@@ -18,14 +18,17 @@ public class WorkListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String parameter = request.getParameter("parameter");
 		ArrayList<Work> workList = null;
+		ArrayList<Work> workListForCo_executor = null;
 		try {
 			workList = WorkDB.getWorkList();
+			workListForCo_executor = WorkDB.getWorkListForCo_executor();
 		} catch (InstantiationException | IllegalAccessException | SQLException e) {
 			e.printStackTrace();
 		} 
 		
 		if (parameter.equalsIgnoreCase("toMe")) {
 			request.setAttribute("workList", workList);
+			request.setAttribute("workListForCo_executor", workListForCo_executor);
 			request.getRequestDispatcher("/workListToMe.jsp").forward(request, response);
 		} else if (parameter.equalsIgnoreCase("fromMe")) {
 			request.setAttribute("workList", workList);

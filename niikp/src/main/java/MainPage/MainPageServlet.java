@@ -57,13 +57,16 @@ public class MainPageServlet extends HttpServlet {
 			throws ServletException, IOException {
 		UserProfile userSignIn = (UserProfile) request.getSession().getAttribute("userSignIn");
 		ArrayList<Work> workListToUser = null;
+		ArrayList<Work> workListToUserFromCo_executor = null;
 		if (userSignIn != null) {
 			try {
 				workListToUser = WorkDB.getWorkListToId(userSignIn.getUserId());
+				workListToUserFromCo_executor = WorkDB.getWorkListForCo_executorToId(userSignIn.getUserId());
 			} catch (InstantiationException | IllegalAccessException | SQLException e) {
 				e.printStackTrace();
 			}
 			request.getSession().setAttribute("workListToUser", workListToUser);
+			request.getSession().setAttribute("workListToUserFromCo_executor", workListToUserFromCo_executor);
 		}
 
 		request.getRequestDispatcher("/index.jsp").forward(request, response);

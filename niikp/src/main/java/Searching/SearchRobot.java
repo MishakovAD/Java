@@ -10,6 +10,7 @@ import InternalMail.InternalMail;
 import OutgoingMail.OutgoingMail;
 import UserProfile.UserProfile;
 import Users.UsersList;
+import Work.Work;
 
 public class SearchRobot {
 	public static ArrayList<IncomingMail> searchIntoIncomingMail(String searchParameter,
@@ -615,6 +616,84 @@ public class SearchRobot {
 
 					if (searchParameter.equals("searchNote")) {
 						if (note.contains(searchParameterForOnceSearcing)) {
+							continue;
+						} else {
+							listForRemove.add(sortList);
+						}
+					}
+				}
+			}
+
+		}
+		listOfSearch.removeAll(listForRemove);
+		count = 0;
+		return listOfSearch;
+	}
+	
+	public static ArrayList<Work> searchIntoWorkListArhivForOneField(Map<String, String> searchParameterMap,
+			ArrayList<Work> listWhereNeedSearch) {
+		ArrayList<Work> listOfSearch = new ArrayList<>();
+		ArrayList<Work> listForRemove = new ArrayList<>();
+
+		Collections.reverse(listWhereNeedSearch);
+
+		int count = 0;
+		for (String searchParameter : searchParameterMap.keySet()) {
+			String searchParameterForOnceSearcing = searchParameterMap.get(searchParameter);
+			if (count == 0) {
+				for (Work iterList : listWhereNeedSearch) {
+					int observerId = iterList.getObserverId();
+					String Co_executor = iterList.getCo_executor();
+					String startDate = iterList.getStartDate();
+					
+
+					if (searchParameter.equals("searchObserverId")) {
+						if (observerId == Integer.parseInt(searchParameterForOnceSearcing)) {
+							listOfSearch.add(iterList);
+							continue;
+						}
+					}
+
+					if (searchParameter.equals("searchCo_executor")) {
+						if (Co_executor.contains(searchParameterForOnceSearcing)) {
+							listOfSearch.add(iterList);
+							continue;
+						} 
+					}
+
+					if (searchParameter.equals("searchStartDate")) {
+						if (startDate.contains(searchParameterForOnceSearcing)) {
+							listOfSearch.add(iterList);
+							continue;
+						}
+					}
+
+				}
+				count++;
+			} else { 
+				for (Work sortList : listOfSearch) {
+					int observerId = sortList.getObserverId();
+					String Co_executor = sortList.getCo_executor();
+					String startDate = sortList.getStartDate();
+
+					if (searchParameter.equals("searchObserverId")) {
+						if (observerId == Integer.parseInt(searchParameterForOnceSearcing)) {
+							continue;
+						} else {
+							listForRemove.add(sortList);
+						}
+					}
+
+					if (searchParameter.equals("searchCo_executor")) {
+						if (Co_executor.contains(searchParameterForOnceSearcing)) {
+							continue;
+						} else {
+							listForRemove.add(sortList);
+						}
+					}
+
+					if (searchParameter.equals("searchStartDate")) {
+						if (startDate.contains(searchParameterForOnceSearcing)) {
 							continue;
 						} else {
 							listForRemove.add(sortList);

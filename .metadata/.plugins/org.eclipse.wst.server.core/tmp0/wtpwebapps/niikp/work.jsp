@@ -37,10 +37,14 @@ pageEncoding="UTF-8"%>
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-4">
+					<h3>Ответсвенный: 
+						<input type="text" name="observer" value="" list="names" placeholder="Ответственный" />	
+					</h3>
+					<br><br><br>
 					<form id="Form">
 						<input type="button" onclick="add_input()" value="Добавить исполнителя" />
 						<br><br>
-						<label> Исполнитель: </label>
+						<label> Соисполнитель: </label>
 						<div class="inputs">
 							<input id="id-1" name="user1" list="names" style="height: 25px; width: 200px;" />
 							<br><br>
@@ -97,10 +101,9 @@ pageEncoding="UTF-8"%>
 					</datalist>
 				</div>
 				<div class="col-4">
-					<h3>Ответсвенный:
-						<input type="text" name="observer" value="" list="names" placeholder="Ответственный" />	
+					<h3>Источник поручения: 
+						<input type="text" name="assigmentSourse" value="" placeholder="Источник поручения" />	
 					</h3>
-					<br><br><br>
 				</div>
 			</div>
 			

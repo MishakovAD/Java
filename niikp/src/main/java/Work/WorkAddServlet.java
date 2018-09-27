@@ -8,9 +8,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.file.Paths;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -116,6 +118,8 @@ public class WorkAddServlet extends HttpServlet {
 					users.append(request.getParameter("user" + i) + ";");
 				}				
 			}
+			
+			work.setCo_executor(users.toString());
 
 			String userName;
 			String userSecondName;
@@ -162,23 +166,26 @@ public class WorkAddServlet extends HttpServlet {
 				}
 			}
 
+			SimpleDateFormat newDateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+
 			String startDate = request.getParameter("startDate");
-			System.out.println(startDate);
 			if (startDate.isEmpty()) {
 				startDate = "2015-01-01";
-			}
+			} 
 			String endDate = request.getParameter("endDate");
 			if (endDate.isEmpty()) {
 				endDate = "2015-01-01";
 			}
 			String assignment = request.getParameter("assignment");
-
+			
+			
 			work.setObserverId(observerId);
 			work.setFromUserId(fromUserId);
-			work.setStartDate(startDate);
-			work.setEndDate(endDate);
+			work.setStartDate(doConvert(startDate));
+			work.setEndDate(doConvert(endDate));
 			work.setAssignment(assignment);
 			work.setMailId(mailId);
+			work.setAssigmentSourse(request.getParameter("assigmentSourse"));
 
 			if (idMail != null) {
 				try {
@@ -250,11 +257,18 @@ public class WorkAddServlet extends HttpServlet {
 
 				}
 			} else {
+				/*
+				 * В данной части программы мы добавляем задания всем соисполнителям, а затем и самому ответственному.
+				 * На столько коряво это из-за того, что сначала соисполнители были просто основными исполнителями и чтобы 
+				 * не переписывать всю программу, пришлось выкрутиться так
+				 */
 				try {
 					for (Integer userId : toUserId) {
 						work.setToUserId(userId);
-						WorkDB.addWork(work);
+						WorkDB.addWorkForCo_executor(work);
 					}
+					work.setToUserId(0);
+					WorkDB.addWork(work);
 					
 				} catch (InstantiationException | IllegalAccessException | SQLException e) {
 					e.printStackTrace();
@@ -265,6 +279,18 @@ public class WorkAddServlet extends HttpServlet {
 
 	}
 
+	
+	public static String doConvert(String d) {
+		String dateRev = "";
+		String[] dateArr = d.split("-");
+		for (int i = dateArr.length - 1; i >= 0; i--) {
+			if (i != dateArr.length - 1)
+				dateRev += "-";
+			dateRev += dateArr[i];
+		}
+		return dateRev;
+	}
+	
 	private String extractFileName(Part part, int prefix) {
 		// form-data; name="file"; filename="C:\file1.zip"
 		// form-data; name="file"; filename="C:\Note\file2.zip"

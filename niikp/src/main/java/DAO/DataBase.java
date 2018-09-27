@@ -111,7 +111,9 @@ public class DataBase {
 ////
 //		String SQL = "CREATE TABLE work " +
 //		 "(workId INTEGER not NULL AUTO_INCREMENT, " +
+//		 " assigmentSourse VARCHAR (500), " +
 //		 " toUserId INTEGER, " +
+//		 " Co_executor VARCHAR (500), " +
 //		 " observerId INTEGER, " +
 //		 " fromUserId INTEGER, " +
 //		 " startDate TIMESTAMP, " +	
@@ -126,6 +128,29 @@ public class DataBase {
 //		 " reportFilePathAndNameToWork VARCHAR (150), " +
 //		 " template VARCHAR (50), " +
 //		 " PRIMARY KEY (workId))";
+////
+//statement.executeUpdate(SQL);
+//System.out.println("Table successfully created...");
+////
+//		String SQL = "CREATE TABLE workForCo_executor " +
+//		 "(workForCo_executorId INTEGER not NULL AUTO_INCREMENT, " +
+//		 " assigmentSourse VARCHAR (500), " +
+//		 " toUserId INTEGER, " +
+//		 " Co_executor VARCHAR (500), " +
+//		 " observerId INTEGER, " +
+//		 " fromUserId INTEGER, " +
+//		 " startDate TIMESTAMP, " +	
+//		 " endDate TIMESTAMP, " +
+//		 " finishDate TIMESTAMP, " +
+//		 " assignment VARCHAR (500), " +
+//		 " mailId VARCHAR (50), " +
+//		 " filePathAndNameToWork VARCHAR (100), " +
+//		 " isComplete BOOLEAN DEFAULT NULL, " +
+//		 " isAccept VARCHAR (10), " +
+//		 " report VARCHAR (500), " +
+//		 " reportFilePathAndNameToWork VARCHAR (150), " +
+//		 " template VARCHAR (50), " +
+//		 " PRIMARY KEY (workForCo_executorId))";
 ////
 //statement.executeUpdate(SQL);
 //System.out.println("Table successfully created...");

@@ -58,6 +58,6 @@
 <fullyQualifiedTypeName name="DAO.InternalMailDB"/>
 <fullyQualifiedTypeName name="InternalMail.InternalMail"/>
 <fullyQualifiedTypeName name="ExcelApachePOI.InternalMailExcel"/>
-<fullyQualifiedTypeName name="Property.Property"/>
 <fullyQualifiedTypeName name="Work.Work"/>
+<fullyQualifiedTypeName name="Property.Property"/>
 </qualifiedTypeNameHistroy>

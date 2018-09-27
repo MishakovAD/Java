@@ -28,6 +28,7 @@ import Translit.Translit;
 public class WorkDoneServlet extends HttpServlet {
 	String action;
 	String workId;
+	String Co_executor;
 	public static final String SAVE_DIRECTORY = Property.getProperty("saveDirectory");
 	public static final String SAVE_DIR = Property.getProperty("saveDir");
 
@@ -37,6 +38,7 @@ public class WorkDoneServlet extends HttpServlet {
 			throws ServletException, IOException {
 		action = request.getParameter("action");
 		workId = request.getParameter("workId");
+		Co_executor = request.getParameter("Co_executor");
 		if (action.equals("accept")) {
 			try {
 				WorkDB.acceptWorkToUser(Integer.parseInt(workId));
@@ -100,12 +102,20 @@ public class WorkDoneServlet extends HttpServlet {
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/workDone.jsp");
 				dispatcher.forward(request, response);
 			}
-
-			try {
-				WorkDB.doneWorkToUser(report, Integer.parseInt(workId), reportFilePathAndNameToWork);
-			} catch (NumberFormatException | InstantiationException | IllegalAccessException | SQLException e) {
-				e.printStackTrace();
+			if (Co_executor.equals("false")) {
+				try {
+					WorkDB.doneWorkToObserver(report, Integer.parseInt(workId), reportFilePathAndNameToWork);
+				} catch (NumberFormatException | InstantiationException | IllegalAccessException | SQLException e) {
+					e.printStackTrace();
+				}
+			} else if (Co_executor.equals("true")) {
+				try {
+					WorkDB.doneWorkToObserver(report, Integer.parseInt(workId), reportFilePathAndNameToWork);
+				} catch (NumberFormatException | InstantiationException | IllegalAccessException | SQLException e) {
+					e.printStackTrace();
+				}
 			}
+			
 
 			// Тест маршрута 
 			/*

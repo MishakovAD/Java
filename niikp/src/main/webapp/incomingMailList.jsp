@@ -243,8 +243,12 @@ out.println("<td width=\"50\"><a href=\"/niikp/incomingMail/" + list.get(i).getI
 	out.println("<td colspan=\"10\">");
 		out.println("<div class=\"demo\">");			
 		out.println("<input class=\"hide\" id=\"hd-" + i + "\" type=\"checkbox\">");
-		out.println("<label for=\"hd-" + i + "\">Резолюция к письму под №" + (i+1) +"</label>");
-		out.println("<div>");
+		if (!resolutionMap.get(list.get(i).getIdMail()).isEmpty()) {
+			out.println("<label style=\"color: teal\" for=\"hd-" + i + "\">Резолюция к письму под №" + (i+1) +"</label>");
+		} else {
+			//out.println("<label id=\"res\" for=\"hd-" + i + "\">Резолюция к письму под №" + (i+1) +"</label>");
+		}		
+		out.println("<div id=\"resolution\">");
 				
 			
 			if (!resolutionMap.isEmpty()) {
@@ -284,10 +288,12 @@ out.println("</tr>");
 
 
 	
-	
 }
 out.println("</table>");
 %>
+
+			
+
 
 </body>
 </html>
