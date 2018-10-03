@@ -145,9 +145,12 @@
 					//out.println("<td><a href=\"/niikp/workDone?workId="
 						//	+ list.get(i).getWorkId() + "&action=refuse\"><button type=\"submit\">Отказаться</button></a></td>");
 					
-
+					if (list.get(i).isComplete() == false) {
 					out.println("<td><a href=\"/niikp/workDone?workId="
 							+ list.get(i).getWorkId() + "&action=done&Co_executor=false\"><button type=\"submit\">Выполнить</button></a></td>");
+					} else {
+						
+					}
 					//out.println("<td><button type=\"submit\"><a href=\"/niikp/incomingMail/" + list.get(i).getIdMail() + "?action=delete\">Удалить</a></button></td>");
 					//out.println("<td><button type=\"submit\"><a href=\"/niikp/workAdd?id=" + list.get(i).getIdMail() + "&type=incomingMail\">Добавить резолюцию</a></button></td>");
 					//out.println("</tr>");	
@@ -285,9 +288,10 @@
 					//out.println("<td><a href=\"/niikp/workDone?workId="
 						//	+ listForCo_executor.get(i).getWorkId() + "&action=refuse\"><button type=\"submit\">Отказаться</button></a></td>");
 					
-
-					out.println("<td><a href=\"/niikp/workDone?workId="
-							+ listForCo_executor.get(i).getWorkId() + "&action=done&Co_executor=true\"><button type=\"submit\">Выполнить</button></a></td>");
+					if (listForCo_executor.get(i).isComplete() == false) {
+						out.println("<td><a href=\"/niikp/workDone?workId="
+								+ listForCo_executor.get(i).getWorkId() + "&action=done&Co_executor=true\"><button type=\"submit\">Выполнить</button></a></td>");
+					}
 					//out.println("<td><button type=\"submit\"><a href=\"/niikp/incomingMail/" + listForCo_executor.get(i).getIdMail() + "?action=delete\">Удалить</a></button></td>");
 					//out.println("<td><button type=\"submit\"><a href=\"/niikp/workAdd?id=" + listForCo_executor.get(i).getIdMail() + "&type=incomingMail\">Добавить резолюцию</a></button></td>");
 					//out.println("</tr>");	

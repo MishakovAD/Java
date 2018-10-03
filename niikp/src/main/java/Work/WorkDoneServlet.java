@@ -3,6 +3,7 @@ package Work;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,6 +30,7 @@ public class WorkDoneServlet extends HttpServlet {
 	String action;
 	String workId;
 	String Co_executor;
+	Work workForComment;
 	public static final String SAVE_DIRECTORY = Property.getProperty("saveDirectory");
 	public static final String SAVE_DIR = Property.getProperty("saveDir");
 
@@ -55,7 +57,16 @@ public class WorkDoneServlet extends HttpServlet {
 			}
 			response.sendRedirect("/niikp/workList?parameter=fromMe");
 			return;
-		}
+		} else if (action.equals("comment")) {
+			try {
+				workForComment = WorkDB.getWorkToWorkId(Integer.parseInt(workId));
+				request.setAttribute("workForComment", workForComment);
+			} catch (NumberFormatException | InstantiationException | IllegalAccessException | SQLException e) {
+				e.printStackTrace();
+			}
+			request.getRequestDispatcher("/workEditAndAddComment.jsp").forward(request, response);
+			return;
+		} 
 		request.getRequestDispatcher("/workDone.jsp").forward(request, response);
 	}
 
@@ -105,6 +116,17 @@ public class WorkDoneServlet extends HttpServlet {
 			if (Co_executor.equals("false")) {
 				try {
 					WorkDB.doneWorkToObserver(report, Integer.parseInt(workId), reportFilePathAndNameToWork);
+					
+					Work work = WorkDB.getWorkToWorkId(Integer.parseInt(workId));
+					ArrayList<Integer> workForCo_executorIdArray = new ArrayList<>();
+					for (Work w : WorkDB.getWorkForCo_executorToAssigment(work.getAssignment())) {
+						workForCo_executorIdArray.add(w.getWorkId());
+					}
+					for (int id : workForCo_executorIdArray) {
+						WorkDB.doneWorkToCo_executorFromObserver(id);
+					}
+					
+					
 				} catch (NumberFormatException | InstantiationException | IllegalAccessException | SQLException e) {
 					e.printStackTrace();
 				}
@@ -155,6 +177,16 @@ public class WorkDoneServlet extends HttpServlet {
 			//response.sendRedirect("/niikp/workList");
 		} else if (action.equals("refuse")) {
 
+		} else if (action.equals("comment")) {
+			String comment = request.getParameter("comment");
+			String assignment = request.getParameter("assignment");
+			String assigmentSource = request.getParameter("assigmentSource");
+			try {
+				WorkDB.addComment(Integer.parseInt(workId), comment, assignment, assigmentSource);
+				WorkDB.addCommentForCo_executor(workForComment.getAssignment(), comment, assignment, assigmentSource);
+			} catch (NumberFormatException | InstantiationException | IllegalAccessException | SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 	}

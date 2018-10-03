@@ -151,6 +151,7 @@ public class WorkDB {
 			work.setIsAccept(rs.getString("isAccept"));
 			work.setReport(rs.getString("report"));
 			work.setReportFilePathAndNameToWork(rs.getString("reportFilePathAndNameToWork"));
+			work.setComment(rs.getString("comment"));
 			listWorkFromMethodGet.add(work);
 			work = new Work();
 		}
@@ -205,6 +206,7 @@ public class WorkDB {
 			work.setIsAccept(rs.getString("isAccept"));
 			work.setReport(rs.getString("report"));
 			work.setReportFilePathAndNameToWork(rs.getString("reportFilePathAndNameToWork"));
+			work.setComment(rs.getString("comment"));
 			listWorkFromMethodGet.add(work);
 			work = new Work();
 		}
@@ -254,6 +256,7 @@ public class WorkDB {
 			work.setIsAccept(rs.getString("isAccept"));
 			work.setReport(rs.getString("report"));
 			work.setReportFilePathAndNameToWork(rs.getString("reportFilePathAndNameToWork"));
+			work.setComment(rs.getString("comment"));
 			if (work.isComplete() == false && !work.getIsAccept().equals("accept")) {
 				workListToId.add(work);
 				work = new Work();
@@ -299,6 +302,7 @@ public class WorkDB {
 			work.setIsAccept(rs.getString("isAccept"));
 			work.setReport(rs.getString("report"));
 			work.setReportFilePathAndNameToWork(rs.getString("reportFilePathAndNameToWork"));
+			work.setComment(rs.getString("comment"));
 			if (work.isComplete() == false && !work.getIsAccept().equals("accept")) {
 				workListToId.add(work);
 				work = new Work();
@@ -342,6 +346,7 @@ public class WorkDB {
 			work.setIsAccept(rs.getString("isAccept"));
 			work.setReport(rs.getString("report"));
 			work.setReportFilePathAndNameToWork(rs.getString("reportFilePathAndNameToWork"));
+			work.setComment(rs.getString("comment"));
 			workListToMailId.add(work);
 
 			work = new Work();
@@ -373,6 +378,40 @@ public class WorkDB {
 
 	}
 	
+	public static void addComment(int workId, String comment, String assignment, String assigmentSource)
+			throws SQLException, InstantiationException, IllegalAccessException {
+		Connection con = DriverManager.getConnection(url, username, password);
+		Statement statement = null;
+		statement = con.createStatement();
+
+		String SQL_update_work = "UPDATE work SET comment='" + comment +"', assignment='" + assignment 
+				+ "', assigmentSource='" + assigmentSource + "'  WHERE workId=" + workId + ";";
+		//System.out.println(SQL_update_work);
+		statement.executeUpdate(SQL_update_work);
+		if (statement != null)
+			statement.close();
+		if (con != null)
+			con.close();
+
+	}
+	
+	public static void addCommentForCo_executor(String oldAssignment, String comment, String assignment, String assigmentSource)
+			throws SQLException, InstantiationException, IllegalAccessException {
+		Connection con = DriverManager.getConnection(url, username, password);
+		Statement statement = null;
+		statement = con.createStatement();
+
+		String SQL_update_work = "UPDATE work SET comment='" + comment +"', assignment='" + assignment 
+				+ "', assigmentSource='" + assigmentSource + "'  WHERE assignment='" + oldAssignment + "';";
+		//System.out.println(SQL_update_work);
+		statement.executeUpdate(SQL_update_work);
+		if (statement != null)
+			statement.close();
+		if (con != null)
+			con.close();
+
+	}
+	
 	public static void doneWorkToCo_executor(String report, int workId, String reportFile)
 			throws SQLException, InstantiationException, IllegalAccessException {
 		Connection con = DriverManager.getConnection(url, username, password);
@@ -380,7 +419,24 @@ public class WorkDB {
 		statement = con.createStatement();
 
 		String SQL_update_work = "UPDATE workForCo_executor SET isComplete=true, finishDate=now(), isAccept='done', report='" + report
-				+ "', reportFilePathAndNameToWork='" + reportFile + "' WHERE workId=" + workId + ";";
+				+ "', reportFilePathAndNameToWork='" + reportFile + "' WHERE workForCo_executorId=" + workId + ";";
+		//System.out.println(SQL_update_work);
+		statement.executeUpdate(SQL_update_work);
+		if (statement != null)
+			statement.close();
+		if (con != null)
+			con.close();
+
+	}
+	
+	public static void doneWorkToCo_executorFromObserver(int workId)
+			throws SQLException, InstantiationException, IllegalAccessException {
+		Connection con = DriverManager.getConnection(url, username, password);
+		Statement statement = null;
+		statement = con.createStatement();
+
+		String SQL_update_work = "UPDATE workForCo_executor SET isComplete=true, finishDate=now(), isAccept='done', "
+				+ "comment='¬ыполнил ответсвенный' WHERE workForCo_executorId=" + workId + ";";
 		//System.out.println(SQL_update_work);
 		statement.executeUpdate(SQL_update_work);
 		if (statement != null)
@@ -442,11 +498,13 @@ public class WorkDB {
 			workToWorkID.setStartDate(rs.getString("startDate"));
 			workToWorkID.setEndDate(rs.getString("endDate"));
 			workToWorkID.setAssignment(rs.getString("assignment"));
+			workToWorkID.setAssigmentSourse(rs.getString("assigmentSource"));
 			workToWorkID.setMailId(rs.getString("mailId"));
 			workToWorkID.setComplete(rs.getBoolean("isComplete"));
 			workToWorkID.setIsAccept(rs.getString("isAccept"));
 			workToWorkID.setReport(rs.getString("report"));
 			workToWorkID.setReportFilePathAndNameToWork(rs.getString("reportFilePathAndNameToWork"));
+			workToWorkID.setComment(rs.getString("comment"));
 		}
 		if (statement != null)
 			statement.close();
@@ -488,6 +546,60 @@ public class WorkDB {
 		if (con != null)
 			con.close();
 		return lastId + 1;
+
+	}
+	
+	public static ArrayList<Work> getWorkForCo_executorToAssigment(String assignment) throws SQLException, InstantiationException, IllegalAccessException {
+		Work workForCo_executor = new Work();
+		ArrayList<Work> workList = new ArrayList<>();
+		IncomingMail incMail = new IncomingMail();
+		
+		Connection con = DriverManager.getConnection(url, username, password);
+		Statement statement = null;
+		statement = con.createStatement();
+
+		String SQL_get_incomingMail_to_id = "SELECT * FROM workForCo_executor WHERE assignment='" + assignment + "';";
+
+		ResultSet rs = statement.executeQuery(SQL_get_incomingMail_to_id);
+		while (rs.next()) {
+			String mailId = rs.getString("mailId");
+			int indexOf = mailId.indexOf("_");
+			String typeMail = mailId.substring(0, indexOf);
+			String idMail = mailId.substring(indexOf + 1);
+
+			if (typeMail.equalsIgnoreCase("incomingMail")) {
+				incMail = IncomingMailDB.getIncomingMailToId(Integer.parseInt(idMail));
+				workForCo_executor.setFilePathAndNameToWork(incMail.getFilePathAndName());
+			} else {
+				workForCo_executor.setFilePathAndNameToWork(rs.getString("filePathAndNameToWork"));
+			} // доделать остальные типы проверок на тип письма    акие??
+
+			workForCo_executor.setWorkId(rs.getInt("workForCo_executorId"));
+			workForCo_executor.setAssigmentSourse(rs.getString("assigmentSource"));
+			workForCo_executor.setToUserId(rs.getInt("toUserId"));
+			workForCo_executor.setCo_executor(rs.getString("Co_executor"));
+			workForCo_executor.setObserverId(rs.getInt("observerId"));
+			workForCo_executor.setFromUserId(rs.getInt("fromUserId"));
+			workForCo_executor.setStartDate(rs.getString("startDate"));
+			workForCo_executor.setEndDate(rs.getString("endDate"));
+			workForCo_executor.setFinishDate(rs.getString("finishDate"));
+			workForCo_executor.setAssignment(rs.getString("assignment"));
+			workForCo_executor.setMailId(rs.getString("mailId"));
+
+			workForCo_executor.setComplete(rs.getBoolean("isComplete"));
+			workForCo_executor.setIsAccept(rs.getString("isAccept"));
+			workForCo_executor.setReport(rs.getString("report"));
+			workForCo_executor.setReportFilePathAndNameToWork(rs.getString("reportFilePathAndNameToWork"));
+			workForCo_executor.setComment(rs.getString("comment"));
+			
+			workList.add(workForCo_executor);			
+			workForCo_executor = new Work();
+		}
+		if (statement != null)
+			statement.close();
+		if (con != null)
+			con.close();
+		return workList;
 
 	}
 

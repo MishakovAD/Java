@@ -64,7 +64,7 @@ public class DB {
 				+ " finishDate TIMESTAMP, " + " assignment VARCHAR (500), " + " mailId VARCHAR (50), "
 				+ " filePathAndNameToWork VARCHAR (100), " + " isComplete BOOLEAN DEFAULT NULL, "
 				+ " isAccept VARCHAR (10), " + " report VARCHAR (500), "
-				+ " reportFilePathAndNameToWork VARCHAR (150), " + " template VARCHAR (50), "
+				+ " reportFilePathAndNameToWork VARCHAR (150), " + " comment VARCHAR (500), " + " template VARCHAR (50), "
 				+ " PRIMARY KEY (workId))";
 //
 		statement.executeUpdate(SQL);
@@ -76,7 +76,7 @@ public class DB {
 				+ " endDate VARCHAR (50), " + " finishDate TIMESTAMP, " + " assignment VARCHAR (500), "
 				+ " mailId VARCHAR (50), " + " filePathAndNameToWork VARCHAR (100), "
 				+ " isComplete BOOLEAN DEFAULT NULL, " + " isAccept VARCHAR (10), " + " report VARCHAR (500), "
-				+ " reportFilePathAndNameToWork VARCHAR (150), " + " template VARCHAR (50), "
+				+ " reportFilePathAndNameToWork VARCHAR (150), " + " comment VARCHAR (500), " + " template VARCHAR (50), "
 				+ " PRIMARY KEY (workForCo_executorId))";
 //
 		statement.executeUpdate(SQL);

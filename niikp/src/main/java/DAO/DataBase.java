@@ -126,6 +126,7 @@ public class DataBase {
 //		 " isAccept VARCHAR (10), " +
 //		 " report VARCHAR (500), " +
 //		 " reportFilePathAndNameToWork VARCHAR (150), " +
+//		 " comment VARCHAR (500), " +
 //		 " template VARCHAR (50), " +
 //		 " PRIMARY KEY (workId))";
 ////
@@ -149,6 +150,7 @@ public class DataBase {
 //		 " isAccept VARCHAR (10), " +
 //		 " report VARCHAR (500), " +
 //		 " reportFilePathAndNameToWork VARCHAR (150), " +
+//		 " comment VARCHAR (500), " +
 //		 " template VARCHAR (50), " +
 //		 " PRIMARY KEY (workForCo_executorId))";
 ////

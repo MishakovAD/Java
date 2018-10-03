@@ -156,9 +156,9 @@
 					//out.println("<a href=\"" + list.get(i).getFilePathAndName() + "\"><td>" + "Документ" + "</td></a>");
 					//Продумать путь до файла, чтобы не было мусорки, и задать в web.xml
 
-					//out.println("<td><a href=\"/niikp/workDone?workId="
-						//	+ list.get(i).getWorkId() + "&action=refuse\"><button type=\"submit\">Отказаться</button></a></td>");
-					out.println("</tr>"); } else if (list.get(i).getFromUserId() == userToWork.getUserId()) {
+					out.println("<td><a href=\"/niikp/workDone?workId="
+						+ list.get(i).getWorkId() + "&action=comment\"><button type=\"submit\">Комментарий</button></a></td>");
+					out.println("</tr>"); } else if (list.get(i).getFromUserId() == userToWork.getUserId() || list.get(i).getObserverId() == userToWork.getUserId()) {
 					
 										out.println("<tr>");
 										out.println("<td>" + (i+1) + ") </td>");
@@ -251,16 +251,18 @@
 										} else {
 											out.println("<td>Не заполнено</td>");
 										}
+										
+										out.println("<td><a href=\"/niikp/workDone?workId="
+												+ list.get(i).getWorkId() + "&action=comment\"><button type=\"submit\">Комментарий</button></a></td>");
+										
+										out.println("</tr>");
 
 										//out.println("<a href=\"" + list.get(i).getFilePathAndName() + "\"><td>" + "Документ" + "</td></a>");
 										//Продумать путь до файла, чтобы не было мусорки, и задать в web.xml
 
 										//out.println("<td><a href=\"/niikp/workDone?workId="
 											//	+ list.get(i).getWorkId() + "&action=refuse\"><button type=\"submit\">Отказаться</button></a></td>");
-														} else if (list.get(i).getFromUserId() == userToWork.getUserId()) {
-										
-										out.println("<tr>");
-									}
+														} 
 			}
 			
 			

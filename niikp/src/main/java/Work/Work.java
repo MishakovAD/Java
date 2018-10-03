@@ -26,6 +26,7 @@ public class Work {
 	private String isAccept; //принято дело или отправлено на переделывание Accept/Refuse/Null
 	private String report; //будут заноситься в бд путем апдейта по workId
 	private String reportFilePathAndNameToWork;
+	private String comment;
 	private String template; //пусть будет тип маршрута стринг - будем класть номер маршрута и по номеру маршрута смотреть. Хотя нужно ли это поле? Пока пробуем без
 	//Нужно, потому что мы должны смотреть, задан маршрут или нет, и если задан, то делаем проверку, если нет, то не делаем
 	//А так же нужно сделать, что если поддерживаются маршруты, то нужно сохранять всю предыдущую историю действий
@@ -199,6 +200,12 @@ public class Work {
 	}
 	public void setReportFilePathAndNameToWork(String reportFilePathAndNameToWork) {
 		this.reportFilePathAndNameToWork = reportFilePathAndNameToWork;
+	}
+	public String getComment() {
+		return comment;
+	}
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 	public String getTemplate() {
 		return template;
